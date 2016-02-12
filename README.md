@@ -3,3 +3,4 @@
 Study notes in 2016
 
 - 2016,02
+	- SVG-icon-sprite
