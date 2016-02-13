@@ -1,37 +1,37 @@
 ## 实用的JavaScript技巧、窍门和最佳实践
 
-1. [使用===，而不是＝＝](#a11)
-2. [使用闭包实现私有变量](#a22)
-3. [创建对象的构造函数](#a33)
-4. [**IIFE**--Immediately Invoked Function Expression](#a44)
-5. [不要使用 delete 来删除一个数组中的项](#a44)
-6. [使用 length 来截短一个数组](#a66)
-7. [AND/OR 做条件判断](#a77)
-8. [使用for-in遍历一个对象内部属性的时候注意检查属性](#a88)
-9. [缓存需要计算和查询（calculation or querying）的变量](#a99)
-10. [避免使用 eval() 和 Function 构造函数](#a110)
-11. [避免使用 with()](#a111)
-12. [避免使用 for-in 来遍历一个数组](#a112)
-13. [避免使用 with()](#a113)
-14. [在调用 setTimeout() 和 setInterval() 的时候传入函数，而不是字符串](#a114)
-15. [为创建的对象指定prototype对象](#a115)
-16. [为 XMLHttpRequests 设置超时](#a116)
-17. [处理WebSocket超时](#a117)
-18. [牢记，原始运算符始终比函数调用要高效](#a118)
-19. [从数组中获取一个随机项](#a119)
-20. [在特定范围内获取一个随机数](#a120)
-21. [在0和设定的最大值之间生成一个数字数组](#a121)
-22. [生成一个随机的数字字母字符串](#a122)
-23. [打乱一个数字数组](#a123)
-24. [附加（append）一个数组到另一个数组上](#a124)
-25. [将arguments对象转换成一个数组](#a125)
-26. [验证参数是否是数字（number](#a126)
-27. [验证参数是否是数组](#a127)
-28. [获取一个数字数组中的最大值或最小值](#a128)
-29. [清空一个数组](#a129)
+1. [使用===，而不是＝＝](#a-11)
+2. [使用闭包实现私有变量](#a-22)
+3. [创建对象的构造函数](#a-33)
+4. [**IIFE**--Immediately Invoked Function Expression](#a-44)
+5. [不要使用 delete 来删除一个数组中的项](#a-44)
+6. [使用 length 来截短一个数组](#a-66)
+7. [AND/OR 做条件判断](#a-77)
+8. [使用for-in遍历一个对象内部属性的时候注意检查属性](#a-88)
+9. [缓存需要计算和查询（calculation or querying）的变量](#a-99)
+10. [避免使用 eval() 和 Function 构造函数](#a-110)
+11. [避免使用 with()](#a-111)
+12. [避免使用 for-in 来遍历一个数组](#a-112)
+13. [避免使用 with()](#a-113)
+14. [在调用 setTimeout() 和 setInterval() 的时候传入函数，而不是字符串](#a-114)
+15. [为创建的对象指定prototype对象](#a-115)
+16. [为 XMLHttpRequests 设置超时](#a-116)
+17. [处理WebSocket超时](#a-117)
+18. [牢记，原始运算符始终比函数调用要高效](#a-118)
+19. [从数组中获取一个随机项](#a-119)
+20. [在特定范围内获取一个随机数](#a-120)
+21. [在0和设定的最大值之间生成一个数字数组](#a-121)
+22. [生成一个随机的数字字母字符串](#a-122)
+23. [打乱一个数字数组](#a-123)
+24. [附加（append）一个数组到另一个数组上](#a-124)
+25. [将arguments对象转换成一个数组](#a-125)
+26. [验证参数是否是数字（number](#a-126)
+27. [验证参数是否是数组](#a-127)
+28. [获取一个数字数组中的最大值或最小值](#a-128)
+29. [清空一个数组](#a-129)
 
 
-<h3 id="a11">1. 使用===，而不是==</h3>
+<h3 id="a-11">1. 使用===，而不是==</h3>
 
 ==（或!=）操作符在需要的时候会自动执行类型转换。===（或!==）操作不会执行任何转换。它将比较值和类型，而且在速度上也被认为优于==
 
@@ -46,7 +46,7 @@
  '' === false   // is false
 ```
 
-<h3 id="#a22">2. 使用闭包实现私有变量</h3>
+<h3 id="#a-22">2. 使用闭包实现私有变量</h3>
 ```javascript
 function Person(name, age) {
     this.getName = function() { return name; };
@@ -62,7 +62,7 @@ function Person(name, age) {
 }
 ```
 
-<h3 id="#a33">3. 创建对象的构造函数</h3>
+<h3 id="#a-33">3. 创建对象的构造函数</h3>
 
 ```javascript
 function Person(firstName, lastName){
@@ -73,7 +73,7 @@ function Person(firstName, lastName){
 var Saad = new Person("Saad", "Mousliki");
 ```
 
-<h3 id="#a44">4. IIFE-Immediately Invoked Function Expression </h3>
+<h3 id="#a-44">4. IIFE-Immediately Invoked Function Expression </h3>
 
 创建后立即自动执行函数
 
@@ -87,7 +87,7 @@ var Saad = new Person("Saad", "Mousliki");
 })(10,20)
 ```
 
-<h3 id="#a44">5. 不要使用 delete 来删除一个数组中的项</h3>
+<h3 id="#a-55">5. 不要使用 delete 来删除一个数组中的项</h3>
 
 使用 splice 而不要使用 delete 来删除数组中的某个项。使用 delete 只是用 undefined 来替换掉原有的项，并不是真正的从数组中删除。
 
@@ -112,7 +112,7 @@ items.length;   // return 10
 ```
 delete 方法应该被用来删除一个对象的某个属性。
 
-<h3 id="#a66">6. 使用 length 来截短一个数组</h3>
+<h3 id="#a-66">6. 使用 length 来截短一个数组</h3>
 
 ```javascript
 var myArray = [12 , 222 , 1000 , 124 , 98 , 10 ];
@@ -127,7 +127,7 @@ myArray.length = 10;   // the new array length is 10
 myArray[myArray.length - 1] ;   // undefined
 ```
 
-<h3 id="#a77">7. AND/OR 做条件判断</h3>
+<h3 id="#a-77">7. AND/OR 做条件判断</h3>
 
 ```javascript
 var foo = 10;
@@ -144,7 +144,7 @@ function doSomething(arg1){
 }
 ```
 
-<h3 id="#a88">8. 使用for-in遍历一个对象内部属性的时候注意检查属性</h3>
+<h3 id="#a-88">8. 使用for-in遍历一个对象内部属性的时候注意检查属性</h3>
 
 下面的代码片段能够避免在遍历一个对象属性的时候访问原型的属性
 
@@ -156,7 +156,7 @@ for (var name in object) {
 }
 ```
 
-<h3 id="#a99">9. 缓存需要计算和查询（calculation or querying）的变量</h3>
+<h3 id="#a-99">9. 缓存需要计算和查询（calculation or querying）的变量</h3>
 
 对于jQuery选择器，我们最好缓存这些DOM元素。
 
@@ -167,7 +167,7 @@ var navup = document.querySelector('#up');
 var navdown = document.querySelector('#down');
 ```
 
-<h3 id="#a110">10. 避免使用 eval() 和 Function 构造函数</h3>
+<h3 id="#a-110">10. 避免使用 eval() 和 Function 构造函数</h3>
 
 使用 eval 和 Function 构造函数是非常昂贵的操作，因为每次他们都会调用脚本引擎将源代码转换成可执行代码。
 
@@ -176,11 +176,11 @@ var func1 = new Function(functionCode);
 var func2 = eval(functionCode);
 ```
 
-<h3 id="#a111">11. 避免使用 with()</h3>
+<h3 id="#a-111">11. 避免使用 with()</h3>
 
 使用 with() 会插入一个全局变量。因此，同名的变量会被覆盖值而引起不必要的麻烦。
 
-<h3 id="#a112">12. 避免使用 for-in 来遍历一个数组</h3>
+<h3 id="#a-112">12. 避免使用 for-in 来遍历一个数组</h3>
 
 ```javascript
 var sum = 0;
@@ -204,7 +204,7 @@ for (var i = 0, len = arrayNumbers.length; i < len; i++) {
 
 为什么？因为arrayNumbers.length每次循环的时候都会被计算。
 
-<h3 id="#a114">14. 在调用 setTimeout() 和 setInterval() 的时候传入函数，而不是字符串</h3>
+<h3 id="#a-114">14. 在调用 setTimeout() 和 setInterval() 的时候传入函数，而不是字符串</h3>
 
 如果你将字符串传递给 setTimeout() 或者 setInterval()，这个字符串将被如使用 eval 一样被解析，这个是非常耗时的。
 
@@ -222,7 +222,7 @@ setInterval(doSomethingPeriodically, 1000);
 setTimeOut(doSomethingAfterFiveSeconds, 5000);
 ```
 
-<h3 id="#a115">15. 为创建的对象指定prototype对象</h3>
+<h3 id="#a-115">15. 为创建的对象指定prototype对象</h3>
 
 写一个函数来创建一个以指定参数作为prototype的对象是有可能：
 
@@ -236,7 +236,7 @@ clone(Array).prototype ;
 // []
 ```
 
-<h3 id="#a116">16. 为 XMLHttpRequests 设置超时</h3>
+<h3 id="#a-116">16. 为 XMLHttpRequests 设置超时</h3>
 
 在一个XHR请求占用很长时间后（比如由于网络问题），你可能需要中止这次请求，那么你可以对XHR调用配套使用 setTimeout()。
 
@@ -262,7 +262,7 @@ xhr.send();
 
 此外，一般你应该完全避免同步的Ajax请求。
 
-<h3 id="#a117">17. 处理WebSocket超时</h3>
+<h3 id="#a-117">17. 处理WebSocket超时</h3>
 
 通常，在一个WebSocket连接创建之后，如果你没有活动的话，服务器会在30秒之后断开（time out）你的连接。防火墙也会在一段时间不活动之后断开连接。
 
@@ -285,7 +285,7 @@ function cancelKeepAlive() {
 }
 ```
 
-<h3 id="#a118">18. 牢记，原始运算符始终比函数调用要高效</h3>
+<h3 id="#a-118">18. 牢记，原始运算符始终比函数调用要高效</h3>
 
 举例来说，不使用：
 
@@ -301,20 +301,20 @@ var min = a < b ? a b;
 A[A.length] = v;
 ```
 
-<h3 id="#a119">19. 从数组中获取一个随机项</h3>
+<h3 id="#a-119">19. 从数组中获取一个随机项</h3>
 
 ```javascript
 var items = [12,548 ,'a' ,2 ,5478 ,'foo' ,8852, ,'Doe' ,2145 ,119];
 var  randomItem = items[Math.floor(Math.random()*items.length)];
 ```
 
-<h3 id="#a120">20. 在特定范围内获取一个随机数</h3>
+<h3 id="#a-120">20. 在特定范围内获取一个随机数</h3>
 
 这个代码片段在你想要生成测试数据的时候非常有用，比如一个在最小最大值之间的一个随机薪水值。
 
 	var x = Math.floor(Math.random() * (max - min + 1)) + min;
 
-<h3 id="#a121">21. 在0和设定的最大值之间生成一个数字数组</h3>
+<h3 id="#a-121">21. 在0和设定的最大值之间生成一个数字数组</h3>
 
 ```javascript
 var numbersArray=[] , max = 100;
@@ -322,7 +322,7 @@ for( var i=1; numbersArray.push(i++)<max;);
 // numbers = [0,1,2,3 ... 100]
 ```
 
-<h3 id="#a122">22. 生成一个随机的数字字母字符串</h3>
+<h3 id="#a-122">22. 生成一个随机的数字字母字符串</h3>
 
 ```javascript
 function generateRandomAlphaNum(len) {
@@ -334,7 +334,7 @@ function generateRandomAlphaNum(len) {
 
 Math.random()生成0到1之间的随机数，number.toString(36)是将这个数字转换成36进制（0-9，a-z），最后substr去掉前面的“0.”字符串
 
-<h3 id="#a123">23. 打乱一个数字数组</h3>
+<h3 id="#a-123">23. 打乱一个数字数组</h3>
 
 ```javascript
 var numbers = [5, 458 , 120 , -215 , 228 , 400 , 122205, -85411];
@@ -342,7 +342,7 @@ numbers = numbers.sort(function(){ return Math.random() - 0.5});
 /* the array numbers will be equal for example to [120, 5, 228, -215, 400, 458, -85411, 122205]  */
 ```
 
-<h3 id="#a124">24. 附加（append）一个数组到另一个数组上</h3>
+<h3 id="#a-124">24. 附加（append）一个数组到另一个数组上</h3>
 
 ```javascript
 var array1 = [12 , "foo" , {name: "Joe"} , -2458];
@@ -353,14 +353,14 @@ Array.prototype.push.apply(array1, array2);
 
 其实concat可以直接实现两个数组的连接，但是它的返回值是一个新的数组。这里是直接改变array1
 
-<h3 id="#a125">25. 将arguments对象转换成一个数组</h3>
+<h3 id="#a-125">25. 将arguments对象转换成一个数组</h3>
 
 var argArray = Array.prototype.slice.call(arguments);
 
 [arguments对象是一个类数组对象，但不是一个真正的数组](http://debuggable.com/posts/turning-javascript-s-arguments-object-into-an-array:4ac50ef8-3bd0-4a2d-8c2e-535ccbdd56cb)
 
 
-<h3 id="#a126">26. 验证参数是否是数字（number）</h3>
+<h3 id="#a-126">26. 验证参数是否是数字（number）</h3>
 
 ```javascript
 function isNumber(n){
@@ -368,7 +368,7 @@ function isNumber(n){
 }
 ```
 
-<h3 id="#a127">27. 验证参数是否是数组</h3>
+<h3 id="#a-127">27. 验证参数是否是数组</h3>
 
 ```javascript
 function isArray(obj){
@@ -399,7 +399,7 @@ arr instanceof Array;
 
 [instanceof considered harmful (or how to write a robust isArray](http://perfectionkills.com/instanceof-considered-harmful-or-how-to-write-a-robust-isarray/)
 
-<h3 id="#a128">28. 获取一个数字数组中的最大值或最小值</h3>
+<h3 id="#a-128">28. 获取一个数字数组中的最大值或最小值</h3>
 
 ```javascript
 var  numbers = [5, 458 , 120 , -215 , 228 , 400 , 122205, -85411];
@@ -407,7 +407,7 @@ var maxInNumbers = Math.max.apply(Math, numbers);
 var minInNumbers = Math.min.apply(Math, numbers);
 ```
 
-<h3 id="#a129">29. 清空一个数组</h3>
+<h3 id="#a-129">29. 清空一个数组</h3>
 
 	var myArray = [12 , 222 , 1000 ];
 	myArray.length = 0;   // myArray will be equal to [].
