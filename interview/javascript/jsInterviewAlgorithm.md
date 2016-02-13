@@ -31,16 +31,16 @@ createTextNode()   //创建一个文本节点
 
 	2) 添加、移除、替换、插入
 ```javascript
-	appendChild()      //添加
-	removeChild()      //移除
-	replaceChild()      //替换
-	insertBefore()      //插入
+appendChild()      //添加
+removeChild()      //移除
+replaceChild()      //替换
+insertBefore()      //插入
 ```
 	3）查找
 ```javascript
-		getElementsByTagName()    //通过标签名称
-		getElementsByName()     //通过元素的Name属性的值
-		getElementById()        //通过元素Id，唯一性
+getElementsByTagName()    //通过标签名称
+getElementsByName()     //通过元素的Name属性的值
+getElementById()        //通过元素Id，唯一性
 ```
 
 **4. 典型的斐波那契数列**
