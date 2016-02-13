@@ -11,14 +11,14 @@ gulp通过gulpfile.js文件来完成相关任务，因此项目根目录中必�
 
 流(Stream)能够通过一系列的小函数来传递数据，这些函数会对数据进行修改，然后把修改后的数据传递给下一个函数。
 看一个简单例子：
-
+```javascript
 	var gulp = require('gulp'), uglify = require('gulp-uglify');
 	gulp.task('minify', function () {
    		gulp.src('js/app.js')
       		.pipe(uglify())
      	 	.pipe(gulp.dest('build'))
 	});
-
+```
 ####gulp有五个方法：src、dest、task、run、watch
 
 - src和dest：指定源文件和处理后文件的路径
@@ -27,7 +27,7 @@ gulp通过gulpfile.js文件来完成相关任务，因此项目根目录中必�
 - run：执行任务
 
 简单的gulpfile.js
-
+```javascript
 	require('node_modules里对应模块')   //导入工具包
 	var gulp = require('gulp'), //本地安装gulp所用到的地方
 	    less = require('gulp-less');
@@ -40,12 +40,12 @@ gulp通过gulpfile.js文件来完成相关任务，因此项目根目录中必�
 	});
 
 	gulp.task('default',['testLess', 'elseTask']); //定义默认任务
-	 
+```
 **gulp.src(globs[, options])**
 
 - 根据globs提供的文件列表， 得到一个Vinyl文件的stream, 可以按照管道模式给其它插件处理。
 - 执行任务处理的文件  globs：处理的文件路径(字符串或者字符串数组)
-
+```javascript
 		gulp.src(['client/*.js', '!client/b*.js', 'client/c.js'])   
 		# !是排除某些文件
 			
@@ -56,7 +56,7 @@ gulp通过gulpfile.js文件来完成相关任务，因此项目根目录中必�
 			    .pipe(gulp.dest('./build/'));
 			             
 		});
-
+```
 	> base 是指多少路径被保留，比如上面的 ./src/users/list.js 会被输出到 ./build/users/list.js
 
 **gulp.dest(path[, options])**
@@ -75,7 +75,7 @@ gulp通过gulpfile.js文件来完成相关任务，因此项目根目录中必�
 **gulp.watch(glob [, opts], tasks), gulp.watch(glob [, opts, cb])**
 
 监控文件。当监控的文件有所改变时执行特定的任务。
-
+```javascript
 	gulp.task('watch-js', function(){
 	   gulp.watch('./src/**/*.js',['jshint','jscs']); 
 	});
@@ -85,7 +85,7 @@ gulp通过gulpfile.js文件来完成相关任务，因此项目根目录中必�
 	   console.log('less event'+event.type+' '+event.path)
 	 }); 
 	});
-
+```
 ---
 
 ###Installing
@@ -126,7 +126,7 @@ gulp通过gulpfile.js文件来完成相关任务，因此项目根目录中必�
 ####项目git案例2
 
 这个任务会让所有的文件匹配js/*.js（比如js目录下的所有JavaScript文件），并且执行JSHint，然后打印输出结果，取消文件缩进，最后把他们合并起来，保存为build/app.js
-
+```javascript
 	gulp.task('js', function () {
 		return gulp.src('js/*.js')
 		      .pipe(jshint())
@@ -135,26 +135,26 @@ gulp通过gulpfile.js文件来完成相关任务，因此项目根目录中必�
 		      .pipe(concat('app.js'))
 		      .pipe(gulp.dest('build'));
 	});
-
+```
 ###JSHint - Code Quality
 
 - Detects potential errors
 - 是一个侦测javascript代码中错误和潜在问题的工具
-
+```javascript
 		gulp.task('lint', function() {
 			return gulp.src('./lib/*.js')
 				.pipe(jshint())
 				.pipe(jshint.reporter('YOUR_REPORTER_HERE'));
 		});
-
+```
 ###glup-sass --将sass语法的css处理成css格式
-
+```javascript
 	gulp.task('sass', function () {
     	gulp.src('./scss/*.scss')
         	.pipe(sass())
         	.pipe(gulp.dest('./css'));
 	});
-
+```
 ###JSCS-CSS Style
 
 - Enforces coding conventions
@@ -163,7 +163,7 @@ gulp通过gulpfile.js文件来完成相关任务，因此项目根目录中必�
 ###gulp-browserify
 
 browserify可以为浏览器编译node风格的遵循`commonjs`的模块。 它搜索文件中的`require()`调用， 递归的建立模块依赖图。
-
+```javascript
 	gulp.task('scripts', function() {
     // Single entry point to browserify
     gulp.src('src/js/app.js')
@@ -173,12 +173,12 @@ browserify可以为浏览器编译node风格的遵循`commonjs`的模块。 它�
         }))
         .pipe(gulp.dest('./build/js'))
 	});
-
+```
 ###imagemin--压缩图片的工具
 
 包括PNG、JPEG、GIF和SVG图片
-
-	gulp.task('default', function () {
+```javascript
+gulp.task('default', function () {
     return gulp.src('src/images/*')
         .pipe(imagemin({
             progressive: true,
@@ -186,10 +186,10 @@ browserify可以为浏览器编译node风格的遵循`commonjs`的模块。 它�
             use: [pngquant()]
         }))
         .pipe(gulp.dest('dist'));
-	});
-
+});
+```
 gulp-imagemin其他参数 [具体参看](https://github.com/sindresorhus/gulp-imagemin#user-content-options)
-
+```javascript
 	gulp.task('testImagemin', function () {
 	    gulp.src('src/img/*.{png,jpg,gif,ico}')
 	        .pipe(imagemin({
@@ -200,9 +200,9 @@ gulp-imagemin其他参数 [具体参看](https://github.com/sindresorhus/gulp-im
 	        }))
 	        .pipe(gulp.dest('dist/img'));
 	});
-
+```
 深度压缩图片
-
+```
 	var gulp = require('gulp'),
 	    imagemin = require('gulp-imagemin'),
 	    //确保本地已安装imagemin-pngquant
@@ -217,9 +217,10 @@ gulp-imagemin其他参数 [具体参看](https://github.com/sindresorhus/gulp-im
 	        }))
 	        .pipe(gulp.dest('dist/img'));
 	});
+```
 
 只压缩修改的图片。压缩图片时比较耗时，在很多情况下我们只修改了某些图片，没有必要压缩所有图片，使用”gulp-cache”只压缩修改的图片，没有修改的图片直接从缓存文件读取（C:UsersAdministratorAppDataLocalTempgulp-cache）。
-
+```javascript
 	var gulp = require('gulp'),
 	    imagemin = require('gulp-imagemin'),
 	    pngquant = require('imagemin-pngquant'),
@@ -235,7 +236,7 @@ gulp-imagemin其他参数 [具体参看](https://github.com/sindresorhus/gulp-im
 	        })))
 	        .pipe(gulp.dest('dist/img'));
 	});
-
+```
 ###gulp-usemin
 
 用来将HTML 文件中（或者templates/views）中没有优化的script 和stylesheets 替换为优化过的版本。
@@ -246,7 +247,7 @@ usemin 暴露两个内置的任务，分别为：
 - usemin 使用优化版本替换 usemin 块，如果在磁盘上可以找到 revisioned 版本，则替换为 revisioned 版本。
 
 usemin块如下定义：
-
+```html
 	<!-- build:css style.css -->
 	<!-- endbuild -->
 	<!-- build:js js/lib.js -->
@@ -255,9 +256,9 @@ usemin块如下定义：
 	<!-- endbuild -->
 	<!-- build:remove -->
 	<!-- endbuild -->
-
+```
 gulp-usemin用法如下：
-
+```javascript
 	var usemin = require('gulp-usemin');
 	var uglify = require('gulp-uglify');
 	var minifyHtml = require('gulp-minify-html');
@@ -272,17 +273,18 @@ gulp-usemin用法如下：
 	    }))
 	    .pipe(gulp.dest('build/'));
 	})
+```
 
 ###gulp-uglify
 
 uglify是一款javascript代码优化工具，可以解析，压缩和美化javascript。
-
+```javascript
 	gulp.task('compress', function() {
 	  gulp.src('lib/*.js')
 	    .pipe(uglify())
 	    .pipe(gulp.dest('dist'))
 	});
-
+```
 - gulp.src(['src/js/index.js','src/js/detail.js']) //多个文件以数组形式传入
 - 匹配符“!”，“*”，“**”，“{}”
 
@@ -311,7 +313,7 @@ uglify是一款javascript代码优化工具，可以解析，压缩和美化java
 这三种情况，都使得实际运行的代码不同于开发代码，除错（debug）变得困难重重。
 
 Source map就是一个信息文件，里面储存着位置信息。也就是说，转换后的代码的每一个位置，所对应的转换前的位置。有了它，出错的时候，除错工具将直接显示原始代码，而不是转换后的代码
-
+```javascript
 	var gulp = require('gulp');
 	var plugin1 = require('gulp-plugin1');
 	var plugin2 = require('gulp-plugin2');
@@ -324,13 +326,13 @@ Source map就是一个信息文件，里面储存着位置信息。也就是说�
 	    .pipe(sourcemaps.write())
 	    .pipe(gulp.dest('dist'));
 	});
-
+```
 ###gulp-inject
 
 可以注入css,javascript和web组件，不需手工更新ndex.html
 
 index.html
-
+```html
 	<!DOCTYPE html>
 	<html>
 	<head>
@@ -343,9 +345,9 @@ index.html
 	  <!-- endinject -->
 	</body>
 	</html>
-
+```
 gulpfile.js
-
+```javascript
 	var gulp = require('gulp');
 	var inject = require("gulp-inject");
 	gulp.task('index', function () {
@@ -355,17 +357,17 @@ gulpfile.js
 	  return target.pipe(inject(sources))
 	    .pipe(gulp.dest('./src'));
 	});
-
+```
 ###gulp-concat -连接合并文件
 
 使用gulp-concat合并javascript文件，减少网络请求
-
+```javascript
 	gulp.task('scripts', function() {
 	  gulp.src('./lib/*.js')
 	    .pipe(concat('all.js'))  //合并后的文件名
 	    .pipe(gulp.dest('./dist/'))
 	});
-
+```
 ##更多的文章
 
 - [Recipes](https://github.com/gulpjs/gulp/tree/master/docs/recipes#recipes)
