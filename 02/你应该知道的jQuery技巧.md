@@ -1,6 +1,7 @@
 # jQuery Tips Everyone Should Know
 
 A collection of simple tips to help up your jQuery game.
+_<span id="jump">Top</span>_
 
 1. [Checking If jQuery Loaded](#checking-if-jquery-loaded)
 1. [Back to Top Button](#back-to-top-button)
@@ -21,7 +22,7 @@ A collection of simple tips to help up your jQuery game.
 1. [Chain Plugin Calls, 链式操作](#chain-plugin-calls)
 
 
-### Checking If jQuery Loaded
+<h3 id="checking-if-jquery-loaded">Checking If jQuery Loaded</h3>
 
 Before you can do anything with jQuery you first need to make certain it has loaded:
 
@@ -33,8 +34,7 @@ if (typeof jQuery == 'undefined') {
 }
 ```
 
-
-### Back to Top Button
+<h3 id="back-to-top-button">Back to Top Button</h3>
 
 By using the `animate` and `scrollTop` methods in jQuery you don't need a plugin to create a simple scroll-to-top animation:
 
@@ -329,8 +329,10 @@ Both chaining and [caching](#cache-jquery-selectors) methods in jQuery are best 
 
 链式和jQuery缓存方法是最好的做法，导致更短、更快的代码
 
+[点击跳转](#jump)
+
 ---
 > Reference
 
-- [http://www.cnblogs.com/whitewolf/p/4982425.html](http://www.cnblogs.com/whitewolf/p/4982425.html)
+- [https://github.com/AllThingsSmitty/jquery-tips-everyone-should-know](https://github.com/AllThingsSmitty/jquery-tips-everyone-should-know)
 - [你应该知道的jQuery技巧](http://www.cnblogs.com/whitewolf/p/4982425.html)
