@@ -34,8 +34,7 @@ if (typeof jQuery == 'undefined') {
 }
 ```
 
-<h3 id="back-to-top-button">Back to Top Button</h3>_<span id="jump">Back to Top</span>_
-
+<h3 id="back-to-top-button">Back to Top Button</h3>
 
 By using the `animate` and `scrollTop` methods in jQuery you don't need a plugin to create a simple scroll-to-top animation:
 
@@ -56,8 +55,7 @@ Changing the `scrollTop` value changes where you wants the scrollbar to land. Al
 
 **Note:** Watch for some [buggy behavior](https://github.com/jquery/api.jquery.com/issues/417) with `scrollTop`.
 
-<h3 id="preload-images">Preload Images,  图片预加载</h3>_<span id="jump">Back to Top</span>_
-
+<h3 id="preload-images">Preload Images,  图片预加载</h3>
 
 If your web page uses a lot of images that aren't visible initially (e.g., on hover) it makes sense to preload them:
 
@@ -85,8 +83,7 @@ $('img').load(function () {
 You can also check if one particular image has loaded by replacing the `<img>` tag with an ID or class.  你还可以检查一个特定的图片是否加载完并且被带有Id或者class的<img>标签代替。
 
 
-<h3 id="fix-broken-images-automatically">Fix Broken Images Automatically, 自动修补破损图像</h3>_<span id="jump">Back to Top</span>_
-
+<h3 id="fix-broken-images-automatically">Fix Broken Images Automatically, 自动修补破损图像</h3>
 
 If you happen to find broken image links on your site replacing them one by one can be a pain. This simple piece of code can save a lot of headaches:
 
@@ -101,8 +98,7 @@ $('img').on('error', function () {
 Even if you don't have any broken links, adding this won't do any harm.
 
 
-<h3 id="toggle-classes-on-hover">Toggle Classes on Hover, Hover切换class类</h3>_<span id="jump">Back to Top</span>_
-
+<h3 id="toggle-classes-on-hover">Toggle Classes on Hover, Hover切换class类</h3>
 
 Let's say you want to change the visual of a clickable element on your page when a user hovers over it. You can add a class to your element when the user is hovering; when the user stops hovering removes the class:
 
@@ -127,8 +123,7 @@ $('.btn').hover(function () {
 **Note:** CSS may be a faster solution in this case but it's still worthwhile to know this.
 
 
-<h3 id="disabling-input-fields">Disabling Input Fields, 禁用输入</h3>_<span id="jump">Back to Top</span>_
-
+<h3 id="disabling-input-fields">Disabling Input Fields, 禁用输入</h3>
 
 At times you may want the submit button of a form or one of its text inputs to be disabled until the user has performed a certain action (e.g., checking the "I've read the terms" checkbox). Add the `disabled` attribute to your input so you can enable it when you want:
 
@@ -147,8 +142,7 @@ $('input[type="submit"]').prop('disabled', false);
 ```
 
 
-<h3 id="stop-the-loading-of-links">Stop the Loading of Links, 停止正在加载的链接</h3>_<span id="jump">Back to Top</span>_
-
+<h3 id="stop-the-loading-of-links">Stop the Loading of Links, 停止正在加载的链接</h3>
 
 Sometimes you don't want links to go to a certain web page nor reload the page; you might want them to do something else like trigger some other script. This will do the trick of preventing the default action:
 
@@ -161,8 +155,7 @@ $('a.no-link').click(function (e) {
 ```
 
 
-<h3 id="cache-jQuery-selectors">Cache jQuery Selectors</h3>_<span id="jump">Back to Top</span>_
-
+<h3 id="cache-jQuery-selectors">Cache jQuery Selectors</h3>
 
 Think of how many times you write the same selector over and over again in any project. Every `$('.element')` selector has to search the entire DOM each time, regardless if that selector had previously run. Instead, run the selector once and store the results in a variable:
 
@@ -185,8 +178,7 @@ $('#showBlocks').click(function () {
 Caching jQuery selectors are an easy performance gain.
 
 
-<h3 id="toggle-fade-Slide">Toggle Fade/Slide</h3>_<span id="jump">Back to Top</span>_
-
+<h3 id="toggle-fadeSlide">Toggle Fade/Slide</h3>
 
 Sliding and fading are something we use plenty in our animations with jQuery. You might just want to show an element when a user clicks something, which makes the `fadeIn` and `slideDown` methods perfect. But if you want that element to appear on the first click and then disappear on the second this will work just fine:
 
@@ -204,8 +196,7 @@ $('.btn').click(function () {
 });
 ```
 
-<h3 id="simple-accordion">Simple Accordion, 简单的手风琴</h3>_<span id="jump">Back to Top</span>_
-
+<h3 id="simple-accordion">Simple Accordion, 简单的手风琴</h3>
 
 This is a simple method for a quick accordion:
 
@@ -225,7 +216,7 @@ $('#accordion').find('.accordion-header').click(function () {
 By adding this script all you really needs to do on your web page is the necessary HTML go get this working.
 
 
-<h3 id="make-two-divs-the-same-height">Make Two Divs the Same Height, 使两个DIV同等高度</h3>_<span id="jump">Back to Top</span>_
+<h3 id="make-two-divs-the-same-height">Make Two Divs the Same Height, 使两个DIV同等高度</h3>
 
 
 Sometimes you'll want two divs to have the same height no matter what content they have in them:
@@ -259,7 +250,7 @@ $rows.each(function () {
 ```
 
 
-<h3 id="open-external-links-in-new-tabwindow">Open External Links in New Tab/Window, 在浏览器标签/新窗口打开外部链接</h3>_<span id="jump">Back to Top</span>_
+<h3 id="open-external-links-in-new-tabwindow">Open External Links in New Tab/Window, 在浏览器标签/新窗口打开外部链接</h3>
 
 
 Open external links in a new browser tab or window and ensure links on the same origin open in the same tab or window:
@@ -273,7 +264,7 @@ $('a[href^="' + window.location.origin + '"]').attr('target', '_self');
 **Note:** `window.location.origin` doesn't work in IE10. [This fix](http://tosbourn.com/a-fix-for-window-location-origin-in-internet-explorer/) takes care of the issue.
 
 
-<h3 id="find-element-by-text">Find Element By Text, 根据文本获取元素</h3>_<span id="jump">Back to Top</span>_
+<h3 id="find-element-by-text">Find Element By Text, 根据文本获取元素</h3>
 
 
 By using the `contains()` selector in jQuery you can find text in content of an element. If text doesn't exists, that element will be hidden:
@@ -285,7 +276,7 @@ var search = $('#search').val();
 $('div:not(:contains("' + search + '"))').hide();
 ```
 
-<h3 id="trigger-on-visibility-change">Trigger on Visibility Change, 可见变化的触发</h3>_<span id="jump">Back to Top</span>_
+<h3 id="trigger-on-visibility-change">Trigger on Visibility Change, 可见变化的触发</h3>
 
 
 Trigger JavaScript when the user is no longer focusing on a tab, or refocuses on a tab:
@@ -301,7 +292,7 @@ $(document).on('visibilitychange', function (e) {
 ```
 
 
-<h3 id="ajax-call-error-handling-ajax">Ajax Call Error Handling, Ajax调用错误处理</h3>_<span id="jump">Back to Top</span>_
+<h3 id="ajax-call-error-handling-ajax">Ajax Call Error Handling, Ajax调用错误处理</h3>
 
 
 When an Ajax call returns a 404 or 500 error the error handler will be executed. If the handler isn't defined, other jQuery code might not work anymore. Define a global Ajax error handler:
