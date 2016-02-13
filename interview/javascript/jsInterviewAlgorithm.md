@@ -1,14 +1,16 @@
 **1. 用js实现随机选取10–100之间的10个数字，存入一个数组，并排序**
 
-		function getRandowm(istart, iend){
-			var iChoice = Math.abs(istart-iend+1);
-	        return Math.floor(Math.random() * iChoice + istart);
-		}
-		var iArray = [];
-		for(var i=0;i<10;i++){
-			iArray.push(getRandowm(10,100));
-		}
-		iArray.sort();
+```javascript
+function getRandowm(istart, iend){
+	var iChoice = Math.abs(istart-iend+1);
+	return Math.floor(Math.random() * iChoice + istart);
+}
+var iArray = [];
+for(var i=0;i<10;i++){
+	iArray.push(getRandowm(10,100));
+}
+iArray.sort();
+```
 
 **2. 把两个数组合并，并删除第二个元素。**
 
