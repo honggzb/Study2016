@@ -81,7 +81,7 @@ Javascript中关键字**this**所指代的函数上下文，取决于**函数是
 
 在第一个console.log()，getFullname()被作为obj.prop对象被调用。因此，当前的上下文指代后者，函数返回这个对象的fullname属性。相反，当getFullname()被赋予test变量，当前的上下文指代全局对象window，这是因为test被隐式地作为全局对象的属性。基于这一点，函数返回window的fullname，在本例中即为代码的第一行。
 
-##问题5: call() 和 apply()
+###问题5: call() 和 apply()
 解决前面的问题之后让最后一个console.log()输出Aurelio De Rosa.
 
 **答案：**
