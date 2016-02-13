@@ -1,8 +1,8 @@
 ## 实用的JavaScript技巧、窍门和最佳实践
 
-1. [使用===，而不是＝＝](#11)
-2. [使用闭包实现私有变量](#22)
-3. [创建对象的构造函数](#33)
+1. [使用===，而不是＝＝](#user-content-11)
+2. [使用闭包实现私有变量](#user-content-22)
+3. [创建对象的构造函数](#user-content-33)
 4. [**IIFE**--Immediately Invoked Function Expression](#44)
 5. [不要使用 delete 来删除一个数组中的项](#44)
 6. [使用 length 来截短一个数组](#66)
