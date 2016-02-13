@@ -4,9 +4,10 @@
 
 **1. 你做的页面在哪些流览器测试过？这些浏览器的内核分别是什么?**
 
-	 |IE|trident内核|
-	 |Firefox|gecko内核|
-	 |Safari|webkit内核|
+	 | IE | trident内核 |
+	 |---|---|
+	 |Firefox | gecko内核 |
+	 |Safari| webkit内核 |
 	 |Opera|以前是presto内核，Opera现已改用Google Chrome的Blink内核|
 	 |Chrome|Blink(基于webkit，Google与Opera Software共同开发)| 
 
@@ -192,7 +193,7 @@
 		#xxx li 优先级 100 +1 
 
 　　那么问题来了，看下列代码，<p>标签内的文字是什么颜色的？。
-
+```html
 	 <style>
 	  	.classA{ color:blue;}
 	  	.classB{ color:red;}
@@ -200,7 +201,7 @@
 	  <body> 
 	  	<p class='classB classA'> 123 </p>
 	 </body>
-
+```
 　　答案：red。与样式定义在文件中的先后顺序有关，即是后面的覆盖前面的，与在<p class='classB classA'>中的先后关系无关。 
 
 
@@ -211,21 +212,20 @@
 **4.什么是Css Hack？ie6,7,8的hack分别是什么？**
 
 　　针对不同的浏览器写不同的CSS code的过程，就是CSS hack。
-
-
-		   background-color:blue;  /*firefox*/
-		   background-color:red\9;  /*all ie*/
-		   background-color:yellow\0;/*ie8*/
-		   +background-color:pink;/*ie7*/
-		   _background-color:orange;   /*ie6*/}  
-		  :root #test { background-color:purple\9; }  /*ie9*/
-		  @media all and (min-width:0px){ #test {background-color:black\0;} }  /*opera*/
-		  @media screen and (-webkit-min-device-pixel-ratio:0){ #test {background-color:gray;} }   /*chrome and safari*/
-
+```css
+background-color:blue;  /*firefox*/
+background-color:red\9;  /*all ie*/
+background-color:yellow\0;/*ie8*/
++background-color:pink;/*ie7*/
+_background-color:orange;   /*ie6*/}  
+:root #test { background-color:purple\9; }  /*ie9*/
+ @media all and (min-width:0px){ #test {background-color:black\0;} }  /*opera*/
+ @media screen and (-webkit-min-device-pixel-ratio:0){ #test {background-color:gray;} }   /*chrome and safari*/
+```
 **5.请用Css写一个简单的幻灯片效果页面**
 
 用css3。使用animation动画实现一个简单的幻灯片效果。
-
+```css
 	 /**HTML**/
 	 div.ani
 	 /**css**/
@@ -248,7 +248,7 @@
 		75% {background:url(http://g.hiphotos.baidu.com/image/w%3D400/sign=7d37500b8544ebf86d71653fe9f9d736/0df431adcbef76095d61f0972cdda3cc7cd99e4b.jpg) no-repeat;}
 		100% {background:url(http://c.hiphotos.baidu.com/image/w%3D400/sign=cfb239ceb0fb43161a1f7b7a10a54642/3b87e950352ac65ce2e73f76f9f2b21192138ad1.jpg) no-repeat;}
 	}
-
+```
 
 **6.行内元素和块级元素的具体区别是什么？行内元素的padding和margin可设置吗？**
 
@@ -290,7 +290,7 @@
 **10.如何垂直居中一个浮动元素？**
 
 方法一：已知元素的高宽
-
+```css
 	 #div1{
 	      background-color:#6699FF;
 	      width:200px;
@@ -301,9 +301,9 @@
 	     margin-top:-100px ;   //二分之一的height，width
 	     margin-left: -100px;
 	 }
-
+```
 方法二:未知元素的高宽
-
+```css
 	  #div1{
 	     width: 200px;
 	     height: 200px;
@@ -315,15 +315,15 @@
 	     right: 0;
 	     bottom: 0;
 	  }
-
+```
  　　那么问题来了，如何垂直居中一个<img>?（用更简便的方法。）
-
+```css
 	#container{     //<img>的容器设置如下
 	    display:table-cell;
 	    text-align:center;
 	    vertical-align:middle;
 	 }
-
+```
 **13.描述一个"reset"的CSS文件并如何使用它。知道normalize.css吗？你了解他们的不同之处？**
 
 　　重置样式非常多，凡是一个前端开发人员肯定有一个常用的重置CSS文件并知道如何使用它们。他们是盲目的在做还是知道为什么这么做呢？原因是不同的浏览器对一些元素有不同的默认样式，如果你不处理，在不同的浏览器下会存在必要的风险，或者更有戏剧性的性发生。
@@ -358,7 +358,7 @@
 　　知道。css的content属性专门应用在 before/after 伪元素上，用于来插入生成内容。
 
 　　最常见的应用是利用伪类清除浮动。
-
+```css
 	  //一种常见利用伪类清除浮动的代码
 	   .clearfix:after {
 	      content:".";       //这里利用到了content属性
@@ -369,11 +369,10 @@
 	  .clearfix { 
 	     *zoom:1; 
 	  }
-
+```
 　　after伪元素通过 content 在元素的后面生成了内容为一个点的块级元素，再利用clear:both清除浮动。
 
 　　那么问题继续还有，知道css计数器（序列数字字符自动递增）吗？如何通过css content属性实现css计数器？
 
 　　答案：css计数器是通过设置counter-reset 、counter-increment 两个属性 、及 counter()/counters()一个方法配合after / before 伪类实现。 
-
 　　具体实现方案：请戳张鑫旭大大的博文CSS计数器([序列数字字符自动递增](http://www.zhangxinxu.com/wordpress/?p=4303))详解 。
