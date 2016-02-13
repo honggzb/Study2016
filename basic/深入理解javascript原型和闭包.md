@@ -1,30 +1,30 @@
-##深入理解javascript原型和闭包
+###深入理解javascript原型和闭包
 
 ###函数和对象的关系  - typeof
 
 - 函数就是对象的一种，因为通过instanceof函数可以判断
-
+```javascript
 		var fn = function () { };
 		console.log(fn instanceof Object);  // true
-
+```
 - 对象是函数创建的，而函数却又是一种对象
-
+```javascript
 		console.log(typeof (Object));  // function
 		console.log(typeof (Array));  // function
-
+```
 ###prototype原型
 
 - 每个函数都有一个属性叫做prototype。
 - 这个prototype的属性值是一个对象，默认的只有一个叫做constructor的属性，指向这个函数本身
 
 ![](http://i.imgur.com/DsTB7IF.png)
-
-	function Fn() { }
+```javascript
+    function Fn() { }
     Fn.prototype.name = '王福朋';
     Fn.prototype.getYear = function () {
        return 1988;
     };
-
+```
 ![](http://i.imgur.com/JRZSbZt.png)
 
 ###隐式原型  `__proto__`
@@ -46,21 +46,21 @@
 ###instanceof
 
 instanceof表示的就是一种继承关系，或者原型链的结构
-
+```javascript
 	function Foo(){}
 	var f1 = new Foo();
 	console.log(f1 instanceof Foo);   // true
 	console.log(f1 instanceof Object);  // true
-
+```
 ![](http://i.imgur.com/WRHuZyi.png)
-
+```javascript
     console.log(Object instanceof Function);   // true
 	console.log(Function instanceof Function);   // true
-
+```
 ###继承
 
 javascript中的继承是通过原型链来体现的
-
+```javascript
     function Foo(){}
 	var f1 = new Foo();
 	f1.a = 10;
@@ -68,7 +68,7 @@ javascript中的继承是通过原型链来体现的
 	Foo.protype.b =200;
 	console.log(f1.a);   //10
 	console.log(f1.b);   //200
-
+```
 ![](http://i.imgur.com/9PBjupZ.png)
 
 区分一个属性到底是基本的还是从原型中找到的呢？——**hasOwnProperty**，特别是在`for…in…`循环中，一定要注意。
@@ -106,7 +106,7 @@ hasOwnProperty方法是从Object.prototype中来的，请看图：
 闭包是指有权限访问另一个函数作用域的变量的函数, 两种写法
 
 - 函数作为返回值
-
+```javascript
 		function fn(x){
 			var max = 10;
 			return function(y){
@@ -115,12 +115,12 @@ hasOwnProperty方法是从Object.prototype中来的，请看图：
 		}
 		var f1 = fn(2);  //f1现在是一个闭包
 		f1(15)    //28
-
+```
 > - **虽然f1不直接处于fn的内部作用域，但f1还是能访问x和tmp**
 > - **由于tmp仍存在于f1闭包的内部，所以它还是会自加1，而且每次调用bar时都会自加1**
 
 - 函数作为参数传递
-
+```javascript
 	    var max = 10;
 	    var fn = function(x){
 	    	if(x>max) { console.log(x); }
@@ -129,9 +129,9 @@ hasOwnProperty方法是从Object.prototype中来的，请看图：
 	    	var max = 100;
 	    	f(15);
 	    })(fn);      //15
-
+```
 经典用法 -- 这样每次alert出的值都是不同是值了
-
+```javascript
 	var spans2 = $("#divTest2 span");
         $(document).ready(function() {
             for (var i = 0; i < spans2.length; i++) {
@@ -142,3 +142,4 @@ hasOwnProperty方法是从Object.prototype中来的，请看图：
                 })(i);
             }
         });
+```
