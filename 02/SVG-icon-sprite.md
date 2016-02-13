@@ -3,7 +3,7 @@
 ###1. SVG Sprite与symbol元素
 
 可以把`SVG`元素看成一个舞台，而`symbol`则是舞台上一个一个组装好的元件，这这些一个一个的元件就是我们即将使用的一个一个`SVG`图标。
-
+```html
 	<svg>
 	    <symbol>
 	        <!-- 第1个图标路径形状之类代码 -->
@@ -15,11 +15,11 @@
 	        <!-- 第3个图标路径形状之类代码 -->
 	    </symbol>
 	</svg>
-
+```
 ###2. SVG中的use元素
 
 - 可重复调用
-
+```html
     	<svg>
     		 <defs>
 	    		<g id="shape">
@@ -30,7 +30,7 @@
     		 <use xlink:href="#shape" x="50" y="50" />
     		 <use xlink:href="#shape" x="200" y="50" />
     	</svg>
-
+```
 `use`元素是通过`xlink:href`属性，寻找要使用的元素的。`#shape`对应的就是`id`为`shape`的元素。`use`元素可以有自己的坐标，以及支持`transform`变换，甚至可以`use`其他`use`元素。
 
 这里，两个`use`元素使用的是同一个g元素（组合），从而实现了图形的重复调用功能。
@@ -44,7 +44,7 @@
 图标尺寸`CSS`控制，里面只有一个仅有`xlink:href`属性的`use`元素，Done! 完成！
 
 [SVG Sprite使用示意demo](http://www.zhangxinxu.com/study/201407/svg-sprite.php)
-
+```html
 	<!doctype html>
 	<html>
 	<head>
@@ -71,7 +71,7 @@
 	</ul>
 	</body>
 	</html>
-
+```
 在HTML层面，图标使用的代码成本，跟传统的CSS Sprite或者流行的font-face几乎无异，代码简洁，而且很好维护。所有的SVG图标都在一个SVG源上。retina良好，尺寸可任意拉伸，且颜色可控，真乃Web图标的未来之星。
 
 总结下就是：**symbol + use => SVG Sprite**
@@ -88,14 +88,14 @@
 	所有的IE浏览器(包括IE11)还不支持获得外链SVG文件某个元件。Chrome/FireFox/Safari/Opera等浏览器都是OK的。
 
 - SVG Sprite技术是支持直接Ajax请求SVG文件字符串，对于不支持外链的IE9+浏览器
-
-		var ajax = new XMLHttpRequest();
-		ajax.open("GET", "../201407/mytest.svg", true);
-		ajax.onload = function(e) {
-		    document.body.insertAdjacentHTML("afterBegin", '<div style="display:none;">' + ajax.responseText + '</div>');
-		}
-		ajax.send();
-
+```javascript
+	var ajax = new XMLHttpRequest();
+	ajax.open("GET", "../201407/mytest.svg", true);
+	ajax.onload = function(e) {
+	    document.body.insertAdjacentHTML("afterBegin", '<div style="display:none;">' + ajax.responseText + '</div>');
+	}
+	ajax.send();
+```
 [Ajax请求SVG文件实现Sprites效果Demo](http://www.zhangxinxu.com/study/201503/svg-sprite-ajax.html)
 
 ---
@@ -110,7 +110,7 @@
 目前辅助生成 SVG Sprites 的工具有 [grunt-iconizr](https://github.com/jkphl/grunt-iconizr)、 [gulp-svg-sprites](https://github.com/shakyShane/gulp-svg-sprites)等。 使用这两个工具，只需将用到的 SVG 放到某个文件夹中就可以自动被拼合成 Sprite 并输出对应 CSS。 两个工具都支持生成 PNG 格式的位图作为 Fallback，缺点是生成位图要依赖[phantomjs](http://phantomjs.org/)这个重量级 JS 库。
 
 [svgstore](https://github.com/FWeinb/grunt-svgstore)是另一个合并工具——Merge svgs from a folder，其gulp地址为 [https://www.npmjs.com/package/gulp-svgstore](https://www.npmjs.com/package/gulp-svgstore)
-
+```javascript
 	grunt.initConfig({
 	  svgstore: {
 	    options: {
@@ -122,9 +122,9 @@
 	    },
 	  },
 	});
-	
+	//......
 	grunt.loadNpmTasks('grunt-svgstore');
-
+```
 `mytest`文件夹下的所有`SVG`合并成一个名为`mytest.svg`的`SVG`文件，并放在`tmp`文件夹下
 
  **还有一种方法就是直接使用illustrator来合并SVG**
