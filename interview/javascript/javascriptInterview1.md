@@ -1,4 +1,4 @@
-##问题1: 作用域
+###问题1: 作用域
 	 (function(){
 	    var a = b =5;
 	  })();
@@ -16,7 +16,7 @@
     })();
     console.log(b);
 
-##问题2: 创建“native”方法
+###问题2: 创建“native”方法
 
 写一个重复打印字符串对象的方法，输入一个整数，这个整数代表重复打印的字数，比如：
 
@@ -35,7 +35,7 @@
 
 这个问题考查的是开发者对JavaScript继承和prototype属性的了解程度。
 
-##问题 3: Hoisting
+###问题 3: Hoisting
 
 下面这段代码的输出结果是什么？
 
@@ -53,7 +53,7 @@
 
 The reason is that both variables and functions are `hoisted` (moved at the top of the function) but variables don’t retain any assigned value. So, at the time the variable a is printed, it exists in the function (it’s declared) but it’s still undefined. Stated in other words, the code above is equivalent to the following:
 
-##问题4: JavaScript中的this
+###问题4: JavaScript中的this
 
 	var fullname ='John Doe';
     var obj ={
@@ -94,7 +94,7 @@ Javascript中关键字**this**所指代的函数上下文，取决于**函数是
 
     console.log(test.call(obj.prop));
 
-##问题6: setTimeout
+###问题6: setTimeout
 
 看下面代码，给出输出结果
 
@@ -116,7 +116,7 @@ Javascript中关键字**this**所指代的函数上下文，取决于**函数是
 	   })(i),0);  
 	};
  
-##问题7: Class and Inheritance
+###问题7: Class and Inheritance
 
 小贤是一条可爱的小狗(Dog)，它的叫声很好听(wow)，每次看到主人的时候就会乖乖叫一声(yelp)。对象：
 
@@ -145,7 +145,7 @@ Javascript中关键字**this**所指代的函数上下文，取决于**函数是
 	var MadDog = new MadDog();
 	madDog.yelp();
 
-## 用面向对象的Javascript来介绍一下自己
+### 用面向对象的Javascript来介绍一下自己
 
 **答案：** 对象或者Json都是不错的选择哦（没答案哦亲，自己试试吧）
 
