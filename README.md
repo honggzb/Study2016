@@ -7,3 +7,11 @@ Study notes in 2016
 	- 你应该知道的jQuery技巧
 	- 实用的JavaScript技巧、窍门和最佳实践
 - basic
+	- 深入理解javascript原型和闭包 
+- interview
+	- htmlCSS
+		- BAT及各大互联网公司2014前端笔试面试题-HTML-CSS篇
+	- javascript
+		- javascriptInterview1
+		- jsInterviewAlgorithm
+- GulpStudy
