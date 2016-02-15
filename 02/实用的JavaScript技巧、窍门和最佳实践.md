@@ -144,6 +144,23 @@ function doSomething(arg1){
 }
 ```
 
+**可以避免if嵌套**。例如，要问页面上某个dom绑定点击事件，需要先判断这个dom元素存不存在，可能会这样做：
+
+```javascript
+var dom = document.querySelector("#dom");
+if (dom) { 
+	dom.addEventListener("click", function() {});  
+}
+```
+
+实际上，可以使用&&做一些简化：
+
+```javascript
+var dom = document.querySelector("#dom");
+dom && dom.addEventListener("click", function() {});
+```
+
+
 <h3 id="#my-link-a-88">8. 使用for-in遍历一个对象内部属性的时候注意检查属性</h3>
 
 下面的代码片段能够避免在遍历一个对象属性的时候访问原型的属性
