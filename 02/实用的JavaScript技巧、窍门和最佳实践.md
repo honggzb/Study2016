@@ -29,6 +29,7 @@
 27. [验证参数是否是数组](#my-link-a-127)
 28. [获取一个数字数组中的最大值或最小值](#my-link-a-128)
 29. [清空一个数组](#my-link-a-129)
+30. [运算结果缓存](#运算结果缓存)
 
 
 <h3 id="my-link-a-11">1. 使用===，而不是==</h3>
@@ -428,6 +429,39 @@ var minInNumbers = Math.min.apply(Math, numbers);
 
 	var myArray = [12 , 222 , 1000 ];
 	myArray.length = 0;   // myArray will be equal to [].
+
+<h3 id="#运算结果缓存">30. 运算结果缓存</h3>
+
+由于JavaScript中的函数也是对象（JavaScript中一切都是对象），所以可以给函数添加任意的属性。这也就为我们提供符合备忘录模式的缓存运算结果的功能，比如我们有一个需要大量运算才能得出结果的函数如下：
+
+```javascript
+function calculator(params) {
+    //大量的耗时的计算 
+    return result;
+}
+```
+
+如果其中不涉及随机，参数一样时所返回的结果一致，我们就可以将运算结果进行缓存从而避免重复的计算：
+
+```javascript
+function calculator(params) {
+  var cacheKey = JSON.stringify(params);
+  var cache = calculator.cache = calculator.cache || {};
+  if(typeof cache[cacheKey] !== 'undefined') {
+    return cache[cacheKey];
+  }
+  //大量耗时的计算
+  cache[cacheKey] = result;
+  return result;
+}
+```
+
+这里将参数转化为JSON字符串作为key，如果这个参数已经被计算过，那么就直接返回，否则进行计算。计算完毕后再添加入cache中，如果需要，可以直接查看cache的内容： calculator.cache
+
+这是一种典型的空间换时间的方式，由于浏览器的页面存活时间一般不会很长，占用的内存会很快被释放（当然也有例外，比如一些WEB应用），所以可以通过这种空间换时间的方式来减少响应时间，提升用户体验。这种方式并不适用于如下场合：
+ 
+1. 相同参数可能产生不同结果的情况（包含随机数之类的） 
+2. 运算结果占用特别多内存的情况
 
 
 > Reference
