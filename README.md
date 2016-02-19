@@ -15,3 +15,4 @@ Study notes in 2016
 		- javascriptInterview1
 		- jsInterviewAlgorithm
 - GulpStudy
+- Angular2的一些资料
