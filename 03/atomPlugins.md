@@ -18,3 +18,11 @@
 - markdown-preview-plus
 
 - fold-function:  fold/unfold function
+
+```
+"fold-functions":
+    autofold: true
+    shortfileCutoff: 42
+    autofoldGrammars: []
+    autofoldIgnoreGrammars: ['SQL', 'CSV', 'JSON', 'CSON', 'Plain Text']
+```
