@@ -55,7 +55,8 @@ The reason is that both variables and functions are `hoisted` (moved at the top 
 
 ###问题4: JavaScript中的this
 
-	var fullname ='John Doe';
+```javascript
+var fullname ='John Doe';
     var obj ={
 	    fullname:'Colin Ihrig',
 	    prop:{
@@ -68,6 +69,7 @@ The reason is that both variables and functions are `hoisted` (moved at the top 
     console.log(obj.prop.getFullname());
     var test = obj.prop.getFullname;
     console.log(test());
+```
 
 **答案：** Aurelio De Rosa 和John Doe
 
@@ -120,6 +122,7 @@ Javascript中关键字**this**所指代的函数上下文，取决于**函数是
 
 小贤是一条可爱的小狗(Dog)，它的叫声很好听(wow)，每次看到主人的时候就会乖乖叫一声(yelp)。对象：
 
+```javascript
 	function Dog(){
 		this.wow = function(){
 			console.log("wow");
@@ -128,9 +131,11 @@ Javascript中关键字**this**所指代的函数上下文，取决于**函数是
 			this.wow();
 		}
 	}
+```
 
 小芒和小贤一样，原来也是一条可爱的小狗，可是突然有一天疯了(MadDog)，一看到人就会每隔半秒叫一声(wow)地不停叫唤(yelp)。请根据描述，按示例的形式用代码来实。
 
+```javascript
 	function MadDog(){
 		this.yelp = function(){
 			var self = this;
@@ -144,8 +149,30 @@ Javascript中关键字**this**所指代的函数上下文，取决于**函数是
 	dog.yelp();
 	var MadDog = new MadDog();
 	madDog.yelp();
+```
 
 ### 用面向对象的Javascript来介绍一下自己
 
 **答案：** 对象或者Json都是不错的选择哦（没答案哦亲，自己试试吧）
+
+### 大部分人都会做错的经典JS闭包面试题
+
+```javascript
+function fun(n,o) {
+  console.log(o)
+  return {
+    fun:function(m){
+      return fun(m,n);
+    }
+  };
+}
+var a = fun(0);  a.fun(1);  a.fun(2);  a.fun(3);//undefined,?,?,?
+var b = fun(0).fun(1).fun(2).fun(3);//undefined,?,?,?
+var c = fun(0).fun(1);  c.fun(2);  c.fun(3);//undefined,?,?,?
+
+//答案：
+//a: undefined,0,0,0
+//b: undefined,0,1,2
+//c: undefined,0,1,1
+```
 
