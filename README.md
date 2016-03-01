@@ -7,6 +7,9 @@ Study notes in 2016
 	- 你应该知道的jQuery技巧
 	- 实用的JavaScript技巧、窍门和最佳实践
 	- passport.js学习笔记
+- 2016,03
+ 	- atomPlugins
+	- linux grep命令详解
 - basic
 	- 深入理解javascript原型和闭包 
 - interview
