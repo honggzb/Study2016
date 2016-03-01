@@ -128,6 +128,6 @@ Unix的`grep`家族包括`grep`、`egrep`和`fgrep`。egrep和fgrep的命令只�
 
 > reference
 
-- [grep命令详解](#http://blog.csdn.net/xifeijian/article/details/9209669)
-- [每天一个linux命令（39）：grep 命令](#http://www.cnblogs.com/peida/archive/2012/12/17/2821195.html)
-- [linux grep命令详解](#http://www.cnblogs.com/ggjucheng/archive/2013/01/13/2856896.html)
+- [grep命令详解] (#http://blog.csdn.net/xifeijian/article/details/9209669)
+- [每天一个linux命令（39）：grep 命令] (#http://www.cnblogs.com/peida/archive/2012/12/17/2821195.html)
+- [linux grep命令详解] (#http://www.cnblogs.com/ggjucheng/archive/2013/01/13/2856896.html)
