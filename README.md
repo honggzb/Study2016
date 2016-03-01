@@ -9,7 +9,6 @@ Study notes in 2016
 	- passport.js学习笔记
 - 2016,03
  	- atomPlugins
-	- linux grep命令详解
 - basic
 	- 深入理解javascript原型和闭包 
 - interview
@@ -18,5 +17,8 @@ Study notes in 2016
 	- javascript
 		- javascriptInterview1
 		- jsInterviewAlgorithm
+- linux-command详解
+	- linux grep命令详解
+	- linux ls命令详解
 - GulpStudy
 - Angular2的一些资料
