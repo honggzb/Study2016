@@ -24,3 +24,4 @@ Study notes in 2016
 	- 1. Redis数据结构
 - GulpStudy
 - Angular2的一些资料
+- node Module汇总
