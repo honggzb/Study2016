@@ -20,5 +20,7 @@ Study notes in 2016
 - linux-command详解
 	- linux grep命令详解
 	- linux ls命令详解
+- redis学习
+	- 1. Redis数据结构
 - GulpStudy
 - Angular2的一些资料
