@@ -44,7 +44,7 @@
 - –help 显示此帮助信息并离开
 - –version 显示版本信息并离开
 
-```shell
+```
 # ls -lR /home/peidachang     #列出/home/peidachang文件夹下的所有文件和目录的详细资料
 # ls -F /opt/soft |grep /$    #只列出文件下的子目录
 # ls -l * |grep "^-"|wc -l    #当前目录下的文件个数  
