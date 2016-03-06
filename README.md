@@ -9,6 +9,9 @@ Study notes in 2016
 	- passport.js学习笔记
 - 2016,03
  	- atomPlugins
+- ES6Study
+ 	- 01 Let
+ 	- References
 - basic
 	- 深入理解javascript原型和闭包 
 - interview
@@ -22,6 +25,8 @@ Study notes in 2016
 	- linux ls命令详解
 - redis学习
 	- 1. Redis数据结构
+- NodeJS 学习
+	- babel设置
 - GulpStudy
 - Angular2的一些资料
 - node Module汇总
