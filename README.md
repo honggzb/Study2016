@@ -8,7 +8,8 @@ Study notes in 2016
 	- 实用的JavaScript技巧、窍门和最佳实践
 	- passport.js学习笔记
 - 2016,03
- 	- atomPlugins
+ 	- atomPlug
+ 	- CSS Scroll Snap Points
 - ES6Study
  	- 01 Let
  	- References
