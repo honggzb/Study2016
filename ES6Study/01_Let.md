@@ -19,6 +19,14 @@
 
 ####2.1 跨模块常量
 
+- 声明时必须立刻赋值
+- 赋值不可改变
+- 暂时性死区
+- 不存在变量提升
+- 禁止重复声明
+
+const 声明的对象本身（指向）不可改变，但对象中的内容可以改变。部分情况下，可以用 const 代替 IIFE 来保护变量不被修改。
+
 const声明的常量只在当前代码块有效。如果想设置跨模块的常量，可以采用下面的写法。
 
 ```javascript
@@ -36,6 +44,51 @@ console.log(constants.B); // 3
 import {A, B} from './constants';
 console.log(A); // 1
 console.log(B); // 3
+```
+
+####2.2 let
+
+let所声明的变量，只在let命令所在的代码块内有效
+
+- 块级作用域
+- 暂时性死区
+- 不存在变量提升
+- 禁止重复声明
+
+```javascript
+{
+  let a = 10;
+  var b = 1;
+}
+a // ReferenceError: a is not defined, let声明的变量只在它所在的代码块有效
+b // 1
+```
+
+for循环的计数器，就很合适使用let命令
+
+```javascript
+var a = [];
+for (let i = 0; i < 10; i++) {
+  a[i] = function () {
+    console.log(i);
+  };
+}
+a[6]();     // 6, 如果在for中使用var，此时输出为10
+```
+
+- 使用 let 可以方便的给循环中的回调函数创建多个闭包环境，不再需要手动添加 IIFE，提升了开发效率
+
+```javascript
+// IIFE写法
+(function () {
+  var tmp = ...;
+  ...
+}());
+// 块级作用域写法
+{
+  let tmp = ...;
+  ...
+}
 ```
 
 ####全局对象的属性
