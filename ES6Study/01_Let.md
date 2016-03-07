@@ -1,9 +1,9 @@
 ## ECMAScript 6 Note
 
-1. Setting up -参考 nodeStudy中的babel设置
-2. [2.1 跨模块常量 const](#using-const)
-3. [2.2 let](#using-let)
-4. [2.3 全局对象的属性](#using-全局对象的属性)
+-  Setting up -参考 nodeStudy中的babel设置
+-  [2.1 跨模块常量 const](#using-const)
+-  [2.2 let](#using-let)
+-  [2.3 全局对象的属性](#using-全局对象的属性)
 - 在线编译：  http://babeljs.io/repl/
 - 对ES6的支持可以查看 http://kangax.github.io/es5-compat-table/es6/
 
