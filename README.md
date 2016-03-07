@@ -10,6 +10,7 @@ Study notes in 2016
 - 2016,03
  	- atomPlug
  	- CSS Scroll Snap Points
+ 	- HTML5-drag&drop
 - ES6Study
  	- 01 Let
  	- References
