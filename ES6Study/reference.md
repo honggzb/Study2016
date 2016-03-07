@@ -2,6 +2,7 @@
 
 > references
 
+- [ES6 支持速查表](https://kangax.github.io/compat-table/es6/)
 - [ECMAScript 6入门](http://es6.ruanyifeng.com/)
 - [ECMAScript 6 学习笔记](https://github.com/banricho/webLog/issues/7)
 - http://ccoenraets.github.io/es6-tutorial/
