@@ -52,7 +52,26 @@ Internet Explorer 9、Firefox、Opera 12、Chrome 以及 Safari 5
   - size：文件大小
   - name： 文件名
 
-HTML5 drag & drop asynchronously
+  ```javascript
+  addEvent(el,'dragstart',function(ev){
+    dragSrcEl = this;
+    ev.dataTransfer.effectAllowed = "all";
+    ev.dataTransfer.setData('text/html',this.innerHTML); //将节点内容传入dataTransfer对象
+    this.style.border = '1px dotted #bbbbbb';     //为被拖动对象添加边框
+    ev.dataTransfer.setDragImage(dragIcon,-10,-10);  //设置拖动图片
+  });
+  addEvent(el,'drop',function(ev){
+    if(ev.stopPropagation) { ev.stopPropagation(); };
+    if(ev.preventDefault) { ev.preventDefault(); }
+    if(dragSrcEl!=this){
+      dragSrcEl.innerHTML = this.innerHTML;
+      this.innerHTML = e.dataTransfer.getDate('text/html');   //从dataTransfer对象中读出数据
+    }
+    return false;
+  });
+  ```
+
+** HTML5 drag & drop asynchronously **
 
 - 异步ajax
 
