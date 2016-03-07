@@ -9,6 +9,7 @@ Study notes in 2016
 	- passport.js学习笔记
 - 2016,03
  	- atomPlug
+ 	- Atom-js-snippet.docx
  	- CSS Scroll Snap Points
  	- HTML5-drag&drop
 - ES6Study
