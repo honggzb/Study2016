@@ -1,9 +1,9 @@
 ## ECMAScript 6 Note
 
-1. [Setting up ]参考 nodeStudy中的babel设置
+1. Setting up -参考 nodeStudy中的babel设置
 2. [2.1 跨模块常量 const](#using-const)
 3. [2.2 let](#using-let)
-4. [全局对象的属性](#using-全局对象的属性)
+4. [2.3 全局对象的属性](#using-全局对象的属性)
 - 在线编译：  http://babeljs.io/repl/
 - 对ES6的支持可以查看 http://kangax.github.io/es5-compat-table/es6/
 
@@ -91,7 +91,7 @@ a[6]();     // 6, 如果在for中使用var，此时输出为10
 }
 ```
 
-<h4 id="using-全局对象的属性">全局对象的属性</h4>
+<h4 id="using-全局对象的属性">2.3 全局对象的属性</h4>
 
 全局对象是最顶层的对象，在浏览器环境指的是`window`对象，在`Node.js`指的是`global`对象。`ES5`之中，全局对象的属性与全局变量是等价的。
 
