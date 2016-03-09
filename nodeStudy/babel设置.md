@@ -30,7 +30,15 @@ $ npm install babel-preset-es2015 babel-preset-stage-0 --save-dev
 
 ## 使用node编译
 
-- npm install和.babelrc
+- `npm3 i babel-core babel-preset-es2015 babel-polyfill --save-dev`
+- `.babelrc`
+
+```
+{
+  "presets": ["es2015"]
+}
+```
+
 - 在项目根目录下新建一个 index.js 文件，它将作为入口文件，引入其它的 js 模块, 在 index.js 中写入：
 
 ```javascript
