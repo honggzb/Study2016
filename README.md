@@ -12,6 +12,7 @@ Study notes in 2016
  	- Atom-js-snippet.docx
  	- CSS Scroll Snap Points
  	- HTML5-drag&drop
+ 	- JDK安装路径下存在两个JRE的区别
 - ES6Study
  	- 01 Let
  	- References
