@@ -135,7 +135,7 @@ svg.append("g")
 ### 5. 布局
 
 D3-https://github.com/mbostock/d3/wiki/Layouts-总共提供了 12 个布局：饼状图（Pie）、力导向图（Force）、弦图（Chord）、树状图（Tree）、集群图（Cluster）、捆图（Bundle）、打包图（Pack）、直方图（Histogram）、分区图（Partition）、堆栈图（Stack）、矩阵树图（Treemap）、层级图（Hierarchy）。
- 
+
 12 个布局中，层级图（Hierarchy）不能直接使用。集群图、打包图、分区图、树状图、矩阵树图是由层级图扩展来的。如此一来，能够使用的布局是 11 个（有 5 个是由层级图扩展而来）。这些布局的作用都是将某种数据转换成另一种数据，而转换后的数据是利于可视化的。
 
 #### 5.1 饼状图(Pie)
@@ -299,12 +299,12 @@ nodes_img.on("dblclick",function(d,i){  d.fixed = false;  })
 
 #### 5.3 弦图 -Chord
 
-5.3.1 数据说明：
+数据说明：
 
   | 北京  |  上海
 --|------|--
-北京 | 1000  | 3045 
-上海 | 3214  | 2000 
+北京 | 1000  | 3045
+上海 | 3214  | 2000
 
 - 左边第一列是被统计人口的城市，上边第一行是被统计的来源城市，即：
 - 北京市的人口有 1000 个人来自本地，有 3045 人是来自上海的移民，总人口为 1000 + 3045。
@@ -321,9 +321,37 @@ var population = [
  ];
 ```
 
-5.3.2 布局（数据转换）
+#### 5.4 集群图 -Cluster
 
+#### 5.5 树图 -Tree
 
+#### 5.6 打包图 -Package
+
+#### 5.7 地图 -Map
+
+5.7.1 地图的源数据
+
+- [世界地图和主要国家的 JSON 文件](http://www.ourd3js.com/wordpress/?p=668)
+- https://github.com/clemsos/d3-china-map
+- [中国各省市级 JSON 文件](http://www.ourd3js.com/wordpress/?p=638)
+- 下载之后，自行在 http://mapshaper.org/ 按需简化文件
+
+5.7.2 投影函数
+
+```javascript
+var projection = d3.geo.mercator()
+                        .center([107, 31])   // 设定地图的中心位置，[107,31] 指的是经度和纬度
+                        .scale(850)          //设定放大的比例
+                        .translate([width/2, height/2]);    //设定平移
+```
+
+由于 GeoJSON 文件中的地图数据，都是经度和纬度的信息。它们都是三维的，而要在网页上显示的是二维的，所以要设定一个投影函数来转换经度纬度。如上所示，使用 d3.geo.mercator() 的投影方式。各种投影的函数，可以参考： https://github.com/mbostock/d3/wiki/Geo-Projections
+
+5.7.3 地理路径生成器  - 根据地图的地理数据生成 SVG 中 path 元素的路径值, `d3.geo.path()`
+
+`var path = d3.geo.path().projection(projection);`
+
+5.7.4 绘制地图
 
 > references
 
