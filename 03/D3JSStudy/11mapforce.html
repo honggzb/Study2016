@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8">
+        <title>Map Force</title>
+  </head>
+<style>
+.link {
+	stroke: #ccc;
+	stroke-width: 1;
+}
+</style>
+<body>
+<script src="d3.v3.min.js"></script>
+<script>
+	var width  = 1000, height = 1000;
+
+	var svg = d3.select("body").append("svg")
+	    .attr("width", width)
+	    .attr("height", height)
+	    .append("g")
+	    .attr("transform", "translate(0,0)");
+
+	var projection = d3.geo.mercator()
+            						.center([107, 31])
+            						.scale(850)
+              					.translate([width/2, height/2]);
+
+	var path = d3.geo.path().projection(projection);
+
+	var force = d3.layout.force().size([width, height]);
+
+	var color = d3.scale.category20();
+
+	d3.json("china_simplify.json", function(error, root) {
+		if (error)	{ return console.error(error); }
+		console.log(root.features);
+		//root中的数据分别转换为力学图所需要的点和线，存在变量 nodes 和 links 中
+		var nodes = [];
+		var links = [];
+    /*root.features中存有每一个省的数据， 执行 function 无名函数，函数里计算出各省的中点，保存在 centroid.x 和 centroid.y 中，再把其他信息赋值给 centroid.feature，最后插入到 nodes中*/
+		root.features.forEach(function(d, i) {
+			var centroid = path.centroid(d);
+			centroid.x = centroid[0];
+			centroid.y = centroid[1];
+			centroid.feature = d;
+			nodes.push(centroid);
+		});
+		// 对nodes中的顶点进行三角剖分，即用三角形来连接各顶点，结果保存在 triangles 中
+		var triangles = d3.geom.voronoi().triangles(nodes);
+		//将三角形的各边存到 links 变量中
+		triangles.forEach(function(d,i){
+			links.push( edge( d[0] , d[1] ) );
+			links.push( edge( d[1] , d[2] ) );
+			links.push( edge( d[2] , d[0] ) );
+		});
+		console.log(nodes);
+		console.log(links);
+		//绘制地图
+		force.gravity(0)
+			.charge(0)
+			.nodes(nodes)
+			.links(links)
+			.linkDistance(function(d){ return d.distance; })
+			.start();
+		/*
+
+    注意，第72行和第75行，是完全相反的两个平移函数，不错，这么做就是为了移过去，再移回来，即初始时显示的是各省拼成的完整的地图且显示在最初设定的位置，因为拖拽的过程中变化的量是 d.x 和 d.y ，所以要这么做。
+		 */
+		var node = svg.selectAll("g")
+      						.data(nodes)
+      						.enter().append("g")
+      						.attr("transform", function(d) { return "translate(" + -d.x + "," + -d.y + ")"; })
+            			.call(force.drag)
+      				    .append("path")
+      				    .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
+      				    .attr("stroke","#000")
+      				    .attr("stroke-width",1)
+      				    .attr("fill", function(d,i){
+      				        return color(i);
+      				    })
+      				    .attr("d", function(d){
+      				        return path(d.feature);
+      				    });
+
+		var link = svg.selectAll("line")
+      						.data(links)
+      						.enter()
+      						.append("line")
+      						.attr("class","link")
+      						.attr("x1",function(d) { return d.source.x; } )
+      						.attr("y1",function(d) { return d.source.y; } )
+      						.attr("x2",function(d) { return d.target.x; } )
+      						.attr("y2",function(d) { return d.target.y; } );
+		//力学图的结合
+		 force.on("tick", function() {
+			    link.attr("x1", function(d) { return d.source.x; })
+			        .attr("y1", function(d) { return d.source.y; })
+			        .attr("x2", function(d) { return d.target.x; })
+			        .attr("y2", function(d) { return d.target.y; });
+			   node.attr("transform", function(d) {
+			      return "translate(" + d.x + "," + d.y + ")";
+			   });
+		});
+	});
+
+	function edge(a, b) {
+		var dx = a[0] - b[0], dy = a[1] - b[1];
+		return {
+			source: a,
+			target: b,
+			distance: Math.sqrt(dx * dx + dy * dy)
+		};
+	}
+
+</script>
+</body>
+</html>
