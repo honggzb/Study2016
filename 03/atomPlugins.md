@@ -52,7 +52,7 @@
 - markdown-writer
 - markdown-preview-plus
 
-- fold-function:  fold/unfold function
+- fold-function:  fold/unfold function, keymap设置如下
 
 ```
 "fold-functions":
@@ -80,3 +80,7 @@ Atom编辑器支持自定义按键绑定,文件格式是CSON
    'ctrl-shift-p': 'core:move-up'
    'ctrl-p': 'core:move-down'
 ```
+
+> references
+
+- https://atom-china.org/
