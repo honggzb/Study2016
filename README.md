@@ -13,6 +13,7 @@ Study notes in 2016
  	- CSS Scroll Snap Points
  	- HTML5-drag&drop
  	- JDK安装路径下存在两个JRE的区别
+ 	- D3JSStudy
 - ES6Study
  	- 01 Let
  	- References
