@@ -54,8 +54,6 @@
 
 - fold-function:  fold/unfold function
 
-- git-plus — 与Sublime Text 的sublimegit功能基本一致
-
 ```
 "fold-functions":
     autofold: true
@@ -63,6 +61,8 @@
     autofoldGrammars: []
     autofoldIgnoreGrammars: ['SQL', 'CSV', 'JSON', 'CSON', 'Plain Text']
 ```
+
+- git-plus — 与Sublime Text 的sublimegit功能基本一致
 
 ### 按键绑定keymap
 
