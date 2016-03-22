@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Column Graph - using div</title>
+<script type="text/javascript" src="d3.v3.min.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+  var h=600, w = 600;
+  //设置数据集
+  var dataset = [ 0, 100, 200, 300,400,500];
+  //定义画布
+  var svg = d3.select("body")
+              .append("svg")
+              .attr("width", w)
+              .attr("height", h);
+  //添加对象
+  var bar =  svg.selectAll("rect")
+                .data(dataset)
+                .enter()
+                .append("rect");
+  //设置对象属性（单个）
+  bar.attr("x", function(p) {
+      return p;
+  })
+  //设置对象属性（多个）
+   bar.attr("y",function(p){return h-p;})
+      .attr("width", 90)
+      .attr("height", function(p) {  return p; })
+      .attr("fill","#09F");
+</script>
+</body>
+</html>

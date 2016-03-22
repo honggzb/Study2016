@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>D3: Setting paragraphs' style conditionally, based on data</title>
+		<script type="text/javascript" src="d3.v3.min.js"></script>
+	</head>
+	<body>
+
+		<script type="text/javascript">
+		var dataset = [ 5, 10, 15, 20, 25 ];
+		var w = 500;
+		var h = 500;
+
+		var svg = d3.select("body")
+								.append("svg")
+								.attr("width", w)          //设置宽度
+								.attr("height", h);        //设置高度
+
+ 		var circles =  svg.selectAll("circle")
+									    .data(dataset)
+									    .enter()
+									    .append("circle");
+
+	  circles.attr("cx", function(d, i) {//圆心坐标从左向右依次递增，注意：i表示引入数据在数组的下标，如：d=5,i=0
+	        		return (i * 50) + 25;
+			    })
+			    .attr("cy", h/2) //将圆心放到svg高度中间
+			    .attr("r", function(d) {//半径
+			        return d;
+			    })
+					.attr("fill", "yellow")         //给各圆填充黄色
+			    .attr("stroke", "orange")       //给各圆边涂成橘黄
+			    .attr("stroke-width", function(d) { //按比例设置边的厚度
+			    return d/2;
+			});
+
+			var line = svg.append('line')
+            .attr('x1',100)
+            .attr('y1',100)
+            .attr('x2',200)
+            .attr('y2',200)
+            .attr('style','stroke:rgb(99,99,99);stroke-width:2');   //描边宽度</span>
+		</script>
+	</body>
+</html>

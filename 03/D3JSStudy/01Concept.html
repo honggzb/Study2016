@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>D3: Setting paragraphs' style conditionally, based on data</title>
+		<script type="text/javascript" src="d3.v3.min.js"></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+
+			var dataset = [ 5, 10, 15, 20, 25 ];
+
+			d3.select("body").selectAll("p")
+				.data(dataset)     //解析加载数组数据，该数组长度是5，以后连缀的每个方法都将执行五次，按数组下标依次针对数组元素执行方法操作
+				.enter()      //创建新的绑定数据的占位元素, 创建的个数 要根据选择的已有标签数和加载的数据数组长度决定
+				.append("p")  //将占位元素改为p元素
+				.text(function(d) {
+					return "I can count up to " + d;
+				})
+				.style("color", function(d) {
+					if (d > 15) {	              //Threshold of 15
+						return "red";
+					} else {
+						return "black";
+					}
+				});
+
+		</script>
+	</body>
+</html>
