@@ -32,6 +32,7 @@ Study notes in 2016
 	- 1. Redis数据结构
 - NodeJS 学习
 	- babel设置
+	- debugNode - nodeJS调试
 - GulpStudy
 - Angular2的一些资料
 - node Module汇总
