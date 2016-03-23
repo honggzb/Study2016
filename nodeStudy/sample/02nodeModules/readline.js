@@ -1,17 +1,17 @@
-var readline = require('readline');
+const readline = require('readline');
+const rl = readline.createInterface(process.stdin, process.stdout);
 
-var rl = readline.createInterface(process.stdin, process.stdout);
 var realPerson = {
   name: '',
   sayings: []
 };
 
-rl.question("what is the name of a real person? ",function (answer) {
+rl.question("what is the name of a real person? ", (answer) => {
   realPerson.name = answer;
   rl.setPrompt(`What would ${realPerson.name} say? `);
   //console.log(answer);
   rl.prompt();
-  rl.on('line',function(saying){
+  rl.on('line',(saying) => {
     realPerson.sayings.push(saying.trim());
     if(saying.toLowerCase().trim() === 'exit'){
       rl.close();
@@ -24,7 +24,7 @@ rl.question("what is the name of a real person? ",function (answer) {
 });
 
 
-rl.on('close',function () {
+rl.on('close', ()  => {
   console.log("%s is a real person that says %j", realPerson.name,realPerson.sayings);
   process.exit();
 });
