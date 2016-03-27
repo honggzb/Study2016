@@ -54,3 +54,4 @@ require('./test.js'); // 需要调试的 js 文件
 - 在线编译：  http://babeljs.io/repl/
 - [ES2015 & babel 实战：开发NPM模块](https://cnodejs.org/topic/565c65c4b31692e827fdd00c)
 - [给 JavaScript 初心者的 ES2015 实战](http://gank.io/post/564151c1f1df1210001c9161)
+- [Nodejs学习路线图](http://blog.fens.me/nodejs-roadmap/)
