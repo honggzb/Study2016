@@ -1,4 +1,5 @@
-** node-dev **  : Restarts your app when files are modified
- 
-** jshint ** : command line using -> jshint app.js
+**node-dev**  
+Restarts your app when files are modified
 
+**jslint ** 
+command line using -> jshint app.js
