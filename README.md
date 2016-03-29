@@ -14,6 +14,8 @@ Study notes in 2016
  	- HTML5-drag&drop
  	- JDK安装路径下存在两个JRE的区别
  	- D3JSStudy
+- ES5Study
+ 	- jsArray : Array的五种方法 
 - ES6Study
  	- 01 Let
  	- References
@@ -33,6 +35,7 @@ Study notes in 2016
 - NodeJS 学习
 	- babel设置
 	- debugNode - nodeJS调试
+	- samples: node.js 学习代码
 - GulpStudy
 - Angular2的一些资料
 - node Module汇总
