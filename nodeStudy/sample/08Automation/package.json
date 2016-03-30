@@ -1,0 +1,32 @@
+{
+  "name": "automation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "predebug":"grunt",
+    "debug": "open http://localhost:3000 & open http://localhost:8080/debug?port=5858",
+    "postdebug":"node-inspector & node --debug app",
+    "prestart": "grunt",
+    "start": "node app",
+    "predev": "grunt",
+    "dev":"open http://localhost:3000 & node-dev app & grunt watch"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "cors": "^2.7.1",
+    "express": "^4.13.4",
+    "jquery": "^2.2.2"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-autoprefixer": "^3.0.4",
+    "grunt-browserify": "^5.0.0",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-less": "^1.2.0",
+    "grunt-contrib-watch": "^1.0.0"
+  }
+}
