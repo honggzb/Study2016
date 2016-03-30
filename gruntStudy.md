@@ -1,3 +1,36 @@
+
+
+## Automation with npm
+
+编辑package.json, 加入：
+
+```javascript
+"scripts": {
+  "prestart": "grunt",
+  "start": "node app",
+  "predev": "grunt",
+  "dev":"open http://localhost:3000 & node-dev app & grunt watch"
+},
+```
+
+在命令行直接执行：  `npm start` 或 `npm run dev`(前提是装了git, open是git的命令)
+
+## node-inspector:  npm debugger(server side debug)
+
+`npm install -g node-inspector`
+
+编辑package.json, 加入：
+
+```javascript
+"scripts": {
+  "predebug":"grunt",
+  "debug": "open http://localhost:3000 & open http://localhost:8080/debug?port=5858",
+  "postdebug":"node-inspector & node --debug app",
+},
+```
+
+在命令行直接执行： `npm run debug`
+
 ## Grunt常用的插件
 
 - grunt-contrib-clean：删除文件或目录的插件
