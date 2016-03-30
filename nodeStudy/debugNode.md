@@ -10,7 +10,7 @@ res.writeHead(200, {'Content-Type': 'text/plain'});
 
 ![](2012011500104217.png)
 
-## 2. 基于Chrome浏览器的调试器
+## 2. 基于Chrome浏览器的调试器- server side debug
 
 `npm install -g node-inspector`
 
@@ -21,5 +21,19 @@ node-inspector是通过websocket方式来转向debug输入输出的。因此，�
 在浏览器输入`http://[ip address]:8080/debug?port=5858`，会得到调试窗口
 
 ![](2012011521141853.png)
+
+如使用Grunt可实现automation
+
+编辑package.json, 加入：
+
+```javascript
+"scripts": {
+  "predebug":"grunt",
+  "debug": "open http://localhost:3000 & open http://localhost:8080/debug?port=5858",
+  "postdebug":"node-inspector & node --debug app",
+},
+```
+
+在命令行直接执行： `npm run debug`
 
 > reference:  http://www.cnblogs.com/moonz-wu/archive/2012/01/15/2322120.html
