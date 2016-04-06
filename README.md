@@ -21,6 +21,8 @@ Study notes in 2016
  	- References
 - basic
 	- 深入理解javascript原型和闭包 
+- ReactStudy
+	- reactSampleBasic-04062016.rar
 - interview
 	- htmlCSS
 		- BAT及各大互联网公司2014前端笔试面试题-HTML-CSS篇
