@@ -1,9 +1,10 @@
-## 1. Environment setup - browser-sync
 
 - atom
   - language-babel
 - node
   - browserify
+
+## 1. Environment setup - browser-sync
 
 ### 1.1 mocking server and realtime monitoring
 
@@ -98,7 +99,7 @@ watch as terminal in browser : http://localhost:8080/webpack-dev-server/
 
 ### 2.4 running app
 
-`npm start'
+`npm start`
 
 
 > references
