@@ -20,7 +20,7 @@ modify package.json
 
 run in command line :  `npm run dev`
 
-### 1.2 import JXF transformer support
+### 1.2 import JXF transformer support in index.html
 
 ```javascript
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js"></script>
@@ -30,7 +30,7 @@ run in command line :  `npm run dev`
 
 ## 2. Environment setup 2 - using webpack
 
-### 2.1 packages need
+### 2.1 packages needed
 
 ```
 npm install --save react
