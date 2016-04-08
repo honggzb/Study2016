@@ -44,7 +44,7 @@ npm install --save-dev babel-preset-react
 ### 2.2 codes
 
 ```javascript
-//webpack.config.js
+//create webpack.config.js in root directory
 module.exports = {
   entry:  './app-client.jsx',
       output: {
@@ -61,23 +61,20 @@ module.exports = {
       }
 };
 
-//package.json
+//edit package.json
 ...
 "scripts": {
   "prestart": "webpack",
   "start": "node app-server.js"
-},"scripts": {
-  "prestart": "webpack",
-  "start": "node app-server.js"
 },
 ...
-//app-client.js
+//app-client.js in root directory
 import React from 'react';
 import ReactDOM from 'react-dom';
 import APP from './components/APP.js';
 ReactDOM.render(<APP/>, document.getElementById('react-container'));
 
-//APP.js
+//APP.js in components directory
 var React = require('react');
 var APP = React.createClass({
   render: function() {
@@ -95,9 +92,13 @@ index.html
 
 ### 2.3 fire up the Webpack dev server to see our components on the page live in action
 
-  webpack-dev-server --progress --colors
+`webpack-dev-server --progress --colors`
 
 watch as terminal in browser : http://localhost:8080/webpack-dev-server/
+
+### 2.4 running app
+
+`npm start'
 
 
 > references
