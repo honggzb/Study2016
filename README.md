@@ -22,6 +22,8 @@ Study notes in 2016
 - basic
 	- 深入理解javascript原型和闭包 
 - ReactStudy
+	- ReactdevEnvironmentSetup.md -- React开发环境设置
+	- reactEnvironment2.rar  -- React开发环境设置代码2
 	- reactSampleBasic-04062016.rar
 - interview
 	- htmlCSS
