@@ -4,7 +4,7 @@
 - node
   - browserify
 
-## 1. Environment setup - browser-sync
+## 1. Environment setup 1 - using browser-sync and react itself
 
 ### 1.1 mocking server and realtime monitoring
 
@@ -28,7 +28,7 @@ run in command line :  `npm run dev`
 <script type="text/jsx;harmony=true" src="app.jsx">
 ```
 
-## 2. Environment setup - webpack
+## 2. Environment setup 2 - using webpack
 
 ### 2.1 packages need
 
