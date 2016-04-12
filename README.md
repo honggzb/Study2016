@@ -14,6 +14,8 @@ Study notes in 2016
  	- HTML5-drag&drop
  	- JDK安装路径下存在两个JRE的区别
  	- D3JSStudy
+- 2016,04
+ 	- jqueryUIResizable.md  - JQuery UI中resizable的用法，最近项目中用到的
 - ES5Study
  	- jsArray : Array的五种方法 
 - ES6Study
