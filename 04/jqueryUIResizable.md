@@ -6,7 +6,7 @@
 
 ## 1. Options
 
-name  |     
+name  |  功能   
 --|---
 ui.helper  | 表示当前被改变尺寸的元素的JQuery对象
 ui.originalPosition  | 表示未改变尺寸之前元素的位置{top,left}  
