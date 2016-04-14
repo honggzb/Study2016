@@ -6,13 +6,12 @@
 
 ## 1. Options
 
-name  |  功能   
---|---
-ui.helper  | 表示当前被改变尺寸的元素的JQuery对象
-ui.originalPosition  | 表示未改变尺寸之前元素的位置{top,left}  
-ui.originalSize      | 表示未改变尺寸之前元素的大小{width,height}
-ui.position          | 表示当前被改变尺寸的元素的坐标值对象{top,left}
-
+|name  |  功能 |  
+|------|-------|
+|ui.helper  | 表示当前被改变尺寸的元素的JQuery对象|
+|ui.originalPosition  | 表示未改变尺寸之前元素的位置{top,left}  |
+|ui.originalSize      | 表示未改变尺寸之前元素的大小{width,height}|
+|ui.position          | 表示当前被改变尺寸的元素的坐标值对象{top,left}|
 
 - alsoResize : Selector, jQuery, ElementDefault : false  
 
