@@ -2,8 +2,8 @@
 
 这里是javascript中建造迁移转变代码的常用属性
 
-description  | attribute name
---|---
+description  | attribute name| 
+--|---| 
 网页可见区域宽 | document.body.clientWidth(是对象可见的宽度，不包滚动条等边线，会随窗口的显示大小改变)
 网页可见区域高 | document.body.clientHeight
 网页可见区域宽 | document.body.offsetWidth(是对象的可见宽度，包滚动条等边线，会随窗口的显示大小改变)
@@ -21,8 +21,8 @@ description  | attribute name
 
 HTML精确定位:scrollLeft,scrollWidth,clientWidth,offsetWidth
 
-description  | attribute name   
---|---
+description  | attribute name   | 
+--|---| 
 scrollHeight | 获取对象的滚动高度。
 scrollLeft | 设置或获取位于对象左边界和窗口中目前可见内容的最左端之间的距离
 scrollTop | 设置或获取位于对象最顶端和窗口中可见内容的最顶端之间的距离
