@@ -54,13 +54,11 @@ offsetHeight = height
 
 (需要提一下：CSS中的margin属性，与clientWidth、offsetWidth、clientHeight、offsetHeight均无关)
 
-
 ```css
 div#banner  {  
  width:expression(window.screen.width - (border 边框) - (scroll width 滚动条宽度) );  
 }  
 ```
-
 
 ### 1 offsetLeft
 
@@ -196,7 +194,7 @@ alert（"Left Is : " + left + "\r\n" + "Top   Is : " + top）;
 
 对象的最顶部到对象在当前窗口显示的局限内的顶边的间隔． 便是在呈现了纵向迁移转变条的景象下，迁移转变条拉动的间隔．
 
-### 这四种浏览器分别为IE（Internet Explorer）、NS（Netscape）、Opera、FF（FireFox）--- 这里说的是 document.body，若是是 HTML 控件，则又有不合
+**IE（Internet Explorer）、NS（Netscape）、Opera、FF（FireFox）--- 这里说的是 document.body，若是是 HTML 控件，则又有不合**
 
 - clientHeight: 都认为是内容可视区域的高度，也就是说页面浏览器中可以看到内容的这个区域的高度，一般是最后一个对象条以下到状况栏以上的这个区域，与页面内容无关。
 - offsetHeight
@@ -209,7 +207,6 @@ alert（"Left Is : " + left + "\r\n" + "Top   Is : " + top）;
   - NS、 FF 认为 offsetHeight 和 scrollHeight 都是网页内容高度，只不过当网页内容高度小于便是 clientHeight 时，scrollHeight 的值是 clientHeight，而 offsetHeight 可以小于 clientHeight。
   - IE、Opera 认为 offsetHeight 是可视区域 clientHeight 迁移转变条加边框。scrollHeight 则是网页内容实际高度。
 - 同理, clientWidth、offsetWidth 和 scrollWidth 的申明与上方雷同，只是把高度换成宽度即可。
-
 
 ```javascript
 //自适应案例
