@@ -16,6 +16,7 @@ Study notes in 2016
  	- D3JSStudy
 - 2016,04
  	- jqueryUIResizable.md  - JQuery UI中resizable的用法，最近项目中用到的
+ 	- jQuery代码片段助力Web开发效率提升.md
 - ES5Study
  	- jsArray : Array的五种方法 
 - ES6Study
