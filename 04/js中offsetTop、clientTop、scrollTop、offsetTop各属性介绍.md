@@ -246,7 +246,7 @@ $(function(){
 准确获取网页客户区的宽高、滚动条宽高、滚动条Left和Top的javascript代码, 兼容目前流行的全部浏览器，包括：IE、Firefox、Safari、Opera、Chrome
 
 ```javascript
-if (document.compatMode == \"BackCompat\") {
+if (document.compatMode == "BackCompat") {
     cWidth = document.body.clientWidth;
     cHeight = document.body.clientHeight;
     sWidth = document.body.scrollWidth;
@@ -254,7 +254,7 @@ if (document.compatMode == \"BackCompat\") {
     sLeft = document.body.scrollLeft;
     sTop = document.body.scrollTop;
 }
-else{                  //document.compatMode == \"CSS1Compat\"
+else{                  //document.compatMode == "CSS1Compat"
     cWidth = document.documentElement.clientWidth;
     cHeight = document.documentElement.clientHeight;
     sWidth = document.documentElement.scrollWidth;
