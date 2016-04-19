@@ -46,3 +46,4 @@ Study notes in 2016
 - GulpStudy
 - Angular2的一些资料
 - node Module汇总
+- Web Front-end Stack v2.2.png
