@@ -209,7 +209,7 @@ alert（"Left Is : " + left + "\r\n" + "Top   Is : " + top）;
 - 同理, clientWidth、offsetWidth 和 scrollWidth 的申明与上方雷同，只是把高度换成宽度即可。
 
 ```javascript
-//自适应案例
+//1. 自适应案例1
 $(window).resize(function(){
   $('.className').css({  
     left: ($(window).width() - $('.className').outerWidth())/2,
@@ -222,6 +222,46 @@ $(window).resize();
 $(function(){
     $(window).resize();
 });
+//2. 重新计算浏览器窗口尺寸
+  var docDom;
+  if (document.compatMode == "BackCompat") {
+    docDom = document.body;
+  }else{
+    //"CSS1Compat"
+    docDom = document.documentElement;
+  }
+  function refreshSize(){
+    private_scrollTop = docDom.scrollTop;
+    private_winH = window.innerHeight || document.documentElement.clientHeight;
+    private_winW = window.innerWidth || document.documentElement.clientWidth;
+    private_docH = docDom.scrollHeight;
+    private_docW = docDom.clientWidth;
+  }
+```
+
+- BackCompat：标准兼容模式关闭，浏览器客户区宽度是document.body.clientWidth
+- CSS1Compat：标准兼容模式开启，浏览器客户区宽度是document.documentElement.clientWidth
+
+
+准确获取网页客户区的宽高、滚动条宽高、滚动条Left和Top的javascript代码, 兼容目前流行的全部浏览器，包括：IE、Firefox、Safari、Opera、Chrome
+
+```javascript
+if (document.compatMode == \"BackCompat\") {
+ cWidth = document.body.clientWidth;
+ cHeight = document.body.clientHeight;
+ sWidth = document.body.scrollWidth;
+ sHeight = document.body.scrollHeight;
+ sLeft = document.body.scrollLeft;
+ sTop = document.body.scrollTop;
+}
+else { //document.compatMode == \"CSS1Compat\"
+ cWidth = document.documentElement.clientWidth;
+ cHeight = document.documentElement.clientHeight;
+ sWidth = document.documentElement.scrollWidth;
+ sHeight = document.documentElement.scrollHeight;
+ sLeft = document.documentElement.scrollLeft == 0 ? document.body.scrollLeft : document.documentElement.scrollLeft;
+ sTop = document.documentElement.scrollTop == 0 ? document.body.scrollTop : document.documentElement.scrollTop;
+}
 ```
 
 > Reference
