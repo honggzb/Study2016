@@ -1,6 +1,6 @@
+###　方法一、将url参数改为download?实现下载
 
 ```html
-    方法一、将url参数改为download?实现下载
     <a href="http://sishuok.com/forum/download?filename=2012/8/3/59e99e4584d24c982bba2ecbb52459ee__hadoop%E5%88%9D%E7%BA%A7ppt.rar">1.1 a标签下载</a>  
     <input   
        type='button'   
@@ -10,7 +10,11 @@
        type='button'   
        value="1.3 打开新窗口下载"   
        onclick="window.open('http://sishuok.com/forum/download?filename=2012/8/3/59e99e4584d24c982bba2ecbb52459ee__hadoop%E5%88%9D%E7%BA%A7ppt.rar')">  
-    方法二、ajax利用iframe下载
+```
+
+### 方法二、ajax利用iframe下载
+    
+```html
     <iframe id="fileDownFrame" src="" style="display:none; visibility:hidden;"></iframe>        
     <input   
         type='button'   
@@ -32,3 +36,28 @@
      });
     </script>
 ```
+
+### 其他
+
+```javascript
+$('a').click(function(e) {
+    e.preventDefault();                          //stop the browser from following
+    window.location.href = 'uploads/file.doc';
+});
+<a href="no-script.html">Download now!</a>
+```
+
+It is better to create a server side php-file and place this content in it:
+
+```php
+header('Content-Type: application/octet-stream');
+header('Content-Disposition: attachment; filename='.$_REQUEST['f']);
+readfile('../some_folder/some_subfolder/'.$_REQUEST['f']); 
+exit;
+```
+
+This code will return ANY file as a download without showing where you actually store it.
+
+You open this php-file via `window.location.href = 'scripts/this_php_file.php?f=downloaded_file'`
+
+
