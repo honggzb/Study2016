@@ -247,23 +247,24 @@ $(function(){
 
 ```javascript
 if (document.compatMode == \"BackCompat\") {
- cWidth = document.body.clientWidth;
- cHeight = document.body.clientHeight;
- sWidth = document.body.scrollWidth;
- sHeight = document.body.scrollHeight;
- sLeft = document.body.scrollLeft;
- sTop = document.body.scrollTop;
+    cWidth = document.body.clientWidth;
+    cHeight = document.body.clientHeight;
+    sWidth = document.body.scrollWidth;
+    sHeight = document.body.scrollHeight;
+    sLeft = document.body.scrollLeft;
+    sTop = document.body.scrollTop;
 }
 else{                  //document.compatMode == \"CSS1Compat\"
- cWidth = document.documentElement.clientWidth;
- cHeight = document.documentElement.clientHeight;
- sWidth = document.documentElement.scrollWidth;
- sHeight = document.documentElement.scrollHeight;
- sLeft = document.documentElement.scrollLeft == 0 ? document.body.scrollLeft : document.documentElement.scrollLeft;
- sTop = document.documentElement.scrollTop == 0 ? document.body.scrollTop : document.documentElement.scrollTop;
+    cWidth = document.documentElement.clientWidth;
+    cHeight = document.documentElement.clientHeight;
+    sWidth = document.documentElement.scrollWidth;
+    sHeight = document.documentElement.scrollHeight;
+    sLeft = document.documentElement.scrollLeft == 0 ? document.body.scrollLeft : document.documentElement.scrollLeft;
+    sTop = document.documentElement.scrollTop == 0 ? document.body.scrollTop : document.documentElement.scrollTop;
 }
 ```
 
 > Reference
 
 [html中offsetTop、clientTop、scrollTop、offsetTop各属性介绍](http://blog.csdn.net/fswan/article/details/17238933)
+[document.compatMode属性](#http://blog.csdn.net/milk1626/article/details/7367770)
