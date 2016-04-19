@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8"/>
+    <style type="text/css">
+        #dropEle div{ float: left; }
+    </style>
+    <script src="../../jquery-1.8.3.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+        $(function (){
+            $("#dragEle")[0].ondragstart = function (event){
+                console.log("dragStart");
+                event.dataTransfer.setData("Text", event.target.id);
+            };
+            /**
+             * 当放置被拖数据时，会发生 drop 事件。
+             * 调用 preventDefault() 来避免浏览器对数据的默认处理（drop 事件的默认行为是以链接形式打开）
+             * @param event
+             */
+            $("#dropEle")[0].ondrop = function (event){
+             /*   for (var p in event.dataTransfer) {
+                    console.log(p + " = " + event.dataTransfer[p] + " @@");
+                }
+            */
+                console.log("onDrop");
+                var id = event.dataTransfer.getData("Text");
+                $(this).append($("#" + id).clone().text($(this).find("div").length));
+                event.preventDefault();
+            };
+            /**
+             * ondragover 事件规定在何处放置被拖动的数据。
+             *默认地，无法将数据/元素放置到其他元素中。如果需要设置允许放置，我们必须阻止对元素的默认处理方式。
+             */
+            $("#dropEle")[0].ondragover = function (event){
+                console.log("onDrop over");
+                event.preventDefault();
+            }
+            $("#dropEle")[0].ondragenter = function (event){
+                console.log("onDrop enter");
+            }
+            $("#dropEle")[0].ondragleave = function (event){
+                console.log("onDrop leave");
+            }
+            $("#dropEle")[0].ondragend = function (event){
+                console.log("onDrop end");
+            }
+        });
+    </script>
+</head>
+<body>
+<div style="border: 1px solid red ; width: 100px ; height: 100px ;text-align: center;line-height: 100px;"
+     draggable="true" id="dragEle" >
+</div>
+<div style="width: 330px;min-height: 202px;border: 1px solid #444;margin-top: 20px;overflow-y: scroll;"
+     id="dropEle"></div
+</body>
+</html>
