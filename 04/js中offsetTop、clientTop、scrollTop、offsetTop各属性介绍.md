@@ -254,7 +254,7 @@ if (document.compatMode == \"BackCompat\") {
  sLeft = document.body.scrollLeft;
  sTop = document.body.scrollTop;
 }
-else { //document.compatMode == \"CSS1Compat\"
+else{                  //document.compatMode == \"CSS1Compat\"
  cWidth = document.documentElement.clientWidth;
  cHeight = document.documentElement.clientHeight;
  sWidth = document.documentElement.scrollWidth;
