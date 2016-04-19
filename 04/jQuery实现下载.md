@@ -1,15 +1,16 @@
 
 ```html
-    <a href="http://sishuok.com/forum/download?filename=2012/8/3/59e99e4584d24c982bba2ecbb52459ee__hadoop%E5%88%9D%E7%BA%A7ppt.rar">a标签下载</a>  
+    方法一、将url参数改为download?实现下载
+    <a href="http://sishuok.com/forum/download?filename=2012/8/3/59e99e4584d24c982bba2ecbb52459ee__hadoop%E5%88%9D%E7%BA%A7ppt.rar">1.1 a标签下载</a>  
     <input   
        type='button'   
-       value="修改地址栏下载"   
+       value="1.2 修改地址栏下载"   
        onclick="window.location.href='http://sishuok.com/forum/download?filename=2012/8/3/59e99e4584d24c982bba2ecbb52459ee__hadoop%E5%88%9D%E7%BA%A7ppt.rar'">  
     <input   
        type='button'   
-       value="打开新窗口下载"   
+       value="1.3 打开新窗口下载"   
        onclick="window.open('http://sishuok.com/forum/download?filename=2012/8/3/59e99e4584d24c982bba2ecbb52459ee__hadoop%E5%88%9D%E7%BA%A7ppt.rar')">  
-    ajax利用iframe下载
+    方法二、ajax利用iframe下载
     <iframe id="fileDownFrame" src="" style="display:none; visibility:hidden;"></iframe>        
     <input   
         type='button'   
