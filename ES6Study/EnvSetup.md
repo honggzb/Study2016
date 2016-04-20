@@ -42,7 +42,17 @@ gulp.task("default",function(){
 
 `npm install gulp -g && npm install gulp --save-dev`
 
-`npm install babel-core browserify vinyl-source-stream babelify --save-dev`
+`npm install babel-core babel-preset-es2015 --save-dev`
+
+`npm install browserify vinyl-source-stream babelify --save-dev`
+
+在package.json里面添加，避免“SyntaxError: 'import' and 'export' may appear only with 'sourceType: module'” 错误
+
+```javascript
+"browserify": {
+    "transform": [["babelify", { "presets": ["es2015"] }]]
+  }
+```
 
 创建gulpfile
 
