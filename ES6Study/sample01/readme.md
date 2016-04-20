@@ -1,6 +1,6 @@
 
-- fake server -- json-server
-- gulp
+- 模拟服务器端fake server -- json-server
+- 使用gulp进行构建
 
 ```javascript
     "babel-core": "^6.7.6",
