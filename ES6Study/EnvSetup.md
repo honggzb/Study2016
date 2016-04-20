@@ -1,6 +1,6 @@
 `npm install gulp -g && npm install gulp --save-dev`
 
-`pm install babel-core babel-preset-es2015 --save-dev`
+`npm install babel-core babel-preset-es2015 --save-dev`
 
 创建一个.babelrc文件来使用es2015 preset：
 
