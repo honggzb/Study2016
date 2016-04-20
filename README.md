@@ -22,6 +22,7 @@ Study notes in 2016
 - ES6Study
  	- 01 Let
  	- References
+ 	- Sample1 -- 一个ES6使用的小例子(gulp构建)
 - basic
 	- 深入理解javascript原型和闭包 
 - ReactStudy
