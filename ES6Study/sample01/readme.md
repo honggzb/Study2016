@@ -10,6 +10,25 @@
     "vinyl-source-stream": "^1.1.0"
 ```
 
+项目结构
+
+```
+/server
+  - db.json
+/source
+  - api.js
+  - app.js     --入口js
+  - constants.js
+  - post.js
+  - ui.js
+  - user.js
+/dist
+  bundle.js
+package.json
+gulpfile.js
+index.html
+```
+
 安装 `npm install`
 
 运行
