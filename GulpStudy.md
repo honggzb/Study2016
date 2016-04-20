@@ -370,6 +370,7 @@ gulpfile.js
 ```
 ##更多的文章
 
+- [Gulp 中文网](http://www.gulpjs.com.cn/)
 - [Recipes](https://github.com/gulpjs/gulp/tree/master/docs/recipes#recipes)
 - [cheatsheet](https://github.com/osscafe/gulp-cheatsheet)
 - [9个优秀的gulp插件](http://blog.nodejitsu.com/npmawesome-9-gulp-plugins/)
