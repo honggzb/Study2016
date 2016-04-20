@@ -1,0 +1,2 @@
+- json-server to emulate server
+- gulp
