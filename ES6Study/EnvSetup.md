@@ -1,3 +1,5 @@
+### 1. 使用preset
+
 `npm install gulp -g && npm install gulp --save-dev`
 
 `npm install babel-core babel-preset-es2015 --save-dev`
@@ -31,6 +33,30 @@ var babel = require('gulp-babel');
 gulp.task("default",function(){
   return gulp.src("a.js")
              .pipe(babel({presets: ['es2015']}))
+             .pipe(gulp.dest("dist"));
+});
+```
+
+### 2. 使用browserify
+
+
+`npm install gulp -g && npm install gulp --save-dev`
+
+`npm install babel-core browserify vinyl-source-stream babelify --save-dev`
+
+创建gulpfile
+
+```javascript
+'use strict';
+var gulp = require('gulp') ;
+var browserify = require('browserify');
+var source = require('vinyl-source-stream');
+
+gulp.task("default",function(){
+  return browserify("app.js")
+             .transform("babelify")
+             .bundle()
+             .pipe(source("bundle.js"))
              .pipe(gulp.dest("dist"));
 });
 ```
