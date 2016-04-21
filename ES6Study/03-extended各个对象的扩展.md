@@ -98,3 +98,140 @@ withinErrorMargin(0.2 + 0.2, 0.3)
 
 - 数组的对象（array-like object）
 - 可遍历（iterable）的对象（包括ES6新增的数据结构Set和Map）
+
+```javascript
+let arrayLike = {
+    '0': 'a',
+    '1': 'b',
+    '2': 'c',
+    length: 3
+};
+// ES5的写法
+var arr1 = [].slice.call(arrayLike); // ['a', 'b', 'c']
+// ES6的写法
+let arr2 = Array.from(arrayLike); // ['a', 'b', 'c']
+//实际应用中，常见的类似数组的对象是DOM操作返回的NodeList集合，以及函数内部的arguments对象。Array.from都可以将它们转为真正的数组。
+let ps = document.querySelectorAll('p');
+Array.from(ps).forEach(function (p) {
+  console.log(p);
+});
+// arguments对象
+function foo() {
+  var args = Array.from(arguments);
+  // ...
+}
+```
+
+4.2 Array.of() ---将一组值，转换为数组
+
+```javascript
+Array.of(3, 11, 8) // [3,11,8]
+Array.of(3) // [3]
+Array.of(3).length // 1
+```
+
+4.3 copyWithin() ---在当前数组内部，将指定位置的成员复制到其他位置（会覆盖原有成员），然后返回当前数组。也就是说，使用这个方法，会修改当前数组。
+
+`Array.prototype.copyWithin(target, start, end)`
+
+- target（必需）：从该位置开始替换数据。
+- start（可选）：从该位置开始读取数据，默认为0。如果为负值，表示倒数。
+- end（可选）：到该位置前停止读取数据，默认等于数组长度。如果为负值，表示倒数。
+
+```javascript
+// 将3号位复制到0号位
+[1, 2, 3, 4, 5].copyWithin(0, 3, 4)   // [4, 2, 3, 4, 5]
+[1, 2, 3, 4, 5].copyWithin(0, -2, -1)   // [4, 2, 3, 4, 5], -2相当于3号位，-1相当于4号位
+// 将3号位复制到0号位
+[].copyWithin.call({length: 5, 3: 1}, 0, 3)  // {0: 1, 3: 1, length: 5}
+// 将2号位到数组结束，复制到0号位
+var i32a = new Int32Array([1, 2, 3, 4, 5]);
+i32a.copyWithin(0, 2);   // Int32Array [3, 4, 5, 4, 5]
+// 对于没有部署TypedArray的copyWithin方法的平台
+// 需要采用下面的写法
+[].copyWithin.call(new Int32Array([1, 2, 3, 4, 5]), 0, 3, 4);
+// Int32Array [4, 2, 3, 4, 5]
+```
+
+4.4 数组实例的find()和findIndex()
+
+- find()，用于找出第一个符合条件的数组成员。它的参数是一个回调函数，所有数组成员依次执行该回调函数，直到找出第一个返回值为true的成员，然后返回该成员。如果没有符合条件的成员，则返回undefined
+- findIndex()的用法与find()非常类似，返回第一个符合条件的数组成员的位置，如果所有成员都不符合条件，则返回-1
+
+```javascript
+[1, 5, 10, 15].find(function(value, index, arr) {
+  return value > 9;
+})   // 10
+[1, 5, 10, 15].findIndex(function(value, index, arr) {
+  return value > 9;
+}) // 2
+[NaN].indexOf(NaN)   // -1
+[NaN].findIndex(y => Object.is(NaN, y))   // 0
+```
+
+4.5 fill() ---使用给定值，填充一个数组
+
+```javascript
+['a', 'b', 'c'].fill(7)   // [7, 7, 7]
+new Array(3).fill(7)   // [7, 7, 7]
+// fill方法还可以接受第二个和第三个参数，用于指定填充的起始位置和结束位置
+['a', 'b', 'c'].fill(7, 1, 2)   // ['a', 7, 'c']
+```
+
+4.6 entries()，keys()和values() ---遍历数组
+
+- 都返回一个遍历器对象Iterator，可以用for...of循环进行遍历
+- keys()是对键名的遍历、values()是对键值的遍历，entries()是对键值对的遍历
+- 如果不使用for...of循环，可以手动调用遍历器对象的next方法，进行遍历
+
+```javascript
+for (let [index, elem] of ['a', 'b'].entries()) {
+  console.log(index, elem);
+}   // 0 "a",  1 "b"
+let letter = ['a', 'b', 'c'];
+let entries = letter.entries();
+console.log(entries.next().value); // [0, 'a']
+console.log(entries.next().value); // [1, 'b']
+```
+
+4.7 Array.prototype.includes() ---返回一个布尔值，表示某个数组是否包含给定的值，与字符串的includes方法类似。该方法属于ES7，但Babel转码器已经支持
+
+```javascript
+[1, 2, 3].includes(2);     // true
+[1, 2, NaN].includes(NaN); // true
+//第二个参数表示搜索的起始位置，默认为0。如果第二个参数为负数，则表示倒数的位置，如果这时它大于数组长度（比如第二个参数为-4，但数组长度为3），则会重置为从0开始
+[1, 2, 3].includes(3, 3);  // false
+[1, 2, 3].includes(3, -1); // true
+```
+
+4.8 数组推导（array comprehension
+
+允许直接通过现有数组生成新数组。这项功能本来是要放入ES6的，但是TC39委员会想继续完善这项功能，让其支持所有数据结构（内部调用iterator对象），不像现在只支持数组，所以就把它推迟到了ES7。Babel转码器已经支持这个功能。
+
+```javascript
+var a1 = [1, 2, 3, 4];
+var a2 = [for (i of a1) i * 2]; // a2 = [2, 4, 6, 8]
+var years = [ 1954, 1974, 1990, 2006, 2010, 2014 ];
+[for (year of years) if (year > 2000) year]; // [ 2006, 2010, 2014 ]
+[for (year of years) if (year > 2000) if(year < 2010) year]; // [ 2006]
+[for (year of years) if (year > 2000 && year < 2010) year]; // [ 2006]
+var customers = [
+  {
+    name: 'Jack',
+    age: 25,
+    city: 'New York'
+  },
+  {
+    name: 'Peter',
+    age: 30,
+    city: 'Seattle'
+  }
+];
+var results = [
+  for (c of customers)
+    if (c.city == "Seattle")
+      { name: c.name, age: c.age }
+];
+results // { name: "Peter", age: 30 }
+```
+
