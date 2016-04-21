@@ -1,7 +1,7 @@
 ### 1 字符串的扩展
 
-  | 说明 | 例子
---|--|--
+方法| 说明 | 例子
+---|---|---
 字符的Unicode表示法|采用\uxxxx形式表示一个字符,将码点放入大括号，就能正确解读该字符|`"\u0061" //"a"  "\u{41}\u{42}\u{43}" //"ABC"`
 includes()|返回布尔值，表示是否找到了参数字符串|`'Hello world!'.includes('Hello', 6) // false`
 startsWith()|返回布尔值，表示参数字符串是否在源字符串的头部|`'Hello world!'.startsWith('world', 6) // true`
@@ -9,7 +9,7 @@ endsWith()|返回布尔值，表示参数字符串是否在源字符串的尾部
 repeat()|将原字符串重复n次|`'hello'.repeat(2) // "hellohello",'na'.repeat(0) // ""`
 padStart()|字符串头部补全长度|`'x'.padStart(4, 'ab') // 'abax'`
 padEnd()|字符串尾部补全长度|`'x'.padEnd(4, 'ab') // 'xaba'`
-模板字符串（template string）|用反引号标识|如果使用模板字符串表示多行字符串，所有的空格和缩进都会被保留在输出之中,模板字符串中嵌入变量，需要将变量名写在${}之中。
+模板字符串（template string）|用反引号标识|如果使用模板字符串表示多行字符串，所有的空格和缩进都会被保留在输出之中,模板字符串中嵌入变量，需要将变量名写在${}之中|
 
 ```javascript
 //模板字符串编译案例
