@@ -41,12 +41,13 @@ div.innerHTML = parse({ supplies: [ "broom", "mop", "cleaner" ] });
 ### 2 正则的扩展
 
 方法| 说明 | 例子
---|--|--
+---|---|---
 RegExp构造函数|RegExp('字符串', '正则表达式的修饰符（flag）')|match()、replace()、search()、split()
 
 ### 3 数值的扩展
-| 说明 | 例子
---|--|--
+
+方法| 说明 | 例子
+---|---|---
 二进制数值|用前缀0b（或0B）表示|
 八进制数值|用前缀0o（或0O）表示|
 检查Infinite和NaN两个特殊值|Number.isFinite()和Number.isNaN()|与传统的全局方法isFinite()和isNaN()的区别在于，传统方法先调用Number()将非数值的值转为数值，再进行判断，而这两个新方法只对数值有效，非数值一律返回false
