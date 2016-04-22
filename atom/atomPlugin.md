@@ -6,6 +6,8 @@
 editor:
     showInvisibles: true
     softWrap: true
+whitespace:
+    removeTrailingWhitespace: false
 ```
 
 ### 插件推荐
