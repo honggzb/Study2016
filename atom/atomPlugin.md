@@ -1,3 +1,13 @@
+### 常用设置
+
+- 打开菜单 file -> config，加入
+
+```json
+editor:
+    showInvisibles: true
+    softWrap: true
+```
+
 ### 插件推荐
 
 - autocomplete-plus — 完善自带autocomplete,有二度设置,接下来列出的一些有二度设置
