@@ -17,7 +17,7 @@ Study notes in 2016
  	- jQuery代码片段助力Web开发效率提升.md
  	- OWASP Top 10 2013-V1.2.pdf
 - Atom
- 	- atomPlug
+ 	- atomPlug -常用的Atom设置
  	- Atom-js-snippet.docx
 - ES5Study
  	- jsArray : Array的五种方法 
