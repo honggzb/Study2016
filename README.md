@@ -8,8 +8,6 @@ Study notes in 2016
 	- 实用的JavaScript技巧、窍门和最佳实践
 	- passport.js学习笔记
 - 2016,03
- 	- atomPlug
- 	- Atom-js-snippet.docx
  	- CSS Scroll Snap Points
  	- HTML5-drag&drop
  	- JDK安装路径下存在两个JRE的区别
@@ -18,6 +16,9 @@ Study notes in 2016
  	- jqueryUIResizable.md  - JQuery UI中resizable的用法，最近项目中用到的
  	- jQuery代码片段助力Web开发效率提升.md
  	- OWASP Top 10 2013-V1.2.pdf
+- Atom
+ 	- atomPlug
+ 	- Atom-js-snippet.docx
 - ES5Study
  	- jsArray : Array的五种方法 
 - ES6Study
