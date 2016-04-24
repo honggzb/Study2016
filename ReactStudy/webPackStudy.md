@@ -225,7 +225,7 @@ module.exports = {
 
 ### 4.5 使用CDN/远程文件
 
-有时候希望某些模块走CDN并以<script>的形式挂载到页面上来加载，但又希望能在 webpack 的模块中使用上。这时候可以在配置文件里使用 externals 属性
+有时候希望某些模块走CDN并以`<script>`的形式挂载到页面上来加载，但又希望能在`webpack`的模块中使用上。这时候可以在配置文件里使用`externals`属性
 
 
 ```javascript
