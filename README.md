@@ -16,6 +16,7 @@ Study notes in 2016
  	- jqueryUIResizable.md  - JQuery UI中resizable的用法，最近项目中用到的
  	- jQuery代码片段助力Web开发效率提升.md
  	- OWASP Top 10 2013-V1.2.pdf
+ 	- 移动端Web开发调试之Weinre调试.md
 - Atom
  	- atomPlug -常用的Atom设置
  	- Atom-js-snippet.docx
