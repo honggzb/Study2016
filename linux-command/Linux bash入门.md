@@ -70,12 +70,12 @@ Login Shell读取配置文件流程
 read|读取用户输入到某个变量|`read -p "Please enter your name: " name`
 array|bash数组的赋值与输出|
 declare|声明变量类型|
-|`declare -x name`|将 name 变成环境变量
-|`declare +x name`|将 name 恢复成自定义变量
-|`declare -i product=10*10`|将product定义成整形，这样后面的表达式就会得到计算
-|`declare -r name`|将 name 定义成只读变量
-|`declare -a product`|将 product 定义成数组类型
-|`declare -p product`|查看 product 的类型信息
+1)|`declare -x name`|将 name 变成环境变量
+2)|`declare +x name`|将 name 恢复成自定义变量
+3)|`declare -i product=10*10`|将product定义成整形，这样后面的表达式就会得到计算
+4)|`declare -r name`|将 name 定义成只读变量
+5)|`declare -a product`|将 product 定义成数组类型
+6)|`declare -p product`|查看 product 的类型信息
 
 **管道(pipe)**
 
