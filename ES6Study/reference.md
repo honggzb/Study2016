@@ -14,3 +14,4 @@
 - [给 JavaScript 初心者的 ES2015 实战](http://gank.io/post/564151c1f1df1210001c9161)
 - [ES5 compatiable table](http://kangax.github.io/compat-table/es5/)
 - [ES6 In Depth Articles](https://hacks.mozilla.org/category/es6-in-depth/)
+- [探秘ES6资讯](http://www.csdn.net/tag/%E6%8E%A2%E7%A7%98es6/news)
