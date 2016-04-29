@@ -52,17 +52,17 @@
 
 ## meta基础知识
 
-<h4>1. H5页面窗口自动调整到设备宽度，并禁止用户缩放页面</h4>
+<h5>1. H5页面窗口自动调整到设备宽度，并禁止用户缩放页面</h5>
 
 ```html
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 ```
 
-<h4>2. 忽略将页面中的数字识别为电话号码</h4>
+<h5>2. 忽略将页面中的数字识别为电话号码</h5>
 
 `<meta name="format-detection" content="telephone=no" />`
 
-<h4>3. 忽略Android平台中对邮箱地址的识别</h4>
+<h5>3. 忽略Android平台中对邮箱地址的识别</h5>
 
 `<meta name="format-detection" content="email=no" />`
 
@@ -75,7 +75,7 @@
 
 体验demo，解决在主屏幕打开页面后，点击页面链接不会跳转到系统自带的Safari
 
-<h4>4. 将网站添加到主屏幕快速启动方式，仅针对ios的safari顶端状态条的样式</h4>
+<h5>4. 将网站添加到主屏幕快速启动方式，仅针对ios的safari顶端状态条的样式</h5>
 
 ```html
 <meta name="apple-mobile-web-app-status-bar-style" content="black" />
@@ -84,7 +84,7 @@
 
 ## viewport模板
 
-<h4>1. viewport模板——通用</h4>
+<h5>1. viewport模板——通用</h5>
 
 ```html
 <!DOCTYPE html>
@@ -105,7 +105,7 @@
 </html>
 ```
 
-2. viewport模板 - target-densitydpi=device-dpi，android 2.3.5以下版本不支持
+<h5>2. viewport模板 - target-densitydpi=device-dpi，android 2.3.5以下版本不支持</h5>
 
 ```html
 <!DOCTYPE html>
@@ -130,7 +130,7 @@
 
 ## 常见问题
 
-1. 移动端如何定义字体font-family
+<h5>1. 移动端如何定义字体font-family</h5>
 
 中文字体使用系统默认即可，英文用Helvetica
 
@@ -138,7 +138,7 @@
 
 > 参考[《移动端使用字体的思考》](http://www.cnblogs.com/PeunZhang/p/3592096.html)
 
-2. 移动端字体单位font-size选择px还是rem
+<h5>2. 移动端字体单位font-size选择px还是rem</h5>
 
 - 对于只需要适配少部分手机设备，且分辨率对页面影响不大的，使用px即可
 - 对于需要适配各种移动设备，使用rem，例如只需要适配iPhone和iPad等分辨率差别比较挺大的设备
@@ -158,7 +158,7 @@ html{font-size:10px}
 
 > 体验demo：http://1.peunzhang.sinaapp.com/demo/rem/index.html
 
-3. 移动端touch事件(区分webkit 和 winphone)
+<h5>3. 移动端touch事件(区分webkit 和 winphone)</h5>
 
 当用户手指放在移动设备在屏幕上滑动会触发的touch事件
 
@@ -187,7 +187,7 @@ html{font-size:10px}
 - MSPointerMove——当手指在屏幕上滑动时连续触发。通常我们再滑屏页面，会调用css的html{-ms-touch-action: none;}可以阻止默认情况的发生：阻止页面滚动
 - MSPointerUp——当手指离开屏幕时触发
 
-4. 移动端click屏幕产生200-300 ms的延迟响应
+<h5>4. 移动端click屏幕产生200-300 ms的延迟响应</h5>
 
 移动设备上的web网页是有300ms延迟的，玩玩会造成按钮点击延迟甚至是点击失效。
 
@@ -200,6 +200,7 @@ html{font-size:10px}
 原因就出在浏览器需要如何判断快速点击上，当用户在屏幕上单击某一个元素时候，例如跳转链接<a href="#"></a>，此处浏览器会先捕获该次单击，但浏览器不能决定用户是单纯要点击链接还是要双击该部分区域进行缩放操作，所以，捕获第一次单击后，浏览器会先Hold一段时间t，如果在t时间区间里用户未进行下一次点击，则浏览器会做单击跳转链接的处理，如果t时间里用户进行了第二次单击操作，则浏览器会禁止跳转，转而进行对该部分区域页面的缩放操作。那么这个时间区间t有多少呢？在IOS safari下，大概为300毫秒。这就是延迟的由来。造成的后果用户纯粹单击页面，页面需要过一段时间才响应，给用户慢体验感觉，对于web开发者来说是，页面js捕获click事件的回调函数处理，需要300ms后才生效，也就间接导致影响其他业务逻辑的处理。
 
 解决方案：
+
 - fastclick可以解决在手机上点击事件的300ms延迟
 - zepto的touch模块，tap事件也是为了解决在click的延迟问题
 
@@ -212,7 +213,7 @@ html{font-size:10px}
 
 解决300ms延迟的问题，也可以通过绑定ontouchstart事件，加快对事件的响应
 
-5. 什么是Retina 显示屏，带来了什么问题
+<h5>5. 什么是Retina 显示屏，带来了什么问题</h5>
 
 **retina**：一种具备超高像素密度的液晶屏，同样大小的屏幕上显示的像素点由1个变为多个，如在同样带下的屏幕上，苹果设备的retina显示屏中，像素点1个变为4个, 在高清显示屏中的位图被放大，图片会变得模糊，因此移动端的视觉稿通常会设计为传统PC的2倍, 那么，前端的应对方案是：
 
@@ -229,13 +230,13 @@ html{font-size:10px}
 
 > 参考[《高清显示屏原理及设计方案》](http://www.cnblogs.com/PeunZhang/p/3441110.html)
 
-6. ios系统中元素被触摸时产生的半透明灰色遮罩怎么去掉
+<h5>6. ios系统中元素被触摸时产生的半透明灰色遮罩怎么去掉</h5>
 
 ios用户点击一个链接，会出现一个半透明灰色遮罩, 如果想要禁用，可设置`-webkit-tap-highlight-color`的`alpha`值为`0`，也就是属性值的最后一位设置为0就可以去除半透明灰色遮罩
 
 `a,button,input,textarea{-webkit-tap-highlight-color: rgba(0,0,0,0;)}`
 
-7. 部分android系统中元素被点击时产生的边框怎么去掉
+<h5>7. 部分android系统中元素被点击时产生的边框怎么去掉</h5>
 
 android用户点击一个链接，会出现一个边框或者半透明灰色遮罩, 不同生产商定义出来额效果不一样，可设置`-webkit-tap-highlight-color`的`alpha`值为`0`去除部分机器自带的效果
 
@@ -252,11 +253,11 @@ a,button,input,textarea{
 
 > 参考[《如何去除android上a标签产生的边框》](http://www.cnblogs.com/PeunZhang/archive/2013/02/28/2907708.html)
 
-8. winphone系统a、input标签被点击时产生的半透明灰色背景怎么去掉
+<h5>8. winphone系统a、input标签被点击时产生的半透明灰色背景怎么去掉</h5>
 
 `<meta name="msapplication-tap-highlight" content="no">`
 
-9. webkit表单元素的默认外观怎么重置
+<h5>9. webkit表单元素的默认外观怎么重置</h5>
 
 **通用**
 
@@ -276,19 +277,19 @@ input[type=number]::-webkit-outer-spin-button {
 }
 ```
 
-10. webkit表单输入框placeholder的颜色值能改变么
+<h5>10. webkit表单输入框placeholder的颜色值能改变么</h5>
 
 ```css
 input::-webkit-input-placeholder{color:#AAAAAA;}
 input:focus::-webkit-input-placeholder{color:#EEEEEE;}
 ```
 
-11. webkit表单输入框placeholder的文字能换行么
+<h5>11. webkit表单输入框placeholder的文字能换行么</h5>
 
     ios可以，android不行~
     在textarea标签下都可以换行~
     
-12. IE10（winphone8）表单元素默认外观如何重置
+<h5>12. IE10（winphone8）表单元素默认外观如何重置</h5>
 
 **禁用 select 默认下拉箭头**
 
@@ -326,7 +327,7 @@ display: none;
 
 > 参考[《如何改变表单元素的外观(for Webkit and IE10)》](http://www.cnblogs.com/PeunZhang/p/3522603.html)
 
-13. 打电话发短信写邮件怎么实现
+<h5>13. 打电话发短信写邮件怎么实现</h5>
 
 ```html
 <!--打电话-->
@@ -338,7 +339,7 @@ display: none;
 
 > 写邮件，可参考[《移动web页面给用户发送邮件的方法》](http://www.cnblogs.com/PeunZhang/p/4952783.html)
 
-14. 模拟按钮hover效果
+<h5>14. 模拟按钮hover效果</h5>
  
 移动端触摸按钮的效果，可明示用户有些事情正要发生，是一个比较好体验，但是移动设备中并没有鼠标指针，使用css的hover并不能满足我们的需求，还好国外有个激活css的active效果，代码如下，
 
@@ -400,7 +401,7 @@ a{-webkit-tap-highlight-color: rgba(0,0,0,0);}
 </html>
 ```
 
-15. 屏幕旋转的事件和样式
+<h5>15. 屏幕旋转的事件和样式</h5>
 
 **事件**:  window.orientation，取值：正负90表示横屏模式、0和180表现为竖屏模式；
 
@@ -431,7 +432,7 @@ window.onorientationchange = function(){
 }
 ```
 
-16. audio元素和video元素在ios和andriod中无法自动播放
+<h5>16. audio元素和video元素在ios和andriod中无法自动播放</h5>
 
 ```javascript
 //应对方案：触屏即播
@@ -442,11 +443,11 @@ $('html').one('touchstart',function(){
 
 > 可参考[《无法自动播放的audio元素》](http://www.cnblogs.com/PeunZhang/archive/2013/02/05/2893093.html)
 
-17. 摇一摇功能
+<h5>17. 摇一摇功能</h5>
 
 HTML5 deviceMotion：封装了运动传感器数据的事件，可以获取手机运动状态下的运动加速度等数据。
 
-18. 手机拍照和上传图片
+<h5>18. 手机拍照和上传图片</h5>
 
 <input type="file">的accept 属性
 <!-- 选择照片 -->
@@ -459,7 +460,7 @@ HTML5 deviceMotion：封装了运动传感器数据的事件，可以获取手�
 •	winphone不支持
 •	input控件默认外观丑陋
 
-19. 微信浏览器用户调整字体大小后页面矬了，怎么阻止用户调整
+<h5>19. 微信浏览器用户调整字体大小后页面矬了，怎么阻止用户调整</h5>
 
 **原因**
 
@@ -499,7 +500,7 @@ HTML5 deviceMotion：封装了运动传感器数据的事件，可以获取手�
 
 最好的解决方案：	`整个页面用rem或者百分比布局`
 
-20. 消除transition闪屏
+<h5>20. 消除transition闪屏</h5>
 
 网络都是这么写的，但我并没有测试出来
 
@@ -528,22 +529,22 @@ HTML5 deviceMotion：封装了运动传感器数据的事件，可以获取手�
 
 > 参考[《用CSS开启硬件加速来提高网站性能》](http://www.cnblogs.com/PeunZhang/p/3510083.html)
 
-21. 取消input在ios下，输入的时候英文首字母的默认大写
+<h5>21. 取消input在ios下，输入的时候英文首字母的默认大写</h5>
 
   <input autocapitalize="off" autocorrect="off" />
 
-22. android 上去掉语音输入按钮
+<h5>22. android 上去掉语音输入按钮</h5>
 
 `input::-webkit-input-speech-button {display: none}`
 
-23. android 2.3 bug
+<h5>23. android 2.3 bug</h5>
 
     •	@-webkit-keyframes 需要以0%开始100%结束，0%的百分号不能去掉
     •	after和before伪类无法使用动画animation
     •	border-radius不支持%单位
     •	translate百分比的写法和scale在一起会导致失效，例如-webkit-transform: translate(-50%,-50%) scale(-0.5, 1)
 
-24. android 4.x bug
+<h5>24. android 4.x bug</h5>
 
     •	三星 Galaxy S4中自带浏览器不支持border-radius缩写
     •	同时设置border-radius和背景色的时候，背景色会溢出到圆角以外部分
@@ -552,14 +553,14 @@ HTML5 deviceMotion：封装了运动传感器数据的事件，可以获取手�
 
 > 参考[《border-radius 移动之伤》](https://github.com/yisibl/blog/issues/2)
 
-25. 设计高性能CSS3动画的几个要素
+<h5>25. 设计高性能CSS3动画的几个要素</h5>
 
     •	尽可能地使用合成属性transform和opacity来设计CSS3动画，不使用position的left和top来定位
     •	利用translate3D开启GPU加速
 
 参考《High Performance Animations》
 
-26. fixed bug
+<h5>26. fixed bug</h5>
 
     •	ios下fixed元素容易定位出错，软键盘弹出时，影响fixed元素定位
     •	android下fixed表现要比iOS更好，软键盘弹出时，不会影响fixed元素定位
@@ -571,14 +572,14 @@ HTML5 deviceMotion：封装了运动传感器数据的事件，可以获取手�
     [《移动端web页面使用position:fixed问题总结》](https://github.com/maxzhang/maxzhang.github.com/issues/2)
     [《使用iScroll.js解决ios4下不支持position:fixed的问题》](http://www.cnblogs.com/PeunZhang/archive/2013/06/14/3117589.html)
 
-27. 如何阻止windows Phone的默认触摸事件
+<h5>27. 如何阻止windows Phone的默认触摸事件</h5>
 
 winphone下默认触摸事件事件使用e.preventDefault是无效的, 目前解决方法是使用样式来禁用
 `html{-ms-touch-action: none;}/* 禁止winphone默认触摸事件 */`
 
 > 参考[《Windows phone 8 touch support》](http://stackoverflow.com/questions/13396297/windows-phone-8-touch-support)
 
-28. 播放视频不全屏
+<h5>28. 播放视频不全屏</h5>
 
 ```html
 <!--
@@ -593,13 +594,13 @@ webkit-playsinline="true"
 
 > 体验demo：http://1.peunzhang.sinaapp.com/demo/video/index.html
 
-29. FastClick
+<h5>29. FastClick</h5>
 
 消除在移动浏览器上触发click事件与一个物理Tap(敲击)之间的300延迟
 
 > 参考《[FastClick](https://github.com/ftlabs/fastclick)》
 
-20. android内置浏览器能成功禁用触摸时的弹出层，但是微信浏览器、UC浏览器均失败。请教下：这几种浏览器下如何解决此问题呢？
+<h5>20. android内置浏览器能成功禁用触摸时的弹出层，但是微信浏览器、UC浏览器均失败。请教下：这几种浏览器下如何解决此问题呢？</h5>
 
 ```javascript
 //为特定元素排除默认事件
@@ -610,7 +611,7 @@ document.addEventListener("touchstart", function (e) {
 
 `.css{-webkit-touch-callout: none}`
 
-21. 白树大神，模拟按钮hover效果的两种实现方式，第一种在微信没反应，第二种页面引用了zepto.js,写了方法但是和默认的滑动有冲突，不能
+<h5>21. 白树大神，模拟按钮hover效果的两种实现方式，第一种在微信没反应，第二种页面引用了zepto.js,写了方法但是和默认的滑动有冲突，不能</h5>
 
 @  ┛自命菜菜
 这样写就不会冲突！
@@ -653,7 +654,7 @@ for(var i = 0 ,l = _btn.length; i < l; i++){
 }
 ```
 
-22. ios虚拟键盘“go”按钮的实现
+<h5>22. ios虚拟键盘“go”按钮的实现</h5>
 
 `<form action=".">`
 
