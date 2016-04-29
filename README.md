@@ -18,6 +18,7 @@ Study notes in 2016
  	- OWASP Top 10 2013-V1.2.pdf
  	- 移动端Web开发调试之Weinre调试.md
  	- less学习.md
+ 	- 移动web资源整理.md
 - Atom
  	- atomPlug -常用的Atom设置
  	- Atom-js-snippet.docx
