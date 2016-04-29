@@ -41,6 +41,7 @@
   - FastClick:消除在移动浏览器上触发click事件与一个物理Tap(敲击)之间的300延迟
   - 微信浏览器、UC浏览器成功禁用触摸时的弹出层失败
   - 模拟按钮hover效果的两种实现方式，第一种在微信没反应，第二种页面引用了zepto.js,写了方法但是和默认的滑动有冲突，不能流畅的滑动了
+  - ios虚拟键盘“go”按钮的实现
 - 常用的移动端框架
   - zepto.js
   - iscroll.js
@@ -651,6 +652,14 @@ for(var i = 0 ,l = _btn.length; i < l; i++){
   })(i);
 }
 ```
+
+22. ios虚拟键盘“go”按钮的实现
+
+`<form action=".">`
+
+必须加`action`，否则虚拟键盘出现的是“return”按钮
+
+如果模拟“search”按钮，除了在`form`加`action`外则在input中加入`name="search"`或`type="search"`
 
 ## 常用的移动端框架
 
