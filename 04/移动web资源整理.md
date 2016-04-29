@@ -52,17 +52,17 @@
 
 ## meta基础知识
 
-1. H5页面窗口自动调整到设备宽度，并禁止用户缩放页面
+<h4>1. H5页面窗口自动调整到设备宽度，并禁止用户缩放页面</h4>
 
 ```html
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 ```
 
-2. 忽略将页面中的数字识别为电话号码
+<h4>2. 忽略将页面中的数字识别为电话号码</h4>
 
 `<meta name="format-detection" content="telephone=no" />`
 
-3. 忽略Android平台中对邮箱地址的识别
+<h4>3. 忽略Android平台中对邮箱地址的识别</h4>
 
 `<meta name="format-detection" content="email=no" />`
 
@@ -75,7 +75,7 @@
 
 体验demo，解决在主屏幕打开页面后，点击页面链接不会跳转到系统自带的Safari
 
-4. 将网站添加到主屏幕快速启动方式，仅针对ios的safari顶端状态条的样式
+<h4>4. 将网站添加到主屏幕快速启动方式，仅针对ios的safari顶端状态条的样式</h4>
 
 ```html
 <meta name="apple-mobile-web-app-status-bar-style" content="black" />
@@ -84,7 +84,7 @@
 
 ## viewport模板
 
-1. viewport模板——通用
+<h4>1. viewport模板——通用</h4>
 
 ```html
 <!DOCTYPE html>
