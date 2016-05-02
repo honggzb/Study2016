@@ -19,7 +19,7 @@ Study notes in 2016
  	- 移动端Web开发调试之Weinre调试.md
  	- less学习.md
  	- 移动web资源整理.md
- - 2016,05
+- 2016,05
  	- 移动web开发tip
 - Atom
  	- atomPlug -常用的Atom设置
