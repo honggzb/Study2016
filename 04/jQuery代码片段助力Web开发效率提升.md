@@ -20,6 +20,9 @@
 20. [预加载图片](#preloading-image)
 21. [让整个Div可点击](#parent-div-clickable)
 22. [修改jQuery默认编码（例如默认UTF-8改成改GB2312）](#modify-default-GBK)
+23. [jQuery 判断元素上是否绑定了事件](#event-binding-verify)
+24. [根据媒体类型（media-type）切换新的样式表](#changeCSS-by-media-type)
+25. 
 
 <h3 id="back-to-page-top">1. 平滑滚动至页面顶部</h3>
 
@@ -365,13 +368,21 @@ $.ajaxSetup({
 });
 ```
 
-<h3 id="modify-default-GBK">23. 修改jQuery默认编码（例如默认UTF-8改成改GB2312）</h3>
+<h3 id="event-binding-verify">23. jQuery 判断元素上是否绑定了事件</h3>
 
 ```javascript
-$.ajaxSetup({
-	ajaxSettings:{ contentType:"application/x-www-form-urlencoded;chartset=GB2312"} 
-});
+//jQuery event封装支持判断元素上是否绑定了事件，此方法只适用于jQuery绑定的事件 
+var $events = $("#foo").data("events");if( $events && $events["click"] ){
+//your code 
+} 
 ```
+
+<h3 id="changeCSS-by-media-type">24. 根据媒体类型（media-type）切换新的样式表</h3>
+
+```javascript
+$('link[media='screen']').attr('href', 'alternative.css');
+```
+
 
 > Reference
 
