@@ -19,6 +19,7 @@
 19. [修复 IE6 PNG 问题](#fixed-png-ie6)
 20. [预加载图片](#preloading-image)
 21. [让整个Div可点击](#parent-div-clickable)
+22. [修改jQuery默认编码（例如默认UTF-8改成改GB2312）](#modify-default-GBK)
 
 <h3 id="back-to-page-top">1. 平滑滚动至页面顶部</h3>
 
@@ -356,8 +357,25 @@ $(".myBox").click(function(){
 });
 ```
 
+<h3 id="modify-default-GBK">22. 修改jQuery默认编码（例如默认UTF-8改成改GB2312）</h3>
+
+```javascript
+$.ajaxSetup({
+	ajaxSettings:{ contentType:"application/x-www-form-urlencoded;chartset=GB2312"} 
+});
+```
+
+<h3 id="modify-default-GBK">23. 修改jQuery默认编码（例如默认UTF-8改成改GB2312）</h3>
+
+```javascript
+$.ajaxSetup({
+	ajaxSettings:{ contentType:"application/x-www-form-urlencoded;chartset=GB2312"} 
+});
+```
+
 > Reference
 
 - http://www.tuicool.com/articles/nANNrq6
 - http://www.jb51.net/article/74208.htm
 - http://www.baidu.com/link?url=QdG_4iWphssUzKmQVlB4Mp5zJQQk4AeFqRUIJdLUqjQGCqgK4lB6qsOmYHds48z_l0QclNaVTILLXfJyTRET_dXcCQLaGxRmrn0EZsRg8m_&wd=&eqid=b11ecf560004720a000000045714fa20
+- [50个必备的实用jQuery代码段](http://www.open-open.com/solution/view/1319168320749)
