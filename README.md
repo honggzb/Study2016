@@ -21,6 +21,7 @@ Study notes in 2016
  	- 移动web资源整理.md
 - 2016,05
  	- 移动web开发tip
+ 	- Media Queries for Standard Devices.md
 - Atom
  	- atomPlug -常用的Atom设置
  	- Atom-js-snippet.docx
