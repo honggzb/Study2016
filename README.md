@@ -58,8 +58,8 @@ Study notes in 2016
 		- 2048:  2048游戏
 	- menu: 形形色色的下拉菜单
 		- 纯HTML/css
-		- js实现下拉菜单的显示和隐藏
-		- jQuery实现下拉菜单的显示和隐藏
+		- 中英文菜单变换
+		-  
 - GulpStudy
 - Angular2的一些资料
 - node Module汇总
