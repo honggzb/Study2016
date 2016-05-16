@@ -52,6 +52,10 @@ Study notes in 2016
 	- babel设置
 	- debugNode - nodeJS调试
 	- samples: node.js 学习代码
+- Source code
+	- js
+		- resizable: 仿照jquery UI的resizable
+		- 2048:  2048游戏
 - GulpStudy
 - Angular2的一些资料
 - node Module汇总
