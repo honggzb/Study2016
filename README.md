@@ -59,7 +59,8 @@ Study notes in 2016
 	- menu: 形形色色的下拉菜单
 		- 纯HTML/css
 		- 中英文菜单变换
-		-  
+		- css3菜单
+		- 动态菜单
 - GulpStudy
 - Angular2的一些资料
 - node Module汇总
