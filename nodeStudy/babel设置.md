@@ -30,7 +30,7 @@ $ npm install babel-preset-es2015 babel-preset-stage-0 --save-dev
 
 ## 使用node编译
 
-- `npm3 i babel-core babel-preset-es2015 babel-polyfill --save-dev`
+- `npm i babel-core babel-preset-es2015 babel-polyfill --save-dev`
 - `.babelrc`
 
 ```
