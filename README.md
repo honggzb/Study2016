@@ -53,7 +53,10 @@ Study notes in 2016
 	- 1. Redis数据结构
 - NodeJS 学习
 	- babel设置
-	- debugNode - nodeJS调试
+	- debugNode.md - nodeJS调试
+	- streamAPI.md
+	- nodeModule汇总.md
+	- resources.md
 	- samples: node.js 学习代码
 - Source code
 	- js
