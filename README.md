@@ -32,8 +32,12 @@ Study notes in 2016
  	- jsArray : Array的五种方法 
 - ES6Study
  	- 01 Let
+ 	- 02-Destructuring解构赋值.md
+ 	- 03-extended各个对象的扩展.md
+ 	- EnvSetup.md
+ 	- Promise对象.md
  	- References
- 	- Sample1 -- 一个ES6使用的小例子(gulp构建)
+ 	- Sample1 -- ES6使用的小例子(gulp构建)
 - basic
 	- 深入理解javascript原型和闭包 
 - ReactStudy
