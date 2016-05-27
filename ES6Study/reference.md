@@ -5,6 +5,7 @@
 - [ES6 支持速查表](https://kangax.github.io/compat-table/es6/)
 - [ECMAScript 6入门](http://es6.ruanyifeng.com/)
 - [ECMAScript 6 学习笔记](https://github.com/banricho/webLog/issues/7)
+- [深入浅出ES6](http://www.infoq.com/cn/es6-in-depth/)
 - http://ccoenraets.github.io/es6-tutorial/
 - http://babeljs.io/docs/learn-es2015/
 - [ECMAScript 6 Features 中文版](https://github.com/ES-CN/es6features)
