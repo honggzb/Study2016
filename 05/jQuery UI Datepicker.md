@@ -20,6 +20,7 @@ $(function() {
      changeMonth: true,
      changeYear: true,
      dateFormat: "mm/dd/yy",
+     // month和year下拉菜单改变时候， input中的值跟着改变
      'onChangeMonthYear': function(year, month, inst){
          var selectedDate = $(this).datepicker("getDate");
          //$(this).datepicker( "setDate", month + '/1/' + year );
@@ -27,11 +28,12 @@ $(function() {
          selectedDate.setFullYear(year);
          $(this).datepicker( "setDate", selectedDate );
        }
+  // validation, 验证输入的日期是否符合日期规范，如不能输入02/30/2012, 22/02/2012, 04/44/2010
+  // 另一种验证方法是引入jquery.ui.datepicker.validation.js
   }).on("blur", function (e) {
-      var curDate = $(this).val();
-      console.log("curDate="+curDate);
+      var inputDate = $(this).val();
       try {
-          var r = $.datepicker.parseDate("mm/dd/yy", curDate);
+          var r = $.datepicker.parseDate("mm/dd/yy", inputDate);
       } catch(e) {
           //alert('Not VALID!');
           var currentdate = $(this).datepicker("getDate");
@@ -39,6 +41,7 @@ $(function() {
           $(this).datepicker("setDate", currentdate);
       }
   });
+  // 其他验证方法，未通过代码去验证，先mark一下
 //     $.validator.addMethod("truedate", function (value) {
 //         function GetFullYear(year) {
 //             var twoDigitCutoffYear = 10 % 100;
