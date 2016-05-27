@@ -64,9 +64,9 @@ Point.prototype = {
 
 ```
 
-- constructor 函数可以省略，但如果子类中写了 constructor 就一定要写 super()，否则会提示 this 不存在。super 是个神奇的关键词，它可以执行并创建 this，又可以和 this 一样被 new 改变指向
-- 定义“类”的方法的时候，前面不需要加上function这个关键字, 更神奇的是，它不能被打印，或被 typeof 检测类型，思考了许久也无法领略其中的奥秘。`console.log(super); // SyntaxError: 'super' keyword unexpected here`
+- 定义“类”的方法的时候，前面不需要加上function这个关键字
 - ES6 规定 class 中只能包含方法，不能包含属性。尽管如此，prototype 属性仍然是开放的，可以使用 ES5 的方法添加可继承的属性
+- constructor 函数可以省略，但如果子类中写了 constructor 就一定要写 super()，否则会提示 this 不存在。super 是个神奇的关键词，它可以执行并创建 this，又可以和 this 一样被 new 改变指向, 更神奇的是，它不能被打印，或被 typeof 检测类型，`console.log(super); // SyntaxError: 'super' keyword unexpected here`
 - class 中定义的方法 enumerable 属性的值均为 false
 
 ### 2 继承
