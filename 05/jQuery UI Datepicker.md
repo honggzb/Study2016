@@ -30,7 +30,7 @@ $(function() {
        }
   // validation, 验证输入的日期是否符合日期规范，如不能输入02/30/2012, 22/02/2012, 04/44/2010
   // 另一种验证方法是引入jquery.ui.datepicker.validation.js
-  }).on("blur", function (e) {
+  }).on("change", function (e) {   //另外的选项有： blur, keyup
       var inputDate = $(this).val();
       try {
           var r = $.datepicker.parseDate("mm/dd/yy", inputDate);
@@ -41,6 +41,23 @@ $(function() {
           $(this).datepicker("setDate", currentdate);
       }
   });
+  
+   $("#datepicker").attr("placeholder", "mm-dd-yyyy").datepicker({
+        dateFormat: "mm-dd-yy",
+        maxDate: "+1",
+        showOn: "button",
+        showOtherMonths: true
+    }).on("change", function(e) {
+        var curDate = $(this).datepicker("getDate");
+        var maxDate = new Date();
+        maxDate.setDate(maxDate.getDate() + 1); // add one day
+        maxDate.setHours(0, 0, 0, 0); // clear time portion for correct results
+        console.log(this.value, curDate, maxDate);
+        if (curDate > maxDate) {
+            alert("invalid date");
+            $(this).datepicker("setDate", maxDate);
+        }
+    });
   // 其他验证方法，未通过代码去验证，先mark一下
 //     $.validator.addMethod("truedate", function (value) {
 //         function GetFullYear(year) {
