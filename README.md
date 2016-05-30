@@ -28,6 +28,11 @@ Study notes in 2016
  	- jQuery UI Datepicker.md -- 工作中DatePicker的一些用法总结
 - Atom
  	- atomPlug -常用的Atom设置
+ 	- grunt.initConfig说明.md
+ 	- gruntStudy.md
+ 	- webPackStudy.md
+- BuildStudy -Build tools 
+ 	- GulpStudy.md
  	- Atom-js-snippet.docx
 - ES5Study
  	- jsArray : Array的五种方法 
@@ -74,7 +79,6 @@ Study notes in 2016
 		- 中英文菜单变换
 		- css3菜单
 		- 动态菜单
-- GulpStudy
 - Angular2的一些资料
 - node Module汇总
 - Web Front-end Stack v2.2.png
