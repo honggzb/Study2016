@@ -1,3 +1,9 @@
+- Combining Files
+- Minfying files
+- Maintaining File order
+- Transpilation
+- Linting
+
 ## 1 模块化
 
 **所有资源都是模块**
