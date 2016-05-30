@@ -45,6 +45,7 @@ Study notes in 2016
 	- ReactdevEnvironmentSetup.md -- React开发环境设置
 	- reactEnvironment2.rar  -- React开发环境设置代码2
 	- CreatClassVScomponent.md  -- React.createClass versus extends React.Component (https://toddmotto.com/react-create-class-versus-component/)
+	- webPackStudy.md    -- WebPack
 	- reactSampleBasic-04062016.rar
 - interview
 	- htmlCSS
