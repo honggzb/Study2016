@@ -16,9 +16,9 @@
   - 4.4 Working with ES6 Modules
   - 4.5 Adding Source Maps support
   - 4.6 Creating Multiple Bundles
+  - 4.7 Add CSS/SCSS/LESS and images, fonts to build
 - 5 `webpack.config.js` 配置说明
-- 6 [CSS 及图片的引用](https://github.com/petehunt/webpack-howto#5-stylesheets-and-images)
-- 7 补充
+- 6 补充
 
 
 ## 1 模块化-Using a Module System
@@ -168,6 +168,131 @@ npm install --save-dev babel-preset-es2015
 
 ### 4.6 Creating Multiple Bundles
 
+```javascript
+var path = require('path');
+var webpack = require('webpack');
+var commonsPlugin = new webpack.optimize.CommonsChunkPlugin('shared.js');
+module.exports = {
+	context: path.resolve('js'),
+	entry: {
+		about: './about_page.js',
+		home: './home_page.js',
+		contact: './contact_page.js'
+	},
+	output: {
+		path: path.resolve('build/js/'),
+		publicPath: '/public/assets/js/',
+		filename: "[name].js"  //according to entry name
+	},
+	plugins: [commonsPlugin],
+	devServer: {
+		contentBase: 'public'
+	},
+	module: {
+		loaders: [
+			{test: /\.es6$/, exclude:/node_modules/, loader: "babel-loader"}
+		]
+	},
+	resolve: {
+		extensions: ['', '.js', '.es6']
+	}
+}
+```
+
+### 4.7 Add CSS/SCSS/LESS and images, fonts to build
+
+[CSS 及图片的引用](https://github.com/petehunt/webpack-howto#5-stylesheets-and-images)
+
+`npm install --save-dev css-loader style-loader less-loader sass-loader url-loader`
+
+```javascript
+module.exports = {
+  entry: './main.js',
+  output: {
+    path: './build', // This is where images AND js will go
+    publicPath: 'http://mycdn.com/', // This is used to generate URLs to e.g. images
+    filename: 'bundle.js'
+  },
+  module: {
+    loaders: [
+      { test: /\.css$/, loader: 'style-loader!css-loader' },   // use ! to chain loaders
+      { test: /\.less$/, loader: 'style-loader!css-loader!less-loader' }, 
+      { test: /\.scss$/, loader: 'style-loader!css-loader!sass-loader' }, 
+      { test: /\.(png|jpg|ttf|eot)$/, loader: 'url-loader?limit=10000'} // inline base64 URLs for <=8k(8192) images, direct URLs for the rest, limit=10000 is for fonts
+      //? 后边的 query 有两种写法, 可以看下文档: http://webpack.github.io/docs/using-loaders.html#query-parameters
+    ]
+  }
+};
+```
+
+在app.js中
+
+```javascript
+require('./bootstrap.css');
+require('./myapp.less');
+var img = document.createElement('img');
+img.style.height = "25%";  img.style.width = "25%";
+img.src = require('./glyph.png');
+document.getElementById('img_container').appendChild(img);
+```
+
+- CSS 跟 LESS, 还有图片, 被直接引用了
+- 实际上 CSS 被转化为 <style> 标签, 而图片可能被转化成 base64 格式的 dataUrl
+
+**独立打包样式文件**
+
+希望项目的样式能不要被打包到脚本中，而是独立出来作为.css，然后在页面中以<link>标签引入, 需要 `npm install --save-dev extract-text-webpack-plugin`
+
+```javascript
+var webpack = require('webpack');
+var commonsPlugin = new webpack.optimize.CommonsChunkPlugin('common.js');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
+
+module.exports = {
+   plugins: [commonsPlugin, new ExtractTextPlugin("[name].css")],
+   entry: {
+        ...
+//or
+var path = require('path');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+module.exports = {
+	entry: ["./js/app"],
+	output: {
+		path: path.resolve('build/'),
+		publicPath: '/public/assets/',
+		filename: "bundle.js"
+	},
+	plugins: [
+		new ExtractTextPlugin("styles.css")
+	],
+	devServer: {
+		contentBase: 'public'
+	},
+	module: {
+		loaders: [
+			{test: /\.css$/,exclude: /node_modules/,loader: ExtractTextPlugin.extract("style-loader", "css-loader")},
+			{test: /\.less$/,exclude: /node_modules/,loader: ExtractTextPlugin.extract("style-loader", "css-loader!less-loader")}
+		]
+	},
+	resolve: {
+		extensions: ['', '.js', '.es6']
+	}
+}
+//index.html
+<script src="/public/assets/bundle.js"></script>
+```
+
+**CSS Auto Prefixer**
+
+```javascript
+module: {
+		loaders: [
+			{ test: /\.css$/, exclude: /node_modules/, loader: "style-loader!css-loader!autoprefixer-loader" },
+			{ test: /\.less$/, exclude: /node_modules/, loader: "style-loader!css-loader!autoprefixer-loader!less-loader"}
+		]
+	},
+```
+
 ## 5 `webpack.config.js` 配置说明
 
 ```javascript
@@ -179,8 +304,7 @@ module.exports = {
     plugins: [new CommonsChunkPlugin('common.js')],
     //页面入口文件配置
     entry: {
-        index : './src/js/page/index.js',
-	//支持数组形式，将加载数组中的所有模块，但以最后一个模块作为输出
+        index : './src/js/page/index.js',  //支持数组形式，将加载数组中的所有模块，但以最后一个模块作为输出
         page2: ["./entry1", "./entry2"]
     },
     //入口文件输出配置
@@ -199,10 +323,10 @@ module.exports = {
     },
     //其它解决方案配置
     resolve: {
-        root: 'E:/github/flux-example/src', //绝对路径, 查找module的话从这里开始查找
+        root: 'E:/github/flux-example/src',         //绝对路径, 查找module的话从这里开始查找
         extensions: ['', '.js', '.json', '.scss'],  //指明程序自动补全识别哪些后缀, 第一个是空字符串! 对应不需要后缀的情况
         alias: {
-            AppStore : 'js/stores/AppStores.js',  //后续直接 require('AppStore') 即可
+            AppStore : 'js/stores/AppStores.js',    //后续直接 require('AppStore') 即可
             ActionType : 'js/actions/ActionType.js',
             AppAction : 'js/actions/AppAction.js'
         }
@@ -213,56 +337,9 @@ module.exports = {
 - 可以点[这里](http://webpack.github.io/docs/list-of-loaders.html)查阅全部的 loader 列表
 - 关于 webpack.config.js 更详尽的配置可以参考[这里](http://webpack.github.io/docs/configuration.html)。
 
-## 6 [CSS 及图片的引用](https://github.com/petehunt/webpack-howto#5-stylesheets-and-images)
+## 6 补充
 
-```javascript
-jsrequire('./bootstrap.css');
-require('./myapp.less');
-var img = document.createElement('img');
-img.src = require('./glyph.png');
-```
-
-上边的是 JavaScript 代码, CSS 跟 LESS, 还有图片, 被直接引用了
-实际上 CSS 被转化为 <style> 标签, 而图片可能被转化成 base64 格式的 dataUrl
-但是要主要在 webpack.config.js 文件写好对应的 loader:
-
-```javascript
-module.exports = {
-  entry: './main.js',
-  output: {
-    path: './build', // This is where images AND js will go
-    publicPath: 'http://mycdn.com/', // This is used to generate URLs to e.g. images
-    filename: 'bundle.js'
-  },
-  module: {
-    loaders: [
-      { test: /\.less$/, loader: 'style-loader!css-loader!less-loader' }, // use ! to chain loaders
-      { test: /\.css$/, loader: 'style-loader!css-loader' },
-      { test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192'} // inline base64 URLs for <=8k images, direct URLs for the rest
-      //? 后边的 query 有两种写法, 可以看下文档: http://webpack.github.io/docs/using-loaders.html#query-parameters
-    ]
-  }
-};
-```
-
-## 7 补充
-
-### 7.1  独立打包样式文件
-
-希望项目的样式能不要被打包到脚本中，而是独立出来作为.css，然后在页面中以<link>标签引入, 需要 extract-text-webpack-plugin
-
-```javascript
-var webpack = require('webpack');
-var commonsPlugin = new webpack.optimize.CommonsChunkPlugin('common.js');
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
-
-module.exports = {
-   plugins: [commonsPlugin, new ExtractTextPlugin("[name].css")],
-   entry: {
-        ...
-```
-
-### 7.2 与 grunt/gulp 配合
+### 6.2 与 grunt/gulp 配合
 
 ```javascript
 gulp.task("webpack", function(callback) {
@@ -279,7 +356,7 @@ gulp.task("webpack", function(callback) {
 
 更多参照信息请参阅：[grunt配置](http://webpack.github.io/docs/usage-with-grunt.html) / [gulp配置](http://webpack.github.io/docs/usage-with-gulp.html)
 
-### 7.3 版本控制(hash缓存)
+### 7.3 版本控制([hash缓存](http://webpack.github.io/docs/long-term-caching.html))
 
 对于静态资源的版本控制，目前微信项目采取办法是版本号作为请求参数，版本号为发布日期，但有两个问题：
 
@@ -374,7 +451,6 @@ module.exports = {
     }
 ```
 
-
 > references
 
 - [webpack入门指谜](http://segmentfault.com/a/1190000002551952)
@@ -382,3 +458,4 @@ module.exports = {
 - [一小时包教会 —— webpack 入门指南](http://www.cnblogs.com/vajoy/p/4650467.html)
 - [webpack 使用教程](https://www.zfanw.com/blog/webpack-tutorial.html)
 - [webpack Samples](https://github.com/zero1036/TGWebS/tree/dev/TGWebS/nodeJS/webpack)
+- [建立react webpack 工具包](http://www.checkme.tw/wordpress/react-webpack-generator/)
