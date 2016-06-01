@@ -5,6 +5,7 @@
 - [JqueryUI - Datepicker](http://www.tutorialspoint.com/jqueryui/jqueryui_datepicker.htm)
 - http://stackoverflow.com/questions/3149877/jquery-datepicker-validate-current-input-value
 - http://stackoverflow.com/questions/2715626/jquery-datepicker-validate-date-mm-dd-yyyy
+- http://api.jqueryui.com/datepicker/#option-onChangeMonthYear
 
 **Sample**
 
@@ -22,9 +23,9 @@ $(function() {
      dateFormat: "mm/dd/yy",
      // month和year下拉菜单改变时候， input中的值跟着改变
      'onChangeMonthYear': function(year, month, inst){
-         var selectedDate = $(this).datepicker("getDate");
-         //$(this).datepicker( "setDate", month + '/1/' + year );
-         selectedDate.setMonth(month-1);//month is 1-12, setMonth is 0-11
+         var selectedDate = $(this).datepicker("getDate");   //Date object
+         selectedDate.setDate(1);     //set first day of the month
+         selectedDate.setMonth(month-1);  //month is 1-12, setMonth is 0-11
          selectedDate.setFullYear(year);
          $(this).datepicker( "setDate", selectedDate );
        }
