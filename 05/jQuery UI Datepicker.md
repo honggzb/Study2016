@@ -5,7 +5,7 @@
 - [JqueryUI - Datepicker](http://www.tutorialspoint.com/jqueryui/jqueryui_datepicker.htm)
 - http://stackoverflow.com/questions/3149877/jquery-datepicker-validate-current-input-value
 - http://stackoverflow.com/questions/2715626/jquery-datepicker-validate-date-mm-dd-yyyy
-- http://api.jqueryui.com/datepicker/#option-onChangeMonthYear
+- http://www.tutorialspoint.com/jqueryui/jqueryui_datepicker.htm
 
 **Sample**
 
