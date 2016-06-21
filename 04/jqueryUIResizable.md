@@ -289,3 +289,9 @@ $(window).resize(function () {
 
 The actual height is dictated by the parent of your <div> containing the dialogue content, hence the reference. You can also use this method to control other properties of the parent.
 
+### 4.2 Dialog extended plugin
+
+- https://github.com/ROMB/jquery-dialogextend
+- https://github.com/CrazyTuna/jquery-extendeddialog
+- http://www.jqueryscript.net/other/jQuery-jQuery-UI-Dialog-Enhancement-Plugin-dialogextend.html
+- 
