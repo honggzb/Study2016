@@ -206,3 +206,64 @@ destory  从元素中移除拖拽功能  |.droppable( 'destroy' )
 disable  禁用元素的拖拽功能    |.droppable( 'disable' )
 enable  启用元素的拖拽功能     |.droppable( 'enable' )
 option  获取或设置元素的参数   |.droppable( 'option' , optionName , [value] )
+
+## 4. Others
+
+### 4.1 FullScreen button for Dialog
+
+http://mabp.kiev.ua/2010/12/15/jquery-ui-fullscreen-button-for-dialog/
+
+```css
+.ui-dialog .ui-dialog-titlebar-fullscreen {
+    position: absolute;
+    right: 2em;
+    top: 50%;
+    width: 20px;
+    margin: -10px 0 0 0;
+    padding: 1px;
+    height: 20px;
+}
+```
+
+```javascript
+(function ($) {
+    $.ui.dialog.prototype.fullscreen = false;
+    var old = $.ui.dialog.prototype._createTitlebar;
+    
+    $.ui.dialog.prototype._createTitlebar = function () {
+        old.call(this);
+        var oldHeight = this.options.height,
+            oldWidth = this.options.width;
+
+        this.uiDialogTitlebarFullScreen = $("<button type='button'></button>")
+            .button({
+                label: this.options.fullScreenText,
+                icons: {
+                    primary: "ui-icon-newwin"
+                },
+                text: false
+            })
+            .addClass("ui-dialog-titlebar-fullscreen")
+            .appendTo(this.uiDialogTitlebar);
+
+        this._on(this.uiDialogTitlebarFullScreen, {
+            click: function (event) {
+                event.preventDefault();
+                if (this.fullscreen) {
+                    this._setOptions({
+                        height: oldHeight,
+                        width: oldWidth
+                    });
+                } else {
+                    this._setOptions({
+                        height: window.innerHeight - 30,
+                        width: window.innerWidth - 30
+                    });
+                }
+                this.fullscreen = !this.fullscreen;
+                this._position("center");
+            }
+        });
+    };
+})(jQuery);
+```
