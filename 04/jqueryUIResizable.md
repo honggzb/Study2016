@@ -211,7 +211,7 @@ option  获取或设置元素的参数   |.droppable( 'option' , optionName , [v
 
 ### 4.1 FullScreen button for Dialog
 
-http://mabp.kiev.ua/2010/12/15/jquery-ui-fullscreen-button-for-dialog/
+**[solution 1](http://mabp.kiev.ua/2010/12/15/jquery-ui-fullscreen-button-for-dialog/)**
 
 ```css
 .ui-dialog .ui-dialog-titlebar-fullscreen {
@@ -267,3 +267,23 @@ http://mabp.kiev.ua/2010/12/15/jquery-ui-fullscreen-button-for-dialog/
     };
 })(jQuery);
 ```
+
+**[solution 2](http://stackoverflow.com/questions/16855636/how-to-make-jquery-ui-dialog-occupy-full-window-and-dynamically-adjust-to-window)**
+
+```javascript
+$(window).resize(function () {
+   $('.ui-dialog').css({
+        'width': $(window).width(),
+        'height': $(window).height(),
+        'left': '0px',
+        'top':'0px'
+   });
+}).resize(); //<---- resizes on page ready
+```
+
+**[solution 3](http://stackoverflow.com/questions/16855636/how-to-make-jquery-ui-dialog-occupy-full-window-and-dynamically-adjust-to-window)**
+
+`$("#DlgID").parent().css('height', $(window).height());`
+
+The actual height is dictated by the parent of your <div> containing the dialogue content, hence the reference. You can also use this method to control other properties of the parent.
+
