@@ -270,6 +270,8 @@ option  获取或设置元素的参数   |.droppable( 'option' , optionName , [v
 
 **[solution 2](http://stackoverflow.com/questions/16855636/how-to-make-jquery-ui-dialog-occupy-full-window-and-dynamically-adjust-to-window)**
 
+http://jsfiddle.net/NnsN2/1/
+
 ```javascript
 $(window).resize(function () {
    $('.ui-dialog').css({
