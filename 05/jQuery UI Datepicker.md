@@ -23,18 +23,21 @@ $(function() {
      dateFormat: "mm/dd/yy",
      // month和year下拉菜单改变时候， input中的值跟着改变
      'onChangeMonthYear': function(year, month, inst){
-          //inst:  an internal object that captures the old state of the datepicker, inst.selectedDay(), inst.selectedMonth(), inst.selectedYear()
+          //inst:  an internal object that captures the old state of the datepicker
+          //       inst.selectedDay()
+          //       inst.selectedMonth()
+          //       inst.selectedYear()
           //month: the new state of the datepicker
          	var selectedDate = $(this).datepicker("getDate") || new Date();
          	// month: start from 1, selectedDate.getMonth(): jQuery method, start from 0
 					selectedDate.setMonth(month-1);
 					selectedDate.setFullYear(year);
-					var lastDate = otui.parent(this,"ot-datepicker").store.value || new Date();
 					try {
 							var curselectDate = month +'/'+inst.selectedDay+'/'+year;
 							var r = $.datepicker.parseDate(otui.formatters.dateAsJQUI, curselectDate);
 						} catch(e) {
-							selectedDate = lastDate;
+							//alert('Not VALID!');
+							selectedDate = $(this).datepicker("getDate") || new Date();
 					}
 					 $(this).datepicker("setDate", selectedDate);
        }
