@@ -23,11 +23,20 @@ $(function() {
      dateFormat: "mm/dd/yy",
      // month和year下拉菜单改变时候， input中的值跟着改变
      'onChangeMonthYear': function(year, month, inst){
-         var selectedDate = $(this).datepicker("getDate");   //Date object
-         selectedDate.setDate(1);     //set first day of the month
-         selectedDate.setMonth(month-1);  //month is 1-12, setMonth is 0-11
-         selectedDate.setFullYear(year);
-         $(this).datepicker( "setDate", selectedDate );
+          //inst:  an internal object that captures the old state of the datepicker, inst.selectedDay(), inst.selectedMonth(), inst.selectedYear()
+          //month: the new state of the datepicker
+         	var selectedDate = $(this).datepicker("getDate") || new Date();
+         	// month: start from 1, selectedDate.getMonth(): jQuery method, start from 0
+					selectedDate.setMonth(month-1);
+					selectedDate.setFullYear(year);
+					var lastDate = otui.parent(this,"ot-datepicker").store.value || new Date();
+					try {
+							var curselectDate = month +'/'+inst.selectedDay+'/'+year;
+							var r = $.datepicker.parseDate(otui.formatters.dateAsJQUI, curselectDate);
+						} catch(e) {
+							selectedDate = lastDate;
+					}
+					 $(this).datepicker("setDate", selectedDate);
        }
   // validation, 验证输入的日期是否符合日期规范，如不能输入02/30/2012, 22/02/2012, 04/44/2010
   // 另一种验证方法是引入jquery.ui.datepicker.validation.js
