@@ -26,7 +26,7 @@ Study notes in 2016
  	- this.md(上下文对象this的简单代码)
  	- apache-ab并发负载压力测试.md
  	- jQuery UI Datepicker.md -- 工作中DatePicker的一些用法总结
- - 2016,06
+- 2016,06
  	- Mongoose.md  -- Mongoose学习
 - Atom
  	- atomPlug -常用的Atom设置
