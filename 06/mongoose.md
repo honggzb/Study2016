@@ -93,6 +93,7 @@ var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var Blog = require('../models/blog');
 var port = process.env.Port || 3000;
 var app = express();
 
@@ -106,6 +107,23 @@ app.listen(port);
 console.log('server started on port' + port);
 
 app.get('/',function(req,res) {
-  res.render('index', )
+  Blog.fetch(function(err,blogs){
+    if(err){
+      console.log(err);
+    }
+    res.render('index', {
+      title: 'index',
+      blogs: blog
+    })
+  });
 });
+
+app.get('blog/:id',function(req,res) {
+  var id = req.params.id;
+  Blog.findById(id, function(err,blog){
+    res.render('detail', {
+      
+    })
+  })
+})
 ```
