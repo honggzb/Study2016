@@ -47,6 +47,7 @@ Study notes in 2016
  	- References
  	- Sample1 -- ES6使用的小例子(gulp构建)
 - basic
+	- ant.md
 	- 深入理解javascript原型和闭包 
 	- javascript知识点积累.md
 - ReactStudy
