@@ -86,3 +86,21 @@ Study notes in 2016
 - Angular2的一些资料
 - node Module汇总
 - Web Front-end Stack v2.2.png
+
+
+```
+├── LICENSE
+├── README.md
+├── app.js
+├── components
+│   ├── Hello.js
+│   └── tests
+│       └── hello-test.js
+├── index.html
+├── karma.conf.js
+├── package.json
+├── static
+│   └── bundle.js
+├── tests.webpack.js
+└── webpack.config.js
+```
