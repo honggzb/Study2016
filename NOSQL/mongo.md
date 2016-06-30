@@ -51,3 +51,7 @@ db.test_ttlsa_com.drop()
 -- 删除整个数据库
 db.ttlsa_com.getDB() db.dropDatabase()
 ```
+
+> reference
+
+- http://limingnihao.iteye.com/blog/1938383
