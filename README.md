@@ -74,6 +74,7 @@ Study notes in 2016
 	- nodeModule汇总.md
 	- resources.md
 	- samples: node.js 学习代码
+	- express 获取url参数，post参数的三种方式.md
 - Source code
 	- js
 		- resizable: 仿照jquery UI的resizable
