@@ -485,3 +485,5 @@ parseISO8601 (function)|Parses an ISO8601 string into a Dateobject.
 - [FullCalendar热门博客列表 - ITeye博客频道 - ITeye.com](http://www.iteye.com/blogs/tag/FullCalendar)
 - [jQuery插件实战之fullcalendar（日历插件） - 使用fullcalendar开发一个功能完整的富客户端会议室预定系统](http://www.gbin1.com/technology/jquery/devappwithfullcanlendar/index.html)
 - [jquery.fullCalendar官方文档翻译(一款小巧好用的日程管理日历, 可集成Google Calendar)](http://pjzz6666.iteye.com/blog/1746412)
+- [FullCalendar（日程管理控件）](http://www.oschina.net/question/565065_86550)
+- [fullCalendar:中文API](http://blog.163.com/lizhenming_2008/blog/static/7655833320124304254255/)
