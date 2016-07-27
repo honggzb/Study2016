@@ -28,6 +28,8 @@ Study notes in 2016
  	- jQuery UI Datepicker.md -- 工作中DatePicker的一些用法总结
 - 2016,06
  	- Mongoose.md  -- Mongoose学习
+- 2016,07
+ 	- fullCalendar学习.md
 - Atom
  	- atomPlug -常用的Atom设置
  	- grunt.initConfig说明.md
