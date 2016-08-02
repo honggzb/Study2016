@@ -1,0 +1,124 @@
+
+body
+{
+    background: #eee;
+}
+
+#uploadBox
+{
+    width: 622px;
+    height: 362px;
+    background-color: #fff;
+    border: 1px solid #777;
+    margin: 120px auto;
+    text-align: center;
+    line-height: 362px;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #444;
+}
+
+#uploadBox ul li
+{
+    float: left;
+    position: relative;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+#uploadBox  li img
+{
+    border: 1px solid #D1D1D1;
+    width: 198px;
+    height: 112px;
+    vertical-align: middle;
+}
+
+#uploadBox  li  .percentage
+{
+    width: 69px;
+    height: 69px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -34.5px;
+    margin-top: -34.5px;
+    text-align: center;
+    font-size: 18px;
+    line-height: 69px;
+    color: #fff;
+    border-radius: 34.5px;
+    background: rgba(0, 0, 0, .8);
+}
+
+#uploadBox  li.done .percentage
+{
+    background: url("images/done.png") no-repeat 0 0;
+}
+
+#uploadBox li .progress
+{
+    position: absolute;
+    bottom: 0px;
+    width: 200px;
+    background: #000;
+    opacity: .5;
+    left: 0;
+}
+
+#uploadBox  li.done .progress
+{
+    display: none;
+}
+
+.clearfix
+{
+    clear: both;
+}
+
+.hidden
+{
+    display: none;
+}
+
+::-webkit-scrollbar
+{
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-button
+{
+    display: none;
+}
+
+::-webkit-scrollbar-track
+{
+    background-color: #000;
+}
+
+::-webkit-scrollbar-track-piece
+{
+    background: #ddd;
+}
+
+::-webkit-scrollbar-thumb
+{
+    border-radius: 5px;
+    background-color: #8e8e8e;
+}
+
+::-webkit-scrollbar-thumb:hover
+{
+    background-color: #3b3b3b;
+}
+
+::-webkit-scrollbar-corner
+{
+    background-color: #535353;
+}
+
+::-webkit-scrollbar-resizer
+{
+    background-color: #ff6e00;
+}
