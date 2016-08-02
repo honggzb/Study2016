@@ -86,6 +86,8 @@ Study notes in 2016
 		- 中英文菜单变换
 		- css3菜单
 		- 动态菜单
+- resource
+	- 网页设计资源
 - Angular2的一些资料
 - node Module汇总
 - Web Front-end Stack v2.2.png
