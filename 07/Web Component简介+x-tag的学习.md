@@ -97,7 +97,7 @@ xtag.register('<element-name>', {
 
 **sample - italic-string的自定义元素**  
 
-- 获取到自定义标签的innerHTML 内容，并将内容放到<i>中，这样显示出来的就会是斜体的样式了
+- 获取到自定义标签的innerHTML 内容，并将内容放到`<i>`中，这样显示出来的就会是斜体的样式了
 - 这个自定义元素有一个textColor属性，可以改变`<i>`标签中文本的颜色。textColor是在accessors属性中创建的，accessors 可以定义italicstring元素中需要配置的所有属性。
 - 通过events 属性，我们创建了一个事件监听器。在上述代码中，我们监听了`<i>`的单击事件，当该元素被单击了，控制台中就会输出信息
 - 通过methods 属性我们可以定义元素的方法。在代码中有一个叫作changed-ToRed()的回调，外部代码可以通过这个方法将自定义元素的文本的颜色变成红色。方法中通过`document.getElementById()`找到带有id 是iStringComponent的自定义元素（也就是italic-string 组件），然后改变元素的样式。在按钮上添加了onclick方法调用doColorRed()，在doColorRed 方法中，changedToRed()会被调用
