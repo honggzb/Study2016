@@ -31,6 +31,7 @@ Study notes in 2016
 - 2016,07
  	- fullCalendar学习.md
  	- html5FileAPI学习+sample(upload应用)
+ 	- Web Component简介 + x-tag的学习.md
 - Atom
  	- atomPlug -常用的Atom设置
  	- grunt.initConfig说明.md
