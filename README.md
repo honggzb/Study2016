@@ -91,6 +91,8 @@ Study notes in 2016
 		- 中英文菜单变换
 		- css3菜单
 		- 动态菜单
+	- HTML5 API
+		- HTML5LocalStorage-日程提醒簿.html
 - resource
 	- 网页设计资源
 - Angular2的一些资料
