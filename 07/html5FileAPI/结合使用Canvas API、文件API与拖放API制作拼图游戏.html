@@ -1,0 +1,254 @@
+﻿<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+<title>结合使用Canvas API、文件API与拖放API制作拼图游戏</title>
+<style> 
+header{
+    text-align:center;
+    width:800px;
+}
+div#divMain{
+    width:800px;
+    display: -moz-box;
+    display: -webkit-box;
+    -moz-box-orient:horizontal;
+    -webkit-box-orient:horizontal;
+}
+div#divLeft td{
+    border-width:1px;
+    width:80px;
+    height:80px;
+    background:#ccc;
+}
+div#divRight{
+    padding-left:10px;
+    width:400px;
+    display: -moz-box;
+    display: -webkit-box;
+    -moz-box-orient:vertical;
+    -webkit-box-orient:vertical;
+}      
+div#divShowPic{
+    border:none;
+    width:400px;
+    height:400px;
+}
+td{
+    background:#ccc;
+    padding:0px;
+    margin:0px;
+    border:1px;
+}
+</style>
+<script type="text/javascript">
+var image,imageWidth,imageHeight,draggedCanvas;
+document.ondragover = function(e){e.preventDefault();};
+document.ondrop = function(e){e.preventDefault();};
+function selectFile()
+{
+    var td;
+    for(var i=0;i<5;i++)
+    {
+        for(var j=0;j<5;j++)
+        {
+            td=document.getElementById("leftTable").rows[i].cells[j];
+            td.innerHTML="";
+         }
+    }
+    var file = document.getElementById("file").files[0];
+    if(!/image\/\w+/.test(file.type))
+    {
+        alert(file.name+"不是图像文件！");
+        document.getElementById("divShowPic").innerHTML="请选择文件";        
+        return;            
+     }
+     else
+    {
+        document.getElementById("divShowPic").innerHTML="";
+        document.getElementById("divHiddenPic").innerHTML="";
+        canvas=document.createElement("canvas");
+        canvas.style.display="none";
+        document.getElementById("divHiddenPic").appendChild(canvas);
+        var ctx=canvas.getContext('2d');
+        image=new Image();
+        image.src=document.getElementById("file").files[0].getAsDataURL();
+        image.onload=function()
+        {
+             ctx.drawImage(image,0,0);  
+             imageWidth=image.width;
+             imageHeight=image.height;
+        } 
+       document.getElementById("createPuzzle").disabled=""; 
+   }
+}
+function drawTable()
+{ 
+    var canvas,ctx,canvasArray,index,count,div;
+    canvasArray=new Array();
+    div=document.getElementById("divShowPic");
+    table=document.createElement("table");
+    table.setAttribute("border","0");
+    table.setAttribute("cellpadding","0");
+    table.setAttribute("cellSpacing","1");
+    picWidth=400;
+    picHeight=400;
+    for(var i=0;i<5;i++)
+    {
+        for(var j=0;j<5;j++)
+        {
+            canvas=document.createElement("canvas");
+            ctx=canvas.getContext('2d');
+            canvas.setAttribute("width",picWidth/5+"px");
+            canvas.setAttribute("height",picHeight/5+"px");
+            canvas.setAttribute("draggable","true");
+            canvas.style.display="block";
+            canvas.setAttribute("index",i*5+j);
+            canvas.addEventListener("dragstart", function(ev) 
+            {
+                draggedCanvas=ev.srcElement||ev.target;
+                var dt = ev.dataTransfer;
+                dt.effectAllowed = 'all';    
+                dt.setData("text/plain",draggedCanvas.getAttribute("index"));                
+            }, false);
+            ctx.fillRect(0,0,canvas.width,canvas.height);
+            ctx.drawImage(image,j*imageWidth/5,i*imageHeight/5,imageWidth/5,imageHeight/5,0,0,picWidth/5,picHeight/5);
+            canvasArray.push(canvas);
+        }
+    }
+    count=25;
+    for(var i=0;i<5;i++)
+    {
+        tr=document.createElement("tr");
+        for(var j=0;j<5;j++)
+        {    	    
+            td=document.createElement("td");                 
+            td.setAttribute("tag","td");
+            td.addEventListener("dragend", function(ev) 
+            {
+                ev.preventDefault();
+            }, false);
+            td.addEventListener("drop", function(ev) 
+            {
+                var td=ev.srcElement||ev.target;
+                if(td.getAttribute("tag")!=null)
+                {
+                    td.appendChild(draggedCanvas);
+                }
+                ev.preventDefault();
+                ev.stopPropagation();
+            }, false);
+            tr.appendChild(td); 
+            index=parseInt(Math.random()*count);
+            td.appendChild(canvasArray[index]); 
+            canvasArray.splice(index,1);
+            count-=1;             
+        }
+        table.appendChild(tr);
+    }
+    div.appendChild(table);  
+    document.getElementById("createPuzzle").disabled="disabled";   
+}
+function window_onload()
+{
+    var td;
+    for(var i=0;i<5;i++)
+    {
+        for(var j=0;j<5;j++)
+        {
+            td=document.getElementById("leftTable").rows[i].cells[j];
+            td.addEventListener("dragend", function(ev) 
+            {
+                ev.preventDefault();
+            }, false);
+            td.addEventListener("drop", function(ev) 
+            {
+                var td=ev.srcElement||ev.target;       
+                if(td.getAttribute("tag")!=null)
+                {
+                    td.appendChild(draggedCanvas);
+                }
+                var allHaveFlag=true;
+                var indexStr="";
+                for(var i=0;i<5;i++)
+                {
+                    for(var j=0;j<5;j++)
+                    {
+                        canvas=document.getElementById("leftTable").rows[i].cells[j].children[0];
+                        if(canvas==null)
+                        {
+                            allHaveFlag=false;
+                            indexStr="";
+                            break;
+                        }
+                        else
+                        {
+                            indexStr+=canvas.getAttribute("index");
+                        }
+                    }
+                }
+                if(allHaveFlag&&indexStr=="0123456789101112131415161718192021222324")
+                    alert("恭喜您，您赢了！");
+                ev.preventDefault();
+                ev.stopPropagation();
+            }, false);
+        }
+    }
+}
+</script>
+</head>
+<body onload="window_onload()">
+<header>
+    <h1>结合使用Canvas API、文件API与拖放API制作拼图游戏</h1>
+</header>
+<div id="divMain">
+    <div id="divLeft">
+        <table border="0" cellspacing="1" cellpadding="1" id="leftTable">
+            <tr>
+                <td tag="td"></td>
+                <td tag="td"></td>
+                <td tag="td"></td>
+                <td tag="td"></td>
+                <td tag="td"></td>
+            </tr>
+            <tr>
+                <td tag="td"></td>
+                <td tag="td"></td>
+                <td tag="td"></td>
+                <td tag="td"></td>
+                <td tag="td"></td>
+            </tr>
+            <tr>
+                <td tag="td"></td>
+                <td tag="td"></td>
+                <td tag="td"></td>
+                <td tag="td"></td>
+                <td tag="td"></td>
+            </tr>
+            <tr>
+                <td tag="td"></td>
+                <td tag="td"></td>
+                <td tag="td"></td>
+                <td tag="td"></td>
+                <td tag="td"></td>
+            </tr>
+            <tr>
+                <td tag="td"></td>
+                <td tag="td"></td>
+                <td tag="td"></td>
+                <td tag="td"></td>
+                <td tag="td"></td>
+            </tr>
+        </table>
+    </div>
+    <div id="divRight">
+        <div id="divSelectPic">
+            选择文件：
+            <input type="file" id="file" onchange="selectFile()" accept="image/*"/>
+            <input type="button" id="createPuzzle" value="创建拼图" disabled="disabled" onclick="drawTable()" />
+        </div>
+        <div id="divShowPic">
+            请选择文件
+        </div>
+        <div id="divHiddenPic" />
+    </div>
+</body>
