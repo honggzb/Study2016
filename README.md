@@ -32,6 +32,9 @@ Study notes in 2016
  	- fullCalendar学习.md
  	- html5FileAPI学习+sample(upload应用)
  	- Web Component简介 + x-tag的学习.md
+- Angular Study
+ 	- angular2的一些资料.md
+ 	- angularJS启动多个ng-app.md
 - Atom
  	- atomPlug -常用的Atom设置
  	- grunt.initConfig说明.md
