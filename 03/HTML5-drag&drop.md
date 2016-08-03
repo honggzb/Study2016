@@ -4,10 +4,11 @@
 
 Internet Explorer 9、Firefox、Opera 12、Chrome 以及 Safari 5
 
-**被拖元素，dragElement : **
+**被拖元素，dragElement**
+
 1. 添加事件：ondragstart, ondrag, ondragend
 2. 添加属性：dragable
-3. html中必须添加draggable 属性：就是标签元素要设置draggable=true，否则不会有效果，例如：
+3. html中必须添加draggable 属性：就是标签元素要设置`draggable=true`，否则不会有效果，例如：
   - true：表示此元素可拖拽
   - false：表示此元素不可拖拽
   - auto：除img和带href的标签a标签表示可拖拽外，其它标签均表示不可拖拽。其它任何值：表示不可拖拽
@@ -17,7 +18,8 @@ Internet Explorer 9、Firefox、Opera 12、Chrome 以及 Safari 5
 ```
 
 
-**放置元素，dropElement:**
+**放置元素，dropElement**
+
 - 添加事件：ondargenter , ondragover , ondragleave , ondragend ,ondrop
 - dropzone属性
   - copy:表示将允许的元素放到该元素上时，会将拖拽数据复制到目标元素上
@@ -26,7 +28,20 @@ Internet Explorer 9、Firefox、Opera 12、Chrome 以及 Safari 5
   - 以string:开头的字符串，长度不能小于8个字符:表示能接受DataTransferItem.kind值为string的data对象
   - 以file:开头的字符串，长度不能小于6个字符:表示能接受DataTransferItem.kind值为file且DataTransferItem.type的值匹配file:之后的字符的DataTransferItem的对象
 
-** 说明：**
+拖放事件
+
+事件|产生事件的元素|描述
+---|---|---
+dragstart|被拖放的元素|开始拖放
+drag|被拖放的元素|拖放过程中
+dragenter|拖放过程中鼠标经过的元素|被拖放的元素开始进入本元素的范围内
+dragover|拖放过程中鼠标经过的元素|拖放正在本元素范围内移动
+dragleave|拖放过程中鼠标经过的元素|拖放离开元素的范围
+drop|拖放的目标元素|在其他元素被拖放到了本元素中
+dragend|拖放的对象元素|拖放操作结束
+
+
+**说明**
 
 - 在ondragover中一定要执行preventDefault()，否则ondrop事件不会被触发（drop事件的默认行为是以链接形式打开，所以也需要阻止其默认行为）。
 - 另外，如果是从其他应用软件或是文件中拖东西进来，尤其是图片的时候，默认的动作是显示这个图片或是相关信息，并不是真的执行drop。此时需要用用document的ondragover事件把它直接干掉
@@ -41,7 +56,7 @@ Internet Explorer 9、Firefox、Opera 12、Chrome 以及 Safari 5
 
 ** 使用DataTransfer对象传递数据**
 
-使用一般为Event.dataTransfer
+使用一般为Event.dataTransfer,  保存拖放时候所需要携带的数据， 如`var file = ev.dataTransfer.files[0]`来引用被拖放的文件
 
 - types: 返回数据的格式
 - getData(<format>)：返回指定格式数据
