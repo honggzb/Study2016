@@ -1,0 +1,86 @@
+<!DOCTYPE html>   
+<head>   
+<meta charset="UTF-8">  
+<title>HTML 5版本的日程提醒簿</title>
+<style>
+  div{        
+      width:300px;
+      height:300px;
+      padding:35px;
+      background:#ccc;
+      font-weight:bold;
+  }
+  li{list-style:none;}
+</style>
+</head>  
+<body onload="window_onload();">  
+<h1>HTML 5版本的日程提醒簿</h1>  
+选择日期：<input id="date1" type="date" onchange="date_onchange()">
+         <input type="button" value="保存" onclick="save()"/><br/>
+<div>
+  本日日期：<span id="today"></span><br/>
+  本日要事：<br/>
+  <ul contentEditable="true" id="recordContainer">
+    <li>(尚未记录）</li>
+    <li>(尚未记录）</li>
+    <li>(尚未记录）</li>
+    <li>(尚未记录）</li>
+    <li>(尚未记录）</li>
+  </ul>
+</div> 
+<script type="text/javascript">
+var dateElement;
+var today;
+
+function window_onload(){
+    dateElement=document.getElementById("date1");
+    today=document.getElementById("today");
+    setToday();
+}
+
+function date_onchange(){   
+    var obj;
+    if(isNaN(Date.parse(dateElement.value))){
+        setToday();
+        return;
+    }
+    today.innerHTML=dateElement.value;
+    obj=JSON.parse(localStorage.getItem(dateElement.value));
+    setInnerHTML(obj);
+}
+
+function save(){
+    var obj=new Object();
+    obj.record=new Array();
+    var records = document.getElementById("recordContainer").children;
+    for(var i=0; i<records.length;i++){
+      obj.record.push(records[i].innerHTML);
+    }
+    localStorage.setItem(dateElement.value,JSON.stringify(obj));  
+}
+
+function setInnerHTML(obj){
+    if(obj==null||obj.record==null){
+       var records = document.getElementById("recordContainer").children;
+       for(var i=0; i<records.length;i++){
+        records[i].innerHTML="(尚未记录）";
+       }
+    }
+}
+
+function setToday(){
+    var date=new Date();
+    var yearStr=String(date.getFullYear());
+    var monthStr=String(date.getMonth()+1);
+    var dateStr=String(date.getDate());
+    if (monthStr.length == 1) monthStr = '0' + monthStr;
+    if (dateStr.length == 1) dateStr = '0' + dateStr;
+    var str=yearStr+"-"+monthStr+"-"+dateStr;
+    dateElement.value=str;
+    today.innerHTML=dateElement.value;
+    var obj=JSON.parse(localStorage.getItem(dateElement.value));
+    setInnerHTML(obj);
+}
+</script> 
+</body> 
+</html>
