@@ -57,6 +57,7 @@ Study notes in 2016
 	- ant.md
 	- 深入理解javascript原型和闭包 
 	- javascript知识点积累.md
+	- JS中复制数组.md
 - ReactStudy
 	- ReactdevEnvironmentSetup.md -- React开发环境设置
 	- reactEnvironment2.rar  -- React开发环境设置代码2
