@@ -31,7 +31,7 @@ Study notes in 2016
 - 2016,07
  	- fullCalendar学习.md
  	- html5FileAPI学习+sample(upload应用)
- 	- Web Component简介 + x-tag的学习.md
+ 	- Web Component简介+x-tag的学习+Shadow DOM.md
 - 2016,08
  	- will-change的使用.md
  	- HTML5 Input Types in Mobile.docx
