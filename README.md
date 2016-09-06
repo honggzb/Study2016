@@ -33,7 +33,8 @@ Study notes in 2016
  	- html5FileAPI学习+sample(upload应用)
  	- Web Component简介 + x-tag的学习.md
 - 2016,08
- 	- will-change的使用
+ 	- will-change的使用.md
+ 	- HTML5 Input Types in Mobile.docx
 - Angular Study
  	- angular2的一些资料.md
  	- angularJS启动多个ng-app.md
