@@ -415,5 +415,6 @@ Shadow DOM里的JS与传统的JS一个真正不同的点在于事件调度（eve
 > Reference
 
 - [Polymer - 通往新世界的大门](http://www.ituring.com.cn/article/179915)
+- [Polymer - 通往新世界的大门](http://www.tuicool.com/articles/ye6Nvy)
 - [Shadow DOM](http://robdodson.me/shadow-dom-the-basics/)
 - [Shadow DOM v1: self-contained web components](https://developers.google.com/web/fundamentals/primers/shadowdom/?utm_source=html5weekly&utm_medium=email)
