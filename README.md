@@ -35,6 +35,7 @@ Study notes in 2016
 - 2016,08
  	- will-change的使用.md
  	- HTML5 Input Types in Mobile.docx
+ 	- 现代CSS代码的建议.md
 - Angular Study
  	- angular2的一些资料.md
  	- angularJS启动多个ng-app.md
