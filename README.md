@@ -57,12 +57,13 @@ Study notes in 2016
  	- Promise对象.md
  	- References
  	- Sample1 -- ES6使用的小例子(gulp构建)
-- basic
+**- basic
 	- ant.md
 	- 深入理解javascript原型和闭包 
 	- javascript知识点积累.md
 	- JS中复制数组.md
-	- JS数据类型判断和数组判断.md
+	- JS数据类型判断和数组判断.md 
+**
 - ReactStudy
 	- ReactdevEnvironmentSetup.md -- React开发环境设置
 	- reactEnvironment2.rar  -- React开发环境设置代码2
