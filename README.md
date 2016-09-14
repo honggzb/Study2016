@@ -59,7 +59,7 @@ Study notes in 2016
 │   ├──  Promise对象.md
 │   ├──  References
 │   └── Sample1 -- ES6使用的小例子(gulp构建)
-├── - basic
+├──  ** basic **
 │   ├──  ant.md
 │   ├──  深入理解javascript原型和闭包 
 │   ├──  javascript知识点积累.md
@@ -68,7 +68,7 @@ Study notes in 2016
 ├── ReactStudy
 │   ├──  ReactdevEnvironmentSetup.md -- React开发环境设置
 │   ├──  reactEnvironment2.rar  -- React开发环境设置代码2
-│   ├──  CreatClassVScomponent.md  -- React.createClass versus extends React.Component        (https://toddmotto.com/react-create-class-versus-component/)
+│   ├──  CreatClassVScomponent.md --React.createClass versus extends React.Component      (https://toddmotto.com/react-create-class-versus-component/)
 │   ├──  webPackStudy.md    -- WebPack
 │   └── reactSampleBasic-04062016.rar
 ├── interview
@@ -102,7 +102,7 @@ Study notes in 2016
 │   └── HTML5 API
 │        └── HTML5LocalStorage-日程提醒簿.html
 ├── resource
-	- 网页设计资源
+│   └── 网页设计资源
 ├── Angular2的一些资料
 ├── node Module汇总
 └── Web Front-end Stack v2.2.png
