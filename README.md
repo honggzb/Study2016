@@ -62,12 +62,13 @@ Study notes in 2016
 │   ├──  generator.md
 │   ├──  References
 │   └──  Sample1 -- ES6使用的小例子(gulp构建)
-├──  ** basic **
+├──  ** basic--JS **
 │   ├──  ant.md
 │   ├──  深入理解javascript原型和闭包 
 │   ├──  javascript知识点积累.md
 │   ├──  JS中复制数组.md
 │   ├──  js字符串操作.md
+│   ├──  js标准对象之Date
 │   └──  JS数据类型判断和数组判断.md 
 ├── ReactStudy
 │   ├──  ReactdevEnvironmentSetup.md -- React开发环境设置
