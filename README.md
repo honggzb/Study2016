@@ -58,6 +58,7 @@ Study notes in 2016
 │   ├──  03-extended各个对象的扩展.md
 │   ├──  EnvSetup.md
 │   ├──  Promise对象.md
+│   ├──  箭头函数.md
 │   ├──  References
 │   └──  Sample1 -- ES6使用的小例子(gulp构建)
 ├──  ** basic **
