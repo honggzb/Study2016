@@ -59,6 +59,7 @@ Study notes in 2016
 │   ├──  EnvSetup.md
 │   ├──  Promise对象.md
 │   ├──  箭头函数.md
+│   ├──  generator.md
 │   ├──  References
 │   └──  Sample1 -- ES6使用的小例子(gulp构建)
 ├──  ** basic **
