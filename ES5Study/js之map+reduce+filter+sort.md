@@ -32,19 +32,35 @@ function pow(x) {
     return x * x;
 }
 var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-arr.map(pow);
-// reverse a string
+arr.map(pow);  // [1, 4, 9, 16, 25, 36, 49, 64, 81]
+//
+var oldArr = [{first_name:"Colin",last_name:"Toh"},{first_name:"Addy",last_name:"Osmani"},{first_name:"Yehuda",last_name:"Katz"}];
+function getNewArr(ordArr){
+  return oldArr.map(function(item,index){
+    item.full_name = [item.first_name,item.last_name].join(" ");
+    return item;
+  });
+}  // [{first_name:"Colin",last_name:"Toh", full_name: "Colin Toh"},{first_name:"Addy",last_name:"Osmani", full_name: "Addy Osmani"},{first_name:"Yehuda",last_name:"Katz", full_name: "Yehuda Katz"}];
+//1 reverse a string
 var str = '12345';
 Array.prototype.map.call(str, function(x) {
   return x;
 }).reverse().join('');  // Output: '54321'
-//把用户输入的不规范的英文名字，变为首字母大写，其他小写的规范名字
+//2 把用户输入的不规范的英文名字，变为首字母大写，其他小写的规范名字
 var arr1 = ['adam', 'LISA', 'barT'];
 arr1.map(function (x) {
     x = x.toLowerCase();
     x = x.charAt(0).toUpperCase()+x.substr(1);
     return x;
 });
+//3 字符串转换为Number之map篇
+var arr = "12324";
+function string2int(arr){
+    return arr.split("").map(function (x) {
+          return  parseInt(x);
+      }).join("");
+ }
+console.log(parseInt(string2int(arr)));  
 ```
 
 ### 3. 高阶函数之reduce
@@ -59,20 +75,28 @@ reduce()可以实现一个累加器的功能，将数组的每个值（从左到
 
 ```javascript
 var arr = [1, 3, 5, 7, 9];
-// 对一个Array求和
+// 1 对一个Array求和
 arr.reduce(function (x, y) {
     return x + y;
 }); // 25
-// 把Array[1, 3, 5, 7, 9]变换成整数13579
+// 2 把Array[1, 3, 5, 7, 9]变换成整数13579
 arr.reduce(function (x, y) {
     return x * 10 + y;
 }); // 13579
-// 字符串转换为Number
+// 3 字符串转换为Number之reduce篇
 function string2int(arr){ 
   arr =  arr.split("");
   return arr.reduce(function (x, y) {
       return (x*1 + y)*1;
   })*1;   // 最后的*1是为特殊情况 string2int('0')
+}
+// 4 统计一个数组中有多少个不重复的单词
+var arr = ["apple","orange","apple","orange","pear","orange"];
+function getWordCnt(){
+  return arr.reduce(function(prev,next){
+    prev[next] = (prev[next] + 1) || 1;
+    return prev;
+  },{});
 }
 ```
 
