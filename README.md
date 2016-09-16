@@ -50,6 +50,7 @@ Study notes in 2016
 │   ├──  GulpStudy.md
 │   └── Atom-js-snippet.docx
 ├── ES5Study
+│   ├──  js之map+reduce+filter+sort.md
 │   └── jsArray : Array的五种方法 
 ├── ES6Study
 │   ├──  01 Let
