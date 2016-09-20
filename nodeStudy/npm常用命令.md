@@ -1,0 +1,36 @@
+1. `npm install moduleNames`：安装Node模块
+
+- `npm install -g moduleName` 全局安装
+- `$npm get global` 可以查看当前使用的安装模式
+- `npm install <name> --save` 安装的同时，将信息写入package.json中项目路径中如果有package.json文件
+1. `npm uninstall express`  #删除指定的模块
+
+2. `npm view moduleNames`：查看node模块的package.json文件夹, 注意事项：如果想要查看package.json文件夹下某个标签的内容，可以使用`npm view moduleName labelName`
+3. `npm list`：查看当前目录下已安装的node包
+4. `npm help`：查看帮助命令
+5. `npm show express`     #显示模块详情
+5. `npm view moudleName dependencies`：查看包的依赖关系
+6. `npm view moduleName repository.url`：查看包的源文件地址
+7. `npm view moduleName engines`：查看包所依赖的Node的版本
+8. `npm help folders`：查看npm使用的所有文件夹
+9. `npm rebuild moduleName`：用于更改包内容后进行重建
+10. `npm outdated：检查包是否已经过时`，此命令会列出所有已经过时的包，可以及时进行包的更新
+11. `npm update moduleName：更新node模块`
+12. `npm uninstall moudleName`：卸载node模块
+13. `npm help json`： 查看访问npm的json文件夹
+14. `npm search packageName`： 检验某个包名是否已存在
+15. `npm init`：会引导你创建一个package.json文件，包括名称. 版本. 作者这些信息等
+16. `npm root`：查看当前包的安装路径,  `npm root -g`：查看全局的包的安装路径
+17. `npm -v`：查看npm安装的版本
+18. `npm clean cache`：
+19. `npm config set cache c:\dev\nodejs\npm-cache --global`:  NPM tries t opickup packages from cache and the default location is sometimes prohibited from reading
+20. `npm update`        #升级当前目录下的项目的所有模块 
+21. `npm update express`    #升级当前目录下的项目的指定模块
+22. `npm update -g express`  #升级全局安装的express模块
+
+** 升级nodejs 的npm **
+
+- 首先安装n模块：`npm install -g n`   
+-第二步：升级node.js到最新稳定版   `n stable`
+
+更多命令请参看npm官方文档：https://www.npmjs.org/doc/
