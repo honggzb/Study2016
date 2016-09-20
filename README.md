@@ -95,6 +95,7 @@ Study notes in 2016
 │   ├──  nodeModule汇总.md
 │   ├──  resources.md
 │   ├──  samples: node.js 学习代码
+│   ├──  npm常用命令.md
 │   └──  express 获取url参数，post参数的三种方式.md
 ├── Source code
 │   ├──  js
