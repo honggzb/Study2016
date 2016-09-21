@@ -1,6 +1,6 @@
 ## React
 
-## Basic Framework
+### Basic Framework
 
 ### ReactDOM.render() 
 
@@ -70,6 +70,15 @@ React 的最基本方法，用于将模板转为 HTML语言，并插入指定的
       document.getElementById('example')
     );
 ```
+
+React is all about one-way data flow down the component hierarchy(**components should only update their own state**). It may not be immediately clear which component should own what state. Follow these steps to figure it out:
+
+For each piece of state in your application:
+
+- Identify every component that renders something based on that state.
+- Find a common owner component (a single component above all the components that need the state in the hierarchy).
+- Either the common owner or another component higher up in the hierarchy should own the state.
+- If you can't find a component where it makes sense to own the state, create a new component simply for holding the state and add it somewhere in the hierarchy above the common owner component.
 
 ### 表单
 
