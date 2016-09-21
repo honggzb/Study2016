@@ -6,7 +6,7 @@
 
 React 的最基本方法，用于将模板转为 HTML语言，并插入指定的 DOM 节点
 
-** React允许将代码封装成组件（component）**，然后像插入普通 HTML 标签一样，在网页中插入这个组件
+### React允许将代码封装成组件（component），然后像插入普通 HTML 标签一样，在网页中插入这个组件
 
 - `React.createClass` 方法就用于生成一个组件类
 - `this.props.children`, `this.props`对象的属性与组件的属性一一对应，但是有一个例外，就是 `this.props.children`属性。它表示组件的所有子节点, this.props.children 的值有三种可能：
@@ -16,7 +16,7 @@ React 的最基本方法，用于将模板转为 HTML语言，并插入指定的
   - 所以，处理 this.props.children 的时候要小心。React 提供一个工具方法 React.Children 来处理 this.props.children。可以用 `React.Children.map` 来遍历子节点，而不用担心 this.props.children 的数据类型是 undefined 还是 object
 - `PropTypes`: 用来验证组件实例的属性是否符合要求, `getDefaultProps` 方法可以用来设置组件属性的默认值
 
-** 获取真实的DOM节点(虚拟DOM（virtual DOM) **
+### 获取真实的DOM节点(虚拟DOM（virtual DOM)
 
 根据React的设计，所有的DOM变动，都先在虚拟DOM上发生，然后再将实际发生变动的部分，反映在真实DOM上，这种算法叫做DOM diff ，它可以极大提高网页的性能表现。但是，有时需要从组件获取真实 DOM 的节点，这时就要用到`ref`属性
 
@@ -40,7 +40,7 @@ React 的最基本方法，用于将模板转为 HTML语言，并插入指定的
     );
 ```
 
-** 组件与用户互动 - `this.state` **
+### 组件与用户互动 - `this.state`
 
 - `this.state`-- React的一大创新，就是将组件看成是一个状态机，一开始有一个初始状态，然后用户互动，导致状态变化，从而触发重新渲染UI
   - this.props 表示那些一旦定义，就不再改变的特性
@@ -71,7 +71,9 @@ React 的最基本方法，用于将模板转为 HTML语言，并插入指定的
     );
 ```
 
-** 表单 **: 用户在表单填入的内容，属于用户跟组件的互动，所以不能用`this.props`读取, 需要定义一个事件的回调函数，通过`event.target.value` 读取用户输入的值。
+### 表单
+
+用户在表单填入的内容，属于用户跟组件的互动，所以不能用`this.props`读取, 需要定义一个事件的回调函数，通过`event.target.value` 读取用户输入的值。
 
 ```javascript
     var Input = React.createClass({
@@ -179,7 +181,6 @@ React 为每个状态都提供了两种处理函数，will 函数在进入状态
       document.body
     );
 ```
-
 
 甚至可以把一个Promise对象传入组件，请看Demo12。
 
