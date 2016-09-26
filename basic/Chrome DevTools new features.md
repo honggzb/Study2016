@@ -19,7 +19,7 @@
 - Click on the camera icon to enable the Filmstrip
 - Reload the page to capture the screenshots. The screenshots are displayed above the Overview
 
-### 5. Snippet code [Run snippets of code from any page
+### 5. Snippet code[Run snippets of code from any page
 ](https://developers.google.com/web/tools/chrome-devtools/debug/snippets/?hl=en) - `Source -> Snippets`
 
  the snippet code will behave the same as your application code with regards to DOM access, relative URLs, cookies, and CORSs stuff
