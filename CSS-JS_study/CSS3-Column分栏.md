@@ -31,4 +31,25 @@ column-break-inside|	CSS3	|无|	CSS3 column-break-inside 属性，设置或检�
 - column-span: 允许一个元素的宽度跨越多列  
 - column-fill: 分列方式  
 
+```css
+.column2(@count: 2)
+{
+  column-count: @count;
+  column-gap: 5rem;
+  column-rule-color: #e6e7e8;
+  column-rule-style: solid;
+  column-rule-width: 1px;
+	-moz-column-count: @count;
+  -moz-column-gap: 5rem;
+  -moz-column-rule-color: #e6e7e8;
+  -moz-column-rule-style: solid;
+  -moz-column-rule-width: 1px;
+	-webkit-column-count: @count;
+  -webkit-column-gap: 5rem;
+  -webkit-column-rule-color: #e6e7e8;
+  -webkit-column-rule-style: solid;
+  -webkit-column-rule-width: 1px;
+}
+```
+
 http://www.w3chtml.com/css3/properties/multi-column/
