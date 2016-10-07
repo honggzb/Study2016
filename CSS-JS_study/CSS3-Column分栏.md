@@ -1,5 +1,5 @@
 
-Properties属性|	CSS Version版本|	Inherit From Parent继承性|	Description简介
+Properties属性|	CSS Version版本|继承性|	Description简介
 ---|---|---|---
 columns|	CSS3|	无|CSS3 columns 属性，是复合属性，设置或检索对象的列数和每列的宽度
 column-width|	CSS3|	无|	CSS3 column-width 属性，设置或检索对象每列的宽度
@@ -13,7 +13,7 @@ column-span|	CSS3|	无|	CSS3 column-span 属性，设置或检索对象元素是
 column-fill|	CSS3|	无	|CSS3| column-fill 属性，设置或检索对象所有列的高度是否统一。
 column-break-before|	CSS3|	无	|CSS3 column-break-before 属性，设置或检索对象之前是否断行。
 column-break-after|	CSS3|	无|	CSS3 column-break-after 属性，设置或检索对象之后是否断行。
-column-break-inside|	CSS3	|无	CSS3 column-break-inside 属性，设置或检索对象内部是否断
+column-break-inside|	CSS3	|无|	CSS3 column-break-inside 属性，设置或检索对象内部是否断
 
 - column-rule-style：列之间分割线风格(`：none | hidden | dotted | dashed | solid | double | groove | ridge | inset | outset`)  
   - none： 无轮廓
@@ -30,3 +30,5 @@ column-break-inside|	CSS3	|无	CSS3 column-break-inside 属性，设置或检索
 - column-rule-color：列之间分割线演示  
 - column-span: 允许一个元素的宽度跨越多列  
 - column-fill: 分列方式  
+
+http://www.w3chtml.com/css3/properties/multi-column/
