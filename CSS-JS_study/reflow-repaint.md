@@ -105,9 +105,19 @@ jQuery.fn.redraw = function() {
         $(this).show();
     });
 };
+// or
+Element.addMethods({
+  redraw: function(element){
+    element = $(element);
+    var n = document.createTextNode(' ');
+    element.appendChild(n);
+    (function(){n.parentNode.removeChild(n)}).defer();
+    return element;
+  }
+});
 ```
 
 > reference
 
 - [Rendering: repaint, reflow/relayout, restyle](http://www.phpied.com/rendering-repaint-reflowrelayout-restyle/)
-- []()
+- [forcing-a-ui-redraw-from-javascript](http://ajaxian.com/archives/forcing-a-ui-redraw-from-javascript)
