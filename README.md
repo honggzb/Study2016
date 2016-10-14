@@ -53,7 +53,8 @@ Study notes in 2016
 │   ├── 7个CSS单位.md
 │   ├── CSS3-Column分栏.md
 │   ├── js控制css伪元素内容（before，after）.md
-│   └── eflow-repaint.md
+│   ├── reflow-repaint.md
+│   └── responsiveTable.md
 ├── ES6Study
 │   ├──  01 Let
 │   ├──  02-Destructuring解构赋值.md
