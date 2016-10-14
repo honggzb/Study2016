@@ -78,7 +78,8 @@ Study notes in 2016
 │   ├──  CreatClassVScomponent.md --React.createClass versus extends React.Component      (https://toddmotto.com/react-create-class-versus-component/)
 │   ├──  webPackStudy.md    -- WebPack
 │   ├──  React基本概念.md
-│   └── reactSampleBasic-04062016.rar
+│   ├──  reactRoute学习.md
+│   └──  reactSampleBasic-04062016.rar
 ├── interview
 │   ├──  htmlCSS
 │   │    └── BAT及各大互联网公司2014前端笔试面试题-HTML-CSS篇
