@@ -52,6 +52,7 @@ Study notes in 2016
 ├── CSS+JS Study
 │   ├── 7个CSS单位.md
 │   ├── CSS3-Column分栏.md
+│   ├── CSS3-Flex布局.md
 │   ├── js控制css伪元素内容（before，after）.md
 │   ├── reflow-repaint.md
 │   └── responsiveTable.md
