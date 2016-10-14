@@ -1,8 +1,8 @@
 ## Responsive Data Tables
 
-## solution 1 - using `content: attr(data-content)`
+### solution 1 - using `content: attr(data-content)`
 
-**sample 1 - http://codepen.io/dudleystorey/pen/Geprd **
+** sample 1 - `http://codepen.io/dudleystorey/pen/Geprd` **
 
 ```javascript
 var headertext = [],
@@ -20,9 +20,9 @@ for (var i = 0, row; row = tablebody.rows[i]; i++) {
 }
 ```
 
-** sample 2 - http://www.netgenlabs.com/Blog/Responsive-Data-Tables-with-ngResponsiveTables-jQuery-plugin **
+** sample 2 - `http://www.netgenlabs.com/Blog/Responsive-Data-Tables-with-ngResponsiveTables-jQuery-plugin` **
 
-## solution 2 - adding extra html tag before td, using jquery to control style display
+### solution 2 - adding extra html tag before td, using jquery to control style display
 
 ```html
 <div class="ot-metadata-table">
