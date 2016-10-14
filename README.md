@@ -47,11 +47,13 @@ Study notes in 2016
 │   ├── gruntStudy.md
 │   └── webPackStudy.md
 ├── BuildStudy -Build tools 
-│   ├──  GulpStudy.md
+│   ├── GulpStudy.md
 │   └── Atom-js-snippet.docx
-├── ES5Study
-│   ├──  js之map+reduce+filter+sort.md
-│   └── jsArray : Array的五种方法 
+├── CSS+JS Study
+│   ├── 7个CSS单位.md
+│   ├── CSS3-Column分栏.md
+│   ├── js控制css伪元素内容（before，after）.md
+│   └── eflow-repaint.md
 ├── ES6Study
 │   ├──  01 Let
 │   ├──  02-Destructuring解构赋值.md
