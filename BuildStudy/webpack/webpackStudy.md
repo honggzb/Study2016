@@ -10,8 +10,8 @@ Function
 
 1. [模块化-Using a Module System](#模块化-Using a Module System)
 1. [Basic](#2 Basic)
-	- 2.1 [using command line](#)
-	- 2.2 [using `webpack.config.js`](#)
+	1. [using command line](#)
+	1. [using `webpack.config.js`](#)
 1. [运行 webpack](#)
   - 3.1 [using webpack-dev-server](#)
 1. [webpack的配置方式](#)
