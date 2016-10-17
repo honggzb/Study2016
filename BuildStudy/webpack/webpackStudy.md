@@ -9,16 +9,21 @@
 - 1 模块化-Using a Module System
 - 2 Basic
 - 3 运行 webpack
+  - 3.1 using webpack-dev-server
 - 4 webpack的配置方式
   - 4.1 using `require` and `webpack.config.js` to organize
-  - 4.2 using loader to organize
-  - 4.3 Production vs. Dev Builds
+  - 4.2 using loader to organize  - such as babel-loader
+  - 4.3 Multiple entry files
   - 4.4 Working with ES6 Modules
   - 4.5 Adding Source Maps support
   - 4.6 Creating Multiple Bundles
   - 4.7 Add CSS/SCSS/LESS and images, fonts to build
-- 5 `webpack.config.js` 配置说明
-- 6 补充
+- 5 Plugin 
+  - 5.1 UglifyJs Plugin
+  - 5.2 HTML Webpack Plugin and Open Browser Webpack Plugin
+  - 
+- 6 `webpack.config.js` 配置说明
+- 7 补充
 
 
 ## 1 模块化-Using a Module System
@@ -88,6 +93,7 @@ webpack --watch   //监听变动并自动打包, 实时刷新, webpack 提供了
 webpack -p    //压缩混淆脚本，这个非常非常重要！
 webpack -d    //生成map映射文件，告知哪些模块被最终打包到哪里了
 webpack --display-error-details  //方便出错时能查阅更详尽的信息（比如 webpack 寻找模块的过程）(http://webpack.github.io/docs/configuration.html#resolve-modulesdirectories)
+webpack --colors // for making things pretty
 ```
 ### 3.1 using webpack-dev-server
 
@@ -112,6 +118,18 @@ webpack-dev-server 提供了两种模式用于自动刷新页面：
 
 以上说的两个页面自动刷新的模式都是指刷新整个页面，相当于点击了浏览器的刷新按钮。
 
+```
+// package.json
+{
+  // ...
+  "scripts": {
+    "dev": "webpack-dev-server --devtool eval --progress --colors",
+    "deploy": "NODE_ENV=production webpack -p"
+  },
+  // ...
+}
+```
+
 ## 4 webpack的配置方式
 
 ### 4.1 using `require` and `webpack.config.js` to organize
@@ -122,7 +140,7 @@ entry: ["./utils.js","./app.js"],
 require('./login');
 ```
 
-### 4.2 using loader to organize
+### 4.2 using loader to organize - such as babel-loader
 
 ```json
 "devDependencies": {
@@ -145,9 +163,39 @@ module: {
     {test: /\.es6$/, exclude:/node_modules/, loader: "babel-loader"}
   ]
 },
+//for react, babel-loader which also needs plugins babel-preset-es2015 and babel-preset-react to transpile ES6 and React. You can also take another way to set the babel query option.
+module: {
+  loaders: [
+    {
+      test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel',
+      query: { presets: ['es2015', 'react']}
+    }
+  ]
+}
 ```
 
-### 4.3 Production vs. Dev Builds
+### 4.3 Multiple entry files
+
+```html
+<html>
+  <body>
+    <script src="bundle1.js"></script>
+    <script src="bundle2.js"></script>
+  </body>
+</html>
+```
+
+```javascript
+module.exports = {
+  entry: {
+    bundle1: './main1.js',
+    bundle2: './main2.js'
+  },
+  output: {
+    filename: '[name].js'
+  }
+};
+```
 
 ### 4.4 Working with ES6 Modules
 
@@ -220,6 +268,7 @@ module.exports = {
       { test: /\.scss$/, loader: 'style-loader!css-loader!sass-loader' }, 
       { test: /\.(png|jpg|ttf|eot)$/, loader: 'url-loader?limit=10000'} // inline base64 URLs for <=8k(8192) images, direct URLs for the rest, limit=10000 is for fonts
       //? 后边的 query 有两种写法, 可以看下文档: http://webpack.github.io/docs/using-loaders.html#query-parameters
+      //[url-loader](https://www.npmjs.com/package/url-loader) transforms image files. If the image size is smaller than 10000 bytes, it will be transformed into Data URL; otherwise, it will be transformed into normal URL. 
     ]
   }
 };
@@ -293,7 +342,39 @@ module: {
 	},
 ```
 
-## 5 `webpack.config.js` 配置说明
+## 5 plugins
+
+### 5.1 UglifyJs Plugin
+
+```javascript
+var webpack = require('webpack');
+var uglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
+module.exports = {
+  entry: './main.js',
+  output: {  filename: 'bundle.js'},
+  plugins: [
+    new uglifyJsPlugin({
+      compress: {  warnings: false}
+    })
+  ]
+};
+```
+
+### 5.2 HTML Webpack Plugin and Open Browser Webpack Plugin 
+
+[html-webpack-plugin](https://github.com/ampedandwired/html-webpack-plugin) could create index.html for you, and [open-browser-webpack-plugin](https://github.com/baldore/open-browser-webpack-plugin) could open a new browser tab when Webpack loads.
+
+```javascript
+var HtmlwebpackPlugin = require('html-webpack-plugin');
+var OpenBrowserPlugin = require('open-browser-webpack-plugin');
+//...
+plugins: [
+    new HtmlwebpackPlugin({ title: 'Webpack-demos',filename: 'index.html' }),
+    new OpenBrowserPlugin({ url: 'http://localhost:8080'})
+  ]
+```
+
+## 6 `webpack.config.js` 配置说明
 
 ```javascript
 var webpack = require('webpack');
@@ -337,9 +418,9 @@ module.exports = {
 - 可以点[这里](http://webpack.github.io/docs/list-of-loaders.html)查阅全部的 loader 列表
 - 关于 webpack.config.js 更详尽的配置可以参考[这里](http://webpack.github.io/docs/configuration.html)。
 
-## 6 补充
+## 7 补充
 
-### 6.2 与 grunt/gulp 配合
+### 7.2 与 grunt/gulp 配合
 
 ```javascript
 gulp.task("webpack", function(callback) {
