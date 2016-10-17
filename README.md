@@ -37,18 +37,21 @@ Study notes in 2016
 │   ├── CSS3- will-change的使用.md
 │   ├── HTML5 Input Types in Mobile.docx
 │   └── 现代CSS代码的建议.md
-└── webpack.config.js
 ├── Angular Study
 │   ├── angular2的一些资料.md
-│   └── angularJS启动多个ng-app.md
-├── Atom
-│   ├── atomPlug -常用的Atom设置
-│   ├── grunt.initConfig说明.md
-│   ├── gruntStudy.md
-│   └── webPackStudy.md
-├── BuildStudy -Build tools 
+│   ├── angularJS启动多个ng-app.md
+│   └── angularResource.md
+├── Build Study - Build tools 
+│   ├──  Webpack
+│   │    ├── webpack-multiple-bundles/
+│   │    ├── webpack-production/
+│   │    ├── webpack-seperate-css/
+│   │    ├── Exercise Files.rar
+│   │    ├── webPackStudy.md
+│   │    └── hash.png
 │   ├── GulpStudy.md
-│   └── Atom-js-snippet.docx
+│   ├── grunt.initConfig说明.md
+│   └── gruntStudy.md
 ├── CSS+JS Study
 │   ├── 7个CSS单位.md
 │   ├── CSS3-Column分栏.md
@@ -56,6 +59,13 @@ Study notes in 2016
 │   ├── js控制css伪元素内容（before，after）.md
 │   ├── reflow-repaint.md
 │   └── responsiveTable.md
+├── atom
+│   ├── atomPlug -常用的Atom设置
+│   ├── atom-js-snippet.docs
+│   └── atomPlugin.md
+├── ES5Study
+│   ├──  jsArray.md
+│   └──  js之map+reduce+filter+sort.md
 ├── ES6Study
 │   ├──  01 Let
 │   ├──  02-Destructuring解构赋值.md
@@ -73,12 +83,14 @@ Study notes in 2016
 │   ├──  JS中复制数组.md
 │   ├──  js字符串操作.md
 │   ├──  js标准对象之Date
-│   └──  JS数据类型判断和数组判断.md 
+│   ├──  JS数据类型判断和数组判断.md 
+│   └──  Chrome DevTools new features.md
 ├── ReactStudy
+│   ├──  basicSetupEnv
+│   │     └──
 │   ├──  ReactdevEnvironmentSetup.md -- React开发环境设置
 │   ├──  reactEnvironment2.rar  -- React开发环境设置代码2
-│   ├──  CreatClassVScomponent.md --React.createClass versus extends React.Component      (https://toddmotto.com/react-create-class-versus-component/)
-│   ├──  webPackStudy.md    -- WebPack
+│   ├──  CreatClassVScomponent.md --React.createClass versus extends React.Component (https://toddmotto.com/react-create-class-versus-component/)
 │   ├──  React基本概念.md
 │   ├──  reactRoute学习.md
 │   └──  reactSampleBasic-04062016.rar
@@ -115,7 +127,6 @@ Study notes in 2016
 │        └── HTML5LocalStorage-日程提醒簿.html
 ├── resource
 │   └── 网页设计资源
-├── Angular2的一些资料
 ├── node Module汇总
 └── Web Front-end Stack v2.2.png
 ```
