@@ -8,13 +8,13 @@ Function
 
 ## Index
 
-- 1 [模块化-Using a Module System](#模块化-Using a Module System)
-- 2 [Basic](#2 Basic)
+1. [模块化-Using a Module System](#模块化-Using a Module System)
+1. [Basic](#2 Basic)
 	- 2.1 [using command line](#)
 	- 2.2 [using `webpack.config.js`](#)
-- 3 [运行 webpack](#)
+1. [运行 webpack](#)
   - 3.1 [using webpack-dev-server](#)
-- 4 [webpack的配置方式](#)
+1. [webpack的配置方式](#)
   - 4.1 [using `require` and `webpack.config.js` to organize](#)
   - 4.2 [using loader to organize  - such as babel-loader](#)
   - 4.3 [Multiple entry files](#)
@@ -22,11 +22,11 @@ Function
   - 4.5 [Adding Source Maps support](#)
   - 4.6 [Creating Multiple Bundles](#)
   - 4.7 [Add CSS/SCSS/LESS and images, fonts to build](#)
-- 5 [Plugin](#)
+1. [Plugin](#)
   - 5.1 [UglifyJs Plugin](#)
   - 5.2 [HTML Webpack Plugin and Open Browser Webpack Plugin](#)
-- 6 [`webpack.config.js` 配置说明](#)
-- 7 [补充](#)
+1. [`webpack.config.js` 配置说明](#)
+1. [补充](#)
 
 
 ## 1 模块化-Using a Module System
