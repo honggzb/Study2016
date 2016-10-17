@@ -21,7 +21,6 @@
 - 5 Plugin 
   - 5.1 UglifyJs Plugin
   - 5.2 HTML Webpack Plugin and Open Browser Webpack Plugin
-  - 
 - 6 `webpack.config.js` 配置说明
 - 7 补充
 
@@ -540,3 +539,4 @@ module.exports = {
 - [webpack 使用教程](https://www.zfanw.com/blog/webpack-tutorial.html)
 - [webpack Samples](https://github.com/zero1036/TGWebS/tree/dev/TGWebS/nodeJS/webpack)
 - [建立react webpack 工具包](http://www.checkme.tw/wordpress/react-webpack-generator/)
+- [webpack-demos](https://github.com/ruanyf/webpack-demos#demo07-uglifyjs-plugin-source)
