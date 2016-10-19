@@ -22,5 +22,5 @@ Flux 的最大特点，就是数据的**"单向流动"** , 任何相邻的部分
 4. Store 更新后，发出一个"change"事件
 5. View 收到"change"事件后，更新页面
 
-![](http://i.imgur.com/WC7R29x.png)
+![](http://i.imgur.com/lxDIHcu.png)
 
