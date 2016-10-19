@@ -97,6 +97,8 @@ Study notes in 2016
 │   ├──  CreatClassVScomponent.md --React.createClass versus extends React.Component (https://toddmotto.com/react-create-class-versus-component/)
 │   ├──  React基本概念.md
 │   ├──  reactRoute学习.md
+│   ├──  reactFlux学习.md
+│   ├──  reactFlux.rar- simple sample for react Flux
 │   └──  reactSampleBasic-04062016.rar
 ├── interview
 │   ├──  htmlCSS
