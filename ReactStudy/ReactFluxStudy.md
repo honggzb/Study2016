@@ -41,5 +41,5 @@ Flux 的最大特点，就是数据的**"单向流动"** , 任何相邻的部分
 
 ![](http://i.imgur.com/lxDIHcu.png)
 
-
+http://www.ruanyifeng.com/blog/2016/01/flux.html
 
