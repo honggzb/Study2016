@@ -1,10 +1,11 @@
 <h3>Table of Contents</h3>
 
-- 一、运行环境(#一、运行环境)
+- [一、运行环境](#一、运行环境)
 - [二、Promise 对象两个特点](#二、Promise 对象两个特点)
 - [三、基本用法](#三、基本用法)
 - [四、基本的 api](#四、基本的api)
-- [五、多个 Promise 包装](#5)
+- [五、Promise Chain](#五、Promise Chain)
+- [六、多个 Promise 包装](#5)
 
 **ES6 原生提供了 Promise 对象**
 
@@ -174,7 +175,27 @@ getJSON("/posts.json").then(function(json) {
 
 **说明**： 
 
-1. Promise.resolve
+1. new Promise的快捷方式
+
+- 静态方法Promise.resolve(value) 是 new Promise() 方法的快捷方式
+- 静态方法Promise.reject(error) 也是 new Promise() 方法的快捷方式
+
+```javascript
+Promise.resolve(42);   //这个promise对象立即进入确定（即resolved）状态，并将42传递给后面then里所指定的 onFulfilled 函数
+//可以认为是以下代码的语法糖
+new Promise(function(resolve){
+    resolve(42);
+});
+Promise.reject(new Error("出错了"))
+//可以认为是以下代码的语法糖
+Promise.reject(new Error("BOOM!")).catch(function(error){
+    console.error(error);
+});
+//
+Promise.resolve(42).then(function(value){  //Promise.resolve(value); 的返回值也是一个promise对象
+    console.log(value);
+});
+```
 
 1. 如果Promise状态已经变成Resolved，再抛出错误是无效的
 
@@ -188,7 +209,7 @@ promise
   .catch(function(error) { console.log(error) });   
 ```
 
-2. Promise对象的错误具有“冒泡”性质，会一直向后传递，直到被捕获为止。也就是说，错误总是会被下一个catch语句捕获
+1. Promise对象的错误具有“冒泡”性质，会一直向后传递，直到被捕获为止。也就是说，错误总是会被下一个catch语句捕获
 
 ```javascript
 getJSON("/post/1.json").then(function(post) { 
@@ -200,7 +221,23 @@ getJSON("/post/1.json").then(function(post) {
 });
 ```
 
-<h4 id="#5"> 五、多个 Promise 包装</h4>
+##五、Promise Chain
+
+```javascript
+function taskA() { console.log("Task A"); }
+function taskB() { console.log("Task B"); }
+function onRejected(error) { console.log(error);// => "throw Error @ Task A" }
+function finalTask() { console.log("Final Task");  }
+var promise = Promise.resolve();
+promise.then(taskA)
+       .then(taskB)
+       .catch(onRejected)
+       .then(finalTask);
+```
+
+![](http://i.imgur.com/5dd1YP8.png)
+
+##六、多个 Promise 包装
 
 Promise.all 和 Promise.race 方法都可以将多个 Promise 对象包装成一个，两者的区别在于：
 
