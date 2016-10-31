@@ -1,6 +1,6 @@
 <h3>Table of Contents</h3>
 
-- [一、运行环境](#environment)
+- [一、运行环境](#1)
 - [二、Promise 对象两个特点](#2)
 - [三、基本用法](#3)
 - [四、基本的 api](#4)
@@ -8,14 +8,14 @@
 
 **ES6 原生提供了 Promise 对象**
 
-<h3 id="#environment"> 一、运行环境(#environment-setup)</h3>
+<h4 id="#1"> 一、运行环境</h4>
 
 ```
 npm install es6-promise   // 命令行
 var Promise = require('es6-promise').Promise;   //解决： 找不到Promise Module
 ```
 
-<h3 id="#2"> 二、Promise 对象两个特点</h3>
+<h4 id="#2"> 二、Promise 对象两个特点</h4>
 
 - 对象的状态不受外界影响。Promise 对象代表一个异步操作，有三种状态：`Pending`（进行中）、`Resolved`（已完成，又称 Fulfilled）和 `Rejected`（已失败）。只有异步操作的结果，可以决定当前是哪一种状态，任何其他操作都无法改变这个状态。这也是 Promise 这个名字的由来，它的英语意思就是「承诺」，表示其他手段无法改变。
 - 一旦状态改变，就不会再变，任何时候都可以得到这个结果。Promise 对象的状态改变，只有两种可能：从 Pending 变为 Resolved 和从 Pending 变为 Rejected。只要这两种情况发生，状态就凝固了，不会再变了，会一直保持这个结果。就算改变已经发生了，你再对 Promise 对象添加回调函数，也会立即得到这个结果。这与事件（Event）完全不同，事件的特点是，如果你错过了它，再去监听，是得不到结果的。
@@ -93,7 +93,7 @@ getJSON("/posts.json").then(function(json) {
 });
 ```
 
-<h3 id="#4"> 四、基本的 api</h3>
+<h4 id="#4"> 四、基本的 api</h4>
 
 - Promise.resolve()
 - Promise.reject()
@@ -128,7 +128,7 @@ getJSON("/post/1.json").then(function(post) {
 });
 ```
 
-<h3 id="#5"> 五、多个 Promise 包装</h3>
+<h4 id="#5"> 五、多个 Promise 包装</h4>
 
 Promise.all 和 Promise.race 方法都可以将多个 Promise 对象包装成一个，两者的区别在于：
 
