@@ -224,9 +224,12 @@ getJSON("/post/1.json").then(function(post) {
 ##五、Promise Chain
 
 ```javascript
-function taskA() { console.log("Task A"); }
-function taskB() { console.log("Task B"); }
-function onRejected(error) { console.log(error);// => "throw Error @ Task A" }
+function taskA() { 
+  console.log("Task A"); 
+  throw new Error("throw Error @ Task A") 
+}
+function taskB() { console.log("Task B");  // 不会被调用 }
+function onRejected(error) { console.log(error);   // => "throw Error @ Task A" }
 function finalTask() { console.log("Final Task");  }
 var promise = Promise.resolve();
 promise.then(taskA)
@@ -235,11 +238,15 @@ promise.then(taskA)
        .then(finalTask);
 ```
 
-![](http://i.imgur.com/5dd1YP8.png)
+![](http://i.imgur.com/oBT7DP6.png)
+
+由于Promise对象的错误具有“冒泡”性质, 如Task A产生异常时，Task B 是不会被调用的
+
+![](http://i.imgur.com/FVBsGPx.png)
 
 ##六、多个 Promise 包装
 
-Promise.all 和 Promise.race 方法都可以将多个 Promise 对象包装成一个，两者的区别在于：
+Promise.all 和 Promise.race方法都可以将多个Promise 对象包装成一个，两者的区别在于：
 
 - Promise.all 中所有 Promise 对象成员都成功时，包装对象才会成功，任何一个成员失败都会导致包装对象失败(非常用于于处理一个动态大小均匀的 Promise 列表)
 - Promise.race 包装对象的行为与第一个发生改变的 Promise 对象成员一致，而忽略后续其它的成员
