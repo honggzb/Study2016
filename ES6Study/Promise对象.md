@@ -1,9 +1,9 @@
 <h3>Table of Contents</h3>
 
-- [一、运行环境](#一、运行环境)
+- 一、运行环境(#一、运行环境)
 - [二、Promise 对象两个特点](#二、Promise 对象两个特点)
 - [三、基本用法](#三、基本用法)
-- [四、基本的 api](#4)
+- [四、基本的 api](#四、基本的api)
 - [五、多个 Promise 包装](#5)
 
 **ES6 原生提供了 Promise 对象**
@@ -30,8 +30,8 @@ Promise也有一些缺点。首先，无法取消Promise，一旦新建它就会
 
 ```Javascript
 var promise = new Promise(function(resolve, reject) {
-  // ... some code
-  if (/* 异步操作成功 */){
+  // ... some code, 异步处理
+  if (/* 异步操作成功 */){   // 处理结束后、调用resolve 或 reject
     resolve(value);
   } else {
     reject(error);
@@ -42,13 +42,58 @@ promise.then(function(value) {   // 第一个回调函数是Promise对象的状�
 }, function(error) {    //第二个回调函数是Promise对象的状态变为Reject时调用, 可选
   // failure
 });
+promise.then(onFulfilled, onRejected)   //resolve(成功)时调用onFulfilled, reject(失败)时调用onRejected
+       .catch(onRejected)               //异常处理
 ```
 
-- ES6规定，Promise对象是一个构造函数，用来生成Promise实例
+- ES6规定，Promise对象是一个构造函数，用来生成Promise实例, new Promise(fn) 返回一个promise对象, 在fn 中指定异步等处理
 - Promise构造函数接受一个函数作为参数，该函数的两个参数分别是resolve和reject
 - Promise实例生成以后，可以用then方法分别指定Resolved状态和Reject状态的回调函数
 
-案例
+**Typical sample**
+
+```javascript
+//#1
+doSomething().then(function () {
+  return doSomethingElse();
+}).then(finalHandler);
+doSomething
+|-----------------|
+                  doSomethingElse(undefined)
+                  |------------------|
+                                     finalHandler(resultOfDoSomethingElse)
+                                     |------------------|
+//#2
+doSomething().then(function () {
+  doSomethingElse();
+}).then(finalHandler);
+doSomething
+|-----------------|
+                  doSomethingElse(undefined)
+                  |------------------|
+                  finalHandler(undefined)
+                  |------------------|
+//#3
+doSomething().then(doSomethingElse())
+  .then(finalHandler);
+doSomething
+|-----------------|
+doSomethingElse(undefined)
+|---------------------------------|
+                  finalHandler(resultOfDoSomething)
+                  |------------------|
+//#4
+doSomething().then(doSomethingElse)
+  .then(finalHandler);
+doSomething
+|-----------------|
+                  doSomethingElse(resultOfDoSomething)
+                  |------------------|
+                                     finalHandler(resultOfDoSomethingElse)
+                                     |------------------|
+```
+
+**案例**
 
 ```Javascript
  //异步加载图片
@@ -65,6 +110,31 @@ promise.then(function(value) {   // 第一个回调函数是Promise对象的状�
   });
 }
 //用Promise对象实现的Ajax操作
+function getURL(URL) {    //用Promise把XHR处理包装起来的名为getURL的函数, 该函数返回一个promise对象
+    return new Promise(function (resolve, reject) {   //new Promise构造器之后，会返回一个promise对象
+        var req = new XMLHttpRequest();
+        req.open('GET', URL, true);
+        req.onload = function () {
+            if (req.status === 200) {
+                resolve(req.responseText);     //只有在通过XHR取得结果状态为200,也就是只有数据取得成功时, 才会调用 resolve
+            } else {
+                reject(new Error(req.statusText));  //其他情况（取得失败）时则会调用reject方法, 创建一个Error对象后再将具体的值传进去, 传给reject
+            }
+        };
+        req.onerror = function () {
+            reject(new Error(req.statusText)); 
+        };
+        req.send();
+    });
+}
+// 运行示例
+var URL = "http://httpbin.org/get"; 
+getURL(URL).then(function onFulfilled(value){   //设置resolve后的回调函数
+    console.log(value);  
+}).catch(function onRejected(error){ 
+    console.error(error);
+});
+//
 var getJSON = function(url) {
   var promise = new Promise(function(resolve, reject){
     var client = new XMLHttpRequest();
@@ -93,7 +163,7 @@ getJSON("/posts.json").then(function(json) {
 });
 ```
 
-<h4 id="#4"> 四、基本的 api</h4>
+##四、基本的api
 
 - Promise.resolve()
 - Promise.reject()
@@ -103,6 +173,8 @@ getJSON("/posts.json").then(function(json) {
 - Promise.race() // 竞速，完成一个即可
 
 **说明**： 
+
+1. Promise.resolve
 
 1. 如果Promise状态已经变成Resolved，再抛出错误是无效的
 
