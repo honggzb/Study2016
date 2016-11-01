@@ -179,6 +179,7 @@ getJSON("/posts.json").then(function(json) {
 
 - 静态方法Promise.resolve(value) 是 new Promise() 方法的快捷方式
 - 静态方法Promise.reject(error) 也是 new Promise() 方法的快捷方式
+- Promise.then(fn1).then(fn2).catch(fn) 只是 promise.then(undefined, onRejected); 方法的一个别名
 
 ```javascript
 Promise.resolve(42);   //这个promise对象立即进入确定（即resolved）状态，并将42传递给后面then里所指定的 onFulfilled 函数
@@ -223,6 +224,34 @@ getJSON("/post/1.json").then(function(post) {
 
 ##五、Promise Chain
 
+- then 方法每次都会创建并返回一个新的promise对象
+
+```javascript
+// 1: 对同一个promise对象同时调用then方法
+var aPromise = new Promise(function (resolve) { resolve(100); });
+aPromise.then(function (value) {
+    return value * 2;    // => 100,then调用几乎是在同时开始执行的，而且传给每个 then 方法的 value 值都是 100
+}); 
+aPromise.then(function (value) {
+    return value * 2;  //  => 100,then调用几乎是在同时开始执行的，而且传给每个 then 方法的 value 值都是 100
+});
+aPromise.then(function (value) {
+    console.log("1: " + value);   // => 100,then 调用几乎是在同时开始执行的，而且传给每个 then 方法的 value 值都是 100
+})
+// vs
+// 2: 对 then进行 promise chain方式进行调用
+var bPromise = new Promise(function (resolve) { resolve(100); });
+bPromise.then(function (value) {
+          return value * 2;     // => 100
+      }).then(function (value) {
+          return value * 2;   // => 100 * 2
+      }).then(function (value) {
+          console.log("2: " + value);    // => 100 * 2 * 2
+      });
+```
+
+###5.1 Promise Chain
+
 ```javascript
 function taskA() { 
   console.log("Task A"); 
@@ -240,9 +269,26 @@ promise.then(taskA)
 
 ![](http://i.imgur.com/oBT7DP6.png)
 
-由于Promise对象的错误具有“冒泡”性质, 如Task A产生异常时，Task B 是不会被调用的
+- 由于在promise chain中，由于在onRejected和Final Task后面没有catch处理了，因此在这两个Task中如果出现异常的话将不会被捕获, 如Task A产生异常时，Task B 是不会被调用的
 
 ![](http://i.imgur.com/FVBsGPx.png)
+
+###5.2 promise chain 中如何传递参数
+
+在Task中return的返回值，会在下一个Task执行时传给它
+
+```javascript
+function doubleUp(value) { return value * 2; }
+function increment(value) { return value + 1; }
+function output(value) { console.log(value);// => (1 + 1) * 2; }
+var promise = Promise.resolve(1);     // 1)Promise.resolve(1); 传递1给 increment 函数
+promise.then(increment)               // 2)函数increment对接收的参数进行 +1 操作并返回（通过return）
+       .then(doubleUp)                // 3)参数变为2，并再次传给 doubleUp 函数
+       .then(output)                  // 4)在函数 output 中打印结果
+       .catch(function(error){        // promise chain中出现异常的时候会被调用
+          console.error(error);
+      });
+```
 
 ##六、多个 Promise 包装
 
