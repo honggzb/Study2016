@@ -290,12 +290,14 @@ promise.then(increment)               // 2)函数increment对接收的参数进�
       });
 ```
 
-##六、多个 Promise 包装
+##六、多个Promise包装
 
-Promise.all 和 Promise.race方法都可以将多个Promise 对象包装成一个，两者的区别在于：
+### 6.1 多个Promise处理
 
-- Promise.all 中所有 Promise 对象成员都成功时，包装对象才会成功，任何一个成员失败都会导致包装对象失败(非常用于于处理一个动态大小均匀的 Promise 列表)
-- Promise.race 包装对象的行为与第一个发生改变的 Promise 对象成员一致，而忽略后续其它的成员
+为了应对需要对多个异步调用进行统一处理的场景，Promise准备了 Promise.all 和 Promise.race 这两个静态方法。 Promise.all 和 Promise.race方法都可以将多个Promise 对象包装成一个，两者的区别在于：
+
+- Promise.all 接收一个promise对象的数组作为参数，当这个数组里的所有promise对象全部变为resolve或reject状态的时候，它才会去调用.then 方法, 任何一个成员失败都会导致包装对象失败(非常用于于处理一个动态大小均匀的 Promise 列表), 传递给Promise.all 的promise并不是一个个的顺序执行的，而是同时开始、并行执行的
+- Promise.race 包装对象的行为与第一个发生改变的 Promise 对象成员一致，而忽略后续其它的成员, 即romise.race只要有一个promise对象进入 FulFilled 或者 Rejected 状态的话，就会继续进行后面的处理
 - Promise.props 处理一个 promise 的 map 集合。只有有一个失败，所有的执行都结束
 
 ```javascript
@@ -326,6 +328,157 @@ Promise.props({
   console.log(result.tweets, result.pictures, result.comments);
  });
 ```
+
+### 6.2 使用Promise进行顺序（sequence）处理
+
+- 方法1： 循环使用then调用的方法
+- 方法2： 使用for循环的方法
+- 方法3： 使用reduce的方法
+- 方法4： 分离出顺序处理函数的方法
+
+```javascript
+function getURL(URL) {
+    return new Promise(function (resolve, reject) {
+        var req = new XMLHttpRequest();
+        req.open('GET', URL, true);
+        req.onload = function () {
+            if (req.status === 200) {
+                resolve(req.responseText);
+            } else {
+                reject(new Error(req.statusText));
+            }
+        };
+        req.onerror = function () {
+            reject(new Error(req.statusText));
+        };
+        req.send();
+    });
+}
+var request = {
+        comment: function getComment() {
+            return getURL('http://azu.github.io/promises-book/json/comment.json').then(JSON.parse);
+        },
+        people: function getPeople() {
+            return getURL('http://azu.github.io/promises-book/json/people.json').then(JSON.parse);
+        }
+    };
+```
+
+方法1： 循环使用then调用的方法
+
+```javascript
+function main() {
+    function recordValue(results, value) {
+        results.push(value);
+        return results;
+    }
+    var pushValue = recordValue.bind(null, []);   // [] 用来保存初始化的值
+    return request.comment().then(pushValue).then(request.people).then(pushValue);  //循环使用then调用的方法
+}
+// 运行示例
+main().then(function (value) {
+    console.log(value);
+}).catch(function(error){
+    console.error(error);
+});
+```
+
+方法2： 使用for循环的方法
+
+```javascript
+function main() {
+    function recordValue(results, value) {
+        results.push(value);
+        return results;
+    }
+    var pushValue = recordValue.bind(null, []);  // [] 用来保存初始化值
+    var tasks = [request.comment, request.people];  // 返回promise对象的函数的数组
+    var promise = Promise.resolve();  // 临时变量
+    for (var i = 0; i < tasks.length; i++) {    //通过不断对promise进行处理，不断的覆盖 promise 变量的值，以达到对promise对象的累积处理效果
+        var task = tasks[i];
+        promise = promise.then(task).then(pushValue);
+    }
+    return promise;
+}
+// 运行示例
+main().then(function (value) {
+    console.log(value);
+}).catch(function(error){
+    console.error(error);
+});
+```
+
+方法3： 使用reduce的方法
+
+```javascript
+function main() {
+    function recordValue(results, value) {
+        results.push(value);
+        return results;
+    }
+    var pushValue = recordValue.bind(null, []);
+    var tasks = [request.comment, request.people];
+    return tasks.reduce(function (promise, task) {   //第二个参数用来设置盛放计算结果的初始值
+        return promise.then(task).then(pushValue);   //return的值，则会被赋值为下次循环时的 promise 。也就是说，通过返回由 then 创建的新的promise对象，就实现了和for循环类似的 Promise chain 了
+    }, Promise.resolve());
+}
+// 运行示例
+main().then(function (value) {
+    console.log(value);
+}).catch(function(error){
+    console.error(error);
+});
+```
+
+方法4： 分离出顺序处理函数的方法
+
+```javascript
+function sequenceTasks(tasks) {    // 使用reduce的方法重构出一个函数, 接收的参数是一个函数的数组
+    function recordValue(results, value) {
+        results.push(value);
+        return results;     //返回一个promise对象
+    }
+    var pushValue = recordValue.bind(null, []);
+    return tasks.reduce(function (promise, task) {
+        return promise.then(task).then(pushValue);
+    }, Promise.resolve());
+}
+function getURL(URL) {
+    return new Promise(function (resolve, reject) {
+        var req = new XMLHttpRequest();
+        req.open('GET', URL, true);
+        req.onload = function () {
+            if (req.status === 200) {
+                resolve(req.responseText);
+            } else {
+                reject(new Error(req.statusText));
+            }
+        };
+        req.onerror = function () {
+            reject(new Error(req.statusText));
+        };
+        req.send();
+    });
+}
+var request = {
+        comment: function getComment() {
+            return getURL('http://azu.github.io/promises-book/json/comment.json').then(JSON.parse);
+        },
+        people: function getPeople() {
+            return getURL('http://azu.github.io/promises-book/json/people.json').then(JSON.parse);
+        }
+    };
+function main() {
+    return sequenceTasks([request.comment, request.people]);
+}
+// 运行示例
+main().then(function (value) {
+    console.log(value);
+}).catch(function(error){
+    console.error(error);
+});
+```
+
 
 > reference
 
