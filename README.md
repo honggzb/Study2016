@@ -57,6 +57,9 @@ Study notes in 2016
 │   ├── grunt.initConfig说明.md
 │   └── gruntStudy.md
 ├── CSS+JS Study
+│   ├──  cssSkill - css技巧
+│   │    ├── SimulateInputFocus.md - focus输入框的时候，外面容器的灰色边框要高亮(不使用JavaScript,纯CSS实现)
+│   │    └── 
 │   ├── 7个CSS单位.md
 │   ├── CSS3-Column分栏.md
 │   ├── CSS3-Flex布局.md
