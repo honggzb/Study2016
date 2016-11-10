@@ -2,6 +2,8 @@ focus输入框的时候，外面容器的灰色边框要高亮(不使用JavaScri
 
 ![](http://i.imgur.com/FoTMrLF.png)
 
+[demo](http://www.zhangxinxu.com/study/201608/input-focus-parent-highlight.html)
+
 ```html
 <style>
 .container {
