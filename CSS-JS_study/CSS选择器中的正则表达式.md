@@ -14,3 +14,5 @@
 - CSS2.1属性选择器:  直接匹配：[attr], [attr="val"], [attr~="val"], [attr|="bar"]
 - CSS3属性选择器: 正则匹配：[foo^="bar"], [foo$="bar"], [foo*="bar"]
 - CSS4属性选择器: 忽略大小写匹配：[attr="val" i]
+
+[demo](http://www.zhangxinxu.com/wordpress/2016/08/regular-expression-in-css-selector/)
