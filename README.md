@@ -76,6 +76,7 @@ Study notes in 2016
 │   ├──  03-extended各个对象的扩展.md
 │   ├──  EnvSetup.md
 │   ├──  Promise对象.md
+│   ├──  promise-bug+debug.md
 │   ├──  箭头函数.md
 │   ├──  generator.md
 │   ├──  References
