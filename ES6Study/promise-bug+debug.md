@@ -5,7 +5,7 @@
 - [三、problem/bug 常见错误](#3)
 - [四、Promise Debugging Techniques](#4)
 
-<h3 href="#1">一、promise factories</h3>
+<h3><a href="#1">一、promise factories</a></h3>
 
 Proimise.all() 是并行执行的, 想一个接一个的执行一系列promise, 可以建立promise工厂
 
@@ -25,7 +25,7 @@ function myPromiseFactory() {
 
 为什么采用promise对象就可以达到目的呢？因为promise工厂只有在调用的时候才会创建promise对象。它和then()方法的工作方式很像，事实上，它们就是一样的东西。
 
-<h3 href="#2">二、返回两个promise的结果</h3>
+<h3><a href="#2">二、返回两个promise的结果</a></h3>
 
 ```javascript
 var user;    // 在外层作用域存储user对象
@@ -61,7 +61,7 @@ putYourRightFootIn()
   .then(shakeItAllAbout);
 ```
 
-<h3 href="#3">三、problem/bug 常见错误</h3>
+<h3><a href="3">三、problem/bug 常见错误</a></h3>
 
 - no return
 - Callback hell
@@ -135,7 +135,7 @@ getUserByName('nolan').then(function (user) {
 
 在使用 promise 的时候抛出异常在开发阶段很有用，它能帮助我们定位代码中的错误。比方说，在 then 函数内部调用 JSON.parse（），如果 JSON 对象不合法的话，可能会抛出异常，在回调函数中，这个异常会被吞噬，但是在使用 promise 之后，我们就可以捕获到这个异常了。
 
-<h3 href="#4">四、Promise Debugging Techniques</h3>
+<h3><a href="#4">四、Promise Debugging Techniques</a></h3>
 
 **1. timeoutPromise**
 
