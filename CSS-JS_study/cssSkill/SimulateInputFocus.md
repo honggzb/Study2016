@@ -37,8 +37,8 @@ focus输入框的时候，外面容器的灰色边框要高亮(不使用JavaScri
 <div class="container">
     <span class="list">李易峰</span>
     <span class="list">赵丽颖</span>
-    <span class="list">杨紫</span><input id="input" class="input">
-    <label class="border" for="input"></label>
+    <span class="list">杨紫</span>
+    <input id="input" class="input"><label class="border" for="input"></label>
 </div>
 ```
 
