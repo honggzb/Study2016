@@ -86,7 +86,7 @@ Study notes in 2016
 │   ├──  generator.md
 │   ├──  References
 │   └──  Sample1 -- ES6使用的小例子(gulp构建)
-├──  ** basic--JS **
+├──  **basic--JS**
 │   ├──  ant.md
 │   ├──  深入理解javascript原型和闭包 
 │   ├──  javascript知识点积累.md
@@ -95,6 +95,9 @@ Study notes in 2016
 │   ├──  js标准对象之Date
 │   ├──  JS数据类型判断和数组判断.md 
 │   └──  Chrome DevTools new features.md
+├──  **JavascriptDesignPattern Javascript设计模式**
+│   ├──  jsDesignPattern1.md
+│   └──  
 ├── ReactStudy
 │   ├──  basicSetupEnv
 │   │     └──
