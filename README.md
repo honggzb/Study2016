@@ -60,7 +60,7 @@ Study notes in 2016
 │   ├──  cssSkill - css技巧
 │   │    ├── SimulateInputFocus.md - focus输入框的时候，外面容器的灰色边框要高亮(不使用JavaScript,纯CSS实现)
 │   │    ├── CSS属性选择器驱动的过滤搜索技术(autocomplete).md
-│   │    └── 
+│   │    └── 中文或英文两端对齐.md
 │   ├── 7个CSS单位.md
 │   ├── CSS3-Column分栏.md
 │   ├── CSS3-Flex布局.md
