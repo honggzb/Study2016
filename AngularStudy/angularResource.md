@@ -1,1 +1,2 @@
 - [csdn上AngularJS专题](http://lib.csdn.net/base/23)
+- [实践总结 - 不可错过的Angular应用技巧](https://my.oschina.net/blogshi/blog/293631#comment-list)
