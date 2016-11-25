@@ -1,6 +1,6 @@
 ##Javascript中bind()方法的使用与实现
 
-`fun.bind(thisArg[, arg1[, arg2[, ...]]])`
+`function.bind(thisArg[, arg1[, arg2[, ...]]])`
 
 ```javascript
 var altwrite = document.write;
