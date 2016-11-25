@@ -1,6 +1,6 @@
 ##Javascript中bind()方法的使用与实现
 
-`function.bind(thisArg[, arg1[, arg2[, ...]]])`
+`fun.bind(thisArg[, arg1[, arg2[, ...]]])`
 
 ```javascript
 var altwrite = document.write;
@@ -14,6 +14,7 @@ altwrite.call(document, "hello")
 bind主要是为了改变函数内部的this指向，这个是在ECMA5以后加入的，所以IE8以下的浏览器不支持
 
 ```javascript
+var context = { foo: "bar" };    //设立一个简单地对象作为“上下文”
 function returnFoo () {   //一个在this上下文中指向foo变量的函数
   return this.foo;    
 }
@@ -38,12 +39,47 @@ var mymodule = {
   num: 81,
   getNum: function() { return this.num; }
 };
-module.getNum(); // 81
+mymodule.getNum(); // 81
 var getNum = module.getNum;
 getNum();        // 9, 因为在这个例子中，"this"指向全局对象
 // 创建一个'this'绑定到module的函数
 var boundGetNum = getNum.bind(module);
 boundGetNum();    // 81
+```
+
+绑定事件处理函数, 就是绑定事件后的那个callback
+
+```javascript
+var logger = {
+    x: 0,       
+    updateCount: function(){
+        this.x++;
+        console.log(this.x);
+    }
+}
+document.querySelector('button').addEventListener('click', logger.updateCount.bind(logger));
+// 相当于
+document.querySelector('button').addEventListener('click', function(){
+    logger.updateCount();
+});
+```
+
+Ajax的回调中,如何保持this:
+
+```javascript
+$.ajax({
+      url: url,
+      type: 'post',
+      dataType: 'json',
+      data: {'info': info}
+    })
+    .done((function(data) {
+      if(data.status){
+        this._data.process_type = info.process_type;   // 这里this指向的是外层bind进来的this
+      }else{
+        uUnique.noticeBox.showWarning(data.message);
+      }
+}).bind(this));
 ```
 
 ##bind()方法的使用2 - 偏函数（Partial Functions）
@@ -141,11 +177,29 @@ o.fn();
 
 ##bind()方法的使用4- 绑定函数作为构造函数
 
-绑定函数也适用于使用new操作符来构造目标函数的实例。当使用绑定函数来构造实例，**注意：this会被忽略，但是传入的参数仍然可用**
+绑定函数也适用于使用new操作符来构造目标函数的实例。当使用绑定函数来构造实例，**注意：this会被忽略**，但是传入的参数仍然可用
 
+```javascript
+function Point(x, y) {
+  this.x = x;  this.y = y;
+}
+Point.prototype.toString = function() { 
+  return this.x + ',' + this.y; 
+};
+var p = new Point(1, 2);
+p.toString(); // '1,2'
+var YAxisPoint = Point.bind(null, 0/*x*/);  // Point和YAxisPoint共享原型
+var axisPoint = new YAxisPoint(5);
+axisPoint.toString(); // '0,5'
+axisPoint instanceof Point; // true
+axisPoint instanceof YAxisPoint; // true
+new Point(17, 42) instanceof YAxisPoint; // true
+```
 
 > Reference
 
 - [Javascript通过bind()掌控this](https://my.oschina.net/blogshi/blog/265415)
 - [Function.prototype.bind()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind)
 - [Javascript中bind()方法的使用与实现](https://my.oschina.net/blogshi/blog/265415)
+- [Bind, Call and Apply in JavaScript](https://variadic.me/posts/2013-10-22-bind-call-and-apply-in-javascript.html)
+
