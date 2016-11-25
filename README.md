@@ -86,6 +86,10 @@ Study notes in 2016
 │   ├──  generator.md
 │   ├──  References
 │   └──  Sample1 -- ES6使用的小例子(gulp构建)
+├── JS-Study
+│   ├──  Javascript中bind()方法的使用与实现.md
+│   ├── 
+│   └── 
 ├──  **basic--JS**
 │   ├──  ant.md
 │   ├──  深入理解javascript原型和闭包 
