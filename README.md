@@ -44,6 +44,7 @@ Study notes in 2016
 ├── Angular Study
 │   ├── angular2的一些资料.md
 │   ├── angularJS启动多个ng-app.md
+│   ├── plunk-yerUkwXL2JDXnXRVhN60-Angular2quickstart (Angular 2代码sample)
 │   └── angularResource.md
 ├── Build Study - Build tools 
 │   ├──  Webpack
@@ -69,6 +70,7 @@ Study notes in 2016
 │   ├── reflow-repaint.md
 │   └── responsiveTable.md
 ├── atom
+│   ├── Atom使用进阶.md
 │   ├── atomPlug -常用的Atom设置
 │   ├── atom-js-snippet.docs
 │   └── atomPlugin.md
