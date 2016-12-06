@@ -90,7 +90,7 @@ Study notes in 2016
 │   └──  Sample1 -- ES6使用的小例子(gulp构建)
 ├── JS-Study
 │   ├──  Javascript中bind()方法的使用与实现.md
-│   ├── 
+│   ├──  javascript+jQuery判断数组中是否包含指定元素.md
 │   └── 
 ├──  **basic--JS**
 │   ├──  ant.md
