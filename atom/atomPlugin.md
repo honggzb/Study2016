@@ -131,6 +131,8 @@ ctrl-cmd-G|选择文档中与当前所选的单词相同的所有单词
     autofoldIgnoreGrammars: ['SQL', 'CSV', 'JSON', 'CSON', 'Plain Text']
 ```
 
+### Git
+
 - git-plus — (Do git things without the terminal) 与Sublime Text 的sublimegit功能基本一致
     - Cmd-Shift-H on MacOS
     - Ctrl-Shift-H on Windows + Linux
@@ -153,8 +155,19 @@ Atom编辑器支持自定义按键绑定,文件格式是CSON
    'ctrl-p': 'core:move-down'
 ```
 
+### 同步Atom - sync-settings
+
+- 进入Atom设置中心找到该插件sync-settings，进去setting；
+- 打开自己的github创建一个a new person access token ， 然后复制生成的token序列， 粘贴到sync-settings插件的setting里面；
+- 再打开github的gist服务，创建一个gist，并复制生成gist id（注意这个id就是你创建的gist服务对应的URL中除去你的用户名，之后的部分），也粘贴到sync-settings插件的setting里面
+- 配置完毕后， 在文档编辑页面,按下全局命令搜索面板(Ctrl+shift+p)，搜索sync-，会有可选项：
+    - sync-settings:backup – 这条命令是备份当前的配置
+    - sync-settings:restore – 这条命令是回复配置,是直接覆盖的;
+    - sync-settings:view-backup – 这条是当你执行备份后到线上查询你的备份的,也就是到你的gist code里面
+    - sync-settings:check-backup – 这条是查询最后一次是否正常
+
 > references
 
 - https://atom-china.org/
 - http://www.kancloud.cn/wizardforcel/atom-flight-manual/92800
-- 
+- [Github开源编辑器Atom常用插件及安装方法](http://blog.csdn.net/mduanfire/article/details/50278591)
