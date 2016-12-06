@@ -134,6 +134,7 @@ ctrl-cmd-G|选择文档中与当前所选的单词相同的所有单词
 - git-plus — (Do git things without the terminal) 与Sublime Text 的sublimegit功能基本一致
     - Cmd-Shift-H on MacOS
     - Ctrl-Shift-H on Windows + Linux
+- merge-conflicts 解决Atom中合并冲突插件！
 
 ### 按键绑定keymap
 
