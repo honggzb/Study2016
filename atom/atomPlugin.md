@@ -174,7 +174,10 @@ Atom编辑器支持自定义按键绑定,文件格式是CSON
    'ctrl-p': 'core:move-down'
 ```
 
-### Gulp
+### Gulp插件
+ 
+- bottom-dock  - 实现gulp面板,还能实现todo[很实用的功能],还有grunt队列也能实现(https://atom.io/users/benjaminRomano)
+- gulp-manager package
 
 Bottom-dock快捷键|功能
 ---|---
