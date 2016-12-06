@@ -138,6 +138,23 @@ ctrl-cmd-G|选择文档中与当前所选的单词相同的所有单词
     - Ctrl-Shift-H on Windows + Linux
 - merge-conflicts 解决Atom中合并冲突插件！
 
+![](http://i.imgur.com/Kpu93Rd.png)
+
+快捷键|功能
+---|---
+Cmd+T/Cmd+P|列出所有项目中的文件,或Cmd+B列出所有当前打开的文件 
+Cmd+Shift+B|来列出所有新建的或更改过的文件, 会列出所有未跟踪或是更改过的文件,相当于Toggle Git Status Finder命令 
+`git config --global core.editor "atom --wait"`|将Atom设置为Git的默认编辑器
+
+快捷键|功能
+---|---
+Alt+G O |在GitHub上打开当前文件 
+Alt+G B |在GitHub上用Blame方式打开当前文件 
+Alt+G H |在GitHub上用History方式打开当前文件 
+Alt+G C |将当前文件在GitHub上的URL复制到剪切板 
+Alt+G R |在GitHub上比较分支 
+Alt+G ↑和Alt+G ↓|来将光标从当前文件的一块更改移到另一块更改
+
 ### 按键绑定keymap
 
 Atom编辑器支持自定义按键绑定,文件格式是CSON
