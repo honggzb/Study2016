@@ -174,6 +174,28 @@ Atom编辑器支持自定义按键绑定,文件格式是CSON
    'ctrl-p': 'core:move-down'
 ```
 
+### Gulp
+
+Bottom-dock快捷键|功能
+---|---
+ctrl-k ctrl-t|是否显示面板
+ctrl-k ctrl-r|刷新窗口
+ctrl-k ctrl-c|关闭窗口
+---|---
+GULP面板快捷键|功能
+---|---
+ctrl-k ctrl-t|是否显示面板
+ctrl-k ctrl-g|创建一个新的gulp面板
+ctrl-k ctrl-r|刷新窗口
+ctrl-k ctrl-c|关闭窗口
+---|---
+TODO面板快捷键|功能
+---|---
+ctrl-k ctrl-t|是否显示面板
+ctrl-k ctrl-r|刷新窗口
+ctrl-k ctrl-c|关闭窗口
+ctrl-k ctrl-m|添加面板
+
 ### 同步Atom - sync-settings
 
 - 进入Atom设置中心找到该插件sync-settings，进去setting；
