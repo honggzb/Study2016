@@ -45,6 +45,7 @@ Study notes in 2016
 │   ├── angular2的一些资料.md
 │   ├── angularJS启动多个ng-app.md
 │   ├── plunk-yerUkwXL2JDXnXRVhN60-Angular2quickstart (Angular 2代码sample)
+│   ├── typescript-study.md
 │   └── angularResource.md
 ├── Build Study - Build tools 
 │   ├──  Webpack
