@@ -131,6 +131,19 @@ ctrl-cmd-G|选择文档中与当前所选的单词相同的所有单词
     autofoldIgnoreGrammars: ['SQL', 'CSV', 'JSON', 'CSON', 'Plain Text']
 ```
 
+### React
+
+- atom-react-autocomplete
+- autocomplete-js-import–模块导入智能提示 
+- emmet-jsx-css-modules– React内的Emmet补全，非单纯的expand【class => className 】！！
+- language-JavaScript-jsx – JavaScript, ES6, ES7, React JSX, Flow支持
+- language-babel – 写React必不可少【atom内开发react的核心插件！！！】
+- react-es6-snippets – es6写法的react snippet，挺实用
+- react-snippets – 和上面的搭配“口味更加”哦！！。。
+- js-func-viewer– 新插件，但是很实用，可以查看函数的结构~~~~ 
+- atom-react-native-autocomplete – RN的智能补全，react开发也能受用一部分，相当实用！智能提示非autocomplete那种【类似静态语法分析器】
+- autocomplete-modules – 模块智能提示【node_modules】
+
 ### Git
 
 - git-plus — (Do git things without the terminal) 与Sublime Text 的sublimegit功能基本一致
