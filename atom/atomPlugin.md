@@ -138,7 +138,8 @@ ctrl-cmd-G|选择文档中与当前所选的单词相同的所有单词
     - Ctrl-Shift-H on Windows + Linux
 - merge-conflicts 解决Atom中合并冲突插件！
 
-![](http://i.imgur.com/Kpu93Rd.png)
+用颜色表示文件的状态（added, modified, removed)
+![](http://i.imgur.com/B7nDBMe.png)
 
 快捷键|功能
 ---|---
