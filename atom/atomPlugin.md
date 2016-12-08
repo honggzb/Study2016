@@ -134,7 +134,6 @@ cmd-k cmd-N |指定折叠层级 N为层级数
     - linter-stylus, for Stylus, using stylus
 - language-babel  - Babel javascript ES201x, React JSX & Flow Grammar & Transpiler
 
-
 ####文件语法高亮+预览
 
 - minimap
@@ -148,7 +147,7 @@ cmd-k cmd-N |指定折叠层级 N为层级数
 
 - open-in-browser
 - preview
-- terminal-panel 直接在atom里面写命令了(ctrl-`打开)
+- terminal-panel 直接在atom里面写命令了(ctrl-shift-t打开)
 - markdown-writer
 - markdown-preview-plus
 
