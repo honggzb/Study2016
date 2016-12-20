@@ -1,5 +1,5 @@
 
-## css3的flex布局 - 'display: flex;'
+## css3的flex布局 - `display: flex;`
 
 - 一：容器的样式
 - 二：元素样式的属性
