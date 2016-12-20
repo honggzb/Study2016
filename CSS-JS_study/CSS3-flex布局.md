@@ -1,16 +1,46 @@
+
 ## css3的flex布局 - 'display: flex;'
 
 - 一：容器的样式
 - 二：元素样式的属性
 - 三：flex布局浏览器兼容处理
+- 四：flex布局经典案例
+- 五：Flexbox在线生成工具
 
-**注意，设为Flex布局以后，子元素的float、clear和vertical-align属性将失效**
+**注意，设为Flex布局以后，子元素的float、clear和vertical-align属性将失效, `text-overflow: ellipsis;` 在 `display: flex;` 元素上是没有效果的**
 
 ![](http://i.imgur.com/agCkd01.png)
 
+Flexbox布局主要有三种语法版本：
+
+- 2009版本，我们称之为老版本，使用的是“display:box”或者“display:inline-box”；
+- 2011版本，我们称之为混合版本，使用的是“display:flexbox”或者“display:inline-flexbox”；
+- 2013版本，也就是最新语法版本，使用的是“display:flex”或者“display:inline-flex”。
+
+规范版本|IE|Opera|Firefox|Chrome|Safari
+---|---|---|---|---|---
+标准版本|11？|12.10+`*`|Behind flag|21+(`-webkit-`)|  
+混合版本|10(`-ms-`)|   |   |   |  
+最老版本|   |   |3+(`-moz-`)|<21(`-webkit-`)|3+(`-webkit-`)
+
+**开启flexbox：让一个元素变成伸缩容器**
+
+规范版本|属性名称|块伸缩容器|内联伸缩容器
+---|---|---|---
+标准版本|display|flex|inline-flex
+混合版本|display|flexbox|inline-flexbox
+最老版本|display|box|inline-box
+
 ### 一：容器的样式
 
-**排列方向和换行**
+**伸缩容器主轴的排列方向和换行**
+
+规范版本|属性名称|水平方向|反向水平|垂直方向|反向垂直
+---|---|---|---|---|---
+标准版本|flex-direction|row|row-reverse|column|column-reverse
+混合版本|flex-direction|row|row-reverser|column|column-reverse
+最老版本|box-orient|horizontal|horizontal|vertical|vertical
+最老版本|box-direction|normal|row-reverse|normal|reverse
 
 `flex-direction: column-reverse | row | row-reverse | wrap | column wrap; `  - 主轴的方向（即项目的排列方向）
 
@@ -21,13 +51,25 @@
 
 `flex-wrap: nowrap | wrap | wrap-reverse;`  - 如果一条轴线排不下，如何换行
 
+规范版本|属性名称|不换行|换行|反向换行
+---|---|---|---|---
+标准版本|flex-wrap|nowrap|wrap|wrap-reverse
+混合版本|flex-wrap|nowrap|wrap|wrap-reverse
+最老版本|box-wrap|single|multiple|N/A
+
 - nowrap（默认）：     不换行
 - wrap：             换行，第一行在上方
 - wrap-reverse：     换行，第一行在下方
 
 `flex-flow: <flex-direction> || <flex-wrap>;`  - flex-flow属性是flex-direction属性和flex-wrap属性的简写形式，默认值为row nowrap
 
-**项目在主轴上的对齐方式 - justify-content**
+**伸缩项目在主轴上的对齐方式 - justify-content**
+
+规范版本|属性名称|start|center|end|justify|distribute
+---|---|---|---|---|---|---
+标准版本|justify-content|flex-start|center|flex-end|space-between|space-around
+混合版本|flex-pack|start|center|end|justify|distribute
+最老版本|box-pack|start|center|end|justify|N/A
 
 `justify-content: flex-start | flex-end | center | space-between | space-around;        /*左右的对齐方式*/`
 
@@ -39,7 +81,13 @@
 
 ![](http://i.imgur.com/mF24DmT.png)
 
-**项目在交叉轴上的对齐方式 - align-items**
+**伸缩项目在交叉轴(侧轴)上的对齐方式 - align-items**
+
+规范版本|属性名称|start|center|end|baseline|stretch
+---|---|---|---|---|---|---
+标准版本|align-items|flex-start|center|flex-end|baseline|stretch
+混合版本|flex-align|start|center|end|baseline|stretch
+最老版本|box-align|start|center|end|baseline|stretch
 
 `align-items: flex-start | flex-end | center | baseline | stretch;     /*上下的对齐方式*/`
 
@@ -51,9 +99,15 @@
 
 ![](http://i.imgur.com/OqRLFZq.png)
 
-**项目在多根轴线的对齐方式 - align-content**
+**伸缩项目在多根轴线的对齐方式 - align-content**
 
 如果项目只有一根轴线，该属性不起作用
+
+规范版本|属性名称|start|center|end|justify|distribute|stretch
+---|---|---|---|---|---|---|---
+标准版本|align-content|flex-start|center|flex-end|space-between|space-around|stretch
+混合版本|flex-line-pack|start|center|end|justify|distribute|stretch
+最老版本|N/A | N/A | N/A  |  N/A  |  N/A | N/A   |N/A|N/A
 
 `align-content: flex-start | flex-end | center | space-between | space-around | stretch;`
 
@@ -102,7 +156,13 @@ flex属性是flex-grow, flex-shrink和flex-basis的简写，默认值为`0 1 aut
 
 **6、align-self样式**
 
-align-self属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。
+align-self属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch
+
+规范版本 | 属性名称   | auto | start      | center | end      | baseline | stretch
+---------|------------|------|------------|--------|----------|----------|--------
+标准版本 | align-self | auto | flex-start | center | flex-end | baseline | stretch
+混合版本 | flex-align | auto | start      | center | end      | baseline | stretch
+最老版本 | N/A        | N/A | N/A  |  N/A  |  N/A | N/A   |N/A
 
 `.item {align-self: auto | flex-start | flex-end | center | baseline | stretch; }  /*该属性可能取6个值，除了auto，其他都与align-items属性完全一致。*/`
 
@@ -122,7 +182,6 @@ align-self属性允许单个项目有与其他项目不一样的对齐方式，�
 - iOS Safari7.0-7.1/8.1-8.3部分支持2012，需要-webkit-前缀
 - 所以需要考虑新版本2012：http://www.w3.org/TR/2012/CR-css3-flexbox-20120918/
 - 而Android需要考虑旧版本2009：http://www.w3.org/TR/2009/WD-css3-flexbox-20090723/
-- [demo]()
 
 ```css
 /* 子元素-平均分栏 */
@@ -136,17 +195,16 @@ align-self属性允许单个项目有与其他项目不一样的对齐方式，�
 }
 /* 父元素-横向排列（主轴） */
 .flex-h {
+    /* 盒子的兼容性写法 */
     display: box;              /* OLD - Android 4.4- */
-
-    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6(Safari, iOS, Android browser, older WebKit browsers) */
     display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
     display: -ms-flexbox;      /* TWEENER - IE 10 */
     display: -webkit-flex;     /* NEW - Chrome */
     display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
-
-
+    /* 横向排列（主轴） */
     /* 09版 */
-    -webkit-box-orient: horizontal;
+    -webkit-box-orient: horizontal;  /*IE10中显不一行，类似于flex-direction:row功能*/
     /* 12版 */
     -webkit-flex-direction: row;
     -moz-flex-direction: row;
@@ -157,7 +215,7 @@ align-self属性允许单个项目有与其他项目不一样的对齐方式，�
 /* 父元素-横向换行 */
 .flex-hw {
     /* 09版 */
-    /*-webkit-box-lines: multiple;*/
+    -webkit-box-lines: multiple;
     /* 12版 */
     -webkit-flex-wrap: wrap;
     -moz-flex-wrap: wrap;
@@ -258,9 +316,77 @@ align-self属性允许单个项目有与其他项目不一样的对齐方式，�
 
 建议在需要兼容Android时（2009版语法）采用flex-h/flex-v声明容器使用flex模式，在不需要兼容Android时（2012版语法）使用flex设置容器
 
+###四：flex布局经典案例
+
+####4.1 水平和垂直居中（网页设计的圣杯）
+
+```css
+html { height: 100%; } 
+body {  /*父元素*/
+  display: -webkit-box;  /* 老版本语法: Safari,  iOS, Android browser, older WebKit browsers.  */
+  display: -moz-box;    /* 老版本语法: Firefox (buggy) */ 
+  display: -ms-flexbox;  /* 混合版本语法: IE 10 */
+  display: -webkit-flex;  /* 新版本语法： Chrome 21+ */
+  display: flex;       /* 新版本语法： Opera 12.1, Firefox 22+ */
+  /*垂直居中*/	
+  -webkit-box-align: center;   /*老版本语法*/
+  -moz-box-align: center;
+  -ms-flex-align: center; /*混合版本语法*/
+  -webkit-align-items: center;  /*新版本语法*/
+  align-items: center;
+  /*水平居中*/
+  -webkit-box-pack: center;         /*老版本语法*/
+  -moz-box-pack: center; 
+  -ms-flex-pack: center;            /*混合版本语法*/
+  -webkit-justify-content: center;  /*新版本语法*/
+  justify-content: center;   
+  margin: 0;
+  height: 100%;
+  width: 100%       /* needed for Firefox */
+} 
+/*子元素： 实现文本垂直居中*/
+h1 {
+  display: -webkit-box; 
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center; 
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;   /*无论h1元素有多高，文本将永远垂直居中*/
+  align-items: center;
+  height: 10rem;
+}	
+```
+
+####4.2 实现宽屏和窄屏的布局
+
+###五：Flexbox在线生成工具
+
+- [Flexplorer](http://bennettfeely.com/flexplorer/)
+- [CSS Flexbox Please!](http://demo.agektmr.com/flexbox/)
+- [Flexiejs](http://flexiejs.com/playground/)
+ 
 > Reference
 
 - http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html?utm_source=tuicool
 - http://www.ruanyifeng.com/blog/2015/07/flex-examples.html
 - [css3的flex布局](http://www.cnblogs.com/lxiang/p/4766813.html)
 - [flex布局浏览器兼容处理](http://www.tuicool.com/articles/Afq6Bzq)
+- [Flexbox制作CSS布局易如反掌](http://www.w3cplus.com/css3/designing-css-layout-with-flexbox.html)
+- [CSS Flexible Box Layout Module(specification)W3C](http://www.w3.org/TR/css3-flexbox/)
+- [一个完整的Flexbox指南](http://www.w3cplus.com/css3/a-guide-to-flexbox.html)
+- [深入了解 Flexbox 伸缩盒模型](http://www.w3cplus.com/blog/666.html)
+- [IE10中的Flexible Box("Flexbox")布局](http://www.w3cplus.com/css3/ie10-flexbox-layout.html)
+- [IE10中的Flexible Box("Flexbox")布局](https://msdn.microsoft.com/library/hh673531(v=vs.85).aspx)
+- [“老”的Flexbox和“新”的Flexbox](http://www.w3cplus.com/css3/old-flexbox-and-new-flexbox.html)
+- [使用Flexbox：新旧语法混用实现最佳浏览器兼容](http://www.w3cplus.com/css3/using-flexbox.html)
+- [跨浏览器的Flexbox](http://www.w3cplus.com/css3/advanced-cross-browser-flexbox.html)
+- [看看接下来会发生什么：CSS3 Flexible Boxes](http://www.w3cplus.com/css3/a-look-on-whats-coming-up-css3-flexible-boxes.html)
+- [响应式设计的未来——Flexbox](http://www.w3cplus.com/css3/responsive-design-of-the-future-with-flexbox.html)
+- [使用CSS3 Flexbox布局](http://www.w3cplus.com/css3/css3-flexbox-layout.html)
+- [Flexbox——快速布局神器](http://www.w3cplus.com/css3/flexbox-basics.html)
+- [Flexbox中动画内幕](http://www.w3cplus.com/css3/animating-flexboxes-the-lowdown.html)
+- [CSS3实现水平垂直居中](http://www.w3cplus.com/codes/vertically-center-content-with-css3.html)
+- [CSS实战之Flex详解以及其在微信中的兼容实现](https://segmentfault.com/a/1190000004139009)
