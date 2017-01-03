@@ -370,6 +370,7 @@ h1 {
  
 > Reference
 
+- [Flexbox Patterns](http://www.flexboxpatterns.com/home)
 - http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html?utm_source=tuicool
 - http://www.ruanyifeng.com/blog/2015/07/flex-examples.html
 - [css3的flex布局](http://www.cnblogs.com/lxiang/p/4766813.html)
