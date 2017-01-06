@@ -1,7 +1,7 @@
 ###Angular2语法清单
 
 
-Template syntax | 
+Template syntax |
 ---|---
 `<input [value]="firstName">`	|将value属性绑定到firstName表达式的计算结果
 `<div [attr.role]="myAriaRole">`	|将属性 role 绑定到表达式 myAriaRole的值
