@@ -71,11 +71,11 @@ onDestroy() { ... }	|仅仅会被调用一次，主要在实例被摧毁前调�
 
 Dependency injection configuration	|`import {provide} from 'angular2/angular2';`
 ---|---
-provide(MyService, {useClass: MyMockService})	|provide\
-provide(MyService, {useFactory: myFactory})	|provide\
-provide(MyValue, {useValue: 41})|	provide\
+provide(MyService, {useClass: MyMockService})	|`provide\`
+provide(MyService, {useFactory: myFactory})	|`provide\`
+provide(MyValue, {useValue: 41})|	`provide\`
 
-Routing and navigation	import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, ...} from 'angular2/router';
+Routing and navigation	|`import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, ...} from 'angular2/router';`
 ---|---
 `@RouteConfig([  { path: '/:myParam', component: MyComponent, as: 'MyCmp' },  { path: '/staticPath', component: ..., as: ...},  { path: '/*wildCardParam', component: ..., as: ...}])class MyComponent() {}`	|设置完整的路由表
 `<router-outlet></router-outlet>	|将这个位置设置作为激活组件的注入位置
