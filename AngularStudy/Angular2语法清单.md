@@ -79,7 +79,7 @@ Routing and navigation	| `import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDE
 ---|---
 `@RouteConfig([  { path: '/:myParam', component: MyComponent, as: 'MyCmp' },  { path: '/staticPath', component: ..., as: ...},  { path: '/*wildCardParam', component: ..., as: ...}])class MyComponent() {}`	|设置完整的路由表
 `<router-outlet></router-outlet>`	|将这个位置设置作为激活组件的注入位置
-<a [router-link]="[ '/MyCmp', {myParam: 'value' } ]">`	|构造一个链接用于跳转到其他的视图，主要依赖于上面路由配置中的路由名称以及可选参数。添加'/'前缀可以匹配根路由，添加'./'前缀可以用于匹配子路由
+`<a [router-link]="[ '/MyCmp', {myParam: 'value' } ]">`	|构造一个链接用于跳转到其他的视图，主要依赖于上面路由配置中的路由名称以及可选参数。添加'/'前缀可以匹配根路由，添加'./'前缀可以用于匹配子路由
 `@CanActivate(() => { ... })class MyComponent() {}`	|利用组件的修饰器定义了一个方程，路由器会在是否要激活该组件前进行调用。该方程应该返回true或者false或者一个promise结果
 `onActivate(nextInstruction, prevInstruction) { ... }`	|在导航到一个组件之后，路由会首先调用组件的onActicate方法
 `canReuse(nextInstruction, prevInstruction) { ... }`	|路由会根据组件的canReuse方法来决定是直接重用该组件还是先销毁再重新创建一个新的实例
