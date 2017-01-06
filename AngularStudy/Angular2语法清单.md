@@ -1,7 +1,7 @@
 ###Angular2语法清单
 
 
-Template syntax |
+Template syntax |说明
 ---|---
 `<input [value]="firstName">`	|将value属性绑定到firstName表达式的计算结果
 `<div [attr.role]="myAriaRole">`	|将属性 role 绑定到表达式 myAriaRole的值
@@ -75,10 +75,10 @@ provide(MyService, {useClass: MyMockService})	|`provide\`
 provide(MyService, {useFactory: myFactory})	|`provide\`
 provide(MyValue, {useValue: 41})|	`provide\`
 
-Routing and navigation	|`import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, ...} from 'angular2/router';`
+Routing and navigation	| `import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, ...} from 'angular2/router';`
 ---|---
 `@RouteConfig([  { path: '/:myParam', component: MyComponent, as: 'MyCmp' },  { path: '/staticPath', component: ..., as: ...},  { path: '/*wildCardParam', component: ..., as: ...}])class MyComponent() {}`	|设置完整的路由表
-`<router-outlet></router-outlet>	|将这个位置设置作为激活组件的注入位置
+`<router-outlet></router-outlet>`	|将这个位置设置作为激活组件的注入位置
 <a [router-link]="[ '/MyCmp', {myParam: 'value' } ]">`	|构造一个链接用于跳转到其他的视图，主要依赖于上面路由配置中的路由名称以及可选参数。添加'/'前缀可以匹配根路由，添加'./'前缀可以用于匹配子路由
 `@CanActivate(() => { ... })class MyComponent() {}`	|利用组件的修饰器定义了一个方程，路由器会在是否要激活该组件前进行调用。该方程应该返回true或者false或者一个promise结果
 `onActivate(nextInstruction, prevInstruction) { ... }`	|在导航到一个组件之后，路由会首先调用组件的onActicate方法
