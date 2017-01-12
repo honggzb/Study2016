@@ -1,8 +1,8 @@
-###**Pipes** - filters in Angular 1
+##6**Pipes** - filters in Angular 1
 
 Pipes are a way of having a different visual representation for the same piece of data
 
-####6.1 Built-In pipes
+###6.1 Built-In pipes
 
 - currencyPipe `{{ 1234.56|currency:"GBP":true }}`
 - DatePipe 6
@@ -22,7 +22,7 @@ Pipes are a way of having a different visual representation for the same piece o
 	- `{{ [1,2,3,4,5,6] | slice : 2 }}`      from 2nd index to end                  : 3,4,5,6
 	- `{{ [1,2,3,4,5,6] | slice : 2: -1 }}`  from 2nd index to one from end of array: 3,4,5
 
-####6.2 Async pipes with Promises and Observables
+###6.2 Async pipes with Promises and Observables
 
 - Async pipe makes rendering data from Observables and promises easier
 - for Promises automatically calls then
@@ -135,7 +135,7 @@ class AsyncPipeComponent {
 }
 ```
 
-####6.3 Custom pipes 
+###6.3 Custom pipes 
 
 - @pipe decorator
 - transform function
