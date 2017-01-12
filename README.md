@@ -44,6 +44,7 @@ Study notes in 2016
 ├── Angular Study
 │   ├── angular2的一些资料.md
 │   ├── Angular2语法清单.md
+│   ├── angular 2- pipes.md
 │   ├── angular-2-from-theory-to-practice-v1.0.0.pdf
 │   ├── Angular 2 basic.md
 │   ├── angularJS启动多个ng-app.md
