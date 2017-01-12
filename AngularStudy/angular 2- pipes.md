@@ -1,4 +1,4 @@
-##6**Pipes** - filters in Angular 1
+##6. **Pipes** - filters in Angular 1
 
 Pipes are a way of having a different visual representation for the same piece of data
 
