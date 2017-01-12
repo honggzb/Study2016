@@ -1,6 +1,7 @@
 ##6. **Pipes** - filters in Angular 1
 
-Pipes are a way of having a different visual representation for the same piece of data
+- Pipes are a way of having a different visual representation for the same piece of data
+- Pipes are functions which we can call in templates in order to transform data from display purposes
 
 ###6.1 Built-In pipes
 
@@ -26,7 +27,7 @@ Pipes are a way of having a different visual representation for the same piece o
 
 - Async pipe makes rendering data from Observables and promises easier
 - for Promises automatically calls then
-- for observables automatically calls subscribe and unsubscribe
+- for observables automatically calls subscribe and unsubscribe(handle cleanup, unsubscribes when the component is destroyed)
 
 ```javascript
 // did not use async pipe
@@ -138,7 +139,7 @@ class AsyncPipeComponent {
 ###6.3 Custom pipes 
 
 - @pipe decorator
-- transform function
+- transform function: the pipes arguments are passed to this function and whatever the function returns is displayed in the view
 
 ```javascript
 import { Pipe } from '@angular/core';
