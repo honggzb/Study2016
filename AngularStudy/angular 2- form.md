@@ -7,7 +7,53 @@
 - to use previous directive:  import `ReactiveFormsModule`
 
 ```html
+import { ReactiveFormsModule, FormsModule, FormGroup, FormControl, Validators } from '@angular/forms';    //import directives
 
+@Component({
+  selector: 'model-form',
+  template: `
+  <form novalidate [formGroup]="myform">   <!-- [formGroup]  -->
+    <fieldset formGroupName="name">  <!-- formGroupName   -->
+      <div class="form-group">
+        <label>First Name</label>
+        <input type="text" class="form-control" formControlName="firstName"> <!-- formControlName  -->
+      </div>
+      <div class="form-group">
+        <label>Last Name</label>
+        <input type="text" class="form-control" formControlName="lastName"> <!-- formControlName  -->
+      </div>
+    </fieldset>
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" class="form-control" formControlName="email"><!-- formControlName  -->
+    </div>
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" class="form-control" formControlName="password"><!-- formControlName  -->
+    </div>
+  </form>
+  `
+})
+class ModelFormComponent implements OnInit  {
+  myform: FormGroup;       // declare FormGroup model
+  ngOnInit() {
+    this.myform = new FormGroup({   //define instance of FormGroup model
+      name: new FormGroup({         //define instance of FormGroup model
+        firstName: new FormControl('', Validators.required),  //define instance of FormControl model
+        lastName: new FormControl('', Validators.required),   //define instance of FormControl model
+      }),
+      email: new FormControl('',[   //define instance of FormControl model
+        Validators.required,
+        Validators.pattern("[^ @]*@[^ @]*")
+        ]),
+      password: new FormControl('',[    //define instance of FormControl model
+        Validators.required,
+        Validators.minLength(8)
+        ]),
+      language: new FormControl()
+    });
+  }
+}
 ```
 
 - Form control state
@@ -82,6 +128,47 @@ onSubmit() {
 	- it create an instance of FormControl and  adds it to the parent FormGroup
 	- it allows to perform two way data binding between a template input control and a variable on component
 - use domain models to store form state
+
+```html
+import { FormsModule,  FormGroup,FormControl } from '@angular/forms';  //import directives
+// Domain model
+class Signup {
+  constructor(public firstName: string = '',
+              public lastName: string = '',
+              public email: string = '',
+              public password: string = '',
+              public language: string = '') {
+  }
+}
+@Component({
+  selector: 'template-form',
+  template: `<!--suppress ALL -->
+<form novalidate (ngSubmit)="onSubmit()" #f="ngForm">  <!-- local reference variable related to directive ngForm -->
+	<fieldset ngModelGroup="name">   <!-- ngModelGroup directive -->
+		<div class="form-group">
+			<label>First Name</label>
+			<input type="text" class="form-control" name="firstName" [(ngModel)]="model.firstName"  
+			       #firstName="ngModel">  
+			       <!-- local reference variable(firstName) related to directive ngModel, model name is "firstName" -->
+		</div>
+		<div class="form-group">
+			<label>Last Name</label>
+			<input type="text" class="form-control" name="lastName"
+			       [(ngModel)]="model.lastName" #lastName="ngModel">
+			       <!-- local reference variable(lastName) related to directive ngModel, model name is "lastName" -->
+		</div>
+	</fieldset>
+</form>  
+`
+})
+class TemplateFormComponent {
+  model: Signup = new Signup();  //Domain model
+  @ViewChild('f') form: any;
+  onSubmit() {
+   // ...
+  }
+}
+```
 
 **Wrapping up**
 
