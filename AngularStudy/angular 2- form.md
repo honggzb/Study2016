@@ -11,7 +11,7 @@ import { ReactiveFormsModule, FormsModule, FormGroup, FormControl, Validators } 
 @Component({
   selector: 'model-form',
   template: `
-  <form novalidate [formGroup]="myform">   <!-- 2) [formGroup] 定义输入  -->
+  <form novalidate [formGroup]="myform">   <!-- 2) [formGroup] link formGroup to myform  -->
     <fieldset formGroupName="name">  <!-- 2) formGroupName   -->
       <div class="form-group">
         <label>First Name</label>
@@ -141,27 +141,27 @@ class Signup {
 }
 @Component({
   selector: 'template-form',
-  template: `<!--suppress ALL -->
-<form novalidate (ngSubmit)="onSubmit()" #f="ngForm">  <!-- local reference variable related to directive ngForm -->
-	<fieldset ngModelGroup="name">   <!-- ngModelGroup directive -->
+  template: `
+<form novalidate (ngSubmit)="onSubmit()" #f="ngForm">  <!-- 1) local reference variable related to directive ngForm -->
+	<fieldset ngModelGroup="name">   <!-- 2) ngModelGroup directive -->
 		<div class="form-group">
 			<label>First Name</label>
 			<input type="text" class="form-control" name="firstName" [(ngModel)]="model.firstName"  
 			       #firstName="ngModel">  
-			       <!-- local reference variable(firstName) related to directive ngModel, model name is "firstName" -->
+			       <!-- 3) local reference variable(firstName) related to directive ngModel, model name is "firstName" -->
 		</div>
 		<div class="form-group">
 			<label>Last Name</label>
 			<input type="text" class="form-control" name="lastName"
 			       [(ngModel)]="model.lastName" #lastName="ngModel">
-			       <!-- local reference variable(lastName) related to directive ngModel, model name is "lastName" -->
+			       <!-- 3) local reference variable(lastName) related to directive ngModel, model name is "lastName" -->
 		</div>
 	</fieldset>
 </form>  
 `
 })
 class TemplateFormComponent {
-  model: Signup = new Signup();  //Domain model
+  model: Signup = new Signup();  // 4) Domain model
   @ViewChild('f') form: any;
   onSubmit() {
    // ...
