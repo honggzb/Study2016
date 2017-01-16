@@ -7,36 +7,35 @@
 - to use previous directive:  import `ReactiveFormsModule`
 
 ```html
-import { ReactiveFormsModule, FormsModule, FormGroup, FormControl, Validators } from '@angular/forms';    //import directives
-
+import { ReactiveFormsModule, FormsModule, FormGroup, FormControl, Validators } from '@angular/forms';    //1) import directives输入相应的模块
 @Component({
   selector: 'model-form',
   template: `
-  <form novalidate [formGroup]="myform">   <!-- [formGroup]  -->
-    <fieldset formGroupName="name">  <!-- formGroupName   -->
+  <form novalidate [formGroup]="myform">   <!-- 2) [formGroup] 定义输入  -->
+    <fieldset formGroupName="name">  <!-- 2) formGroupName   -->
       <div class="form-group">
         <label>First Name</label>
-        <input type="text" class="form-control" formControlName="firstName"> <!-- formControlName  -->
+        <input type="text" class="form-control" formControlName="firstName"> <!-- 2) formControlName  -->
       </div>
       <div class="form-group">
         <label>Last Name</label>
-        <input type="text" class="form-control" formControlName="lastName"> <!-- formControlName  -->
+        <input type="text" class="form-control" formControlName="lastName"> <!-- 2) formControlName  -->
       </div>
     </fieldset>
     <div class="form-group">
       <label>Email</label>
-      <input type="email" class="form-control" formControlName="email"><!-- formControlName  -->
+      <input type="email" class="form-control" formControlName="email"><!-- 2) formControlName  -->
     </div>
     <div class="form-group">
       <label>Password</label>
-      <input type="password" class="form-control" formControlName="password"><!-- formControlName  -->
+      <input type="password" class="form-control" formControlName="password"><!-- 2) formControlName  -->
     </div>
   </form>
   `
 })
 class ModelFormComponent implements OnInit  {
-  myform: FormGroup;       // declare FormGroup model
-  ngOnInit() {
+  myform: FormGroup;       // 3) declare FormGroup model 声明整个form
+  ngOnInit() {             // 4) declare instance of model 声明各个form model
     this.myform = new FormGroup({   //define instance of FormGroup model
       name: new FormGroup({         //define instance of FormGroup model
         firstName: new FormControl('', Validators.required),  //define instance of FormControl model
