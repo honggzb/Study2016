@@ -44,11 +44,14 @@ Study notes in 2016
 ├── Angular Study
 │   ├── angular2的一些资料.md
 │   ├── Angular2语法清单.md
-│   ├── angular 2- pipes.md
-│   ├── angular 2 - form.md
-│   ├── angular 2 - Dependency Injection(DI) & Providers.md
+│   ├── angular 2 - 6.pipes.md
+│   ├── angular 2 - 7.form.md
+│   ├── angular 2 - 8.Dependency Injection(DI) & Providers.md
+│   ├── angular 2 - 9.HTTP.md
+│   ├── angular 2 - 10.Routing.md
 │   ├── angular-2-from-theory-to-practice-v1.0.0.pdf
 │   ├── Angular 2 basic.md
+│   ├── Angular 2 errors.md
 │   ├── angularJS启动多个ng-app.md
 │   ├── plunk-yerUkwXL2JDXnXRVhN60-Angular2quickstart (Angular 2代码sample)
 │   ├── typescript-study.md
