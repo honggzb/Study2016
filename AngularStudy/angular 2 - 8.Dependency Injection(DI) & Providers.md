@@ -134,17 +134,33 @@ let injector = ReflectiveInjector.resolveAndCreate([
 
 ```javascript
 import {NgModule, Component, Injectable, Inject, Injectable} from '@angular/core';
-//...
-class OtherService {
-  constructor() {};
+// 1) Configuring Injectors 1 - by using providers which defined in NgModule
+@NgModule({
+	providers: [SimpleService, JobService]
+})
+// 1) Configuring Injectors 1 - by using providers which defined in providers or viewProviderss
+@Component({
+	selector: 'my-comp',
+	template: `...`,
+	providers: [SimpleService],
+	//viewProviders: [SimpleService]
+})
+// in customer components must defined constructor to refer injection
+@Component({
+	selector: 'simple',
+	template: `<p>Simple is as simple does</p>`,
+})
+class SimpleComponent {
+	constructor(private simpleService:SimpleService) { }
 }
-// class SimpleService{
-//   otherService: OtherService;
-//   constructor(@Inject(OtherService) otherService: OtherService){   // 1) simpleService inject otherService by using @Inject
-//     this.otherService = otherService;
-//   };
-// }
-// 2) or-  simpleService inject otherService by using @Injectable
+// 2) Configuring Injectors 2 - by using @Inject simpleService inject otherService 
+class SimpleService{
+   otherService: OtherService;
+   constructor(@Inject(OtherService) otherService: OtherService){   
+     this.otherService = otherService;
+   };
+}
+// 3) Configuring Injectors 3 - by using @Injectable simpleService inject otherService
 @Injectable()
 class SimpleService{
   otherService: OtherService;
