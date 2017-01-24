@@ -8,8 +8,47 @@
 	- 2.3 Component Content Projection - ng-content
 	- 2.4 Component Lifecycle Hooks
 	- 2.5 ViewChildren & contentChildren
-- 3 为模板应用样式
-- 4 属性与事件
+	- 2.6 为模板应用样式
+	- 2.7 属性与事件
+- Angular CLI
+- 3 Built-In Directives
+	- 3.1 NgFor
+	- 3.2 NgIf & NgSwitch
+	- 3.3 NgStyle & NgClass
+	- 3.4 ngNonBindable
+	- 3.5 structural directives
+- 4 Customer Directives
+- 5 Reactive Programming = Streams + Operations
+	- 5.1 Observable
+	- 5.2 Angular observables(Reactive Programming in Angular)
+- 6 **Pipes** - filters in Angular 1(angular 2- pipes.md)
+- 7 Form
+	- 7.1 Model driven Form
+	- 7.2 Reactive Model Form
+	- 7.3 Template Driven Form
+- 8 Dependency Injection & Providers
+	- 8.1 injector
+	- 8.2 Provider
+	- 8.3 Tokens
+	- 8.4 Configuring Dependency Injection in Angular
+	- 8.5 NgModule.providers vs Component.providers vs Component.viewProviders
+- 9 HTTP
+	- 9.1 Core HTTP
+	- 9.2 HTTP via Promises
+	- 9.3 HTTP via observables
+	- 9.4 JSONP via Observables
+- 10 routing
+	- 10.1 Local web server configuration
+	- 10.2 Route Configuration
+	- 10.3 Navigating
+		- 10.3.1 hardcoded URLS
+		- 10.3.2 program by the router
+		- 10.3.3 program by a routerLink directive
+	- 10.4 Parameterised Routes(by ID)
+	- 10.5 Nested Routes
+	- 10.6 Router Guards
+	- 10.7 Routing Strategies
+
 
 ### 1 Architecture of Angular
 
@@ -19,6 +58,8 @@
 - Services
 
 ![](http://i.imgur.com/uuXXkHf.png)
+
+![](http://i.imgur.com/BjDIUB4.png)
 
 **ES6工具链**
 
@@ -313,9 +354,9 @@ class JokeListComponent implements OnInit, AfterContentInit, AfterViewInit {
 }
 ```
 
-### 3 为模板应用样式
+####2.6 为模板应用样式
 
-**3.1 styles - 设置模板样式**
+**2.6.1 styles - 设置模板样式**
 
 ```javascript
 @Component({
@@ -326,7 +367,7 @@ class JokeListComponent implements OnInit, AfterContentInit, AfterViewInit {
 })
 ```
 
-**3.1.1 内联样式**
+**2.6.1.1 内联样式**
 
 ```javascript
 @View({
@@ -334,7 +375,7 @@ class JokeListComponent implements OnInit, AfterContentInit, AfterViewInit {
 })
 ```
 
-**3.1.2 外部样式**
+**2.6.1.2 外部样式**
 
 也可以把样式定义在单独的文件中, 如ez-greeting.css, 然后使用View注解的styleUrls属性来引入外部样式：
 
@@ -344,13 +385,13 @@ class JokeListComponent implements OnInit, AfterContentInit, AfterViewInit {
 })
 ```
 
-**3.1.3 Sytle encapsulation strategy - encapsulates component**
+**2.6.1.3 Sytle encapsulation strategy - encapsulates component**
 
 - ViewEncapsulation.Native
 - ViewEncapsulation.Emulated
 - ViewEncapsulation.None
 
-**3.2 ShadowDom - 封装私有样式**
+####2.6.2 ShadowDom - 封装私有样式
 
 Angular2采用ShadowDom作为组件的渲染基础，这意味着组件被渲染到独立的`Shadow Tree`上，可实现DOM对象和样式的良好封装。除了Chrome之外的大多数的浏览器目前还不支持ShadowDom，因此，Angular2提供了三种将模板渲染到DOM的策略
 
@@ -385,9 +426,9 @@ Angular2采用ShadowDom作为组件的渲染基础，这意味着组件被渲染
 </script>
 ```
 
-#### 4 属性与事件
+#### 2.6.7 属性与事件
 
-**4.1 属性声明 - 暴露成员变量**
+**2.6.7.1 属性声明 - 暴露成员变量**
 
 在Component注解的 properties属性中声明组件的成员变量
 
@@ -408,12 +449,20 @@ class EzCard{
 }
 ```
 	
-**4.2 事件声明 - 暴露事件源**
+**2.6.7.2 事件声明 - 暴露事件源**
 
 定义一个事件源/EventEmitter， 然后通过Component注解的events接口包括出来
 
 ```javascript
-
+@Component({
+    events:["change"]
+})
+class EzCard{
+    constructor(){ this.change = new EventEmitter(); }
+}
+@View({
+    template : "<ez-card (change)="onChange()"></ez-card>"    //每次EzCard触发change事件时，EzApp的onChange()方法都将被调用。
+})
 ```
 
 ### Angular CLI
@@ -426,8 +475,212 @@ class EzCard{
 
 ``
 
+###3 Built-In Directives
+
+- directive class(NgFor): Capitalise the name
+- lowercase first letter(ngFor): an instance of a directive or the attribute use to associate a directive to an element
+
+####3.1 NgFor
+
+```java
+@Component({
+  selector: 'ngfor-example',
+  template: `
+  <h4>NgFor (grouped)</h4>    //grouped
+  <ul *ngFor="let group of peopleByCountry">
+    <li>{{ group.country }} </li>
+    <ul>
+      <li *ngFor="let person of group.people; let i=index">{{i+1}} - {{ person.name }} </li>   //index
+    </ul>
+  </ul>
+`
+})
+```
+
+Angular 1:
+
+- ng-repeat
+- $index
+
+####3.2 NgIf & NgSwitch
+
+```html
+<ul *ngFor="let person of people; let i=index"> <!-- index -->
+    <li *ngIf="person.age>30">{{i+1}} - {{ person.name }} ({{ person.age }})</li>
+</ul>
+<ul *ngFor="let person of people; let i=index" [ngSwitch]="person.country">
+    <li *ngSwitchCase="'UK'" class="text-success">{{ person.name }} ({{ person.country }})</li>
+    <li *ngSwitchCase="'USA'" class="text-primary">{{ person.name }} ({{ person.country }})</li>
+		<li *ngSwitchDefault class="text-warning">{{ person.name }} ({{ person.country }})</li>
+</ul>
+```
+- `*ngIf='false'` : actually removes the element completely from the DOM
+- `[hidden]='false'` : 
+
+####3.3 NgStyle & NgClass
+
+- NgStyle: can set individual styles for a given DOM one style at a time
+- NgClass: can bundle styles into a CSS calss and conditionally set the class on a DOM
+
+```html
+<div [ngStyle]="{'background-color':person.country === 'UK' ? 'green' : 'red' }"></div>
+<!-- or  -->
+<li [ngStyle]="{'font-size.px':24}" [style.color]="getColor(person.country)"> {{ person.name }} ({{ person.country }})</li>
+<!-- ngClass  -->
+<li [ngClass]="{
+	'text-success':person.country === 'UK',
+	'text-primary':person.country === 'USA',
+	'text-danger':person.country === 'HK'}">
+		{{ person.name }} ({{ person.country }})
+</li>
+<!-- or  -->
+<li [class.text-success]="person.country === 'UK'"
+		[class.text-primary]="person.country === 'USA'"
+		[class.text-danger]="person.country === 'HK'">
+			{{ person.name }} ({{ person.country }})
+</li>
+```
+
+####3.4 ngNonBindable
+
+not to compile, or bind a particular section of template(keep original)
+
+```html
+<div>To render the name variable we use this syntax<pre ngNonBindable>{{ name }}</pre></div>
+```
+
+####3.5 Structural Directives
+
+- Structural directives are directives which change the structure of DOM by adding and removing elements. There are 3 Built-In Structural directives: NgIf, NgFor, NgSwitch
+- Syntax sugar * : shortcut写法, 可省略不写template
+
+```html
+<template [ngIf]="!data.hide">
+	<p class="card-text">{{ data.punchline }}</p>
+</template>
+<!-- 使用 * -->
+<p class="card-text" *ngIf="!data.hide"> {{ data.punchline }} </p>
+<template ngFor
+					let-j
+					[ngForOf]="jokes">
+	<joke [joke]="j"></joke>
+</template>
+<!-- 使用 * -->
+<joke *ngFor="let j of jokes" [joke]="j"></joke>
+```
+
+###4 Custom Directives
+
+- components are Directives, components have all the features of directives but also have a view
+- Single HTML element can only have a single component, but can have multiple directives
+- Directive类型
+	- 组件： 拥有模板的指令 
+	- 结构型指令： 通过添加和移除DOM元素来改变DOM结构的指令。例如：NgFor, NgIf … 
+	- 属性型指令： 改变元素显示和行为的指令。例如：NgStyle …
+- `@Directive`装饰器
+- ElementRef: inject into the Directive class
+- `@HostListener`装饰器: listen to output events from host element
+- `@HostBinding`装饰器: bind to input properties on host element
+- Configurable Directive(reusable)
+
+```javascript
+@Directive({     // declare a custom Directive 1
+  selector: '[ccCardHover]'
+})
+class CardHoverDirective { // declare a custom Directive 2
+  @HostBinding('class.card-outline-primary') private ishovering: boolean;  //listen to output event
+  @Input('ccCardHover') config: Object = {   //Configurable Directive
+    querySelector: '.card-text'
+  }
+  constructor(private el: ElementRef, private renderer: Renderer){   // inject into Directive(ElementRef, renderer)
+    renderer.setElementStyle(el.nativeElement, 'backgroundColor', 'gray');
+  }
+  @HostListener('mouseover') onMouseOver(){  // bind mouseover event on host element
+    //window.alert("hover");
+    let part = this.el.nativeElement.querySelector('.card-text');
+    this.renderer.setElementStyle(part, 'display','block');
+    this.ishovering = true;
+  }
+  @HostListener('mouseout') onMouseOut(){ // bind mouseout event on host element
+    let part = this.el.nativeElement.querySelector(this.config.querySelector);
+    this.renderer.setElementStyle(part, 'display','none');
+    this.ishovering = false;
+  }
+}
+```
+
+###5 **Reactive Programming = Streams + Operations**
+
+####5.1 Observable --> Streams & Operations
+
+- create streams
+- subscribe to them
+- react to new values
+- combines two streams to create a third
+
+![](http://i.imgur.com/cDsXgLV.png)
+
+[A Decision Tree of Observable Operators - Interval, Take, Map](http://reactivex.io/documentation/operators.html#filtering)
+
+####5.2 Angular observables(Reactive Programming in Angular)
+
+- EventEmitter: under the hood this works via Observables
+- HTTP: HTTP requests in Angular are all handled via Observables
+- Forms: Reactive forms in Angular expose an observable, a stream of all the input fields in the form combined 
+
+###6 **Pipes** - filters in Angular 1
+
+###7 Form
+
+- 7.1 Model driven Form
+- 7.2 Reactive Model Form
+- 7.3 Template Driven Form
+
+**Wrapping up**
+
+template driven | model driven
+---|---
+create form model via directives on template form HTML|link template from HTML with a form model created on component
+easy to setup and use, saving develpment time | harder to setup, scalability
+use ngModel directive(two way data binding)|
+low logic, hard for end to end testing| strong logic on component
+
+###8 Dependency Injection(DI) & Providers
+
+![](http://i.imgur.com/XUfLhao.png)
+
+- token: uniquely identifies
+- Dependency:  the actual code want injected, 一个Dependence是某个对象被创建的类型。
+- Provider  :  a map between a token and a list of dependancies
+- Injector  :  a function which when passed a token returns a denpendency(or a list of dependancies)
+
+- 8.1 injector
+- 8.2 Provider
+- 8.3 Tokens
+- 8.4 Configuring Dependency Injection in Angular
+- 8.5 NgModule.providers vs Component.providers vs Component.viewProviders
+
+NgModule.providers|Component.providers|Component.viewProviders
+---|---|---
+providers on NgModel | providers on Components and Directives | viewProviders on Components
+
+refer to [plunk-providers.zip](https://github.com/honggzb/Study2016/blob/master/AngularStudy/plunk-providers.zip)
+
+###9 HTTP
+
+Two ways to handle HTTP in Angular2
+
+- Promise
+- Observable
+
+###10 Routing
+
+
+
 > Reference
 
 - [Angular2 入门 ](http://www.hubwiz.com/course/5599d367a164dd0d75929c76/)
-- https://angular.io/docs/ts/latest/quickstart.html#!#create-and-configure
+- [angular.io](https://angular.io/docs/ts/latest/quickstart.html#!#create-and-configure)
 - [angularjs 2.0官方新手入门教程](http://alvinwei.blog.163.com/blog/static/214666110201682843045254/)
+- [Dependence Injection(依赖注入)](https://segmentfault.com/a/1190000003781566)
+- f
