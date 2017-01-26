@@ -48,7 +48,15 @@
 	- 10.5 Nested Routes
 	- 10.6 Router Guards
 	- 10.7 Routing Strategies
-
+- 11 Unit Testing
+	- 11.1 Jasmine - Behavior Driven Development(BDD)
+	- 11.2 Karma
+	- 11.3 Angular CLI
+	- 11.4 Testing with Mocks & Spies
+	- 11.5 Angular Test Bed
+	- 11.6 Test Asynchronous functions
+	- 11.7 Testing Dependency Injection
+	- 11.8 Testing Components, Directives, Model Driven Form, Http and Jsonp, Routing
 
 ### 1 Architecture of Angular
 
@@ -675,7 +683,37 @@ Two ways to handle HTTP in Angular2
 
 ###10 Routing
 
+###11 Unit Testing
 
+**[Built-in matchers](http://jasmine.github.io/edge/introduction.html#section-Included_Matchers)**
+
+```
+expect(array).toContain(member);
+expect(fn).toThrow(string);
+expect(fn).toThrowError(string);
+expect(instance).toBe(instance);
+expect(mixed).toBeDefined();
+expect(mixed).toBeFalsy();
+expect(mixed).toBeNull();
+expect(mixed).toBeTruthy();
+expect(mixed).toBeUndefined();
+expect(mixed).toEqual(mixed);
+expect(mixed).toMatch(pattern);
+expect(number).toBeCloseTo(number, decimalPlaces);
+expect(number).toBeGreaterThan(number);
+expect(number).toBeLessThan(number);
+expect(number).toBeNaN();
+expect(spy).toHaveBeenCalled();
+expect(spy).toHaveBeenCalledTimes(number);
+expect(spy).toHaveBeenCalledWith(...arguments);
+```
+
+setup|Function
+---|---
+beforeAll| This function is called once, before all the specs in describe test suite are run
+afterAll|This function is called once after all the specs in a test suite are finished
+beforeEach|This function is called before each test specification, it function, has been run
+afterEach|This function is called after each test specification has been run
 
 > Reference
 
