@@ -7,12 +7,13 @@
 - to use previous directive:  import `ReactiveFormsModule`
 
 ```html
-import { ReactiveFormsModule, FormsModule, FormGroup, FormControl, Validators } from '@angular/forms';    //1) import directives输入相应的模块
+<!-- 1) import directives输入相应的模块 -->
+import { ReactiveFormsModule, FormsModule, FormGroup, FormControl, Validators } from '@angular/forms';   
 @Component({
   selector: 'model-form',
   template: `
   <form novalidate [formGroup]="myform">   <!-- 2) [formGroup] link formGroup to myform  -->
-    <fieldset formGroupName="name">  <!-- 2) formGroupName   -->
+    <fieldset formGroupName="name">        <!-- 2) formGroupName   -->
       <div class="form-group">
         <label>First Name</label>
         <input type="text" class="form-control" formControlName="firstName"> <!-- 2) formControlName  -->
@@ -34,8 +35,8 @@ import { ReactiveFormsModule, FormsModule, FormGroup, FormControl, Validators } 
   `
 })
 class ModelFormComponent implements OnInit  {
-  myform: FormGroup;       // 3) declare FormGroup model 声明整个form
-  ngOnInit() {             // 4) declare instance of model 声明各个form model
+  myform: FormGroup;             // 3) declare FormGroup model 声明整个form
+  ngOnInit() {                   // 4) declare instance of model 声明各个form model
     this.myform = new FormGroup({   //define instance of FormGroup model
       name: new FormGroup({         //define instance of FormGroup model
         firstName: new FormControl('', Validators.required),  //define instance of FormControl model
