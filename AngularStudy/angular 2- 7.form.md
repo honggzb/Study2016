@@ -210,6 +210,9 @@ function emailDomainValidator(control: FormControl){
 
 ####7.4.2 Configurable Custom Form Validators - using factory or class
 
+- Custom model form Validators: use a factory function which returns a validator function configured as we want
+- Custom Template form Validators: create a validator class which re-using the same factory function as we used in model driven forms
+
 ```javascript
 class CodeCraftValidators {
   static emailDomain(requiredDomain) {
