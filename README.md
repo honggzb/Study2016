@@ -53,8 +53,11 @@ Study notes in 2016
 │   ├── angular 2 - 10.Routing.md
 │   ├── angular 2 - 11.Unit-Test.md
 │   ├── angular-2-from-theory-to-practice-v1.0.0.pdf
+│   ├── angular-2-from-theory-to-practice-v1.0.1.pdf
 │   ├── Angular 2 basic.md
 │   ├── Angular 2 errors.md
+│   ├── Reactive Programming- RxJs 核心概念之Observable.md
+│   ├── observable.PNG
 │   ├── angularJS启动多个ng-app.md
 │   ├── typescript-study.md
 │   └── angularResource.md
