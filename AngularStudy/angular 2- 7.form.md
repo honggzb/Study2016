@@ -1,5 +1,12 @@
 ##7 Form
 
+- 7.1 Model driven Form
+- 7.2 Reactive Model Form
+- 7.3 Template Driven Form
+- 7.4 Advanced Topics
+	- 7.4.1 Custom Form Validators
+	- 7.4.2 Configurable Custom Form Validators
+	
 ###7.1 Model driven Form
 
 - create a form model on component by using instances of `FormGroup` and `FormControl`
@@ -178,3 +185,50 @@ create form model via directives on template form HTML|link template from HTML w
 easy to setup and use, saving develpment time | harder to setup, scalability
 use ngModel directive(two way data binding)|
 low logic, hard for end to end testing| strong logic on component
+
+###7.4 Advanced Topics
+
+####7.4.1 Custom Form Validators
+
+- Custom model form Validators
+- Custom Template form Validators
+
+```javascript
+function emailDomainValidator(control: FormControl){
+  let email = control.value;
+  if(email && email.indexOf("@") != 1){
+    let[_,domain] = email.split("@");
+    if(domain !== "codecraft.tv"){
+      return {
+        emailDomain: { parseDomain: domain}
+      }
+    }
+  }
+  return null;
+}
+```
+
+####7.4.2 Configurable Custom Form Validators - using factory or class
+
+```javascript
+class CodeCraftValidators {
+  static emailDomain(requiredDomain) {
+    return function(control: FormControl){
+      let email = control.value;
+      if(email && email.indexOf("@") != 1){
+        let[_,domain] = email.split("@");
+        if(domain !== requiredDomain){
+          return {
+            emailDomain: { 
+              parseDomain: domain,
+              requiredDomain: requiredDomain  // default passed domain
+            }
+          }
+        }
+      }
+      return null;
+    }
+  }
+}
+```
+
