@@ -10,6 +10,7 @@ ng serve --host 0.0.0.0 --port 4201 --live-reload-port 49153
 #1. Generating Components, Directives, Pipes and Services
 ng generate component my-new-component
 ng g component my-new-component # using the alias
+ng destroy my-new-component    #delete component, class ...
 #2. creating a build - angular-cli.json
 ng build   #generate build artifacts will be stored in the dist/ directory.
 "environments": {
