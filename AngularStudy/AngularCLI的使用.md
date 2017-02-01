@@ -41,16 +41,16 @@ ng version    #Get the version of the CLI
 
 **Generate Parts of Your Application**
 
-Scaffold|Usage
----|---
-Component|	ng g component my-new-component
-Directive|	ng g directive my-new-directive
-Pipe|	ng g pipe my-new-pipe
-Service|	ng g service my-new-service
-Class|	ng g class my-new-class
-Interface|	ng g interface my-new-interface
-Enum|	ng g enum my-new-enum
-Module|	ng g module my-module
+Scaffold|Usage|short usage
+---|---|---
+Component|	ng g component my-new-component|ng g c my-new-component
+Directive|	ng g directive my-new-directive|ng g d my-new-directive
+Pipe|	ng g pipe my-new-pipe|ng g p my-new-pipe
+Service|	ng g service my-new-service|ng g s my-new-service
+Class|	ng g class my-new-class|ng g c my-new-class
+Interface|	ng g interface my-new-interface|ng g i my-new-interface
+Enum|	ng g enum my-new-enum|ng g e my-new-enum
+Module|	ng g module my-module|ng g m my-module
 
 options|function
 ---|---
