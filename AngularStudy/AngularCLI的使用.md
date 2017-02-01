@@ -5,7 +5,8 @@ npm install -g angular-cli
 ng new PROJECT_NAME
 cd PROJECT_NAME
 ng serve    #lite-server
-ng serve --host 0.0.0.0 --port 4201 --live-reload-port 49153  # configure the default HTTP port and the one used by the LiveReload server
+# configure the default HTTP port and the one used by the LiveReload server
+ng serve --host 0.0.0.0 --port 4201 --live-reload-port 49153
 #1. Generating Components, Directives, Pipes and Services
 ng generate component my-new-component
 ng g component my-new-component # using the alias
