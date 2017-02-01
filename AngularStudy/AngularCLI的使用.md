@@ -127,9 +127,9 @@ typelessPackage.method();
 - Global Library Installation
 
 ```shell
-#use bootstrap 4
+#install bootstrap 4
 npm install bootstrap@next
-#add the needed script files to apps[0].scripts
+#add the needed script files to apps[0].scripts in angular-cli.json file
 "scripts": [
   "../node_modules/jquery/dist/jquery.js",
   "../node_modules/tether/dist/js/tether.js",
