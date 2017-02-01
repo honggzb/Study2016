@@ -143,6 +143,8 @@ npm install bootstrap@next
 # Restart ng serve
 ```
 
+-- [how-to-add-bootstrap-to-an-angular-cli-project](http://stackoverflow.com/questions/37649164/how-to-add-bootstrap-to-an-angular-cli-project)
+
 **1.4 Updating angular-cli**
 
 ```shell
