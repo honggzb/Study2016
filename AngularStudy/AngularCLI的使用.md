@@ -156,3 +156,59 @@ npm install --save-dev angular-cli@latest
 npm install
 ng update
 ```
+
+2 project struture the Angular CLI setup
+
+```
+// configuration files
+|- config/
+|----- environment.dev.ts
+|----- environment.js
+|----- environment.prod.ts
+|----- karma-test-shim.js
+|----- karma.conf.js
+|----- protractor.conf.js
+
+// end-to-end-tests
+|- e2e/
+|----- app.e2e.ts
+|----- app.po.ts
+|----- tsconfig.json
+|----- typings.d.ts
+
+// npm dependencies
+|- node_modules/
+
+// public facing app. built things go here
+|- public/
+
+// where most of the work will be done
+|- src/
+|----- app/
+            |----- shared/
+                        |----- index.ts
+            |----- environment.ts
+            |----- index.ts
+
+            // our first generated component
+            |----- scotchy-scotch.component.css|html|spec.ts|ts
+|----- favicon.ico
+|----- icon.png
+|----- index.html
+|----- main.ts
+|----- manifest.webapp
+|----- system-config.ts
+|----- tsconfig.json
+|----- typings.d.ts
+
+// overall configuration
+|- typings/
+|- .clang-format
+|- .editorconfig
+|- .gitignore
+|- angular-cli-build.js
+|- angular-cli.json
+|- package.json
+|- tslint.json
+|- typings.json
+```
