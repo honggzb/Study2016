@@ -1,3 +1,11 @@
+- 3 Built-In Directives
+	- 3.1 NgFor
+	- 3.2 NgIf & NgSwitch
+	- 3.3 NgStyle & NgClass
+	- 3.4 ngNonBindable
+	- 3.5 structural directives
+- 4 Customer Directives
+
 Directive|function|Examples
 ---|---|---
 Attribute Directive| interact with the element to which they are applied to| ngClass, ngStyle
