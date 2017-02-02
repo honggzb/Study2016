@@ -42,10 +42,9 @@ ng g d highlight  #create directive "highlight"
 })
 ```
 
-Angular 1:
-
-- ng-repeat
-- $index
+> Angular 1:
+> 	- ng-repeat
+> 	- $index
 
 ###3.2 NgIf & NgSwitch
 
