@@ -22,8 +22,8 @@ ng g d highlight  #create directive "highlight"
 
 ##3 Built-In Directives
 
-> directive class(NgFor): Capitalise the name
-> lowercase first letter(ngFor): an instance of a directive or the attribute use to associate a directive to an element
+> - directive class(NgFor): Capitalise the name
+> - lowercase first letter(ngFor): an instance of a directive or the attribute use to associate a directive to an element
 
 ###3.1 NgFor
 
