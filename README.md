@@ -47,6 +47,7 @@ Study notes in 2016
 │   ├── angular2的一些资料.md
 │   ├── Angular2语法清单.md
 │   ├── AngularCLI的使用.md
+│   ├── angular 2 - 4+5.Directives.md
 │   ├── angular 2 - 6.pipes.md
 │   ├── angular 2 - 7.form.md
 │   ├── angular 2 - 8.Dependency Injection(DI) & Providers.md
