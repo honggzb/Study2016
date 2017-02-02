@@ -161,4 +161,23 @@ class CardHoverDirective {
     this.ishovering = false;
   }
 }
+// other UnlessDirective
+@Directive({ 
+  selector: '[unless]'
+})
+class UnlessDirective {
+  @Input() set unless(condition: boolean){ 
+    if(!condition){
+      this.vcRef.createEmbeddedView(this.templateRef);
+    }else {
+      this.vcRef.clear();
+    }
+  }
+  constructor(private templateRef: TemplateRef<any>, private vcRef: ViewContainerRef){
+    renderer.setElementStyle(el.nativeElement, 'backgroundColor', 'gray');
+  }
+}
+//in template html
+<div *ngIf="switch">Conditional Text</div>
+<div *unless="switch">Conditional Text</div>
 ```
