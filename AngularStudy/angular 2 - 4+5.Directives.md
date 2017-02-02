@@ -3,7 +3,7 @@ Directive|function|Examples
 Attribute Directive| interact with the element to which they are applied to| ngClass, ngStyle
 Structural Directive| interact with the current view container and change the struture of DOM | `*ngIf`, `*ngFor`
 
-**Directive don't have property or Event bindings!**
+**！！注意： Directive don't have property or Event bindings!**
 
 ```shell
 #use Angular CLI创建工程和Directives
