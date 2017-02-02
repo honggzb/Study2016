@@ -139,10 +139,10 @@ not to compile, or bind a particular section of template(keep original)
 - Configurable Directive(reusable)
 
 ```javascript
-@Directive({     // declare a custom Directive 1
+@Directive({ 
   selector: '[ccCardHover]'
 })
-class CardHoverDirective { // declare a custom Directive 2
+class CardHoverDirective {
   @HostBinding('class.card-outline-primary') private ishovering: boolean;  //listen to output event
   @Input('ccCardHover') config: Object = {   //Configurable Directive
     querySelector: '.card-text'
