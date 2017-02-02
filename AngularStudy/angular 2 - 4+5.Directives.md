@@ -161,6 +161,8 @@ class CardHoverDirective {
     this.ishovering = false;
   }
 }
+// use in component template
+<div class="card card-block" [ccCardHover]="{querySelector:'p'}">         
 // other UnlessDirective
 @Directive({ 
   selector: '[unless]'
