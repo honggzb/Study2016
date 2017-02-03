@@ -235,8 +235,11 @@ constructor(private router: Router){
 ```html
 <!-- 1） 可以自定义active的css -->
 <!-- 2） [routerLinkActiveOptions]="{exact: true}"仅在[routerLink]="['']"上，避免Home链接无法取消active状态 -->
-<a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['']">Home</a>
-<a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['/tracks']">Tracks</a>
+<a class="nav-link" [routerLinkActive]="['active']" 
+		    [routerLinkActiveOptions]="{exact: true}" 
+		    [routerLink]="['']">Home</a>
+<a class="nav-link" [routerLinkActive]="['active']" 
+		    [routerLink]="['/tracks']">Tracks</a>
 ```
 
 <span style="">[back](#top)</span>
