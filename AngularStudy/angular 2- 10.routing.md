@@ -176,6 +176,22 @@ class UnsearchedTermGuard implements CanDeactivate<SearchComponent> {
 },
 ```
 
+**Custom Route Guard**
+
+```javascript
+import {CanActivate, RouteStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
+import {Observable} from 'rxjs/Rs';
+export class UserDetailGuard implements CanActivate {
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | boolean {
+    return confirm("Are you sure?");
+  }
+}
+//...
+{  path:'artist/:artistId', component: ArtistComponent,
+   canActivate: [UserDetailGuard],    //custom guard services
+}
+```
+
 <span style="">[back](#top)</span>
 
 <h3 id="Routing-Strategies">10.7 Routing Strategies</h3>
