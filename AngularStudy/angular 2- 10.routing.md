@@ -1,16 +1,16 @@
 ##10 Routing
 
-- 10.1 Local web server configuration
-- 10.2 Route Configuration
-- 10.3 Navigating
-	- 10.3.1 hardcoded URLS
-	- 10.3.2 program by the router
-	- 10.3.3 program by a routerLink directive
-- 10.4 Parameterised Routes(by ID)
-- 10.5 Nested Routes
-- 10.6 Router Guards
-- 10.7 Routing Strategies
-- 10.8 Querying parameters/extracting query parameters
+- [10.1 Local web server configuration]()
+- [10.2 Route Configuration](#Route-Configuration)
+- [10.3 Navigating](#Navigating)
+	- [10.3.1 hardcoded URLS]()
+	- [10.3.2 program by the router]()
+	- [10.3.3 program by a routerLink directive]()
+- [10.4 Parameterised Routes(by ID)]()
+- [10.5 Nested Routes]()
+- [10.6 Router Guards]()
+- [10.7 Routing Strategies]()
+- [10.8 Querying parameters/extracting query parameters]()
 
 ###10.1 Local web server configuration
 
@@ -22,6 +22,7 @@ http-server
 ```
 
 - **Python local web server**: `python -m SimpleHTTPServer`
+- `ng serve`   - for Angular CLI
 
 ###10.2 Route Configuration
 
@@ -46,7 +47,7 @@ const routes: Routes = [
 <router-outlet></router-outlet>
 ```
 
-###10.3 Navigating
+<h3 id="Navigating">10.3 Navigating</h3>
 
 **10.3.1 hardcoded URLS**
 
