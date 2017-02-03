@@ -11,6 +11,7 @@
 - [10.6 Router Guards](#Router-Guards)
 - [10.7 Routing Strategies](#Routing-Strategies)
 - [10.8 Querying parameters/extracting query parameters](#Querying-parameters)
+- [10.9 Styling Active Route Links](#Styling-Active-Route-Links)
 
 <h3 id="Local-web-server-configuration">10.1 Local web server configuration</h3>
 
@@ -225,6 +226,17 @@ constructor(private router: Router){
     (queryParams: any) => this.param = queryParam['analytics']
   );
 }
+```
+
+<span style="">[back](#top)</span>
+
+<h3 id="Styling-Active-Route-Links">10.9 Styling Active Route Links</h3>
+
+```html
+<!-- 1） 可以自定义active的css -->
+<!-- 2） [routerLinkActiveOptions]="{exact: true}"仅在[routerLink]="['']"上，避免Home链接无法取消active状态 -->
+<a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['']">Home</a>
+<a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['/tracks']">Tracks</a>
 ```
 
 <span style="">[back](#top)</span>
