@@ -1,18 +1,18 @@
 ##10 Routing
 
-- [10.1 Local web server configuration]()
+- [10.1 Local web server configuration](#Local-web-server-configuration)
 - [10.2 Route Configuration](#Route-Configuration)
 - [10.3 Navigating](#Navigating)
-	- [10.3.1 hardcoded URLS]()
-	- [10.3.2 program by the router]()
-	- [10.3.3 program by a routerLink directive]()
-- [10.4 Parameterised Routes(by ID)]()
-- [10.5 Nested Routes]()
-- [10.6 Router Guards]()
-- [10.7 Routing Strategies]()
-- [10.8 Querying parameters/extracting query parameters]()
+	- [10.3.1 hardcoded URLS](#hardcoded-URLS)
+	- [10.3.2 program by the router](#program-by-the-router)
+	- [10.3.3 program by a routerLink directive](#program-by-a-routerLink-directive)
+- [10.4 Parameterised Routes(by ID)](#Parameterised-Routes)
+- [10.5 Nested Routes](#Nested-Routes)
+- [10.6 Router Guards](#Router-Guards)
+- [10.7 Routing Strategies](#Routing-Strategies)
+- [10.8 Querying parameters/extracting query parameters](#Querying-parameters)
 
-###10.1 Local web server configuration
+<h3 id="Local-web-server-configuration">10.1 Local web server configuration</h3>
 
 - **nodejs http-server**
 
@@ -24,7 +24,7 @@ http-server
 - **Python local web server**: `python -m SimpleHTTPServer`
 - `ng serve`   - for Angular CLI
 
-###10.2 Route Configuration
+<h3 id="Route-Configuration">10.2 Route Configuration</h3>
 
 ```javascript
 //1) inport
@@ -49,14 +49,14 @@ const routes: Routes = [
 
 <h3 id="Navigating">10.3 Navigating</h3>
 
-**10.3.1 hardcoded URLS**
+<h4 id="hardcoded-URLS">10.3.1 hardcoded URLS</h4>
 
 ```html
 <a class="navbar-brand" href="/#/">iTunes Search App</a>
 <a class="nav-link" href="/#/search">Search</a>
 ```
 
-**10.3.2 program by the router**
+<h4 id="program-by-the-router">10.3.2 program by the router</h4>
 
 ```javascript
 import {Router} from "@angular/router";   
@@ -72,7 +72,7 @@ class HeaderComponent {
 }
 ```
 
-**10.3.3 program by a routerLink directive**
+<h4 id="program-by-a-routerLink-directive">10.3.3 program by a routerLink directive<h4>
 
 ```html
 <li class="nav-item active">
@@ -82,7 +82,7 @@ class HeaderComponent {
 
 `[routerLinkActive]="['active']"` is like `class="active"`
 
-###10.4 Parameterised Routes(by ID)
+<h3 id="Parameterised-Routes">10.4 Parameterised Routes(by ID)</h3>
 
 ```javascript
 import {ActivatedRoute} from "@angular/router";    //import Parameterised Route service
@@ -93,7 +93,7 @@ import {ActivatedRoute} from "@angular/router";    //import Parameterised Route 
 
 - Non-parameterised routes always take priority over parameterised routes, `blog/moo` will precede over `blog/:id`
 
-###10.5 Nested Routes
+<h3 id="Nested-Routes">10.5 Nested Routes<h3>
 
 ```javascript
 //Route Configuration
@@ -111,7 +111,7 @@ import {ActivatedRoute} from "@angular/router";    //import Parameterised Route 
 <a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['./tracks']">Tracks</a>
 ```
 
-###10.6 Router Guards
+<h3 id="Router-Guards">10.6 Router Guards</h3>
 
 1. Not Authenticated
 2. Not Authorized
@@ -161,7 +161,7 @@ class UnsearchedTermGuard implements CanDeactivate<SearchComponent> {
 },
 ```
 
-###10.7 Routing Strategies
+<h3 id="Routing-Strategies">10.7 Routing Strategies</h3>
 
 Routing Strategy|enable strategy|syntax|cons|description
 ---|---|---|---|---
@@ -170,7 +170,7 @@ PathLocationStrategy| default strategy,no need to enable it| `/search`| use HTML
 
 **[Angular Universal](https://universal.angular.io/)** - PathLocationStrategy enables Angular Universal, it can be cached on the server side(Server-side Rendering for Angular 2 apps)
 
-###10.8 Querying parameters/extracting query parameters
+<h3 id="Querying-parameters">10.8 Querying parameters/extracting query parameters</h3>
 
 ```javascript
 <button (click)="onNavigate()">Go Home</button>
