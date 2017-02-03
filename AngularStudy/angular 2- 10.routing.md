@@ -12,7 +12,9 @@
 - [10.7 Routing Strategies](#Routing-Strategies)
 - [10.8 Querying parameters/extracting query parameters](#Querying-parameters)
 
-<h3 id="Local-web-server-configuration">10.1 Local web server configuration</h3><span style="">[back](#top)<span>
+<h3 id="Local-web-server-configuration">10.1 Local web server configuration</h3>
+
+<span style="">[back](#top)<span>
 
 - **nodejs http-server**
 
@@ -24,7 +26,9 @@ http-server
 - **Python local web server**: `python -m SimpleHTTPServer`
 - `ng serve`   - for Angular CLI
 
-<h3 id="Route-Configuration">10.2 Route Configuration</h3><span style="">[back](#top)<span>
+<h3 id="Route-Configuration">10.2 Route Configuration</h3>
+
+<span style="">[back](#top)<span>
 
 ```javascript
 //1) inport
@@ -49,7 +53,9 @@ const routes: Routes = [
 
 <h3 id="Navigating">10.3 Navigating</h3>
 
-<h4 id="hardcoded-URLS">10.3.1 hardcoded URLS</h4><span style="">[back](#top)<span>
+<h4 id="hardcoded-URLS">10.3.1 hardcoded URLS</h4>
+
+<span style="">[back](#top)<span>
 
 ```html
 <a class="navbar-brand" href="/#/">iTunes Search App</a>
@@ -57,6 +63,7 @@ const routes: Routes = [
 ```
 
 <h4 id="program-by-the-router">10.3.2 program by the router</h4>
+
 <span style="">[back](#top)<span>
 
 ```javascript
@@ -75,6 +82,8 @@ class HeaderComponent {
 
 <h4 id="program-by-a-routerLink-directive">10.3.3 program by a routerLink directive<h4>
 
+<span style="">[back](#top)<span>
+
 ```html
 <li class="nav-item active">
 	<a class="nav-link" [routerLink]="['home']" [routerLinkActive]="['active']">Home</a>
@@ -84,6 +93,8 @@ class HeaderComponent {
 `[routerLinkActive]="['active']"` is like `class="active"`
 
 <h3 id="Parameterised-Routes">10.4 Parameterised Routes(by ID)</h3>
+
+<span style="">[back](#top)<span>
 
 ```javascript
 import {ActivatedRoute} from "@angular/router";    //import Parameterised Route service
@@ -95,6 +106,8 @@ import {ActivatedRoute} from "@angular/router";    //import Parameterised Route 
 - Non-parameterised routes always take priority over parameterised routes, `blog/moo` will precede over `blog/:id`
 
 <h3 id="Nested-Routes">10.5 Nested Routes<h3>
+
+<span style="">[back](#top)<span>
 
 ```javascript
 //Route Configuration
@@ -113,6 +126,8 @@ import {ActivatedRoute} from "@angular/router";    //import Parameterised Route 
 ```
 
 <h3 id="Router-Guards">10.6 Router Guards</h3>
+
+<span style="">[back](#top)<span>
 
 1. Not Authenticated
 2. Not Authorized
@@ -164,6 +179,8 @@ class UnsearchedTermGuard implements CanDeactivate<SearchComponent> {
 
 <h3 id="Routing-Strategies">10.7 Routing Strategies</h3>
 
+<span style="">[back](#top)<span>
+
 Routing Strategy|enable strategy|syntax|cons|description
 ---|---|---|---|---
 HashLocationStrategy | in `@NgModule` `RouterModule.forRoot(routes, {useHash: true})` |`/#/search`|running locally the URLs, good for SPA| it will only ever get asked for the root page and it will only ever return the root page
@@ -172,6 +189,8 @@ PathLocationStrategy| default strategy,no need to enable it| `/search`| use HTML
 **[Angular Universal](https://universal.angular.io/)** - PathLocationStrategy enables Angular Universal, it can be cached on the server side(Server-side Rendering for Angular 2 apps)
 
 <h3 id="Querying-parameters">10.8 Querying parameters/extracting query parameters</h3>
+
+<span style="">[back](#top)<span>
 
 ```javascript
 <button (click)="onNavigate()">Go Home</button>
