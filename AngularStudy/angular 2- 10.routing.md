@@ -12,7 +12,7 @@
 - [10.7 Routing Strategies](#Routing-Strategies)
 - [10.8 Querying parameters/extracting query parameters](#Querying-parameters)
 
-<h3 id="Local-web-server-configuration">10.1 Local web server configuration [back](#top)</h3>
+<h3 id="Local-web-server-configuration">10.1 Local web server configuration</h3><span style="">[back](#top)<span>
 
 - **nodejs http-server**
 
@@ -24,7 +24,7 @@ http-server
 - **Python local web server**: `python -m SimpleHTTPServer`
 - `ng serve`   - for Angular CLI
 
-<h3 id="Route-Configuration">10.2 Route Configuration</h3>
+<h3 id="Route-Configuration">10.2 Route Configuration</h3><span style="">[back](#top)<span>
 
 ```javascript
 //1) inport
@@ -49,15 +49,15 @@ const routes: Routes = [
 
 <h3 id="Navigating">10.3 Navigating</h3>
 
-<h4 id="hardcoded-URLS">10.3.1 hardcoded URLS</h4>
-[back](#top)
+<h4 id="hardcoded-URLS">10.3.1 hardcoded URLS</h4><span style="">[back](#top)<span>
 
 ```html
 <a class="navbar-brand" href="/#/">iTunes Search App</a>
 <a class="nav-link" href="/#/search">Search</a>
 ```
 
-<h4 id="program-by-the-router">10.3.2 program by the router</h4><span>[back](#top)<span>
+<h4 id="program-by-the-router">10.3.2 program by the router</h4>
+<span style="">[back](#top)<span>
 
 ```javascript
 import {Router} from "@angular/router";   
