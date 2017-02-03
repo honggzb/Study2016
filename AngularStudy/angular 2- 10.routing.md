@@ -24,7 +24,7 @@ http-server
 - **Python local web server**: `python -m SimpleHTTPServer`
 - `ng serve`   - for Angular CLI
 
-<span style="">[back](#top)<span>
+<span style="">[back](#top)</span>
 
 <h3 id="Route-Configuration">10.2 Route Configuration</h3>
 
@@ -49,7 +49,7 @@ const routes: Routes = [
 <router-outlet></router-outlet>
 ```
 
-<span style="">[back](#top)<span>
+<span style="">[back](#top)</span>
 
 <h3 id="Navigating">10.3 Navigating</h3>
 
@@ -60,7 +60,7 @@ const routes: Routes = [
 <a class="nav-link" href="/#/search">Search</a>
 ```
 
-<span style="">[back](#top)<span>
+<span style="">[back](#top)</span>
 
 <h4 id="program-by-the-router">10.3.2 program by the router</h4>
 
@@ -78,7 +78,7 @@ class HeaderComponent {
 }
 ```
 
-<span style="">[back](#top)<span>
+<span style="">[back](#top)</span>
 
 <h4 id="program-by-a-routerLink-directive">10.3.3 program by a routerLink directive<h4>
 
@@ -90,7 +90,7 @@ class HeaderComponent {
 
 `[routerLinkActive]="['active']"` is like `class="active"`
 
-<span style="">[back](#top)<span>
+<span style="">[back](#top)</span>
 
 <h3 id="Parameterised-Routes">10.4 Parameterised Routes(by ID)</h3>
 
@@ -103,9 +103,9 @@ import {ActivatedRoute} from "@angular/router";    //import Parameterised Route 
 
 - Non-parameterised routes always take priority over parameterised routes, `blog/moo` will precede over `blog/:id`
 
-<span style="">[back](#top)<span>
+<span style="">[back](#top)</span>
 
-<h3 id="Nested-Routes">10.5 Nested Routes<h3>
+<h3 id="Nested-Routes">10.5 Nested Routes</h3>
 
 ```javascript
 //Route Configuration
@@ -123,7 +123,7 @@ import {ActivatedRoute} from "@angular/router";    //import Parameterised Route 
 <a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['./tracks']">Tracks</a>
 ```
 
-<span style="">[back](#top)<span>
+<span style="">[back](#top)</span>
 
 <h3 id="Router-Guards">10.6 Router Guards</h3>
 
@@ -175,7 +175,7 @@ class UnsearchedTermGuard implements CanDeactivate<SearchComponent> {
 },
 ```
 
-<span style="">[back](#top)<span>
+<span style="">[back](#top)</span>
 
 <h3 id="Routing-Strategies">10.7 Routing Strategies</h3>
 
@@ -186,7 +186,7 @@ PathLocationStrategy| default strategy,no need to enable it| `/search`| use HTML
 
 **[Angular Universal](https://universal.angular.io/)** - PathLocationStrategy enables Angular Universal, it can be cached on the server side(Server-side Rendering for Angular 2 apps)
 
-<span style="">[back](#top)<span>
+<span style="">[back](#top)</span>
 
 <h3 id="Querying-parameters">10.8 Querying parameters/extracting query parameters</h3>
 
@@ -227,4 +227,4 @@ constructor(private router: Router){
 }
 ```
 
-<span style="">[back](#top)<span>
+<span style="">[back](#top)</span>
