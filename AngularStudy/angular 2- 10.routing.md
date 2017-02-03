@@ -1,5 +1,17 @@
 ##10 Routing
 
+- 10.1 Local web server configuration
+- 10.2 Route Configuration
+- 10.3 Navigating
+	- 10.3.1 hardcoded URLS
+	- 10.3.2 program by the router
+	- 10.3.3 program by a routerLink directive
+- 10.4 Parameterised Routes(by ID)
+- 10.5 Nested Routes
+- 10.6 Router Guards
+- 10.7 Routing Strategies
+- 10.8 Querying parameters/extracting query parameters
+
 ###10.1 Local web server configuration
 
 - **nodejs http-server**
@@ -156,3 +168,42 @@ HashLocationStrategy | in `@NgModule` `RouterModule.forRoot(routes, {useHash: tr
 PathLocationStrategy| default strategy,no need to enable it| `/search`| use HTML5 history API pushstate to change the URL so browser doesn't request the page from server | server needs to be able to return the main application code for every URL, not just the root URL, need to co-operate with a server side
 
 **[Angular Universal](https://universal.angular.io/)** - PathLocationStrategy enables Angular Universal, it can be cached on the server side(Server-side Rendering for Angular 2 apps)
+
+###10.8 Querying parameters/extracting query parameters
+
+```javascript
+<button (click)="onNavigate()">Go Home</button>
+{{id}} {{param}}
+//1) Imperative Routing(triggered in code)
+onNavigate(){
+  this.router.navigate(['/']);
+}
+//2) extracting route params
+////2.1) static just trigger when init
+constructor(private router: Router, private activedRoute: ActivedRoute){
+  this.id = activedRoute.snapshot.params['id'];   
+}
+////2.2) dynamic 
+constructor(private router: Router, private activedRoute: ActivedRoute){
+  private subscription: Subscription;   
+  this.subscription = activedRoute.subscribe(
+    (param: any) => this.id = params['id'];
+  );    
+}
+ngOnDestroy(){
+  this.subscription.unsubscribe();  //release memory
+}
+//3) query params: such as ''/?analytics=100' in url
+<a [routerLink]="['']" [queryParams]="{analytics:100}">Home</a>
+//...
+onNavigate(){
+  this.router.navigate(['/'],{queryParams:{'analytics':100}});
+}
+//extracting queryParams, do same as dynamic
+param: string;
+constructor(private router: Router){
+  this.subscription = router.routerState.queryParams.subscribe(
+    (queryParams: any) => this.param = queryParam['analytics']
+  );
+}
+```
