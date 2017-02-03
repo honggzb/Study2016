@@ -179,6 +179,7 @@ class UnsearchedTermGuard implements CanDeactivate<SearchComponent> {
 **Custom Route Guard**
 
 ```javascript
+//custom canActive guard
 import {CanActivate, RouteStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
 import {Observable} from 'rxjs/Rs';
 export class UserDetailGuard implements CanActivate {
@@ -190,6 +191,31 @@ export class UserDetailGuard implements CanActivate {
 {  path:'artist/:artistId', component: ArtistComponent,
    canActivate: [UserDetailGuard],    //custom guard services
 }
+// custom canDeactive guard
+import {CanDeactivate} from '@angular/router';
+import {Observable} from 'rxjs/Rs';
+export interface ComponentCanDeactivate {
+	CanDeactivate: () => boolean | Observable<boolean>;
+}
+export class UserEditGuard implements CanDeactivate<ComponentCanDeactivate> {
+  canDeactivate(component: ComponentCanDeactivate): Observable<boolean> | boolean {
+    return component.canDeactivate ? component.canDeactivate():true;
+  }
+}
+//...
+<button (click)="done==true">Done</button>
+//...
+export class UserEditComponent implements ComponentCanDeactivate{
+  //...
+  canDeactive(): Observable<boolean> | boolean {
+    if(!this.done){
+    	return confirm('Do you want to leave?');
+    }
+    return true;
+  }
+}
+//...
+{  path:'edit', component: UserEditComponent, canDeactivate: [UserEditGuard]  }    //custom guard services
 ```
 
 <span style="">[back](#top)</span>
