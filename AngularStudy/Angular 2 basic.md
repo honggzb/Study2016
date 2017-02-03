@@ -48,6 +48,7 @@
 	- 10.5 Nested Routes
 	- 10.6 Router Guards
 	- 10.7 Routing Strategies
+	- 10.8 Querying parameters/extracting query parameters
 - 11 Unit Testing
 	- 11.1 Jasmine - Behavior Driven Development(BDD)
 	- 11.2 Karma
