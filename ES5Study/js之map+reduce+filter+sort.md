@@ -6,18 +6,16 @@
 - [4. 高阶函数之filter](#filter)
 - [5. 高阶函数之sort](#sort)
 
-<h3 id="Higher-order-function"> 1. 高阶函数 Higher-order function</h3>
 
-一个函数就可以接收另一个函数作为参数，这种函数就称之为高阶函数, 编写高阶函数，就是让函数的参数能够接收别的函数。
+> 浏览器支持
 
-```javascript
-function add(x, y, f) {
-    return f(x) + f(y);
-}
-add(-5, 6, Math.abs)
-```
+- Opera 11+
+- Firefox 3.6+
+- Safari 5+
+- Chrome 8+
+- Internet Explorer 9+
 
-在ES5中，一共有9个Array方法 http://kangax.github.io/compat-table/es5/
+> ES5中新增了写数组方法，一共有9个Array方法 http://kangax.github.io/compat-table/es5/
 
 - Array.prototype.indexOf
 - Array.prototype.lastIndexOf
@@ -28,6 +26,38 @@ add(-5, 6, Math.abs)
 - Array.prototype.filter
 - Array.prototype.reduce
 - Array.prototype.reduceRight
+
+语法
+
+`[].forEach(function(value, index, array) { // ... });`
+
+`array.map(callback,[ thisObject]);`, callback的参数也类似： `[].map(function(value, index, array) { // ... });`
+
+
+```javascript
+//兼容处理的forEach方法
+// 对于古董浏览器，如IE6-IE8
+if (typeof Array.prototype.forEach != "function") {
+  Array.prototype.forEach = function (fn, context) {
+    for (var k = 0, length = this.length; k < length; k++) {
+      if (typeof fn === "function" && Object.prototype.hasOwnProperty.call(this, k)) {
+        fn.call(context, this[k], k, this);
+      }
+    }
+  };
+}
+```
+
+<h3 id="Higher-order-function"> 1. 高阶函数 Higher-order function</h3>
+
+一个函数就可以接收另一个函数作为参数，这种函数就称之为高阶函数, 编写高阶函数，就是让函数的参数能够接收别的函数。
+
+```javascript
+function add(x, y, f) {
+    return f(x) + f(y);
+}
+add(-5, 6, Math.abs)
+```
 
 <h3 id="map"> 2. 高阶函数之map</h3>
 
@@ -66,7 +96,19 @@ function string2int(arr){
           return  parseInt(x);
       }).join("");
  }
-console.log(parseInt(string2int(arr)));  
+console.log(parseInt(string2int(arr)));
+//兼容map方法扩展
+if (typeof Array.prototype.map != "function") {
+  Array.prototype.map = function (fn, context) {
+    var arr = [];
+    if (typeof fn === "function") {
+      for (var k = 0, length = this.length; k < length; k++) {      
+         arr.push(fn.call(context, this[k], k, this));
+      }
+    }
+    return arr;
+  };
+}
 ```
 
 <h3 id="reduce">3. 高阶函数之reduce</h3>
@@ -120,6 +162,26 @@ function getWordCnt(){
 ['A', '', 'B', null, undefined, 'C', '  '].filter(function (x) {
     return s && s.trim(); // 注意：IE9以下的版本没有trim()方法
 });  // ['A', 'B', 'C']
+//兼容处理后filter方法
+if (typeof Array.prototype.filter != "function") {
+  Array.prototype.filter = function (fn, context) {
+    var arr = [];
+    if (typeof fn === "function") {
+       for (var k = 0, length = this.length; k < length; k++) {
+          fn.call(context, this[k], k, this) && arr.push(this[k]);
+       }
+    }
+    return arr;
+  };
+}
+var users = [
+  {name: "张含韵", "email": "zhang@email.com"},
+  {name: "江一燕",   "email": "jiang@email.com"},
+  {name: "李小璐",  "email": "li@email.com"}
+];
+var emailsZhang = users.map(function (user) { return user.email; })  // 获得邮件
+                       .filter(function(email) {  return /^zhang/.test(email); });   // 筛选出zhang开头的邮件
+console.log(emailsZhang.join(", ")); // zhang@email.com
 ```
 
 <h3 id="sort">5. 高阶函数之sort</h3>
@@ -155,4 +217,5 @@ function getWordCnt(){
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
 - [廖雪峰的官方网站](http://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/001434499355829ead974e550644e2ebd9fd8bb1b0dd721000)
+- [ES5中新增的Array方法详细说明](http://www.zhangxinxu.com/wordpress/2013/04/es5%E6%96%B0%E5%A2%9E%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95/)
 
