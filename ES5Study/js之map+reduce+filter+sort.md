@@ -1,6 +1,12 @@
 ## js之高阶函数、map/reduce/filter/sort
 
-### 1. 高阶函数 Higher-order function
+- [1. 高阶函数 Higher-order function](#Higher-order-function)
+- [2. 高阶函数之map](#map)
+- [3. 高阶函数之reduce](#reduce)
+- [4. 高阶函数之filter](#filter)
+- [5. 高阶函数之sort](#sort)
+
+<h3 id="Higher-order-function"> 1. 高阶函数 Higher-order function</h3>
 
 一个函数就可以接收另一个函数作为参数，这种函数就称之为高阶函数, 编写高阶函数，就是让函数的参数能够接收别的函数。
 
@@ -23,7 +29,7 @@ add(-5, 6, Math.abs)
 - Array.prototype.reduce
 - Array.prototype.reduceRight
 
-### 2. 高阶函数之map
+<h3 id="map"> 2. 高阶函数之map</h3>
 
 map()对数组的每个元素进行一定操作（映射）后，会返回一个新的数组, map()接收的回调函数可以有3个参数：`arr.map(function(currentValue, index, array){ ... });`
 
@@ -63,7 +69,7 @@ function string2int(arr){
 console.log(parseInt(string2int(arr)));  
 ```
 
-### 3. 高阶函数之reduce
+<h3 id="reduce">3. 高阶函数之reduce</h3>
 
 reduce()可以实现一个累加器的功能，将数组的每个值（从左到右）将其降低到一个值。reduce()把一个函数作用在这个Array的[x1, x2, x3...]上，这个函数必须接收两个参数，reduce()把结果继续和序列的下一个元素做累积计算，其效果就是：
 
@@ -100,7 +106,7 @@ function getWordCnt(){
 }
 ```
 
-### 4. 高阶函数之filter
+<h3 id="filter">4. 高阶函数之filter</h3>
 
 - 用于把Array的某些元素过滤掉，然后返回剩下的元素
 - 和map()不同的是，filter()把传入的函数依次作用于每个元素，然后根据返回值是true还是false决定保留还是丢弃该元素
@@ -116,7 +122,7 @@ function getWordCnt(){
 });  // ['A', 'B', 'C']
 ```
 
-### 5. 高阶函数之sort
+<h3 id="sort">5. 高阶函数之sort</h3>
 
 - sort()方法默认把所有元素先转换为String再排序
 - 返回的结果仍是当前Array
