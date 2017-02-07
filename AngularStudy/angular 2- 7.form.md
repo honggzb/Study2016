@@ -1,4 +1,4 @@
-##7 Form
+<h2 id="top">7. Form</h2>
 
 - [7.1 Model driven Form](#Model-driven-Form)
 - [7.2 Reactive Model Form](#Reactive-Model-Form)
@@ -7,7 +7,7 @@
 	- [7.4.1 Custom Form Validators](#Custom-Form-Validators)
 	- [7.4.2 Configurable Custom Form Validators](#Configurable-Custom-Form-Validators)
 	
-template driven | model driven
+**Template driven** | **Model driven**
 ---|---
 Form is set up and configured in HTML code| Form is set up and configured programmatically in class body
 Angular 2 "infers" FormGroup from HTML code(in template) |Angular 2 is instructed to use the created FormGroup and not infer it(in component class)
@@ -16,6 +16,7 @@ use ngModel directive(two way data binding)|/
 low logic, hard for end to end testing| strong logic on component
 easy to setup and use, saving develpment time | harder to setup, scalability
 
+[back to top](#top)
 
 <h3 id="Model-driven-Form">7.1 Model driven Form</h3>
 
@@ -129,6 +130,8 @@ onSubmit() {
 }
 ```
 
+[back to top](#top)
+
 <h3 id="Reactive-Model-Form">7.2 Reactive Model Form</h3>
 
 - formControl directives
@@ -187,6 +190,8 @@ class TemplateFormComponent {
 }
 ```
 
+[back to top](#top)
+
 <h3 id="Advanced-Topics">7.4 Advanced Topics</h3>
 
 <h3 id="Custom-Form-Validators">7.4.1 Custom Form Validators</h3>
@@ -208,6 +213,8 @@ function emailDomainValidator(control: FormControl){
   return null;
 }
 ```
+
+[back to top](#top)
 
 <h3 id="Configurable-Custom-Form-Validators">7.4.2 Configurable Custom Form Validators - using factory or class</h3>
 
@@ -235,4 +242,6 @@ class CodeCraftValidators {
   }
 }
 ```
+
+[back to top](#top)
 
