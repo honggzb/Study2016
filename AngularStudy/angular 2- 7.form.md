@@ -1,13 +1,13 @@
 ##7 Form
 
-- 7.1 Model driven Form
-- 7.2 Reactive Model Form
-- 7.3 Template Driven Form
-- 7.4 Advanced Topics
-	- 7.4.1 Custom Form Validators
-	- 7.4.2 Configurable Custom Form Validators
+- [7.1 Model driven Form](#Model-driven-Form)
+- [7.2 Reactive Model Form](#Reactive-Model-Form)
+- [7.3 Template Driven Form](#Template-driven-Form)
+- [7.4 Advanced Topics](#Advanced-Topics)
+	- [7.4.1 Custom Form Validators](#Custom-Form-Validators)
+	- [7.4.2 Configurable Custom Form Validators](#Configurable-Custom-Form-Validators)
 	
-###7.1 Model driven Form
+<h3 id="Model-driven-Form">7.1 Model driven Form</h3>
 
 - create a form model on component by using instances of `FormGroup` and `FormControl`
 - directives(link template(html form) to model): `formGroup, formControlName, formGroupName`
@@ -119,13 +119,13 @@ onSubmit() {
 }
 ```
 
-###7.2 Reactive Model Form
+<h3 id="Reactive-Model-Form">7.2 Reactive Model Form</h3>
 
 - formControl directives
 - FormGroup & FormControl observable
 - debounceTime & distinctUntilChanged operators
 
-###7.3 Template Driven Form
+<h3 id="Template-Driven-Form">7.3 Template Driven Form</h3>
 
 - Template Drive Forms are Model Driven form but driven by directives in the template- still use models underneath
 - use directives(`ngForm, ngModel, ngModelGroup`: `ngModule,FormsModule`) to create the Model
@@ -181,14 +181,16 @@ class TemplateFormComponent {
 
 template driven | model driven
 ---|---
-create form model via directives on template form HTML|link template from HTML with a form model created on component
+Form is set up and configured in HTML code| Form is set up and configured programmatically in class body
+Angular 2 "infers" FormGroup from HTML code(in template) |Angular 2 is instructed to use the created FormGroup and not infer it(in component class)
+Form data is passed via ngSubmit()| Form(data) can be used throughout class body without passing it via ngSubmit()
+low logic, hard for end to end testing| strong logic on component
 easy to setup and use, saving develpment time | harder to setup, scalability
 use ngModel directive(two way data binding)|
-low logic, hard for end to end testing| strong logic on component
 
-###7.4 Advanced Topics
+<h3 id="Advanced-Topics">7.4 Advanced Topics</h3>
 
-####7.4.1 Custom Form Validators
+<h3 id="Custom-Form-Validators">7.4.1 Custom Form Validators</h3>
 
 - Custom model form Validators
 - Custom Template form Validators
@@ -208,7 +210,7 @@ function emailDomainValidator(control: FormControl){
 }
 ```
 
-####7.4.2 Configurable Custom Form Validators - using factory or class
+<h3 id="Configurable-Custom-Form-Validators">7.4.2 Configurable Custom Form Validators - using factory or class</h3>
 
 - Custom model form Validators: use a factory function which returns a validator function configured as we want
 - Custom Template form Validators: create a validator class which re-using the same factory function as we used in model driven forms
