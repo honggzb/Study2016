@@ -2,11 +2,21 @@
 
 - [7.1 Model driven Form](#Model-driven-Form)
 - [7.2 Reactive Model Form](#Reactive-Model-Form)
-- [7.3 Template Driven Form](#Template-driven-Form)
+- [7.3 Template Driven Form](#Template-Driven-Form)
 - [7.4 Advanced Topics](#Advanced-Topics)
 	- [7.4.1 Custom Form Validators](#Custom-Form-Validators)
 	- [7.4.2 Configurable Custom Form Validators](#Configurable-Custom-Form-Validators)
 	
+template driven | model driven
+---|---
+Form is set up and configured in HTML code| Form is set up and configured programmatically in class body
+Angular 2 "infers" FormGroup from HTML code(in template) |Angular 2 is instructed to use the created FormGroup and not infer it(in component class)
+Form data is passed via ngSubmit()| Form(data) can be used throughout class body without passing it via ngSubmit()
+use ngModel directive(two way data binding)|/
+low logic, hard for end to end testing| strong logic on component
+easy to setup and use, saving develpment time | harder to setup, scalability
+
+
 <h3 id="Model-driven-Form">7.1 Model driven Form</h3>
 
 - create a form model on component by using instances of `FormGroup` and `FormControl`
@@ -176,17 +186,6 @@ class TemplateFormComponent {
   }
 }
 ```
-
-**Wrapping up**
-
-template driven | model driven
----|---
-Form is set up and configured in HTML code| Form is set up and configured programmatically in class body
-Angular 2 "infers" FormGroup from HTML code(in template) |Angular 2 is instructed to use the created FormGroup and not infer it(in component class)
-Form data is passed via ngSubmit()| Form(data) can be used throughout class body without passing it via ngSubmit()
-low logic, hard for end to end testing| strong logic on component
-easy to setup and use, saving develpment time | harder to setup, scalability
-use ngModel directive(two way data binding)|
 
 <h3 id="Advanced-Topics">7.4 Advanced Topics</h3>
 
