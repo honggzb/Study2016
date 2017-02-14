@@ -1,9 +1,17 @@
+**Pipes**[**](#top)
+
+- [6.1 Built-In pipes](#Built-In-pipes)
+- [6.2 Async pipes with Promises and Observables](#Async-pipes-with-Promises-and-Observables)
+- [6.3 Custom pipes](#Custom-pipes)
+- [6.4 parametrizing pipes](#parametrizing-pipes)
+- [](#)
+
 ##6. **Pipes** - filters in Angular 1
 
 - Pipes are a way of having a different visual representation for the same piece of data
 - Pipes are functions which we can call in templates in order to transform data from display purposes
 
-###6.1 Built-In pipes
+<h3 id="Built-In-pipes">6.1 Built-In pipes</h3>
 
 - currencyPipe `{{ 1234.56|currency:"GBP":true }}`
 - DatePipe 6
@@ -23,7 +31,9 @@
 	- `{{ [1,2,3,4,5,6] | slice : 2 }}`      from 2nd index to end                  : 3,4,5,6
 	- `{{ [1,2,3,4,5,6] | slice : 2: -1 }}`  from 2nd index to one from end of array: 3,4,5
 
-###6.2 Async pipes with Promises and Observables
+[back to top](#top)
+
+<h3 id="Async-pipes-with-Promises-and-Observables">6.2 Async pipes with Promises and Observables</h3>
 
 - Async pipe makes rendering data from Observables and promises easier
 - for Promises automatically calls then
@@ -136,7 +146,9 @@ class AsyncPipeComponent {
 }
 ```
 
-###6.3 Custom pipes 
+[back to top](#top)
+
+<h3 id="Custom-pipes">6.3 Custom pipes</h3>
 
 - @pipe decorator
 - transform function: the pipes arguments are passed to this function and whatever the function returns is displayed in the view
@@ -167,3 +179,19 @@ class AppComponent {
 	imageUrl: string = "";
 }
 ```
+
+[back to top](#top)
+
+<h3 id="parametrizing-pipes">6.4 parametrizing pipes</h3>
+
+```html
+<p>{{ mydate | date: "MM/dd/yy" }} </p>
+<p>{{ myValue | slice: 2 }} </p>
+<p>{{ myValue | slice: 3:7 }} </p>  <!-- "lowercase" output "erca" -->
+```
+
+[back to top](#top)
+
+> Reference
+
+- [Angular.io pipe](https://angular.io/docs/ts/latest/api/#!?query=pipe)
