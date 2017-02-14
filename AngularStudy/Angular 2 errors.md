@@ -31,8 +31,9 @@ import {APP_BASE_HREF} from '@angular/common';
  
 <h3 id="Cannot-bind-to-formGroup">2. Can't bind to 'formGroup' since it isn't a known property of 'form'</h3>
 
+http://stackoverflow.com/questions/39152071/cant-bind-to-formgroup-since-it-isnt-a-known-property-of-form
+
 ```javascript
-//http://stackoverflow.com/questions/39152071/cant-bind-to-formgroup-since-it-isnt-a-known-property-of-form
 //RC6/RC7/Final release FIX
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 //...
