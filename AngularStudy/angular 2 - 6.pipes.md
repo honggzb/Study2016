@@ -3,7 +3,7 @@
 - [6.1 Built-In pipes](#Built-In-pipes)
 - [6.2 Async pipes with Promises and Observables](#Async-pipes-with-Promises-and-Observables)
 - [6.3 Custom pipes](#Custom-pipes)
-- [6.4 parametrizing pipes](#parametrizing-pipes)
+- [6.4 parametrizing pipes && chaining pipes](#parametrizing-pipes)
 - [](#)
 
 ##6. **Pipes** - filters in Angular 1
@@ -155,11 +155,11 @@ class AsyncPipeComponent {
 
 ```javascript
 import { Pipe } from '@angular/core';
-@Pipe({
+@Pipe({         // 1) @pipe decorator
 	name: "default"
 })
 class DefaultPipe{
-	transform(value: string, fallback: string, forceHttps: boolean=false) : string {
+	transform(value: string, fallback: string, forceHttps: boolean=false) : string {    // 2)transform function
 		let image = "";
 		if(value){ image = value;}
 		else{ image = fallback;}
@@ -169,11 +169,10 @@ class DefaultPipe{
 		return image;
 	}
 }
+// in use
 @Component({
 	selector: 'app',
-	template: `
-			<img [src]="imageUrl | default:'http://s3.amazonaws.com/uifaces/faces/twitter/sillyleo/128.jpg':true"/>
-	`
+	template: `<img [src]="imageUrl | default:'http://s3.amazonaws.com/uifaces/faces/twitter/sillyleo/128.jpg':true"/>`
 })
 class AppComponent {
 	imageUrl: string = "";
@@ -182,12 +181,13 @@ class AppComponent {
 
 [back to top](#top)
 
-<h3 id="parametrizing-pipes">6.4 parametrizing pipes</h3>
+<h3 id="parametrizing-pipes">6.4 parametrizing pipes && chaining pipe </h3>
 
 ```html
 <p>{{ mydate | date: "MM/dd/yy" }} </p>
 <p>{{ myValue | slice: 2 }} </p>
 <p>{{ myValue | slice: 3:7 }} </p>  <!-- "lowercase" output "erca" -->
+<p>{{ myValue | slice: 3:7 | uppercase}} </p>  <!-- "lowercase" output "ERCA" -->
 ```
 
 [back to top](#top)
