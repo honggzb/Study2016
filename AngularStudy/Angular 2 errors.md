@@ -1,7 +1,8 @@
-1. no base href set
-2. sfa
+1. [no base href set](#no-base-href-set)
+2. [Can't bind to 'formGroup' since it isn't a known property of 'form'](#Cannot-bind-to-formGroup)
 
-###1. no base href set -Angular 2 router no base href set
+
+<h3 id="no-base-href-set">1. no base href set -Angular 2 router no base href set</h3>
 
 [angular io-routing](https://angular.io/docs/ts/latest/guide/router.html)
 
@@ -23,3 +24,21 @@ import {APP_BASE_HREF} from '@angular/common';
   providers: [{provide: APP_BASE_HREF, useValue : '/' }]
 ]); 
  ```
+ 
+<h3 id="Cannot-bind-to-formGroup">2. Can't bind to 'formGroup' since it isn't a known property of 'form'</h3>
+
+```javascript
+//http://stackoverflow.com/questions/39152071/cant-bind-to-formgroup-since-it-isnt-a-known-property-of-form
+//RC6/RC7/Final release FIX
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+//...
+@NgModule({
+    imports: [
+        BrowserModule,
+        FormsModule,
+        ReactiveFormsModule
+    ],
+    //...
+})
+
+```
