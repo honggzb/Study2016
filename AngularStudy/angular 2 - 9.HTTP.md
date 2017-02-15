@@ -38,7 +38,44 @@ import { HttpModule } from '@angular/http';
 ```
 
 - 9.2 HTTP via Promises
+
+```javascript
+import 'rxjs/add/operator/toPromise';
+// ...
+search(term:string) {
+	let promise = new Promise((resolve, reject) => {
+	let apiURL = `${this.apiRoot}?term=${term}&media=music&limit=20`;
+	this.http.get(apiURL)
+		.toPromise()
+		.then(
+			res => { // Success
+				console.log(res.json());
+				resolve();
+			}, msg => { // Error
+				reject(msg);
+		});
+	});
+	return promise;
+}
+```
+
 - 9.3 HTTP via observables
+
+```javascript
+```javascript
+import 'rxjs/add/operator/map';
+// ...
+search(term:string): Observable<SearchItem[]> {
+	let apiURL = `${this.apiRoot}?term=${term}&media=music&limit=20`;
+	return this.http.get(apiURL)
+		.map(res => {
+			console.log(res.json());
+		});
+	});
+	return promise;
+}
+```
+```
 
 ####9.4 JSONP via Observables
 
