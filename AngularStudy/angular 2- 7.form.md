@@ -25,6 +25,12 @@ easy to setup and use, saving develpment time | harder to setup, scalability
 - to use previous directive:  import `ReactiveFormsModule`
 
 ```html
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+//...
+@NgModule({
+    imports: [ BrowserModule, FormsModule, ReactiveFormsModule ],
+    //...
+})
 <!-- 1) import directives输入相应的模块 -->
 import { ReactiveFormsModule, FormsModule, FormGroup, FormControl, Validators } from '@angular/forms';   
 @Component({
