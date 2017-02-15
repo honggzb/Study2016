@@ -62,19 +62,27 @@ search(term:string) {
 - 9.3 HTTP via observables
 
 ```javascript
-```javascript
+import {Observable} from 'rxjs';
 import 'rxjs/add/operator/map';
 // ...
 search(term:string): Observable<SearchItem[]> {
 	let apiURL = `${this.apiRoot}?term=${term}&media=music&limit=20`;
 	return this.http.get(apiURL)
-		.map(res => {
-			console.log(res.json());
-		});
+		.map(res => { res.json();  })
+		.catch(this.handleError);
 	});
-	return promise;
+}
+private handleError(error: any){   // handle error
+	console.log(error);
+	return Observable.throw(error.json());
 }
 ```
+
+> 可以和Async Pipe配合使用
+
+```javascript
+asyncString = this.httpService.getData();
+<p>{{ asyncString | async}}</p>
 ```
 
 ####9.4 JSONP via Observables
