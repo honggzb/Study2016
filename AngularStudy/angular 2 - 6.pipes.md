@@ -1,10 +1,10 @@
 **Pipes**[**](#top)
 
 - [6.1 Built-In pipes](#Built-In-pipes)
-- [6.2 Async pipes with Promises and Observables](#Async-pipes-with-Promises-and-Observables)
-- [6.3 Custom pipes](#Custom-pipes)
-- [6.4 parametrizing pipes && chaining pipes](#parametrizing-pipes)
-- [](#)
+- [6.2 parametrizing pipes && chaining pipes](#parametrizing-pipes)
+- [6.3 'Pure' Pipe limitation && 'Impure' pipe](#Impure-pipe)
+- [6.4 Async pipes with Promises and Observables](#Async-pipes-with-Promises-and-Observables)
+- [6.5 Custom pipes](#Custom-pipes)
 
 ##6. **Pipes** - filters in Angular 1
 
@@ -33,7 +33,34 @@
 
 [back to top](#top)
 
-<h3 id="Async-pipes-with-Promises-and-Observables">6.2 Async pipes with Promises and Observables</h3>
+<h3 id="parametrizing-pipes">6.2 parametrizing pipes && chaining pipe </h3>
+
+```html
+<p>{{ mydate | date: "MM/dd/yy" }} </p>
+<p>{{ myValue | slice: 2 }} </p>
+<p>{{ myValue | slice: 3:7 }} </p>  <!-- "lowercase" output "erca" -->
+<p>{{ myValue | slice: 3:7 | uppercase}} </p>  <!-- "lowercase" output "ERCA" -->
+```
+
+[back to top](#top)
+
+<h3 id="Impure-pipe">6.3 'Pure' Pipe limitation && 'Impure' pipe </h3>
+
+Pipe is reference
+
+```javascript
+@Pipe({ name: "filter",  pure: false })   //add pure metadata
+class DefaultPipe{
+	//...
+}
+// 点击按钮，可以添加包含ea的人名，否则不能添加
+<button (click)="values.push(newItem.value)">Add Item</button>
+<li *ngFor="let item of values | filter: 'ea'"></li>
+```
+
+[back to top](#top)
+
+<h3 id="Async-pipes-with-Promises-and-Observables">6.4 Async pipes with Promises and Observables</h3>
 
 - Async pipe makes rendering data from Observables and promises easier
 - for Promises automatically calls then
@@ -148,12 +175,14 @@ class AsyncPipeComponent {
 
 [back to top](#top)
 
-<h3 id="Custom-pipes">6.3 Custom pipes</h3>
+<h3 id="Custom-pipes">6.5 Custom pipes</h3>
 
 - @pipe decorator
 - transform function: the pipes arguments are passed to this function and whatever the function returns is displayed in the view
+- angular CLI, `ng g p filter`
 
 ```javascript
+//案例1： 是否使用https协议
 import { Pipe } from '@angular/core';
 @Pipe({         // 1) @pipe decorator
 	name: "default"
@@ -177,17 +206,22 @@ class DefaultPipe{
 class AppComponent {
 	imageUrl: string = "";
 }
-```
-
-[back to top](#top)
-
-<h3 id="parametrizing-pipes">6.4 parametrizing pipes && chaining pipe </h3>
-
-```html
-<p>{{ mydate | date: "MM/dd/yy" }} </p>
-<p>{{ myValue | slice: 2 }} </p>
-<p>{{ myValue | slice: 3:7 }} </p>  <!-- "lowercase" output "erca" -->
-<p>{{ myValue | slice: 3:7 | uppercase}} </p>  <!-- "lowercase" output "ERCA" -->
+//案例2： 过滤所有包含某些字符的人名
+@Pipe({ name: "filter" })
+class DefaultPipe{
+	transform(value: any, arg?:any) : any {
+		if(value.length === 0) { return value; }
+		let resultArray = [];
+		for(let item of value) {
+			if(item.match('^.*'+args[0]+'.*$')){
+				resultArray.push(item);
+			}
+		}
+		return resultArray;
+	}
+}
+// in use, such as values =['Milk','Bread', 'Beans']， 过滤所有包含ea的人名
+<li *ngFor="let item of values | filter: 'ea'"></li>
 ```
 
 [back to top](#top)
