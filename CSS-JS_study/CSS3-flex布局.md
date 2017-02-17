@@ -2,11 +2,11 @@
 ## css3的flex布局 - `display: flex;`     [--**](#top)
 
 - [一：容器的样式](#容器的样式)
-  - [1.1 伸缩容器主轴的排列方向和换行](#伸缩容器主轴的排列方向和换行)
+  - [1.1 伸缩容器主轴的排列方向和换行 - flex-direction, flex-wrap, flex-flow](#伸缩容器主轴的排列方向和换行)
   - [1.2 伸缩项目在主轴上的对齐方式 - justify-content](#伸缩项目在主轴上的对齐方式)
   - [1.3 伸缩项目在交叉轴(侧轴)上的对齐方式 - align-items](#伸缩项目在交叉轴(侧轴)上的对齐方式)
   - [1.4 伸缩项目在多根轴线的对齐方式 - align-content](#伸缩项目在多根轴线的对齐方式)
-- [二：元素样式的属性](#元素样式的属性)
+- [二：元素样式的属性 - order, flex-grow, flex-shrink, flex-basic, flex, align-self](#元素样式的属性)
 - [三：flex布局浏览器兼容处理](#flex布局浏览器兼容处理)
 - [四：flex布局经典案例](#flex布局经典案例)
   - [4.1 水平和垂直居中](#水平和垂直居中)
@@ -39,7 +39,7 @@ Flexbox布局主要有三种语法版本：
 
 <h3 id="容器的样式">一：容器的样式</h3>
 
-<h4 id="伸缩容器主轴的排列方向和换行">1.1 伸缩容器主轴的排列方向和换行</h4>
+<h4 id="伸缩容器主轴的排列方向和换行">1.1 伸缩容器主轴的排列方向和换行- flex-direction, flex-wrap, flex-flow</h4>
 
 规范版本|属性名称|水平方向|反向水平|垂直方向|反向垂直
 ---|---|---|---|---|---
@@ -134,7 +134,7 @@ Flexbox布局主要有三种语法版本：
 
 [back to top](#top)
 
-<h3 id="元素样式的属性">二：元素样式的属性</h3>
+<h3 id="元素样式的属性">二：元素样式的属性 - order, flex-grow, flex-shrink, flex-basic, flex, align-self</h3>
 
 **1、order样式** - 元素(项目)的排列顺序。数值越小，排列越靠前，默认为0
 
@@ -337,6 +337,48 @@ align-self属性允许单个项目有与其他项目不一样的对齐方式，�
 <h3 id="flex布局经典案例">四：flex布局经典案例</h3>
 
 <h4 id="水平和垂直居中">4.1 水平和垂直居中（网页设计的圣杯）</h4>
+
+圣杯布局（Holy Grail Layout）指的是一种最常见的网站布局。页面从上到下，分成三个部分：头部（header），躯干（body），尾部（footer）。其中躯干又水平分成三栏，从左到右为：导航、主栏、副栏
+
+![](http://i.imgur.com/N494UNW.png)
+
+```html
+<body class="HolyGrail">
+  <header>
+  <style>
+  .HolyGrail {
+      display: flex;
+      min-height: 100vh;
+      flex-direction: column;
+    }
+    header,footer { flex: 1; }
+    .HolyGrail-body {
+      display: flex;
+      flex: 1;
+    }
+    .HolyGrail-content  { flex: 1; }
+    .HolyGrail-nav, .HolyGrail-ads { flex: 0 0 12em; } /* 两个边栏的宽度设为12em */
+    .HolyGrail-nav { order: -1;  }   /* 导航放到最左边 */
+    /*小屏幕，躯干的三栏自动变为垂直叠加*/
+    @media (max-width: 768px) {
+    .HolyGrail-body {
+      flex-direction: column;
+      flex: 1;
+    }
+    .HolyGrail-nav, .HolyGrail-ads,.HolyGrail-content { flex: auto; }
+  }
+  </style>
+  </header>
+  <div class="HolyGrail-body">
+    <main class="HolyGrail-content">...</main>
+    <nav class="HolyGrail-nav">...</nav>
+    <aside class="HolyGrail-ads">...</aside>
+  </div>
+  <footer>...</footer>
+</body>
+```
+
+other
 
 ```css
 html { height: 100%; } 
