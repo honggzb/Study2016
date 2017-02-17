@@ -1,11 +1,17 @@
 
-## css3的flex布局 - `display: flex;`
+## css3的flex布局 - `display: flex;`     --**
 
 - [一：容器的样式](#容器的样式)
-- [二：元素样式的属性](#)
-- [三：flex布局浏览器兼容处理](#)
-- [四：flex布局经典案例](#)
-- [五：Flexbox在线生成工具](#)
+  - [1.1 伸缩容器主轴的排列方向和换行](#伸缩容器主轴的排列方向和换行)
+  - [1.2 伸缩项目在主轴上的对齐方式 - justify-content](#伸缩项目在主轴上的对齐方式)
+  - [1.3 伸缩项目在交叉轴(侧轴)上的对齐方式 - align-items](#伸缩项目在交叉轴(侧轴)上的对齐方式)
+  - [1.4 伸缩项目在多根轴线的对齐方式 - align-content](#伸缩项目在多根轴线的对齐方式)
+- [二：元素样式的属性](#元素样式的属性)
+- [三：flex布局浏览器兼容处理](#flex布局浏览器兼容处理)
+- [四：flex布局经典案例](#flex布局经典案例)
+  - [4.1 水平和垂直居中](#水平和垂直居中)
+  - [4.2 实现宽屏和窄屏的布局](#实现宽屏和窄屏的布局)
+- [五：Flexbox在线生成工具](#Flexbox在线生成工具)
 
 **注意，设为Flex布局以后，子元素的float、clear和vertical-align属性将失效, `text-overflow: ellipsis;` 在 `display: flex;` 元素上是没有效果的**
 
@@ -33,7 +39,7 @@ Flexbox布局主要有三种语法版本：
 
 <h3 id="容器的样式">一：容器的样式</h3>
 
-**伸缩容器主轴的排列方向和换行**
+<h4 id="伸缩容器主轴的排列方向和换行">1.1 伸缩容器主轴的排列方向和换行</h4>
 
 规范版本|属性名称|水平方向|反向水平|垂直方向|反向垂直
 ---|---|---|---|---|---
@@ -63,7 +69,9 @@ Flexbox布局主要有三种语法版本：
 
 `flex-flow: <flex-direction> || <flex-wrap>;`  - flex-flow属性是flex-direction属性和flex-wrap属性的简写形式，默认值为row nowrap
 
-**伸缩项目在主轴上的对齐方式 - justify-content**
+[back to top](#top)
+
+<h4 id="伸缩项目在主轴上的对齐方式">1.2 伸缩项目在主轴上的对齐方式 - justify-content</h4>
 
 规范版本|属性名称|start|center|end|justify|distribute
 ---|---|---|---|---|---|---
@@ -81,7 +89,9 @@ Flexbox布局主要有三种语法版本：
 
 ![](http://i.imgur.com/mF24DmT.png)
 
-**伸缩项目在交叉轴(侧轴)上的对齐方式 - align-items**
+[back to top](#top)
+
+<h4 id="伸缩项目在交叉轴(侧轴)上的对齐方式">1.3 伸缩项目在交叉轴(侧轴)上的对齐方式 - align-items</h4>
 
 规范版本|属性名称|start|center|end|baseline|stretch
 ---|---|---|---|---|---|---
@@ -99,7 +109,9 @@ Flexbox布局主要有三种语法版本：
 
 ![](http://i.imgur.com/OqRLFZq.png)
 
-**伸缩项目在多根轴线的对齐方式 - align-content**
+[back to top](#top)
+
+<h4 id="伸缩项目在多根轴线的对齐方式">1.4 伸缩项目在多根轴线的对齐方式 - align-content</h4>
 
 如果项目只有一根轴线，该属性不起作用
 
@@ -119,6 +131,8 @@ Flexbox布局主要有三种语法版本：
 - stretch（默认值）： 轴线占满整个交叉轴
 
 ![](http://i.imgur.com/Ps37Xq1.png)
+
+[back to top](#top)
 
 <h3 id="元素样式的属性">二：元素样式的属性</h3>
 
@@ -174,7 +188,9 @@ align-self属性允许单个项目有与其他项目不一样的对齐方式，�
 
 ![](http://i.imgur.com/khmSLzp.png)
 
-### 三：flex布局浏览器兼容处理
+[back to top](#=top)
+
+<h3 id="flex布局浏览器兼容处理">三：flex布局浏览器兼容处理</h3>
 
 - IE10部分支持2012，需要-ms-前缀
 - Android4.1/4.2-4.3部分支持2009，需要-webkit-前缀
@@ -316,9 +332,11 @@ align-self属性允许单个项目有与其他项目不一样的对齐方式，�
 
 建议在需要兼容Android时（2009版语法）采用flex-h/flex-v声明容器使用flex模式，在不需要兼容Android时（2012版语法）使用flex设置容器
 
-###四：flex布局经典案例
+[back to top](#=top)
 
-####4.1 水平和垂直居中（网页设计的圣杯）
+<h3 id="flex布局经典案例">四：flex布局经典案例</h3>
+
+<h4 id="水平和垂直居中">4.1 水平和垂直居中（网页设计的圣杯）</h4>
 
 ```css
 html { height: 100%; } 
@@ -360,9 +378,13 @@ h1 {
 }	
 ```
 
-####4.2 实现宽屏和窄屏的布局
+[back to top](#=top)
 
-###五：Flexbox在线生成工具
+<h4 id="实现宽屏和窄屏的布局">4.2 实现宽屏和窄屏的布局</h4>
+
+[back to top](#=top)
+
+<h3 id="flex布局经典案例">五：Flexbox在线生成工具</h3>
 
 - [Flexplorer](http://bennettfeely.com/flexplorer/)
 - [CSS Flexbox Please!](http://demo.agektmr.com/flexbox/)
