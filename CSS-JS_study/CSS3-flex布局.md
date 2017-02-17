@@ -1,11 +1,11 @@
 
 ## css3的flex布局 - `display: flex;`
 
-- 一：容器的样式
-- 二：元素样式的属性
-- 三：flex布局浏览器兼容处理
-- 四：flex布局经典案例
-- 五：Flexbox在线生成工具
+- [一：容器的样式](#容器的样式)
+- [二：元素样式的属性](#)
+- [三：flex布局浏览器兼容处理](#)
+- [四：flex布局经典案例](#)
+- [五：Flexbox在线生成工具](#)
 
 **注意，设为Flex布局以后，子元素的float、clear和vertical-align属性将失效, `text-overflow: ellipsis;` 在 `display: flex;` 元素上是没有效果的**
 
@@ -31,7 +31,7 @@ Flexbox布局主要有三种语法版本：
 混合版本|display|flexbox|inline-flexbox
 最老版本|display|box|inline-box
 
-### 一：容器的样式
+<h3 id="容器的样式">一：容器的样式</h3>
 
 **伸缩容器主轴的排列方向和换行**
 
@@ -120,7 +120,7 @@ Flexbox布局主要有三种语法版本：
 
 ![](http://i.imgur.com/Ps37Xq1.png)
 
-### 二：元素样式的属性
+<h3 id="元素样式的属性">二：元素样式的属性</h3>
 
 **1、order样式** - 元素(项目)的排列顺序。数值越小，排列越靠前，默认为0
 
