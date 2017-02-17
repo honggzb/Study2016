@@ -1,5 +1,5 @@
 
-## css3的flex布局 - `display: flex;`     --**
+## css3的flex布局 - `display: flex;`     [--**](#top)
 
 - [一：容器的样式](#容器的样式)
   - [1.1 伸缩容器主轴的排列方向和换行](#伸缩容器主轴的排列方向和换行)
@@ -384,7 +384,7 @@ h1 {
 
 [back to top](#=top)
 
-<h3 id="flex布局经典案例">五：Flexbox在线生成工具</h3>
+<h3 id="Flexbox在线生成工具">五：Flexbox在线生成工具</h3>
 
 - [Flexplorer](http://bennettfeely.com/flexplorer/)
 - [CSS Flexbox Please!](http://demo.agektmr.com/flexbox/)
