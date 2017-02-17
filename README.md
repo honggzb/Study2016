@@ -62,6 +62,7 @@ Study notes in 2016
 │   ├── observable.PNG
 │   ├── angularJS启动多个ng-app.md
 │   ├── typescript-study.md
+│   ├── use-Firebase-in-angular2.md
 │   └── angularResource.md
 ├── Build Study - Build tools 
 │   ├──  Webpack
