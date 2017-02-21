@@ -75,19 +75,6 @@ Study notes in 2016
 │   ├── GulpStudy.md
 │   ├── grunt.initConfig说明.md
 │   └── gruntStudy.md
-├── CSS+JS Study
-│   ├──  cssSkill - css技巧
-│   │    ├── SimulateInputFocus.md - focus输入框的时候，外面容器的灰色边框要高亮(不使用JavaScript,纯CSS实现)
-│   │    ├── CSS属性选择器驱动的过滤搜索技术(autocomplete).md
-│   │    └── 中文或英文两端对齐.md
-│   ├── 7个CSS单位.md
-│   ├── CSS3-Column分栏.md
-│   ├── CSS3-Flex布局.md
-│   ├── CSS3-Flex布局.docx
-│   ├── js控制css伪元素内容（before，after）.md
-│   ├── CSS选择器中的正则表达式.md
-│   ├── reflow-repaint.md
-│   └── responsiveTable.md
 ├── atom
 │   ├── Atom使用进阶.md
 │   ├── atomPlug -常用的Atom设置
