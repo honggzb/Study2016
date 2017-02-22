@@ -94,10 +94,7 @@ Study notes in 2016
 │   ├──  generator.md
 │   ├──  References
 │   └──  Sample1 -- ES6使用的小例子(gulp构建)
-├── JS-Study
-│   ├──  Javascript中bind()方法的使用与实现.md
-│   ├──  javascript+jQuery判断数组中是否包含指定元素.md
-│   └── 
+│
 ├──  **basic--JS**
 │   ├──  ant.md
 │   ├──  深入理解javascript原型和闭包 
@@ -107,6 +104,7 @@ Study notes in 2016
 │   ├──  js标准对象之Date
 │   ├──  JS数据类型判断和数组判断.md 
 │   └──  Chrome DevTools new features.md
+│
 ├──  **JavascriptDesignPattern Javascript设计模式**
 │   ├──  jsDesignPattern1.md
 │   └──  
@@ -121,17 +119,21 @@ Study notes in 2016
 │   ├──  reactFlux学习.md
 │   ├──  reactFlux.rar- simple sample for react Flux
 │   └──  reactSampleBasic-04062016.rar
+│
 ├── interview
 │   ├──  htmlCSS
 │   │    └── BAT及各大互联网公司2014前端笔试面试题-HTML-CSS篇
 │   └──  javascript
 │        ├── javascriptInterview1
 │        └── jsInterviewAlgorithm
+│
 ├── linux-command详解
 │   ├──  linux grep命令详解
 │   └──  linux ls命令详解
+│
 ├── redis学习
 │   └── 1. Redis数据结构
+│
 ├── NodeJS 学习
 │   ├──  babel设置
 │   ├──  debugNode.md - nodeJS调试
@@ -141,6 +143,7 @@ Study notes in 2016
 │   ├──  samples: node.js 学习代码
 │   ├──  npm常用命令.md
 │   └──  express 获取url参数，post参数的三种方式.md
+│
 ├── Source code
 │   ├──  js
 │   │    ├── resizable: 仿照jquery UI的resizable
