@@ -1,7 +1,6 @@
 1. `npm install moduleNames`：安装Node模块
 
 - `npm install -g moduleName` 全局安装
-- `npm install npm -g` 更新npm（http://blog.npmjs.org/post/85484771375/how-to-install-npm）
 - `$npm get global` 可以查看当前使用的安装模式
 - `npm install <name> --save` 安装的同时，将信息写入package.json中项目路径中如果有package.json文件
 1. `npm uninstall express`  #删除指定的模块
@@ -29,9 +28,24 @@
 21. `npm update express`    #升级当前目录下的项目的指定模块
 22. `npm update -g express`  #升级全局安装的express模块
 
-** 升级nodejs 的npm **
+**升级nodejs 的npm**
 
 - 首先安装n模块：`npm install -g n`   
 -第二步：升级node.js到最新稳定版   `n stable`
 
-更多命令请参看npm官方文档：https://www.npmjs.org/doc/
+**npm删除后重新安装**
+
+通过从github的方式将npm安装到nodejs\node_modules
+
+`git clone --recursive git://github.com/isaacs/npm.git`
+
+下载完成后，打开nodejs命令行窗口，进入到npm的代码文件夹下，使用下边命令安装
+
+`node cli.js install npm -gf` 
+
+其中-gf是指全局安装的意思，你可以不要，这样会安装在当前文件夹下，当前工程下而已。
+
+`npm -v`查看npm安装版本
+
+- 更多命令请参看npm官方文档：https://www.npmjs.org/doc/
+- http://www.bubuko.com/infodetail-915159.html
