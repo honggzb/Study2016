@@ -31,7 +31,7 @@
 **升级nodejs 的npm**
 
 - 首先安装n模块：`npm install -g n`   
--第二步：升级node.js到最新稳定版   `n stable`
+- 升级node.js到最新稳定版   `n stable`
 
 **npm删除后重新安装**
 
