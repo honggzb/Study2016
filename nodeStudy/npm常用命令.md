@@ -1,6 +1,7 @@
 1. `npm install moduleNames`：安装Node模块
 
 - `npm install -g moduleName` 全局安装
+- `npm install npm -g` 更新npm（http://blog.npmjs.org/post/85484771375/how-to-install-npm）
 - `$npm get global` 可以查看当前使用的安装模式
 - `npm install <name> --save` 安装的同时，将信息写入package.json中项目路径中如果有package.json文件
 1. `npm uninstall express`  #删除指定的模块
