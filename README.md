@@ -8,11 +8,13 @@ Study notes in 2016
 │   ├── 你应该知道的jQuery技巧
 │   ├── 实用的JavaScript技巧、窍门和最佳实践
 │   └── passport.js学习笔记
+│
 ├── 2016,03
 │   ├── CSS Scroll Snap Points
 │   ├── HTML5-drag&drop
 │   ├── JDK安装路径下存在两个JRE的区别
 │   └── D3JSStudy
+│
 ├── 2016,04
 │   ├── jqueryUIResizable.md  - JQuery UI中resizable的用法，最近项目中用到的
 │   ├── jQuery代码片段助力Web开发效率提升.md
@@ -20,6 +22,7 @@ Study notes in 2016
 │   ├── 移动端Web开发调试之Weinre调试.md
 │   ├── less学习.md
 │   └── 移动web资源整理.md
+│
 ├── 2016,05
 │   ├── 移动web开发tip
 │   ├── Media Queries for Standard Devices.md
@@ -27,20 +30,24 @@ Study notes in 2016
 │   ├── this.md(上下文对象this的简单代码)
 │   ├── apache-ab并发负载压力测试.md
 │   └── jQuery UI Datepicker.md -- 工作中DatePicker的一些用法总结
+│
 ├── 2016,06
 │   └── Mongoose.md  -- Mongoose学习
+│
 ├── 2016,07
 │   ├── fullCalendar学习.md
 │   ├── html5FileAPI学习+sample(upload应用)
 │   └── Web Component简介+x-tag的学习+Shadow DOM.md
+│
 ├── 2016,08
 │   ├── CSS3- will-change的使用(提高页面滚动、动画等渲染性能).md
 │   ├── HTML5 Input Types in Mobile.docx
 │   └── 现代CSS代码的建议.md
+│
 ├── 2016,10
 │   ├── JQuery UI-draggable参数中文详细说明.md
-│   ├──  
 │   └──  
+│
 ├── Angular Study
 │   ├──  angular-official-tourOfHeroes/     - angular 2官方案例
 │   ├──  plunk/                             - Angular 2 From Theory to Practice案例
@@ -64,6 +71,7 @@ Study notes in 2016
 │   ├── typescript-study.md
 │   ├── use-Firebase-in-angular2.md
 │   └── angularResource.md
+│
 ├── Build Study - Build tools 
 │   ├──  Webpack
 │   │    ├── webpack-multiple-bundles/
@@ -75,14 +83,17 @@ Study notes in 2016
 │   ├── GulpStudy.md
 │   ├── grunt.initConfig说明.md
 │   └── gruntStudy.md
+│
 ├── atom
 │   ├── Atom使用进阶.md
 │   ├── atomPlug -常用的Atom设置
 │   ├── atom-js-snippet.docs
 │   └── atomPlugin.md
+│
 ├── ES5Study
 │   ├──  jsArray.md
 │   └──  js之map+reduce+filter+sort.md
+│
 ├── ES6Study
 │   ├──  01 Let
 │   ├──  02-Destructuring解构赋值.md
@@ -108,6 +119,7 @@ Study notes in 2016
 ├──  **JavascriptDesignPattern Javascript设计模式**
 │   ├──  jsDesignPattern1.md
 │   └──  
+│
 ├── ReactStudy
 │   ├──  basicSetupEnv
 │   │     └──
@@ -157,6 +169,7 @@ Study notes in 2016
 │        └── HTML5LocalStorage-日程提醒簿.html
 ├── resource
 │   └── 网页设计资源
+│
 ├── node Module汇总
 └── Web Front-end Stack v2.2.png
 ```
