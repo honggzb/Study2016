@@ -35,10 +35,6 @@ Study notes in 2016
 │   ├── html5FileAPI学习+sample(upload应用)
 │   └── Web Component简介+x-tag的学习+Shadow DOM.md
 │
-├── 2016,08
-│   ├── CSS3- will-change的使用(提高页面滚动、动画等渲染性能).md
-│   └── 现代CSS代码的建议.md
-│
 ├── 2016,10
 │   ├── JQuery UI-draggable参数中文详细说明.md
 │   └──  
