@@ -19,9 +19,7 @@ Study notes in 2016
 │   ├── jqueryUIResizable.md  - JQuery UI中resizable的用法，最近项目中用到的
 │   ├── jQuery代码片段助力Web开发效率提升.md
 │   ├── OWASP Top 10 2013-V1.2.pdf
-│   ├── 移动端Web开发调试之Weinre调试.md
-│   ├── less学习.md
-│   └── 移动web资源整理.md
+│   └── less学习.md
 │
 ├── 2016,05
 │   ├── 前端跨域的整理.md
@@ -39,7 +37,6 @@ Study notes in 2016
 │
 ├── 2016,08
 │   ├── CSS3- will-change的使用(提高页面滚动、动画等渲染性能).md
-│   ├── HTML5 Input Types in Mobile.docx
 │   └── 现代CSS代码的建议.md
 │
 ├── 2016,10
