@@ -24,8 +24,6 @@ Study notes in 2016
 │   └── 移动web资源整理.md
 │
 ├── 2016,05
-│   ├── 移动web开发tip
-│   ├── Media Queries for Standard Devices.md
 │   ├── 前端跨域的整理.md
 │   ├── this.md(上下文对象this的简单代码)
 │   ├── apache-ab并发负载压力测试.md
