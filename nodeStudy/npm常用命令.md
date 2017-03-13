@@ -1,3 +1,19 @@
+Remove Node.js from Windows completely:
+
+```
+1. Uninstall from Programs & Features with the uninstaller.
+2. Reboot (or you probably can get away with killing all node-related processes from Task Manager).
+3. Look for these folders and remove them (and their contents) if any still exist. Depending on the version you installed, UAC settings, and CPU architecture, these may or may not exist:
+  C:\Program Files (x86)\Nodejs
+  C:\Program Files\Nodejs
+  C:\Users\{User}\AppData\Roaming\npm (or %appdata%\npm)
+  C:\Users\{User}\AppData\Roaming\npm-cache (or %appdata%\npm-cache)
+  C:\Users\{User}\.npmrc (and possibly check for that without the . prefix too)
+5. Check your %PATH% environment variable to ensure no references to Nodejs or npm exist.
+7. If it's still not uninstalled, type where node at the command prompt and you'll see where it resides -- delete that (and probably the parent directory) too.
+8. Reboot, for good measure.
+```
+
 1. `npm install moduleNames`：安装Node模块
 
 - `npm install -g moduleName` 全局安装
