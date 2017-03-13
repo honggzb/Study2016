@@ -1,4 +1,12 @@
-### 1 setup by using [angular-cli](https://cli.angular.io/)
+[top](#top]
+
+- [1. setup by using angular-cli](#setup-by-using-angular-cli)
+  - [1.1 Updating Angular CLI](#Updating-Angular-CLI)
+  - [1.2 Proxy To Backend](#Proxy-To-Backend)
+  - [1.3 Deploying the app via GitHub Pages](#Deploying-the-app-via-GitHub Pages)
+  - [1.4 Library Installation](#Library-Installation)
+
+<h3 id="setup-by-using-angular-cli">1. setup by using [angular-cli](https://cli.angular.io/)</h3>
 
 ```shell
 npm install -g angular-cli
@@ -49,6 +57,7 @@ Directive|	ng g directive my-new-directive|ng g d my-new-directive
 Pipe|	ng g pipe my-new-pipe|ng g p my-new-pipe
 Service|	ng g service my-new-service|ng g s my-new-service
 Class|	ng g class my-new-class|ng g cl my-new-class
+Guard|	ng g guard my-new-guard|
 Interface|	ng g interface my-new-interface|ng g i my-new-interface
 Enum|	ng g enum my-new-enum|ng g e my-new-enum
 Module|	ng g module my-module|ng g m my-module
@@ -89,7 +98,26 @@ options|alias|function
 --skip-git|none |Don't create a new git repo for this project
 --directory|none |Specify the directory you want to create this project in
 
-**1.1 Proxy To Backend**
+[back to top](#top)
+
+<h4 id="Updating-Angular-CLI">1.1 Updating Angular CLI</h4>
+
+```
+npm uninstall -g angular-cli
+npm uninstall --save-dev angular-cli
+//global package:
+npm uninstall -g @angular/cli
+npm cache clean
+npm install -g @angular/cli@latest
+//Local project package:
+rm -rf node_modules dist # use rmdir /S/Q node_modules dist in Windows Command Prompt; use rm -r -fo node_modules,dist in Windows PowerShell
+npm install --save-dev @angular/cli@latest
+npm install
+```
+
+[back to top](#top)
+
+<h4 id="Proxy-To-Backend">1.2 Proxy To Backend</h4>
 
 - create a `proxy.conf.json` file
 
@@ -104,11 +132,13 @@ options|alias|function
 
 - edit the `package.json` file:  `"start": "ng serve --proxy-config proxy.conf.json",`
 
-**1.2 Deploying the app via GitHub Pages**
+[back to top](#top)
+
+<h4 id="Deploying-the-app-via-GitHub Pages">1.3 Deploying the app via GitHub Pages</h4>
 
 `ng github-pages:deploy --message "Optional commit message"`
 
-**1.3 Library Installation**
+<h4 id="Library-Installation">1.4 Library Installation</h4>
 
 - 3rd Party Library Installation 
 
@@ -215,3 +245,6 @@ ng update
 |- tslint.json
 |- typings.json
 ```
+
+
+- https://github.com/angular/angular-cli
