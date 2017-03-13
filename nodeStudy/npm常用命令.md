@@ -32,6 +32,8 @@
 
 - 首先安装n模块：`npm install -g n`   
 - 升级node.js到最新稳定版   `n stable`
+- `npm install -g npm@latest  #upgrade to the latest version of npm`
+- `npm install -g npm@lts   # upgrade to the most recent LTS release`
 
 **npm删除后重新安装**
 
