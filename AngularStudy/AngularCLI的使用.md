@@ -5,6 +5,7 @@
   - [1.2 Proxy To Backend](#Proxy-To-Backend)
   - [1.3 Deploying the app via GitHub Pages](#Deploying-the-app-via-GitHub Pages)
   - [1.4 Library Installation](#Library-Installation)
+- [2. project struture the Angular CLI setup](#project-struture)
 
 <h3 id="setup-by-using-angular-cli">1. setup by using [angular-cli](https://cli.angular.io/)</h3>
 
@@ -176,21 +177,9 @@ npm install bootstrap@next
 
 -- [how-to-add-bootstrap-to-an-angular-cli-project](http://stackoverflow.com/questions/37649164/how-to-add-bootstrap-to-an-angular-cli-project)
 
-**1.4 Updating angular-cli**
+[back to top](#top)
 
-```shell
-#Global package
-npm uninstall -g angular-cli
-npm cache clean
-npm install -g angular-cli@latest
-#Local project package
-rm -rf node_modules dist # use rmdir on Windows
-npm install --save-dev angular-cli@latest
-npm install
-ng update
-```
-
-2 project struture the Angular CLI setup
+<h3 id="project-struture">2. project struture the Angular CLI setup</h3>
 
 ```
 // configuration files
