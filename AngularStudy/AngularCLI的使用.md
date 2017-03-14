@@ -161,7 +161,7 @@ typelessPackage.method();
 ```shell
 #install bootstrap 4
 npm install bootstrap@next
-#add the needed script files to apps[0].scripts in angular-cli.json file
+#add the needed script files to apps[0].scripts in angular-cli.json file in root directory
 "scripts": [
   "../node_modules/jquery/dist/jquery.js",
   "../node_modules/tether/dist/js/tether.js",
