@@ -104,8 +104,7 @@ Study notes in 2016
 │   ├──  JS中复制数组.md
 │   ├──  js字符串操作.md
 │   ├──  js标准对象之Date
-│   ├──  JS数据类型判断和数组判断.md 
-│   └──  Chrome DevTools new features.md
+│   └──  JS数据类型判断和数组判断.md 
 │
 ├──  **JavascriptDesignPattern Javascript设计模式**
 │   ├──  jsDesignPattern1.md
