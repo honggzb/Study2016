@@ -42,7 +42,7 @@ rxjs适用于异步场景，即前端交互中接口请求、浏览器事件以�
 
 [back to top](#top)
 
-<h3 id="实例方法Operators">2. rxjs的操作-Observable/h3>
+<h3 id="实例方法Operators">2. rxjs的操作-Observable</h3>
 
 ![](http://i.imgur.com/ZYUr0YG.png)
 
