@@ -40,6 +40,8 @@ rxjs适用于异步场景，即前端交互中接口请求、浏览器事件以�
 - rxjs开发业务层具有高弹性，高稳定性，高实时性等特点
 - Rxjs的基础就是oberver观察这模式，但是单个数据的流确是Iterator模式（这个包装转化也可以转化为observer模式）,也就是说rxjs的基础的Observable其实是observer模式和Iterator模式的混合
 
+[back to top](#top)
+
 <h3 id="实例方法Operators">2. rxjs的操作-Observable/h3>
 
 ![](http://i.imgur.com/ZYUr0YG.png)
