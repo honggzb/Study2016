@@ -1,4 +1,4 @@
-##Reactive Programming- RxJs 核心概念之Observable
+## Reactive Programming- RxJs 核心概念之Observable
 
 RP(Reactive Programming)是针对异步数据流的编程。流是包含了有时序，正在进行事件的序列，可以发射(emmit)值(某种类型)、错误、完成信号。流在包含按钮的浏览器窗口被关闭时发出完成信号。
 
@@ -78,7 +78,7 @@ suggestion1Stream.subscribe(function(suggestion) {
 });
 ```
 
-###1 拉取(Pull) V.S. 推送(Push)
+### 1 拉取(Pull) V.S. 推送(Push)
 
 拉取和推送是数据生产者和数据消费者之间通信的两种不同机制。 在拉取系统中，总是由消费者决定何时从生产者那里获得数据。生产者对数据传递给消费者的时间毫无感知（被动的生产者，主动的消费者）。
 
@@ -100,7 +100,7 @@ RxJS在JavaScript中引入了Observable(可观察对象)这个新的推送系统
 Promise|异步执行中返回或者不返回**单一值**
 Observable|同步或者异步计算并返回0个到无穷多个值(**多值**)
 
-###2 RxJs 核心概念之 Observable 剖析
+### 2 RxJs 核心概念之 Observable 剖析
 
 - Rx官方术语中把流称为“观察的对象”("Observable")，因为流可以被观察、订阅, 通过使用 `Rx.Observable.create` 或者是创建操作符，创建一个`Observable`； `Observable` 被 `Observer`（观察者） 订阅； 在执行时 向观察者发送`next / error / complete `通知；同时执行过程可以被 终止
 - Observable（可观察对象）是基于推送（Push）运行时执行（lazy）的**多值集合**
@@ -146,7 +146,7 @@ subscription.unsubscribe();
   - "Complete" 通知：一个不带有值的事件
   - "Next"会在执行阶段推送多个，但"Error"和"Complete"仅会在执行阶段推送其一，并不会同时推送错误和完成通知
 
-###3 RxJs中的Observable
+### 3 RxJs中的Observable
 
 - [http://reactivex.io/](http://reactivex.io/documentation/observable.html)
 - [Operators by Categories](http://xgrommx.github.io/rx-book/content/getting_started_with_rxjs/creating_and_querying_observable_sequences/index.html)
