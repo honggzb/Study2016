@@ -57,6 +57,7 @@ Study notes in 2016
 │   ├── Angular 2 basic.md
 │   ├── Angular 2 errors.md
 │   ├── Reactive Programming- RxJs 核心概念之Observable.md
+│   ├── Reactive Extensions for JavaScript (RxJS).md
 │   ├── observable.PNG
 │   ├── angularJS启动多个ng-app.md
 │   ├── typescript-study.md
