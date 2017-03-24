@@ -84,7 +84,7 @@ suggestion1Stream.subscribe(function(suggestion) {
 
 JavaScript函数是典型的拉取系统：函数是数据的生产者，对函数进行调用的代码（消费者）从函数调用后的返回值中拉取单值进行消费。
 
- |生产者|消费者
+动作|生产者|消费者
 ---|---|---
 拉取|被动: 在被请求时产生数据|主动: 决定何时请求数据
 推送|主动: 控制数据的产生逻辑|被动: 获得数据后进行响应
@@ -175,8 +175,6 @@ Connectable Observable Operators|Connect, Publish, RefCount, Replay
 - Observable.timestamp: 能够得到每个发射值的发射时的时间
 - Observable.distinctUntilChanged(compare, selector): selector取出用来比较的key，compare用来比较两个key
 - Observable.takeWhile() 当参数为false时停止发射数据
-
-
 
 > Reference
 
