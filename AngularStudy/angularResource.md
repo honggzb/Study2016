@@ -1,6 +1,6 @@
 - [csdn上AngularJS专题](http://lib.csdn.net/base/23)
 - [实践总结 - 不可错过的Angular应用技巧](https://my.oschina.net/blogshi/blog/293631#comment-list)
-- [my code segment](#top)
+- [My code segment](#top)
   - [1. autocomplete](#autocomplete)
   - [2. Ajax using + CORS](#Ajax-using)
   - [3. showing a loader icon](#loader-icon)
