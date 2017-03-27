@@ -2,7 +2,7 @@
 - [实践总结 - 不可错过的Angular应用技巧](https://my.oschina.net/blogshi/blog/293631#comment-list)
 - [my code segment](#top)
   - [1. autocomplete](#autocomplete)
-  - [2. Ajax using](#Ajax-using)
+  - [2. Ajax using + CORS](#Ajax-using)
   - [3. showing a loader icon](#loader-icon)
 
 <h3 id="autocomplete">1. autocomplete</h3>
@@ -50,6 +50,30 @@ export class AppComponent implement OnInit {
                      .subscribe(posts => console.log(posts));
   }
 }
+//CORS (Accessing Cross-Domain Resources)
+//1)using jsonp
+export class PostService{    //defining methods in a service
+  private url ="...";
+  constructor(private _jsonp:Jsonp){}
+  getPost(){
+    return this._jsonp.get(...);   //only call get, other verb will get exception
+  }
+}
+@Component({
+  //...
+  providers: [PostService, JSONP_PROVIDERS]
+})
+export class AppComponent implement OnInit {
+  //...
+}
+//2)change headers
+var headers = new Headers({
+  "access-control-request-method":"POST"
+});
+var options = new RequestOptions({
+  headers: headers
+});
+this._http.get('url', options);
 ```
 
 [back to top](#top)
