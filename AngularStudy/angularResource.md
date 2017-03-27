@@ -3,6 +3,7 @@
 - [my code segment](#top)
   - [1. autocomplete](#autocomplete)
   - [2. Ajax using](#Ajax-using)
+  - [3. showing a loader icon](#loader-icon)
 
 <h3 id="autocomplete">1. autocomplete</h3>
 
@@ -53,7 +54,7 @@ export class AppComponent implement OnInit {
 
 [back to top](#top)
 
-<h3 id="Ajax-using">2. Ajax using</h3>
+<h3 id="loader-icon">3. showing a loader icon</h3>
 
 ```javascript
 //showing a loader icon
@@ -72,6 +73,13 @@ export class AppComponent implement OnInit {
                      });
   }
 }
+```
+
+[back to top](#top)
+
+<h3 id="loader-icon">4. showing a loader icon</h3>
+
+```javascript
 ```
 
 [back to top](#top)
