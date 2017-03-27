@@ -164,12 +164,12 @@ Operators方法调用时，接收的参数是source，返回新的source, 以下
 
 <h4 id="转换">2.2 转换</h4>
 
-效果|operator
----|---
-1:1效果|map|source = source1.map(func)表示source1每次发射数据时经过func函数处理，返回新的值作为source发射的数据
+效果|operator|说明
+---|---|---
+1:1效果|map|`source = source1.map(func)`表示source1每次发射数据时经过func函数处理，返回新的值作为source发射的数据
 1:1效果|mapTo|不同于map，func改为静态值
 1:1效果|flatMap|当发射的数据是一个source时，在订阅的响应方法中接收到的也是一个source（这是合理的，发射什么数据就响应什么数据嘛，但是如果我们想在响应方法收到的是source的发射数据），flatMap就是可以允许发射数据是一个source，同时在响应的时候接收的是source的发送数据，后面我们称之为**source打平**
-1:1效果|scan|source = source1.scan(func, initialValue), source每次发射的数据是source前次发射数据和source1当前发射的数据 的组合结果（取决于func，一般是相加), initialValue第一次发射，source前次没发射过，采用initialValue作为前次发射的数据
+1:1效果|scan|`source = source1.scan(func, initialValue)`, source每次发射的数据是source前次发射数据和source1当前发射的数据 的组合结果（取决于func，一般是相加), initialValue第一次发射，source前次没发射过，采用initialValue作为前次发射的数据
 1:1效果|expand|和scan不同的是当func返回值是一个source时，在func接收到的数据是source打平后的发射数据。**特别适用于polling长轮询**
 1:1效果|pluck|每次发射数据时，获取数据中的指定属性的值作为source的发射数据
 
