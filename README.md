@@ -45,6 +45,7 @@ Study notes in 2016
 │   ├── angular2的一些资料.md
 │   ├── Angular2语法清单.md
 │   ├── AngularCLI的使用.md
+│   ├── Angular 2 Custom Project && Workflow.md
 │   ├── angular 2 - 4+5.Directives.md
 │   ├── angular 2 - 6.pipes.md
 │   ├── angular 2 - 7.form.md
