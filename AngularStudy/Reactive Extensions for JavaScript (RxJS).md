@@ -86,19 +86,40 @@ rxjs适用于异步场景，即前端交互中接口请求、浏览器事件以�
 //1) 最简单的例子
 import Rx from 'rxjs';
 //最简单的例子 1
-var keyups = Rx.Observable.fromEvent($("#search"),"keyup")
+var keyups = Observable.fromEvent($("#search"),"keyup")
                        .map(e => e.target.value)
                        .filter(text => text,length>=3)
                        .debounceTime(400)
-                       .distinctUntilChanged()  //erase duplicate word
-                       .flatMap(searchItem => {   // another stream
+                       .distinctUntilChanged()         //erase duplicate word
+                       .flatMap(searchItem => {        // switch to another stream
                           var url ="http://....";
-                          var promise = $.getJSON(url);
-                          return Observable.fromPromise(promise);
+                          var promise = $.getJSON(url);            //wrap to promise
+                          return Observable.fromPromise(promise);  //wrap promise to Observable
                        });
-var subscription = keyups.subscribe(data => console.log(data));
-subscription.unsubscribe();
-//最简单的例子 2
+var subscription = keyups.subscribe(data => console.log(data));     //subscribe data, handle with data
+subscription.unsubscribe();                                         //
+//最简单的例子 2 - how to use Ajax in angular 2
+export class PostService{
+  private url ="...";
+  constructor(private _http:Http){}
+  getPost(){
+    return this._http.get(this.url).map(res => res.json());
+  }
+}
+//use in component
+import { HTTP_PROVIDERS } from 'angular2/http';
+import {PostService } from './post.service';
+@Component({
+  //...
+  providers: [PostService, HTTP_PROVIDERS]
+})
+export class AppComponent {
+  constructor(private _postService: PostService){
+    this._postService.getPosts()
+                     .subscribe(posts => console.log(posts));
+  }
+}
+//最简单的例子 3
 const source = Rx.Observable.fromPromise(new Promise(resolve => resolve(1)));   //emit 1 from promise
 const example = source.map(val => val + 10);  //add 10 to the value
 const subscribe = example.subscribe(val => console.log(val));  //output: 11
