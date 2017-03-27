@@ -113,8 +113,9 @@ import {PostService } from './post.service';
   //...
   providers: [PostService, HTTP_PROVIDERS]
 })
-export class AppComponent {
-  constructor(private _postService: PostService){
+export class AppComponent implement OnInit {
+  constructor(private _postService: PostService){ }
+  ngOnInit(){     // usually put in OnInit trigger
     this._postService.getPosts()
                      .subscribe(posts => console.log(posts));
   }
