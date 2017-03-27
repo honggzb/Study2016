@@ -55,6 +55,23 @@ export class AppComponent implement OnInit {
 
 <h3 id="Ajax-using">2. Ajax using</h3>
 
-
+```javascript
+//showing a loader icon
+@Component({
+  //...
+  template: `<div *ngIf="isLoading"><i class="fa fa-spinner fa-spin fa-3x"></i></div>`  <!-- using font awesome-->
+})
+export class AppComponent implement OnInit {
+  isLoading = true;
+  //...
+  ngOnInit(){     // usually put in OnInit trigger
+    this._postService.getPosts()
+                     .subscribe(posts => {
+                       this.isLoading = false;
+                       console.log(posts);
+                     });
+  }
+}
+```
 
 [back to top](#top)
