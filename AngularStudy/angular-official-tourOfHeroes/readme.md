@@ -1,0 +1,3 @@
+- multi route sample
+  - my-admin-src(Multiple route).rar   - (http://blog.csdn.net/franktaoge/article/details/60769501)
+  - multi-router.zip(official sample)  - (https://angular.io/docs/ts/latest/guide/router.html#!#routing-refactor)
