@@ -19,11 +19,10 @@ MiscellaneousTools|bsondump.exe, mongofiles.exe, mongooplog.exe, mongoperf.exe
 ```shell
 #1) create a new folder
 md \data\db
-"C:\Program Files\MongoDB\Server\3.4\bin\mongod.exe" --dbpath d:\test\mongodb\data
-#If your path includes spaces
-"C:\Program Files\MongoDB\Server\3.4\bin\mongod.exe" --dbpath "d:\test\mongo db data"
 #2) Start MongoDB, open a terminal
-C:\Program Files\MongoDB\Server\3.4\bin\> mongod.exe
+C:\Program Files\MongoDB\Server\3.4\bin\> mongod.exe --dbpath d:\test\mongodb\data
+#If your path includes spaces
+C:\Program Files\MongoDB\Server\3.4\bin\> mongod.exe --dbpath "d:\test\mongo db data"
 #3) Connect to MongoDB, open another terminal
 C:\Program Files\MongoDB\Server\3.4\bin\> mongo.exe
 ```
