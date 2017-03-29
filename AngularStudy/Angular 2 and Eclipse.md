@@ -17,6 +17,7 @@
 - Terminal plugin for Eclipse—A fully working command-line Terminal inside Eclipse.
 (https://marketplace.eclipse.org/content/tm-terminal)
 
+![](http://i.imgur.com/3DP0wSt.png)
 
 > Reference
 
