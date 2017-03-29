@@ -67,18 +67,6 @@ Study notes in 2016
 │   ├── use-Firebase-in-angular2.md
 │   └── angularResource.md
 │
-├── Build Study - Build tools 
-│   ├──  Webpack
-│   │    ├── webpack-multiple-bundles/
-│   │    ├── webpack-production/
-│   │    ├── webpack-seperate-css/
-│   │    ├── Exercise Files.rar
-│   │    ├── webPackStudy.md
-│   │    └── hash.png
-│   ├── GulpStudy.md
-│   ├── grunt.initConfig说明.md
-│   └── gruntStudy.md
-│
 ├── atom
 │   ├── Atom使用进阶.md
 │   ├── atomPlug -常用的Atom设置
