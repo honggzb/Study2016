@@ -2,6 +2,7 @@
 
 1. [No base href set](#no-base-href-set)
 2. [Can't bind to 'formGroup' since it isn't a known property of 'form'](#Cannot-bind-to-formGroup)
+3. [angular2路由与express路由冲突的问题](#angular2路由与express路由冲突的问题)
 
 
 <h3 id="no-base-href-set">1. no base href set -Angular 2 router no base href set</h3>
@@ -49,4 +50,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
  [back to top](#top)
  
+ <h3 id="angular2路由与express路由冲突的问题">3. angular2路由与express路由冲突的问题</h3>
  
+ http://www.cnblogs.com/dh-dh/p/6405454.html
+ 
+ ```javascript
+app.use('/static', express.static(path.join(__dirname, 'public')));
+app.get('/*',function(req,res,next){
+  console.log("index");
+  res.sendFile(path.join(__dirname,'index.html'));
+});
+ ```
+ 
+ 简单的方式就是把ng2定义的所有路由都转到index, static里面是ng2的各种js和style，然后剩下的除了ajax都转向index，这里express处理完了路由就会不往下处理，除非调用next（）。记得通配路由写在最后。
