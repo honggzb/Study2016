@@ -1,17 +1,16 @@
 
-## Angular 2
+[Angular 2](#top)
 
 - [1. Architecture of Angular](#Architecture)
 - [2. 组件开发](#组件开发)
-	- 2.1 模板语法](#)
-	- 2.2 模板的逻辑控制](#)
-	- 2.3 Component Content Projection - ng-content](#)
-	- 2.4 Component Lifecycle Hooks](#)
-	- 2.5 ViewChildren & contentChildren](#)
-	- 2.6 为模板应用样式](#)
-	- 2.7 属性与事件](#)
-- Angular CLI](#)
-- 3 Built-In Directives](#)
+	- [2.1 模板语法](#模板语法)
+	- [2.2 模板的逻辑控制](#模板的逻辑控制)
+	- [2.3 Component Content Projection - ng-content](#ng-content)
+	- [2.4 Component Lifecycle Hooks](#Component-Lifecycle-Hooks)
+	- [2.5 ViewChildren & contentChildren](#ViewChildren)
+	- [2.6 为模板应用样式](#为模板应用样式)
+	- [2.7 属性与事件](#属性与事件)
+- [3. Built-In Directives](#Built-In-Directives)
 	- 3.1 NgFor](#)
 	- 3.2 NgIf & NgSwitch](#)
 	- 3.3 NgStyle & NgClass](#)
@@ -66,9 +65,7 @@
 - Routers
 - Services
 
-![](http://i.imgur.com/uuXXkHf.png)
-
-![](http://i.imgur.com/BjDIUB4.png)
+![](http://i.imgur.com/f3oowzk.png)
 
 **ES6工具链**
 
@@ -100,6 +97,8 @@
 
 ![](http://i.imgur.com/MVAG1Rs.png)
 
+[back to top](#top)
+
 <h3 id="组件开发">2. 组件开发</h3>
 
 - An Angular application is a number of components nested together
@@ -107,16 +106,36 @@
 - tree structure - just one root component
 - Small components glued together through inputs and outputs
   - **One way data-binding**
-    - with [property] bind to the input of a component  - 绑定属性Property binding
-    - with (event) bind to the output event of a component - 监听事件event binding
+    - with [property] bind to the input of a component  - 属性绑定Property binding
+    - with (event) bind to the output event of a component - 监听事件绑定event binding
   - **Two way data-binding**
     - with `<input [(ngModel)]="firstName">`和`<p>Hello {{ firstName }}</p>` and both input property binding as well as output event binding
+ 
 ![](http://i.imgur.com/4Csv2sJ.png)
 
 - Declare all components on the NgModule
 - @Input/@Output decorator
 - EventEmitter and $Event
-- Use # to create template local variable(link a DOM element to a local template variable)
+- Use # to create template **local variable**(link a DOM element to a local template variable)
+
+```javascript
+<todo-cmp [model]="todo" (complete)="onCompletingTodo(todo)"></todo-cmp>   <!-- 数据绑定的名字为model,事件名为complete -->
+@Component({
+  selector: 'todo-cmp',
+  properties: ['model'],
+  events: ['complete']
+})
+class TodoCmp {
+  model;
+  complete = new EventEmitter(); // TypeScript 支持初始化
+  onCompletedButton() {
+    this.complete.next(); // 触发事件
+  }
+}
+//# local variable-两个组件互相交互
+<video-player #player></video-player>            <!-- #player表示当前video-player组件自身 -->
+<button (click)="player.pause()">Pause</button>  <!-- 没有#player的组件则可以通过player访问video-player组件 -->
+```
 
 ![](http://i.imgur.com/mfnPy5V.png)
 
@@ -171,9 +190,11 @@ export class AppModule {   //root module, just one
 platformBrowserDynamic().bootstrapModule(AppModule);
 ```
 
-#### 2.1 模板语法
+[back to top](#top)
 
-**2.1.1 [property] - 绑定属性**
+<h4 id="模板语法">2.1 模板语法</h4>
+
+**2.1.1 [property] - 属性绑定**
 
 - 使用一对中括号将HTML元素或组件的属性绑定到组件模型的某个表达式， 当表达式的值变化时，对应的DOM对象将自动得到更新
 - 也可以使用bind-前缀进行属性绑定
@@ -189,7 +210,7 @@ platformBrowserDynamic().bootstrapModule(AppModule);
 @View({template:`<h1 text-content="Hello,Angular2"></h1>`})
 ```
 
-**2.1.2 (event) - 监听事件**
+**2.1.2 (event) - 监听事件绑定**
 
 - 小括号包裹事件名称，并绑定到表达式
 - 事件名称前加on-前缀
@@ -209,7 +230,9 @@ platformBrowserDynamic().bootstrapModule(AppModule);
 })
 ```
 
-#### 2.2 模板的逻辑控制
+[back to top](#top)
+
+<h4 id="模板的逻辑控制">2.2 模板的逻辑控制</h4>
 
 **2.2.1 [ng-if] - 条件逻辑**
 
@@ -337,16 +360,20 @@ class EzStar{
 bootstrap(EzApp);
 ```
 
-**2.3 Component Content Projection - ng-content**
+[back to top](#top)
+
+<h4 id="ng-content">2.3 Component Content Projection - ng-content</h4>
 
 `<ng-content select=".moo"></ng-content>`
 `<ng-content select=".foo"></ng-content>`
 
-**2.4 Component Lifecycle Hooks**
+<h4 id="Component-Lifecycle-Hooks">2.4 Component Lifecycle Hooks</h4>
 
 ![](http://i.imgur.com/O1t14eF.png)
 
-**2.5 ViewChildren & contentChildren**
+[back to top](#top)
+
+<h4 id="ViewChildren">2.5 ViewChildren & contentChildren</h4>
 
 - components can nest as view children(`@ViewChild`, `@ViewChildren`) or content children(`@ContentChild`, `@ContentChildren`)
 	- view Children of a component: in the template for this component view
@@ -365,7 +392,9 @@ class JokeListComponent implements OnInit, AfterContentInit, AfterViewInit {
 }
 ```
 
-####2.6 为模板应用样式
+[back to top](#top)
+
+<h4 id="为模板应用样式">2.6 为模板应用样式</h4>
 
 **2.6.1 styles - 设置模板样式**
 
@@ -437,9 +466,11 @@ Angular2采用ShadowDom作为组件的渲染基础，这意味着组件被渲染
 </script>
 ```
 
-#### 2.6.7 属性与事件
+[back to top](#top)
 
-**2.6.7.1 属性声明 - 暴露成员变量**
+<h4 id="ng-content">2.7 属性与事件</h4>
+
+**2.7.1 属性声明 - 暴露成员变量**
 
 在Component注解的 properties属性中声明组件的成员变量
 
@@ -460,7 +491,7 @@ class EzCard{
 }
 ```
 	
-**2.6.7.2 事件声明 - 暴露事件源**
+**2.7.2 事件声明 - 暴露事件源**
 
 定义一个事件源/EventEmitter， 然后通过Component注解的events接口包括出来
 
@@ -477,14 +508,6 @@ class EzCard{
 ```
 
 ### Angular CLI
-
-- Bootstrapping a project
-- Serving and live reloading 
-- Code generation
-- Testing
-- Packaging and releasing
-
-``
 
 ###3 Built-In Directives
 
