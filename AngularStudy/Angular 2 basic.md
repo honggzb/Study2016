@@ -1,65 +1,65 @@
 
 ## Angular 2
 
-- 1 Architecture of Angular
-- 2 组件开发
-	- 2.1 模板语法
-	- 2.2 模板的逻辑控制
-	- 2.3 Component Content Projection - ng-content
-	- 2.4 Component Lifecycle Hooks
-	- 2.5 ViewChildren & contentChildren
-	- 2.6 为模板应用样式
-	- 2.7 属性与事件
-- Angular CLI
-- 3 Built-In Directives
-	- 3.1 NgFor
-	- 3.2 NgIf & NgSwitch
-	- 3.3 NgStyle & NgClass
-	- 3.4 ngNonBindable
-	- 3.5 structural directives
-- 4 Customer Directives
-- 5 Reactive Programming = Streams + Operations
-	- 5.1 Observable
-	- 5.2 Angular observables(Reactive Programming in Angular)
-- 6 **Pipes** - filters in Angular 1(angular 2- pipes.md)
-- 7 Form
-	- 7.1 Model driven Form
-	- 7.2 Reactive Model Form
-	- 7.3 Template Driven Form
-- 8 Dependency Injection & Providers
-	- 8.1 injector
-	- 8.2 Provider
-	- 8.3 Tokens
-	- 8.4 Configuring Dependency Injection in Angular
-	- 8.5 NgModule.providers vs Component.providers vs Component.viewProviders
-- 9 HTTP
-	- 9.1 Core HTTP
-	- 9.2 HTTP via Promises
-	- 9.3 HTTP via observables
-	- 9.4 JSONP via Observables
-- 10 routing
-	- 10.1 Local web server configuration
-	- 10.2 Route Configuration
-	- 10.3 Navigating
-		- 10.3.1 hardcoded URLS
-		- 10.3.2 program by the router
-		- 10.3.3 program by a routerLink directive
-	- 10.4 Parameterised Routes(by ID)
-	- 10.5 Nested Routes
-	- 10.6 Router Guards
-	- 10.7 Routing Strategies
-	- 10.8 Querying parameters/extracting query parameters
-- 11 Unit Testing
-	- 11.1 Jasmine - Behavior Driven Development(BDD)
-	- 11.2 Karma
-	- 11.3 Angular CLI
-	- 11.4 Testing with Mocks & Spies
-	- 11.5 Angular Test Bed
-	- 11.6 Test Asynchronous functions
-	- 11.7 Testing Dependency Injection
-	- 11.8 Testing Components, Directives, Model Driven Form, Http and Jsonp, Routing
+- [1. Architecture of Angular](#Architecture)
+- [2. 组件开发](#组件开发)
+	- 2.1 模板语法](#)
+	- 2.2 模板的逻辑控制](#)
+	- 2.3 Component Content Projection - ng-content](#)
+	- 2.4 Component Lifecycle Hooks](#)
+	- 2.5 ViewChildren & contentChildren](#)
+	- 2.6 为模板应用样式](#)
+	- 2.7 属性与事件](#)
+- Angular CLI](#)
+- 3 Built-In Directives](#)
+	- 3.1 NgFor](#)
+	- 3.2 NgIf & NgSwitch](#)
+	- 3.3 NgStyle & NgClass](#)
+	- 3.4 ngNonBindable](#)
+	- 3.5 structural directives](#)
+- 4 Customer Directives](#)
+- 5 Reactive Programming = Streams + Operations](#)
+	- 5.1 Observable](#)
+	- 5.2 Angular observables(Reactive Programming in Angular)](#)
+- 6 **Pipes** - filters in Angular 1(angular 2- pipes.md)](#)
+- 7 Form](#)
+	- 7.1 Model driven Form](#)
+	- 7.2 Reactive Model Form](#)
+	- 7.3 Template Driven Form](#)
+- 8 Dependency Injection & Providers](#)
+	- 8.1 injector](#)
+	- 8.2 Provider](#)
+	- 8.3 Tokens](#)
+	- 8.4 Configuring Dependency Injection in Angular](#)
+	- 8.5 NgModule.providers vs Component.providers vs Component.viewProviders](#)
+- 9 HTTP](#)
+	- 9.1 Core HTTP](#)
+	- 9.2 HTTP via Promises](#)
+	- 9.3 HTTP via observables](#)
+	- 9.4 JSONP via Observables](#)
+- 10 routing](#)
+	- 10.1 Local web server configuration](#)
+	- 10.2 Route Configuration](#)
+	- 10.3 Navigating](#)
+		- 10.3.1 hardcoded URLS](#)
+		- 10.3.2 program by the router](#)
+		- 10.3.3 program by a routerLink directive](#)
+	- 10.4 Parameterised Routes(by ID)](#)
+	- 10.5 Nested Routes](#)
+	- 10.6 Router Guards](#)
+	- 10.7 Routing Strategies](#)
+	- 10.8 Querying parameters/extracting query parameters](#)
+- 11 Unit Testing](#)
+	- 11.1 Jasmine - Behavior Driven Development(BDD)](#)
+	- 11.2 Karma](#)
+	- 11.3 Angular CLI](#)
+	- 11.4 Testing with Mocks & Spies](#)
+	- 11.5 Angular Test Bed](#)
+	- 11.6 Test Asynchronous functions](#)
+	- 11.7 Testing Dependency Injection](#)
+	- 11.8 Testing Components, Directives, Model Driven Form, Http and Jsonp, Routing](#)
 
-### 1 Architecture of Angular
+<h3 id="Architecture">1. Architecture of Angular</h3>
 
 - Components - encapsulates the template, data and the behavior of a view
 - Directives - modify DOM elements and/or extend their behavior
@@ -100,17 +100,19 @@
 
 ![](http://i.imgur.com/MVAG1Rs.png)
 
-### 2 组件开发
+<h3 id="组件开发">2. 组件开发</h3>
 
 - An Angular application is a number of components nested together
 - Angular2以组件为核心，bootstrap是围绕组件开始的
 - tree structure - just one root component
 - Small components glued together through inputs and outputs
-  - **Two way data-binding**
-    - with {‌{ }} and both input property binding as well as output event binding
   - **One way data-binding**
-    - with [property] bind to the input of a component  - 绑定属性
-    - with (event) bind to the output event of a component - 监听事件
+    - with [property] bind to the input of a component  - 绑定属性Property binding
+    - with (event) bind to the output event of a component - 监听事件event binding
+  - **Two way data-binding**
+    - with `<input [(ngModel)]="firstName">`和`<p>Hello {{ firstName }}</p>` and both input property binding as well as output event binding
+![](http://i.imgur.com/4Csv2sJ.png)
+
 - Declare all components on the NgModule
 - @Input/@Output decorator
 - EventEmitter and $Event
