@@ -9,6 +9,8 @@
 	- [2.4 Component Lifecycle Hooks](#Component-Lifecycle-Hooks)
 	- [2.5 ViewChildren & contentChildren](#ViewChildren)
 	- [2.6 为模板应用样式](#为模板应用样式)
+		- [2.6.1 styles - 设置模板样式](#设置模板样式)
+		- [2.6.2 ShadowDom - 封装私有样式](#ShadowDom)
 	- [2.7 属性与事件](#属性与事件)
 - [3. Built-In Directives](#Built-In-Directives)
 	- 3.1 NgFor
@@ -401,7 +403,7 @@ class JokeListComponent implements OnInit, AfterContentInit, AfterViewInit {
 
 <h4 id="为模板应用样式">2.6 为模板应用样式</h4>
 
-**2.6.1 styles - 设置模板样式**
+<h4 id="设置模板样式">2.6.1 styles - 设置模板样式</h4>
 
 ```javascript
 @Component({
@@ -436,7 +438,9 @@ class JokeListComponent implements OnInit, AfterContentInit, AfterViewInit {
 - ViewEncapsulation.Emulated
 - ViewEncapsulation.None
 
-####2.6.2 ShadowDom - 封装私有样式
+[back to top](#top)
+
+<h4 id="ShadowDom">2.6.2 ShadowDom - 封装私有样式</h4>
 
 Angular2采用ShadowDom作为组件的渲染基础，这意味着组件被渲染到独立的`Shadow Tree`上，可实现DOM对象和样式的良好封装。除了Chrome之外的大多数的浏览器目前还不支持ShadowDom，因此，Angular2提供了三种将模板渲染到DOM的策略
 
