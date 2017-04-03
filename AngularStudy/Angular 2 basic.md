@@ -11,15 +11,15 @@
 	- [2.6 为模板应用样式](#为模板应用样式)
 	- [2.7 属性与事件](#属性与事件)
 - [3. Built-In Directives](#Built-In-Directives)
-	- 3.1 NgFor](#)
-	- 3.2 NgIf & NgSwitch](#)
-	- 3.3 NgStyle & NgClass](#)
-	- 3.4 ngNonBindable](#)
-	- 3.5 structural directives](#)
-- 4 Customer Directives](#)
-- 5 Reactive Programming = Streams + Operations](#)
-	- 5.1 Observable](#)
-	- 5.2 Angular observables(Reactive Programming in Angular)](#)
+	- 3.1 NgFor
+	- 3.2 NgIf & NgSwitch
+	- 3.3 NgStyle & NgClass
+	- 3.4 ngNonBindable
+	- 3.5 structural directives
+- 4 Customer Directives
+- 5 Reactive Programming = Streams + Operations
+	- 5.1 Observable
+	- 5.2 Angular observables(Reactive Programming in Angular)
 - 6 **Pipes** - filters in Angular 1(angular 2- pipes.md)](#)
 - 7 Form](#)
 	- 7.1 Model driven Form](#)
@@ -104,42 +104,7 @@
 - An Angular application is a number of components nested together
 - Angular2以组件为核心，bootstrap是围绕组件开始的
 - tree structure - just one root component
-- Small components glued together through inputs and outputs
-  - **One way data-binding**
-    - with [property] bind to the input of a component  - 属性绑定Property binding
-    - with (event) bind to the output event of a component - 监听事件绑定event binding
-  - **Two way data-binding**
-    - with `<input [(ngModel)]="firstName">`和`<p>Hello {{ firstName }}</p>` and both input property binding as well as output event binding
- 
-![](http://i.imgur.com/4Csv2sJ.png)
-
 - Declare all components on the NgModule
-- @Input/@Output decorator
-- EventEmitter and $Event
-- Use # to create template **local variable**(link a DOM element to a local template variable)
-
-```javascript
-<todo-cmp [model]="todo" (complete)="onCompletingTodo(todo)"></todo-cmp>   <!-- 数据绑定的名字为model,事件名为complete -->
-@Component({
-  selector: 'todo-cmp',
-  properties: ['model'],
-  events: ['complete']
-})
-class TodoCmp {
-  model;
-  complete = new EventEmitter(); // TypeScript 支持初始化
-  onCompletedButton() {
-    this.complete.next(); // 触发事件
-  }
-}
-//# local variable-两个组件互相交互
-<video-player #player></video-player>            <!-- #player表示当前video-player组件自身 -->
-<button (click)="player.pause()">Pause</button>  <!-- 没有#player的组件则可以通过player访问video-player组件 -->
-```
-
-![](http://i.imgur.com/mfnPy5V.png)
-
-![](http://i.imgur.com/OEoWkPQ.png)
 
 ```javascript
 class Joke {  //domain model(component)
@@ -189,6 +154,46 @@ export class AppModule {   //root module, just one
 }
 platformBrowserDynamic().bootstrapModule(AppModule);
 ```
+
+- Small components glued together through inputs and outputs
+  - **One way data-binding**
+    - with [property] bind to the input of a component  - 属性绑定Property binding
+    - with (event) bind to the output event of a component - 监听事件绑定event binding
+  - **Two way data-binding**
+    - with `<input [(ngModel)]="firstName">`和`<p>Hello {{ firstName }}</p>` and both input property binding as well as output event binding
+- Use # to create template **local variable**(link a DOM element to a local template variable)
+ 
+![](http://i.imgur.com/4Csv2sJ.png)
+
+```javascript
+<todo-cmp [model]="todo" (complete)="onCompletingTodo(todo)"></todo-cmp>   <!-- 数据绑定的名字为model,事件名为complete -->
+@Component({
+  selector: 'todo-cmp',
+  properties: ['model'],
+  events: ['complete']
+})
+class TodoCmp {
+  model;
+  complete = new EventEmitter(); // TypeScript 支持初始化
+  onCompletedButton() {
+    this.complete.next(); // 触发事件
+  }
+}
+//# local variable-两个组件互相交互
+<video-player #player></video-player>            <!-- #player表示当前video-player组件自身 -->
+<button (click)="player.pause()">Pause</button>  <!-- 没有#player的组件则可以通过player访问video-player组件 -->
+```
+
+![](http://i.imgur.com/mfnPy5V.png)
+
+![](http://i.imgur.com/OEoWkPQ.png)
+
+- @Input/@Output decorator
+- EventEmitter and $Event
+
+![](http://i.imgur.com/zU1PG7r.png)
+
+![](http://i.imgur.com/T8szzMu.png)
 
 [back to top](#top)
 
