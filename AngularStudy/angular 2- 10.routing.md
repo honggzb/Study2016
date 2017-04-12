@@ -7,7 +7,8 @@
 	- [10.3.2 program by the router - navigate between component](#program-by-the-router)
 	- [10.3.3 program by a routerLink directive](#program-by-a-routerLink-directive)
 - [10.4 Parameterised Routes(by ID)](#Parameterised-Routes)
-- [10.5 Nested Routes(multiple routers)](#Nested-Routes)
+- [10.5 Nested Routes(children routers)](#Nested-Routes)
+- [10.55 Multiple module and multiple router](#Multiple-module)
 - [10.6 Lazy-loading](#Lazy-loading)
 - [10.7 Router Guards](#Router-Guards)
 - [10.8 Routing Strategies](#Routing-Strategies)
@@ -129,6 +130,92 @@ let blogId = this.route.snapshot.params['id'];     //get current Route Params
 <a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['/tracks']">Tracks</a>
 //router link -2) relative to current URL
 <a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['./tracks']">Tracks</a>
+```
+
+<span style="">[back](#top)</span>
+
+<h3 id="Multiple-module">10.22 10.55 Multiple module and multiple router</h3>
+
+main module - app.module.ts/app.routing.ts
+
+```javascript
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
+import { AboutModule } from './about/about.module';
+import { AppComponent } from './app.component';
+import { appRouting } from './app.routing';
+import { ContactComponent } from './contact/contact.component';
+import { HomeComponent } from './home/home.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+@NgModule({
+  declarations: [
+    AppComponent,
+    ContactComponent,
+    HomeComponent,
+    NotFoundComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    AboutModule,
+    appRouting,
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+//app.routing.ts
+import { ModuleWithProviders } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { ContactComponent } from './contact/contact.component';
+import { HomeComponent } from './home/home.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+const appRoutes: Routes = [
+  { path:'', redirectTo:'home', pathMatch: 'full'},
+  { path: 'home', component: HomeComponent },
+  { path: 'contact', component: ContactComponent },
+  { path: '**', component: NotFoundComponent }
+];
+export const appRouting: ModuleWithProviders = RouterModule.forRoot(appRoutes);   //use forRoot()
+```
+
+another module - about.module.ts/about.routing.ts
+
+```javascript
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { AboutComponent } from './about.component';
+import { UserComponent } from './user/user.component';
+import { User } from './user.model';
+import { UserService } from './user.service';
+import { aboutRouting } from './about.routing';
+@NgModule({
+  imports: [
+    CommonModule,
+    aboutRouting
+  ],
+  declarations: [
+    AboutComponent,
+    UserComponent
+  ],
+  providers: [UserService],   //no bootstrap
+})
+export class AboutModule { }
+//about.routing.ts
+import { ModuleWithProviders } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { AboutComponent } from './about.component';
+import { UserComponent } from './user/user.component';
+import { User } from './user.model';
+import { UserService } from './user.service';
+const aboutRoutes: Routes = [
+  { path: 'about', component: AboutComponent },
+  { path: 'about/:username', component: UserComponent }
+];
+export const aboutRouting: ModuleWithProviders = RouterModule.forChild(aboutRoutes); //use forChild()
 ```
 
 <span style="">[back](#top)</span>
