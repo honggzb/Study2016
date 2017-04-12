@@ -4,9 +4,8 @@
 - [10.2 Route Configuration](#Route-Configuration)
 - [10.3 Navigating](#Navigating)
 	- [10.3.1 hardcoded URLS](#hardcoded-URLS)
-	- [10.3.2 program by the router](#program-by-the-router)
+	- [10.3.2 program by the router - navigate between component](#program-by-the-router)
 	- [10.3.3 program by a routerLink directive](#program-by-a-routerLink-directive)
-	- [10.3.4 navigate between component- Router](#navigate-between-component)
 - [10.4 Parameterised Routes(by ID)](#Parameterised-Routes)
 - [10.5 Nested Routes](#Nested-Routes)
 - [10.6 Router Guards](#Router-Guards)
@@ -94,17 +93,6 @@ class HeaderComponent {
 ```
 
 `[routerLinkActive]="['active']"` is like `class="active"`
-
-<span style="">[back](#top)</span>
-
-<h4 id="navigate-between-component">10.3.4 navigate between component- Router<h4>
-
-```javascript
-import { Router } from '@angular/router';
-//...
-constructor(private router: Router) { }
-this.router.navigate(['/about']);
-```
 
 <span style="">[back](#top)</span>
 
