@@ -134,7 +134,7 @@ let blogId = this.route.snapshot.params['id'];     //get current Route Params
 
 <span style="">[back](#top)</span>
 
-<h3 id="Multiple-module">10.22 10.55 Multiple module and multiple router</h3>
+<h3 id="Multiple-module">10.55 Multiple module and multiple router</h3>
 
 main module - app.module.ts/app.routing.ts
 
@@ -222,7 +222,15 @@ export const aboutRouting: ModuleWithProviders = RouterModule.forChild(aboutRout
 
 <h3 id="Lazy-loading">10.6 Lazy-loading</h3>
 
+In your route configuration, use loadChildren with a relative path to your lazy loaded angular module. The string is delimited with a # where the right side of split is the angular module class name(https://www.npmjs.com/package/angular-router-loader).
 
+```javascript
+import { Routes } from '@angular/router';
+export const routes: Routes = [
+  { path: 'lazy', loadChildren: './lazy.module#LazyModule' }    //use loadChildren
+  //{ path: 'lazy', loadChildren: './lazy.module#LazyModule?sync=true' }   //Synchronous Loading
+];
+```
 
 <span style="">[back](#top)</span>
 
