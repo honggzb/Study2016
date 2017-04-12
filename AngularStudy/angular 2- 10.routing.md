@@ -84,8 +84,12 @@ class HeaderComponent {
 <h4 id="program-by-a-routerLink-directive">10.3.3 program by a routerLink directive<h4>
 
 ```html
-<li class="nav-item active">
+
+<li class="nav-item">
 	<a class="nav-link" [routerLink]="['home']" [routerLinkActive]="['active']">Home</a>
+</li>
+<li class="nav-item"> <!-- 当点击其他menu时候， home不始终高亮 -->
+	<a class="nav-link" [routerLink]="['/']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Home </a>
 </li>
 ```
 
