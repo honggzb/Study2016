@@ -7,11 +7,12 @@
 	- [10.3.2 program by the router - navigate between component](#program-by-the-router)
 	- [10.3.3 program by a routerLink directive](#program-by-a-routerLink-directive)
 - [10.4 Parameterised Routes(by ID)](#Parameterised-Routes)
-- [10.5 Nested Routes](#Nested-Routes)
-- [10.6 Router Guards](#Router-Guards)
-- [10.7 Routing Strategies](#Routing-Strategies)
-- [10.8 Querying parameters/extracting query parameters](#Querying-parameters)
-- [10.9 Styling Active Route Links](#Styling-Active-Route-Links)
+- [10.5 Nested Routes(multiple routers)](#Nested-Routes)
+- [10.6 Lazy-loading](#Lazy-loading)
+- [10.7 Router Guards](#Router-Guards)
+- [10.8 Routing Strategies](#Routing-Strategies)
+- [10.9 Querying parameters/extracting query parameters](#Querying-parameters)
+- [10.10 Styling Active Route Links](#Styling-Active-Route-Links)
 
 <h3 id="Local-web-server-configuration">10.1 Local web server configuration</h3>
 
@@ -63,7 +64,7 @@ const routes: Routes = [
 
 <span style="">[back](#top)</span>
 
-<h4 id="program-by-the-router">10.3.2 program by the router</h4>
+<h4 id="program-by-the-router">10.3.2 program by the router - navigate between component</h4>
 
 ```javascript
 import {Router} from "@angular/router";   
@@ -112,7 +113,7 @@ let blogId = this.route.snapshot.params['id'];     //get current Route Params
 
 <span style="">[back](#top)</span>
 
-<h3 id="Nested-Routes">10.5 Nested Routes</h3>
+<h3 id="Nested-Routes">10.5 Nested Routes(multiple routers)</h3>
 
 ```javascript
 //Route Configuration
@@ -132,7 +133,13 @@ let blogId = this.route.snapshot.params['id'];     //get current Route Params
 
 <span style="">[back](#top)</span>
 
-<h3 id="Router-Guards">10.6 Router Guards</h3>
+<h3 id="Lazy-loading">10.6 Lazy-loading</h3>
+
+
+
+<span style="">[back](#top)</span>
+
+<h3 id="Router-Guards">10.7 Router Guards</h3>
 
 1. Not Authenticated
 2. Not Authorized
@@ -226,7 +233,7 @@ export class UserEditComponent implements ComponentCanDeactivate{
 
 <span style="">[back](#top)</span>
 
-<h3 id="Routing-Strategies">10.7 Routing Strategies</h3>
+<h3 id="Routing-Strategies">10.8 Routing Strategies</h3>
 
 Routing Strategy|enable strategy|syntax|cons|description
 ---|---|---|---|---
@@ -237,7 +244,7 @@ PathLocationStrategy| default strategy,no need to enable it| `/search`| use HTML
 
 <span style="">[back](#top)</span>
 
-<h3 id="Querying-parameters">10.8 Querying parameters/extracting query parameters</h3>
+<h3 id="Querying-parameters">10.9 Querying parameters/extracting query parameters</h3>
 
 ```javascript
 <button (click)="onNavigate()">Go Home</button>
@@ -278,7 +285,7 @@ constructor(private router: Router){
 
 <span style="">[back](#top)</span>
 
-<h3 id="Styling-Active-Route-Links">10.9 Styling Active Route Links</h3>
+<h3 id="Styling-Active-Route-Links">10.10 Styling Active Route Links</h3>
 
 ```html
 <!-- 1） 可以自定义active的css -->
