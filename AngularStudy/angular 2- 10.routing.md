@@ -117,6 +117,23 @@ let blogId = this.route.snapshot.params['id'];     //get current Route Params
 <h3 id="Nested-Routes">10.5 Nested Routes(multiple routers)</h3>
 
 ```javascript
+//Route Configuration-mutiple modules and mutiple routers
+const aboutRoutes: Routes = [
+  { path: 'about', 
+    component: AboutSectionComponent,
+    children: [
+      { path: '', component: AboutComponent },
+      { path: ':username', component: UserComponent }
+    ]
+  }
+];
+//...
+<div class="card" [routerLink]="['/about', user.username]" [routerLinkActive]="['active']"> ... </div>
+```
+
+or
+
+```javascript
 //Route Configuration
 { path:'artist/:artistId',      //parent route
   component: ArtistComponent,
