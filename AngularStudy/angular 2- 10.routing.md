@@ -235,7 +235,6 @@ export const routes: Routes = [
 [Lazy-loading content with angular-cli](https://keathmilligan.net/lazy-loading-content-with-angular-cli/)
 
 ```shell
-ng new angular-cli-lazyload
 ng g component home
 ng g module lazy
 ng g component lazy
