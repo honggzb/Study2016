@@ -232,6 +232,32 @@ export const routes: Routes = [
 ];
 ```
 
+[Lazy-loading content with angular-cli](https://keathmilligan.net/lazy-loading-content-with-angular-cli/)
+
+```shell
+ng new angular-cli-lazyload
+ng g component home
+ng g module lazy
+ng g component lazy
+```
+
+```javascript
+import { ModuleWithProviders }  from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { LazyComponent } from './lazy.component';
+import { LazypageComponent } from './lazypage/lazypage.component';
+const lazyRoutes: Routes = [
+  {
+    path: '',
+    component: LazyComponent,
+    children: [
+      { path: 'lazypage', component: LazypageComponent }
+    ]
+  }
+];
+export const lazyRouting: ModuleWithProviders = RouterModule.forChild(lazyRoutes);
+```
+
 <span style="">[back](#top)</span>
 
 <h3 id="Router-Guards">10.7 Router Guards</h3>
