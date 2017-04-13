@@ -251,27 +251,29 @@ export const routes: Routes = [
 
 [Lazy-loading content with angular-cli](https://keathmilligan.net/lazy-loading-content-with-angular-cli/)
 
-```shell
-ng g component home
-ng g module lazy
-ng g component lazy
-```
-
 ```javascript
-import { ModuleWithProviders }  from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { LazyComponent } from './lazy.component';
-import { LazypageComponent } from './lazypage/lazypage.component';
-const lazyRoutes: Routes = [
-  {
-    path: '',
-    component: LazyComponent,
+//1)remove all component in lazy module in app.module.ts
+//2)modify app.routing.ts and add
+const appRoutes: Routes = [
+  { path:'', redirectTo:'home', pathMatch: 'full'},
+  { path: 'home', component: HomeComponent },
+  { path: 'about', loadChildren: './about/about.module#AboutModule'},  //lazing load about module
+  { path: 'contact', component: ContactComponent },
+  { path: '**', component: NotFoundComponent }
+];
+export const appRouting: ModuleWithProviders = RouterModule.forRoot(appRoutes);    //use forRoot
+//3)about.module.ts -- lazy module
+//4)about.routing.ts  -- lazy module routing 
+const aboutRoutes: Routes = [
+  { path: '',     //note: this path must be '', otherwise can not load whole lazy module
+    component: AboutSectionComponent,
     children: [
-      { path: 'lazypage', component: LazypageComponent }
+      { path: '', component: AboutComponent },
+      { path: ':username', component: UserComponent }
     ]
   }
 ];
-export const lazyRouting: ModuleWithProviders = RouterModule.forChild(lazyRoutes);
+export const aboutRouting: ModuleWithProviders = RouterModule.forChild(aboutRoutes);  //use forChild
 ```
 
 <span style="">[back](#top)</span>
