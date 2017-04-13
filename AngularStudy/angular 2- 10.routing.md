@@ -8,8 +8,8 @@
 	- [10.3.3 program by a routerLink directive](#program-by-a-routerLink-directive)
 - [10.4 Parameterised Routes(by ID)](#Parameterised-Routes)
 - [10.5 Nested Routes(children routers)](#Nested-Routes)
-- [10.55 Multiple module and multiple router](#Multiple-module)
-- [10.6 Lazy-loading](#Lazy-loading)
+- [10.55 Multiple module and multiple router](#Multiple-module)---ng2MultipleRouting+lazingLoad.rar
+- [10.6 Lazy-loading](#Lazy-loading) ---ng2MultipleRouting+lazingLoad.rar
 - [10.7 Router Guards](#Router-Guards)
 - [10.8 Routing Strategies](#Routing-Strategies)
 - [10.9 Querying parameters/extracting query parameters](#Querying-parameters)
