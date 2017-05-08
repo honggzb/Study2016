@@ -154,8 +154,10 @@ Study notes in 2016
 │   │    └── 动态菜单
 │   └── HTML5 API
 │        └── HTML5LocalStorage-日程提醒簿.html
+│
 ├── resource
-│   └── 网页设计资源
+│   ├── frontEnd-resource.md
+│   └── 网页设计资源.md
 │
 ├── node Module汇总
 └── Web Front-end Stack v2.2.png
