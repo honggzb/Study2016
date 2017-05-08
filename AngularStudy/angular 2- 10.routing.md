@@ -199,6 +199,17 @@ const appRoutes: Routes = [
 export const appRouting: ModuleWithProviders = RouterModule.forRoot(appRoutes);   //use forRoot()
 ```
 
+在Main component(AppComponent)中，很容易使用`ActivatedRoute`拿到当前路由获取参数：
+
+```javascript
+ngOnInit() {
+        this.route.params.subscribe((params) => {
+            this.createPies();
+            this.onTopListFilterChange(params['id']);
+       });
+};
+```
+
 another module - about.module.ts/about.routing.ts
 
 ```javascript
@@ -233,6 +244,14 @@ const aboutRoutes: Routes = [
   { path: 'about/:username', component: UserComponent }
 ];
 export const aboutRouting: ModuleWithProviders = RouterModule.forChild(aboutRoutes); //use forChild()
+```
+
+在children中指定的component要拿到路由参数，这时候再使用ActivatedRoute根本拿不到参数，需要找到父级路由，由父级路由去拿参数。这时需要借用Router类的routeState属性的parent方法(http://www.cnblogs.com/dojo-lzz/p/5883408.html)
+
+```javascript
+this.router.routeState.parent(this.activatedRoute).params.subscribe(params => {
+   this.getDetailsById(params['id']);
+})
 ```
 
 <span style="">[back](#top)</span>
