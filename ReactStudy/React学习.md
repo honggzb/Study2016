@@ -11,6 +11,8 @@
 - [3. Rendering Elements](#Rendering-Elements)
 - [4. Basic Framework](#Basic-Framework)
 
+- JSX: `html+javascript => javascript`
+- 虚拟DOM
 
 <h3 id="Installation">1. Installation</h3>
 
