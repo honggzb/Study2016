@@ -1,52 +1,158 @@
-## React
+[React Study](#top)
 
-### Basic Framework
+- [1. Installation](#Installation)
+  - [1.1 Creating a New Application](#Creating-a-New-Application)
+  - [1.2 Adding React to an Existing Application](#Adding-React)
+  - [1.3 Using a CDN](#Using-a-CDN)
+- [2. JSX 用法](#JSX用法)
+  - [2.1 Embedding Expressions in JSX](#Embedding-Expressions)
+  - [2.2 属性Attributes与行内样式 with JSX](#属性Attributes与行内样式)
+  - [2.3 Objects in JSX](#Objects-in-JSX)
+- [3. Rendering Elements](#Rendering-Elements)
+- [4. Basic Framework](#Basic-Framework)
 
-### ReactDOM.render() 
 
-React 的最基本方法，用于将模板转为 HTML语言，并插入指定的 DOM 节点
+<h3 id="Installation">1. Installation</h3>
 
-### React允许将代码封装成组件（component），然后像插入普通 HTML 标签一样，在网页中插入这个组件
+<h4 id="Creating-a-New-Application">1.1 Creating a New Application</h4>
 
-- `React.createClass` 方法就用于生成一个组件类
+```shell
+npm install -g create-react-app
+create-react-app my-app
+cd my-app
+npm start
+npm run build  #deploy to production
+```
+
+<h4 id="Adding-React">1.2 Adding React to an Existing Application</h4>
+
+```shell
+#1)install React by npm
+npm init
+npm install --save react react-dom
+```
+
+<h4 id="Using-a-CDN">1.3 Using a CDN</h4>
+
+```html
+<script src="https://unpkg.com/react@15/dist/react.js"></script>
+<script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>
+```
+
+- [Creating a Production Build with Create React App](https://facebook.github.io/react/docs/optimizing-performance.html#create-react-app)
+- [Creating a Production Build with Single-File Builds](https://facebook.github.io/react/docs/optimizing-performance.html#single-file-builds)
+- [Creating a Production Build with Brunch](https://facebook.github.io/react/docs/optimizing-performance.html#brunch)
+- [Creating a Production Build with Browserify](https://facebook.github.io/react/docs/optimizing-performance.html#browserify)
+- [Creating a Production Build with Rollup](https://facebook.github.io/react/docs/optimizing-performance.html#rollup)
+- [Creating a Production Build with Webpack](https://facebook.github.io/react/docs/optimizing-performance.html#webpack)
+
+[back to top](#top)
+
+<h3 id="JSX用法">2. JSX 用法</h3>
+
+<h4 id="Embedding-Expressions">2.1 Embedding Expressions in JSX</h4>
+
+Embed any JavaScript expression in JSX by wrapping it in curly braces `{ }`
+
+```JavaScript
+function formatName(user) {
+  return user.firstName + ' ' + user.lastName;
+}
+const user = {
+  firstName: 'Harper',
+  lastName: 'Perez'
+};
+const element = (
+  <h1>
+    Hello, {formatName(user)}!
+  </h1>
+);
+ReactDOM.render(
+  element,
+  document.getElementById('root')
+);
+```
+
+<h4 id="属性Attributes与行内样式">2.2 属性Attributes与行内样式 with JSX</h4>
+
+```javascript
+// 1) use quotes
+const element = <div tabIndex="0"></div>;
+// 2) use curly braces
+const element = <img src={user.avatarUrl}></img>;
+// 3) 行内样式
+ReactDOM.render(
+  <ul style={{ backgroundColor: 'yellow' }, abc="123" }>  //use curl bracket
+    <Item />
+  </ul>, document.getElementById('test')
+)  
+React.createElement('ul',
+  { style: {backgroundColor: 'yellow'}, abc: 123 }    //props
+)
+```
+
+<h4 id="Objects-in-JSX">2.3 creating Objects in JSX</h4>
+
+```javascript
+const element = (
+  <h1 className="greeting">
+    Hello, world!
+  </h1>
+);
+//或
+const element = React.createElement(   //React.createElement() performs a few checks to help you write bug-free code
+  'h1',
+  {className: 'greeting'},
+  'Hello, world!'
+);
+```
+
+[back to top](#top)
+
+<h3 id="Rendering-Elements">3. Rendering Elements(`ReactDOM.render()`)</h3>
+
+`ReactDOM.render()`: React 的最基本方法，用于将模板转为 HTML语言，并插入指定的 DOM 节点
+
+```javascript
+const element = <h1>Hello, world</h1>;
+ReactDOM.render(
+  element,
+  document.getElementById('root')
+);
+```
+
+**Updating the Rendered Element - React elements are immutable**
+
+```javascript
+function tick() {
+  const element = (
+    <div>
+      <h1>Hello, world!</h1>
+      <h2>It is {new Date().toLocaleTimeString()}.</h2>
+    </div>
+  );
+  ReactDOM.render(
+    element,
+    document.getElementById('root')
+  );
+}
+setInterval(tick, 1000);    //
+```
+
+[back to top](#top)
+
+<h3 id="Basic-Framework">4. Basic Framework</h3>
+
 - `this.props.children`, `this.props`对象的属性与组件的属性一一对应，但是有一个例外，就是 `this.props.children`属性。它表示组件的所有子节点, this.props.children 的值有三种可能：
   - 如果当前组件没有子节点，它就是 undefined ;
   - 如果有一个子节点，数据类型是 object ；
   - 如果有多个子节点，数据类型就是 array 
   - 所以，处理 this.props.children 的时候要小心。React 提供一个工具方法 React.Children 来处理 this.props.children。可以用 `React.Children.map` 来遍历子节点，而不用担心 this.props.children 的数据类型是 undefined 还是 object
 - `PropTypes`: 用来验证组件实例的属性是否符合要求, `getDefaultProps` 方法可以用来设置组件属性的默认值
-
-### 获取真实的DOM节点(虚拟DOM（virtual DOM)
-
-根据React的设计，所有的DOM变动，都先在虚拟DOM上发生，然后再将实际发生变动的部分，反映在真实DOM上，这种算法叫做DOM diff ，它可以极大提高网页的性能表现。但是，有时需要从组件获取真实 DOM 的节点，这时就要用到`ref`属性
-
-```javascript
-    var MyComponent = React.createClass({
-      handleClick: function() {
-        this.refs.myTextInput.focus();
-      },
-      render: function() {
-        return (
-          <div>
-            <input type="text" ref="myTextInput" />  // 设置ref属性，然后this.refs.[refName] 就会返回这个真实的DOM节点。
-            <input type="button" value="Focus the text input" onClick={this.handleClick} />
-          </div>
-        );
-      }
-    });
-    ReactDOM.render(
-      <MyComponent />,
-      document.getElementById('example')
-    );
-```
-
-### 组件与用户互动 - `this.state`
-
-- `this.state`-- React的一大创新，就是将组件看成是一个状态机，一开始有一个初始状态，然后用户互动，导致状态变化，从而触发重新渲染UI
+- 获取真实的DOM节点(**虚拟DOM（virtual DOM）**): 根据React的设计，所有的DOM变动，都先在虚拟DOM上发生，然后再将实际发生变动的部分，反映在真实DOM上，这种算法叫做DOM diff ，它可以极大提高网页的性能表现。但是，有时需要从组件获取真实 DOM 的节点，这时就要用到`ref`属性
+- `this.state`-- 组件与用户互动, React的一大创新，就是将组件看成是一个状态机，一开始有一个初始状态，然后用户互动，导致状态变化，从而触发重新渲染UI
   - this.props 表示那些一旦定义，就不再改变的特性
   - this.state 是会随着用户互动而产生变化的特性
-  - getInitialState 定义初始状态，也就是一个对象，这个对象可以通过this.state属性读取
-  - this.setState 修改状态值，每次修改以后，自动调用this.render方法，再次渲染组件
 
 ```javascript
     var LikeButton = React.createClass({
@@ -54,7 +160,7 @@ React 的最基本方法，用于将模板转为 HTML语言，并插入指定的
         return {liked: false};
       },
       handleClick: function(event) {
-        this.setState({liked: !this.state.liked});  //this.setState 修改状态值
+        this.setState({liked: !this.state.liked});  //this.setState方法就修改状态值，每次修改以后，自动调用this.render方法，再次渲染组件
       },
       render: function() {
         var text = this.state.liked ? 'like' : 'haven\'t liked';
@@ -69,20 +175,10 @@ React 的最基本方法，用于将模板转为 HTML语言，并插入指定的
       <LikeButton />,
       document.getElementById('example')
     );
+
 ```
 
-React is all about one-way data flow down the component hierarchy(**components should only update their own state**). It may not be immediately clear which component should own what state. Follow these steps to figure it out:
-
-For each piece of state in your application:
-
-- Identify every component that renders something based on that state.
-- Find a common owner component (a single component above all the components that need the state in the hierarchy).
-- Either the common owner or another component higher up in the hierarchy should own the state.
-- If you can't find a component where it makes sense to own the state, create a new component simply for holding the state and add it somewhere in the hierarchy above the common owner component.
-
-### 表单
-
-用户在表单填入的内容，属于用户跟组件的互动，所以不能用`this.props`读取, 需要定义一个事件的回调函数，通过`event.target.value` 读取用户输入的值。
+- **表单**: 用户在表单填入的内容，属于用户跟组件的互动，所以不能用this.props读取, 需要定义一个事件的回调函数，通过event.target.value 读取用户输入的值。
 
 ```javascript
     var Input = React.createClass({
@@ -106,13 +202,15 @@ For each piece of state in your application:
     ReactDOM.render(<Input/>, document.body);
 ```
 
-### 组件的生命周期
+[back to top](#top)
+
+<h4 id="Basic-Framework">2.1 组件的生命周期</h4>
 
 - Mounting：已插入真实DOM
 - Updating：正在被重新渲染
 - Unmounting：已移出真实DOM
 
-React 为每个状态都提供了两种处理函数，will 函数在进入状态之前调用，did 函数在进入状态之后调用，三种状态共计五种处理函数。
+React 为每个状态都提供了两种处理函数，will 函数在进入状态之前调用，did 函数在进入状态之后调用，三种状态共计五种处理函数
 
 - componentWillMount()
 - componentDidMount()
@@ -153,7 +251,9 @@ React 为每个状态都提供了两种处理函数，will 函数在进入状态
     );
 ```
 
-### Ajax
+[back to top](#top)
+
+<h4 id="Ajax">2.2 Ajax</h4>
 
 可以使用`componentDidMount`方法设置Ajax请求，等到请求成功，再用`this.setState`方法重新渲染 UI（查看 demo11 ）
 
@@ -190,6 +290,7 @@ React 为每个状态都提供了两种处理函数，will 函数在进入状态
       document.body
     );
 ```
+
 
 甚至可以把一个Promise对象传入组件，请看Demo12。
 
@@ -253,18 +354,6 @@ React 为每个状态都提供了两种处理函数，will 函数在进入状态
 </html>
 ```
 
-一共用了三个库： 它们必须首先加载
-
-- react.js: react.js 是 React 的核心库
-- react-dom.js: react-dom.js 是提供与 DOM 相关的功能
-- Browser.js : 作用是将 JSX 语法转为 JavaScript 语法，这一步很消耗时间，实际上线的时候，应该将它放到服务器完成
-
-```
-└── CommentBox
-    ├──  CommentList
-    │    └── Comment
-    └──  CommentForm
-```
 
 ```javascript
 var CommentBox = React.createClass({
@@ -387,8 +476,12 @@ ReactDOM.render(
 );
 ```
 
+[back to top](#top)
+
+
 > Reference
 
+- https://facebook.github.io/react/docs
 - [React 入门实例教程- 阮一峰](http://www.ruanyifeng.com/blog/2015/03/react.html)
 - [React's official site](http://facebook.github.io/react)
 - [React's official examples](https://github.com/facebook/react/tree/master/examples)
