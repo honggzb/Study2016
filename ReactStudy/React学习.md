@@ -1,4 +1,4 @@
-[React Study - React学习](#top)
+[React Study](#top)
 
 - [1. Installation](#Installation)
   - [1.1 Creating a New Application](#Creating-a-New-Application)
@@ -9,6 +9,9 @@
   - [2.2 属性Attributes与行内样式 with JSX](#属性Attributes与行内样式)
   - [2.3 Objects in JSX](#Objects-in-JSX)
 - [3. Rendering Elements](#Rendering-Elements)
+- [4. Components and Props](#Components-Props)
+- [5. State and Lifecycle](#State-Lifecycle)
+- [6. Handling Events](#Handling-Events)
 - [4. Basic Framework](#Basic-Framework)
 
 ```
@@ -109,6 +112,10 @@ const element = React.createElement(   //React.createElement() performs a few ch
   {className: 'greeting'},
   'Hello, world!'
 );
+//或
+function element(){
+  return ( <h1 className="greeting">Hello, world!</h1> )
+}
 ```
 
 [back to top](#top)
@@ -118,7 +125,25 @@ const element = React.createElement(   //React.createElement() performs a few ch
 `ReactDOM.render()`: React 的最基本方法，用于将模板转为 HTML语言，并插入指定的 DOM 节点
 
 ```javascript
+//推荐写法1
 const element = <h1>Hello, world</h1>;
+ReactDOM.render(
+  element,
+  document.getElementById('root')
+);
+//推荐写法2 - Composing Components
+function Welcome(props) {
+  return <h1>Hello, {props.name}</h1>;
+}
+//const element = <Welcome name="Sara" />;
+function element() {
+  return (
+    <div>
+      <Welcome name="Sara" />   // refer to other components in their output
+      <Welcome name="Cahal" />
+    </div>
+  )
+}
 ReactDOM.render(
   element,
   document.getElementById('root')
@@ -145,7 +170,14 @@ setInterval(tick, 1000);    //
 
 [back to top](#top)
 
-<h3 id="Basic-Framework">4. Basic Framework</h3>
+<h3 id="Components-Props">4. Components and Props</h3>
+
+- components accept arbitrary inputs (called `props`) and return React elements describing what should appear on the screen
+- Props are Read-Only
+
+components输入|components输出
+---|---
+props|React Element
 
 - `this.props.children`, `this.props`对象的属性与组件的属性一一对应，但是有一个例外，就是 `this.props.children`属性。它表示组件的所有子节点, this.props.children 的值有三种可能：
   - 如果当前组件没有子节点，它就是 undefined ;
@@ -153,34 +185,155 @@ setInterval(tick, 1000);    //
   - 如果有多个子节点，数据类型就是 array 
   - 所以，处理 this.props.children 的时候要小心。React 提供一个工具方法 React.Children 来处理 this.props.children。可以用 `React.Children.map` 来遍历子节点，而不用担心 this.props.children 的数据类型是 undefined 还是 object
 - `PropTypes`: 用来验证组件实例的属性是否符合要求, `getDefaultProps` 方法可以用来设置组件属性的默认值
-- 获取真实的DOM节点(**虚拟DOM（virtual DOM）**): 根据React的设计，所有的DOM变动，都先在虚拟DOM上发生，然后再将实际发生变动的部分，反映在真实DOM上，这种算法叫做DOM diff ，它可以极大提高网页的性能表现。但是，有时需要从组件获取真实 DOM 的节点，这时就要用到`ref`属性
+
+[back to top](#top)
+
+<h3 id="State-Lifecycle">5. State and Lifecycle</h3>
+
+- reusable and encapsulated
 - `this.state`-- 组件与用户互动, React的一大创新，就是将组件看成是一个状态机，一开始有一个初始状态，然后用户互动，导致状态变化，从而触发重新渲染UI
   - this.props 表示那些一旦定义，就不再改变的特性
   - this.state 是会随着用户互动而产生变化的特性
 
 ```javascript
-    var LikeButton = React.createClass({
-      getInitialState: function() {   //getInitialState 方法用于定义初始状态，也就是一个对象，这个对象可以通过this.state属性读取
-        return {liked: false};
-      },
-      handleClick: function(event) {
-        this.setState({liked: !this.state.liked});  //this.setState方法就修改状态值，每次修改以后，自动调用this.render方法，再次渲染组件
-      },
-      render: function() {
-        var text = this.state.liked ? 'like' : 'haven\'t liked';
-        return (
-          <p onClick={this.handleClick}>
-            You {text} this. Click to toggle.
-          </p>
-        );
-      }
-    });
-    ReactDOM.render(
-      <LikeButton />,
-      document.getElementById('example')
+class Clock extends React.Component {  //1) Converting a Function to a Class, create an ES6 class with the same name that extends React.Component
+  constructor(props) {   //3) Add a class constructor that assigns the initial this.state
+    super(props);        // pass props to the base constructor(Class components should always call the base constructor with props)
+    this.state = {date: new Date()};  // assigns the initial this.state
+  }
+  componentDidMount() {    //4)  set up a timer whenever the Clock is rendered to the DOM for the first time
+    this.timerID = setInterval( () => this.tick(), 1000 );
+  }
+  componentWillUnmount() { clearInterval(this.timerID); }   //4) clear that timer whenever the DOM produced by the Clock is removed
+  tick() {
+    this.setState({ date: new Date() }); //5) this.setState() to schedule updates to the component local state
+  }
+  render() {
+    return (
+      <div>
+        <h1>Hello, world!</h1>
+        <h2>It is {this.state.date.toLocaleTimeString()}.</h2>   //2) Adding Local State to a Class
+      </div>
     );
-
+  }
+}
+ReactDOM.render(
+  <Clock />,    //there is no need to add date prop in <Clock /> element
+  document.getElementById('root')
+);
 ```
+
+**Note**
+
+- Do Not Modify State Directly, instead, use `setState()`
+- this.props and this.state updates may be Asynchronous. To fix it, use a second form of setState() that accepts a function rather than an object. That function will receive the previous state as the first argument, and the props at the time the update is applied as the second argument
+
+```javascript
+// Wrong
+this.setState({
+  counter: this.state.counter + this.props.increment,
+});
+//correct
+this.setState((prevState, props) => ({
+  counter: prevState.counter + props.increment
+}));
+```
+
+[back to top](#top)
+
+<h3 id="Handling-Events">6. Handling Events</h3>
+
+- similar to handling events on DOM elements
+- e is a synthetic event. React defines these synthetic events according to the W3C spec, so you don't need to worry about cross-browser compatibility.
+
+```javascript
+class Toggle extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {isToggleOn: true};
+    // In JavaScript, class methods are not bound by default. If you forget to bind this.handleClick and pass it to onClick, this will be undefined when the function is actually called
+    this.handleClick = this.handleClick.bind(this); // This binding is necessary to make `this` work in the callback
+  }
+  handleClick() {
+    this.setState(prevState => ({ isToggleOn: !prevState.isToggleOn }));
+  }
+  render() {
+    return (
+      <button onClick={this.handleClick}>
+        {this.state.isToggleOn ? 'ON' : 'OFF'}
+      </button>
+    );
+  }
+}
+ReactDOM.render(
+  <Toggle />,
+  document.getElementById('root')
+);
+```
+
+<h3 id="Conditional-Rendering">7. Conditional Rendering</h3>
+
+```javascript
+class LoginControl extends React.Component {  //stateful component 
+  constructor(props) {
+    super(props);
+    this.handleLoginClick = this.handleLoginClick.bind(this);
+    this.handleLogoutClick = this.handleLogoutClick.bind(this);
+    this.state = {isLoggedIn: false};
+  }
+  handleLoginClick() {
+    this.setState({isLoggedIn: true});
+  }
+  handleLogoutClick() {
+    this.setState({isLoggedIn: false});
+  }
+  render() {
+    const isLoggedIn = this.state.isLoggedIn;
+    let button = null;
+    if (isLoggedIn) {
+      button = <LogoutButton onClick={this.handleLogoutClick} />;
+    } else {
+      button = <LoginButton onClick={this.handleLoginClick} />;
+    }
+    return (
+      <div>
+        <Greeting isLoggedIn={isLoggedIn} />
+        {button}
+      </div>
+    );
+  }
+}
+
+function UserGreeting(props) {
+  return <h1>Welcome back!</h1>;
+}
+function GuestGreeting(props) {
+  return <h1>Please sign up.</h1>;
+}
+function Greeting(props) {
+  const isLoggedIn = props.isLoggedIn;
+  if (isLoggedIn) { return <UserGreeting />; }
+  return <GuestGreeting />;
+}
+// use variables to store elements
+function LoginButton(props) {
+  return (<button onClick={props.onClick}>Login</button>);
+}
+function LogoutButton(props) {
+  return (<button onClick={props.onClick}>Logout</button>);
+}
+ReactDOM.render(
+  <LoginControl />,
+  document.getElementById('root')
+);
+```
+
+[back to top](#top)
+
+
+
+- 获取真实的DOM节点(**虚拟DOM（virtual DOM）**): 根据React的设计，所有的DOM变动，都先在虚拟DOM上发生，然后再将实际发生变动的部分，反映在真实DOM上，这种算法叫做DOM diff ，它可以极大提高网页的性能表现。但是，有时需要从组件获取真实 DOM 的节点，这时就要用到`ref`属性
+
 
 - **表单**: 用户在表单填入的内容，属于用户跟组件的互动，所以不能用this.props读取, 需要定义一个事件的回调函数，通过event.target.value 读取用户输入的值。
 
@@ -481,6 +634,7 @@ ReactDOM.render(
 ```
 
 [back to top](#top)
+
 
 
 > Reference
