@@ -1,4 +1,4 @@
-[React Study](#top)
+[React Study - React学习](#top)
 
 - [1. Installation](#Installation)
   - [1.1 Creating a New Application](#Creating-a-New-Application)
