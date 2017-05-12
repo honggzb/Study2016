@@ -40,8 +40,8 @@ Study notes in 2016
 │   └──  
 │
 ├── Angular Study
-│   ├──  angular-official-tourOfHeroes/     - angular 2官方案例
-│   ├──  plunk/                             - Angular 2 From Theory to Practice案例
+│   ├── angular-official-tourOfHeroes/     - angular 2官方案例
+│   ├── plunk/                             - Angular 2 From Theory to Practice案例
 │   ├── angular2的一些资料.md
 │   ├── Angular2语法清单.md
 │   ├── AngularCLI的使用.md
@@ -103,16 +103,12 @@ Study notes in 2016
 │   └──  
 │
 ├── ReactStudy
-│   ├──  basicSetupEnv
-│   │     └──
-│   ├──  ReactdevEnvironmentSetup.md -- React开发环境设置
-│   ├──  reactEnvironment2.rar  -- React开发环境设置代码2
 │   ├──  CreatClassVScomponent.md --React.createClass versus extends React.Component (https://toddmotto.com/react-create-class-versus-component/)
-│   ├──  React基本概念.md
+│   ├──  React学习.md
 │   ├──  reactRoute学习.md
 │   ├──  reactFlux学习.md
 │   ├──  reactFlux.rar- simple sample for react Flux
-│   └──  reactSampleBasic-04062016.rar
+│   └──  reactSimpleSample.rar
 │
 ├── interview
 │   ├──  htmlCSS
