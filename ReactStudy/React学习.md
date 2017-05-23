@@ -9,10 +9,13 @@
   - [2.2 属性Attributes与行内样式 with JSX](#属性Attributes与行内样式)
   - [2.3 Objects in JSX](#Objects-in-JSX)
 - [3. Rendering Elements](#Rendering-Elements)
-- [4. Components and Props](#Components-Props)
-- [5. State and Lifecycle](#State-Lifecycle)
+- [4. Components and Props(静态的、只读的、无状态的)](#Components-Props)
+- [5. State(动态的) and Lifecycle](#State-Lifecycle)
 - [6. Handling Events](#Handling-Events)
-- [4. Basic Framework](#Basic-Framework)
+- [7. Conditional Rendering](#Conditional-Rendering)
+- [8. 组件生命周期](#组件生命周期)
+- [9. 组件间的通信](#组件间的通信)
+- [10. Flux](#Flux)
 
 ```
 - JSX: html+javascript => javascript
@@ -170,7 +173,7 @@ setInterval(tick, 1000);    //
 
 [back to top](#top)
 
-<h3 id="Components-Props">4. Components and Props</h3>
+<h3 id="Components-Props">4. Components and Props(静态的、只读的、无状态的)</h3>
 
 - components accept arbitrary inputs (called `props`) and return React elements describing what should appear on the screen
 - Props are Read-Only
@@ -188,7 +191,7 @@ props|React Element
 
 [back to top](#top)
 
-<h3 id="State-Lifecycle">5. State and Lifecycle</h3>
+<h3 id="State-Lifecycle">5. State(动态的) and Lifecycle</h3>
 
 - reusable and encapsulated
 - `this.state`-- 组件与用户互动, React的一大创新，就是将组件看成是一个状态机，一开始有一个初始状态，然后用户互动，导致状态变化，从而触发重新渲染UI
@@ -330,38 +333,7 @@ ReactDOM.render(
 
 [back to top](#top)
 
-
-
-- 获取真实的DOM节点(**虚拟DOM（virtual DOM）**): 根据React的设计，所有的DOM变动，都先在虚拟DOM上发生，然后再将实际发生变动的部分，反映在真实DOM上，这种算法叫做DOM diff ，它可以极大提高网页的性能表现。但是，有时需要从组件获取真实 DOM 的节点，这时就要用到`ref`属性
-
-
-- **表单**: 用户在表单填入的内容，属于用户跟组件的互动，所以不能用this.props读取, 需要定义一个事件的回调函数，通过event.target.value 读取用户输入的值。
-
-```javascript
-    var Input = React.createClass({
-      getInitialState: function() {
-        return {value: 'Hello!'};
-      },
-      handleChange: function(event) {
-        this.setState({value: event.target.value});
-      },
-      render: function () {
-        var value = this.state.value;
-        return (
-          <div>
-            <input type="text" value={value} onChange={this.handleChange} />
-            //文本输入框的值，不能用 this.props.value 读取，而要定义一个 onChange 事件的回调函数，通过 event.target.value 读取用户输入的值
-            <p>{value}</p>
-          </div>
-        );
-      }
-    });
-    ReactDOM.render(<Input/>, document.body);
-```
-
-[back to top](#top)
-
-<h4 id="Basic-Framework">2.1 组件的生命周期</h4>
+<h3 id="组件生命周期">8. 组件的生命周期</h3>
 
 - Mounting：已插入真实DOM
 - Updating：正在被重新渲染
@@ -380,39 +352,7 @@ React 为每个状态都提供了两种处理函数，will 函数在进入状态
 - componentWillReceiveProps(object nextProps)：已加载组件收到新的参数时调用
 - shouldComponentUpdate(object nextProps, object nextState)：组件判断是否重新渲染时调用
 
-```javascript
-    var Hello = React.createClass({
-      getInitialState: function () {
-        return { opacity: 1.0 };
-      },
-      componentDidMount: function () {
-        this.timer = setInterval(function () {
-          var opacity = this.state.opacity;
-          opacity -= .05;
-          if (opacity < 0.1) { opacity = 1.0; }
-          this.setState({ opacity: opacity }); // 每隔100毫秒，就重新设置组件的透明度，从而引发重新渲染
-        }.bind(this), 100);
-      },
-      render: function () {
-        return (
-          //[React组件样式](https://facebook.github.io/react/tips/inline-styles.html)是一个对象，所以第一重大括号表示这是JavaScript语法，第二重大括号表示样式对象
-          <div style={{opacity: this.state.opacity}}>
-            Hello {this.props.name}
-          </div>
-        );
-      }
-    });
-    ReactDOM.render(
-      <Hello name="world"/>,
-      document.body
-    );
-```
-
-[back to top](#top)
-
-<h4 id="Ajax">2.2 Ajax</h4>
-
-可以使用`componentDidMount`方法设置Ajax请求，等到请求成功，再用`this.setState`方法重新渲染 UI（查看 demo11 ）
+**可以使用`componentDidMount`方法设置Ajax请求，等到请求成功，再用`this.setState`方法重新渲染 UI（查看 demo11)**
 
 ```
     var UserGist = React.createClass({
@@ -441,13 +381,12 @@ React 为每个状态都提供了两种处理函数，will 函数在进入状态
         );
       }
     });
-    
+
     ReactDOM.render(
       <UserGist source="https://api.github.com/users/octocat/gists" />,
       document.body
     );
 ```
-
 
 甚至可以把一个Promise对象传入组件，请看Demo12。
 
@@ -510,7 +449,6 @@ React 为每个状态都提供了两种处理函数，will 函数在进入状态
   </body>
 </html>
 ```
-
 
 ```javascript
 var CommentBox = React.createClass({
@@ -635,6 +573,77 @@ ReactDOM.render(
 
 [back to top](#top)
 
+<h3 id="组件间的通信">9. 组件间的通信</h3>
+
+情况|方法|说明
+---|---|---
+子组件调用父组件(父组件向子组件传值)|采用props的方式进行调用和赋值|在父组件中设置相关属性值或者方法，子组件通过props的方式进行属性赋值或者方法调用
+父组件调用子组件|采用refs的方式进行调用|需要父组件在调用子组件的时候，添加ref属性，并进行唯一命名，在父组件中即可调用
+子组件向父组件传值|采用state|父组件写好state和处理该state的函数，同时将函数名通过props属性值的形式传入子组件，子组件调用父组件的函数，同时引起state变化。子组件要写在父组件之前
+没有任何嵌套关系的组件之间传值（PS：兄弟组件之间传值）1|使用`Event Emitter/Target/Dispatcher`|在componentDidMount 里面订阅事件，在 componentWillUnmount 里面取消订阅，当收到事件触发的时候调用setState更新UI
+没有任何嵌套关系的组件之间传值（PS：兄弟组件之间传值）2|使用全局事件`Publish/Subscribe`模式|[React 组件之间如何交流](http://www.tuicool.com/articles/AzQzEbq)
+没有任何嵌套关系的组件之间传值（PS：兄弟组件之间传值）3|使用全局事件`Publish/Subscribe`模式|在componentDidMount 里面订阅事件，在 componentWillUnmount 里面取消订阅，当收到事件触发的时候调用setState更新UI
+
+![](http://i.imgur.com/Wc9Lb0n.png)
+
+> 说明：
+
+- 有的时候父组件传过来的数据类型跟子组件需要的类型不一样，用PropTypes属性来验证组件实例的属性是否符合要求
+- 若属性不符合要求此外，我们可以用getDefaultProps 方法可以用来设置组件属性的默认值
+
+[back to top](#top)
+
+<h3 id="Flux">[Flux](https://facebook.github.io/flux/docs/in-depth-overview.html#content)</h3>
+
+Flux is the application architecture that Facebook uses for building client-side web applications(Flux是一种模式，来描述单向数据流)
+
+- Flux is a pattern for managing data flow in web application
+- data flows in one direction (a unidirectional data flow)
+
+Flux part|function
+---|---
+dispatcher|The dispatcher receives actions and dispatches them to stores that have registered with the dispatcher. Every store will receive every action. There should be only one singleton dispatcher in each application|
+store|holds the data of an application, The data in a store must only be mutated by responding to an action, Every time a store's data changes it must emit a "change" event
+Action|Actions define the internal API of your application. They capture the ways in which anything might interact with your application. They are simple objects that have a "type" field and some data.
+view (React components)|Data from stores is displayed in views, When a view uses data from a store it must also subscribe to change events from that store.
+
+![](http://i.imgur.com/iuSXRpi.png)
+
+![](http://i.imgur.com/ZTd1rVE.png)
+
+[back to top](#top)
+
+
+
+
+
+- 获取真实的DOM节点(**虚拟DOM（virtual DOM）**): 根据React的设计，所有的DOM变动，都先在虚拟DOM上发生，然后再将实际发生变动的部分，反映在真实DOM上，这种算法叫做DOM diff ，它可以极大提高网页的性能表现。但是，有时需要从组件获取真实 DOM 的节点，这时就要用到`ref`属性
+
+
+- **表单**: 用户在表单填入的内容，属于用户跟组件的互动，所以不能用this.props读取, 需要定义一个事件的回调函数，通过event.target.value 读取用户输入的值。
+
+```javascript
+    var Input = React.createClass({
+      getInitialState: function() {
+        return {value: 'Hello!'};
+      },
+      handleChange: function(event) {
+        this.setState({value: event.target.value});
+      },
+      render: function () {
+        var value = this.state.value;
+        return (
+          <div>
+            <input type="text" value={value} onChange={this.handleChange} />
+            //文本输入框的值，不能用 this.props.value 读取，而要定义一个 onChange 事件的回调函数，通过 event.target.value 读取用户输入的值
+            <p>{value}</p>
+          </div>
+        );
+      }
+    });
+    ReactDOM.render(<Input/>, document.body);
+```
+
 
 
 > Reference
@@ -646,3 +655,7 @@ ReactDOM.render(
 - [React (Virtual) DOM Terminology](http://www.jackcallister.com/2015/01/05/the-react-quick-start-guide.html), by Sebastian Markbåge
 - [React JS Tutorial and Guide to the Gotchas](https://zapier.com/engineering/react-js-tutorial-guide-gotchas/), by Justin Deal
 - [React Primer](https://github.com/BinaryMuse/react-primer), by Binary Muse
+- [ReactJS学习笔记 父子组件间的通信](http://blog.csdn.net/sinat_17775997/article/details/59058781?locationNum=5&fps=1)
+- [一目了然，React组件通信技巧](http://www.jianshu.com/p/8ed3a060f636)
+- [React Flux入门指南](http://www.cocoachina.com/webapp/20151008/13649.html)
+- [谈一谈我对 React Flux 架构的理解](http://www.cocoachina.com/webapp/20150928/13600.html)
