@@ -161,7 +161,7 @@ typelessPackage.method();
 ```shell
 #install bootstrap 4
 npm install bootstrap@next
-#add the needed script files to apps[0].scripts in angular-cli.json file in root directory
+#add the needed script files in angular-cli.json file in root directory
 "scripts": [
   "../node_modules/jquery/dist/jquery.js",
   "../node_modules/tether/dist/js/tether.js",
@@ -172,6 +172,21 @@ npm install bootstrap@next
   "../node_modules/bootstrap/dist/css/bootstrap.css",
   "styles.css"
 ],
+#add font-awesome
+npm install font-awesome --save
+#modify and add in angular-cli.json file in root directory
+{
+  "apps": [
+    {
+      "styles": [
+        "../node_modules/font-awesome/css/font-awesome.css"
+      ]
+    }
+  ],
+  "addons": [
+    "../node_modules/font-awesome/fonts/*.+(otf|eot|svg|ttf|woff|woff2)"
+  ]
+}
 # Restart ng serve
 ```
 
