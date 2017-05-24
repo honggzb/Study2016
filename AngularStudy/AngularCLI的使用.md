@@ -159,7 +159,7 @@ typelessPackage.method();
 - Global Library Installation
 
 ```shell
-#install bootstrap 4
+#1) install bootstrap 4
 npm install bootstrap@next
 #add the needed script files in angular-cli.json file in root directory
 "scripts": [
@@ -172,7 +172,7 @@ npm install bootstrap@next
   "../node_modules/bootstrap/dist/css/bootstrap.css",
   "styles.css"
 ],
-#add font-awesome
+#2) add font-awesome(https://www.npmjs.com/package/angular2-fontawesome)
 npm install font-awesome --save
 #modify and add in angular-cli.json file in root directory
 {
