@@ -3,7 +3,7 @@
 - [1. setup by using angular-cli](#setup-by-using-angular-cli)
   - [1.1 Updating Angular CLI](#Updating-Angular-CLI)
   - [1.2 Proxy To Backend](#Proxy-To-Backend)
-  - [1.3 Deploying the app via GitHub Pages](#Deploying-the-app-via-GitHub Pages)
+  - [1.3 Deploying the app via GitHub Pages](#Deploying-the-app-via-GitHub-Pages)
   - [1.4 Library Installation](#Library-Installation)
 - [2. project struture the Angular CLI setup](#project-struture)
 
@@ -135,7 +135,7 @@ npm install
 
 [back to top](#top)
 
-<h4 id="Deploying-the-app-via-GitHub Pages">1.3 Deploying the app via GitHub Pages</h4>
+<h4 id="Deploying-the-app-via-GitHub-Pages">1.3 Deploying the app via GitHub Pages</h4>
 
 `ng github-pages:deploy --message "Optional commit message"`
 
