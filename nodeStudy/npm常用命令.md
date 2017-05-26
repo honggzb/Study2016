@@ -1,4 +1,9 @@
-Remove Node.js from Windows completely:
+- [Remove Node.js from Windows completely](#Remove-Node)
+- [安装Node模块(#安装Node模块)
+- [升级nodejs 的npm](#升级nodejs)
+- [npm删除后重新安装](#npm删除后重新安装)
+
+<h3 id="Remove-Node">Remove Node.js from Windows completely</h3>
 
 ```
 1. Uninstall from Programs & Features with the uninstaller.
@@ -14,7 +19,7 @@ Remove Node.js from Windows completely:
 8. Reboot, for good measure.
 ```
 
-1. `npm install moduleNames`：安装Node模块
+<h3 id="安装Node模块">`npm install moduleNames`：安装Node模块</h3>
 
 - `npm install -g moduleName` 全局安装
 - `$npm get global` 可以查看当前使用的安装模式
@@ -44,14 +49,14 @@ Remove Node.js from Windows completely:
 21. `npm update express`    #升级当前目录下的项目的指定模块
 22. `npm update -g express`  #升级全局安装的express模块
 
-**升级nodejs 的npm**
+<h3 id="升级nodejs">升级nodejs 的npm</h3>
 
 - 首先安装n模块：`npm install -g n`   
 - 升级node.js到最新稳定版   `n stable`
 - `npm install -g npm@latest  #upgrade to the latest version of npm`
 - `npm install -g npm@lts   # upgrade to the most recent LTS release`
 
-**npm删除后重新安装**
+<h3 id="npm删除后重新安装">npm删除后重新安装</h3>
 
 通过从github的方式将npm安装到nodejs\node_modules
 
