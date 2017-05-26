@@ -1,5 +1,5 @@
 - [Remove Node.js from Windows completely](#Remove-Node)
-- [安装Node模块(#安装Node模块)
+- [安装Node模块](#安装Node模块)
 - [升级nodejs 的npm](#升级nodejs)
 - [npm删除后重新安装](#npm删除后重新安装)
 
