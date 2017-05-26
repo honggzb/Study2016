@@ -187,6 +187,27 @@ npm install font-awesome --save
     "../node_modules/font-awesome/fonts/*.+(otf|eot|svg|ttf|woff|woff2)"
   ]
 }
+# 3) add underscore
+npm install -g typescript@next
+npm install underscore --save
+npm install @types/underscore --save-dev
+#in tsconfig.app.json, add underscore to array 'types'
+"types": [
+  "underscore"
+]
+#modify and add in angular-cli.json file in root directory
+"scripts": [
+        "../node_modules/jquery/dist/jquery.js",
+        "../node_modules/underscore/underscore.js"
+      ],
+#add in polyfills.js
+import 'underscore/underscore';
+#use in components
+import * as _ from 'underscore';
+...
+var res = underscore.groupBy([1.3, 2.1, 2.4], function(num){ return Math.floor(num); });
+console.log(res);
+
 # Restart ng serve
 ```
 
