@@ -42,6 +42,8 @@ Study notes in 2016
 ├── Angular Study
 │   ├── angular-official-tourOfHeroes/     - angular 2官方案例
 │   ├── plunk/                             - Angular 2 From Theory to Practice案例
+│   │   ├── angular2PostApp.rar - 包含：form+pagination+lazingloading
+│   │   └──  
 │   ├── angular2的一些资料.md
 │   ├── Angular2语法清单.md
 │   ├── AngularCLI的使用.md
