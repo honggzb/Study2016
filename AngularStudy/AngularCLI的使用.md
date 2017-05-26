@@ -4,7 +4,7 @@
   - [1.1 Updating Angular CLI](#Updating-Angular-CLI)
   - [1.2 Proxy To Backend](#Proxy-To-Backend)
   - [1.3 Deploying the app via GitHub Pages](#Deploying-the-app-via-GitHub-Pages)
-  - [1.4 Library Installation](#Library-Installation)
+  - [1.4 Third Library Installation](#Library-Installation)
     - bootstrap 4
     - awesome font
     - underscore
