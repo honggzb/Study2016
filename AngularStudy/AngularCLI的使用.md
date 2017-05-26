@@ -5,6 +5,9 @@
   - [1.2 Proxy To Backend](#Proxy-To-Backend)
   - [1.3 Deploying the app via GitHub Pages](#Deploying-the-app-via-GitHub-Pages)
   - [1.4 Library Installation](#Library-Installation)
+    - bootstrap 4
+    - awesome font
+    - underscore
 - [2. project struture the Angular CLI setup](#project-struture)
 
 <h3 id="setup-by-using-angular-cli">1. setup by using [angular-cli](https://cli.angular.io/)</h3>
