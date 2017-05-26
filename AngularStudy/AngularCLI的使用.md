@@ -8,6 +8,7 @@
     - bootstrap 4
     - awesome font
     - underscore
+    - d3
 - [2. project struture the Angular CLI setup](#project-struture)
 
 <h3 id="setup-by-using-angular-cli">1. setup by using [angular-cli](https://cli.angular.io/)</h3>
@@ -210,6 +211,10 @@ import * as _ from 'underscore';
 ...
 var res = underscore.groupBy([1.3, 2.1, 2.4], function(num){ return Math.floor(num); });
 console.log(res);
+
+# 4) d3
+npm install d3 --save
+npm install @types/d3 --save-dev
 
 # Restart ng serve
 ```
