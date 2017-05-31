@@ -215,6 +215,8 @@ console.log(res);
 # 4) d3
 npm install d3 --save
 npm install @types/d3 --save-dev
+#use in components
+import * as d3 from 'd3';
 
 # Restart ng serve
 ```
