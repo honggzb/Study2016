@@ -11,6 +11,7 @@
     - 1.1 d3
     - [1.2 angular material](#angular-material)
 - [2. project struture the Angular CLI setup](#project-struture)
+- [3. Adding an Express server to an Angular CLI project](#add-express)
 
 <h3 id="setup-by-using-angular-cli">1. setup by using [angular-cli](https://cli.angular.io/)</h3>
 
@@ -267,6 +268,15 @@ import it on your app's root module.
 import 'hammerjs';
 ```
 
+> Note: update angular 2 to 4
+
+```shell
+npm cache clean
+npm install @angular/common@latest @angular/compiler@latest @angular/compiler-cli@latest @angular/core@latest @angular/forms@latest @angular/http@latest @angular/platform-browser@latest @angular/platform-browser-dynamic@latest @angular/platform-server@latest @angular/router@latest @angular/animations@latest typescript@latest --save
+npm i @angular/compiler-cli@next --D -E
+```
+
+
 [back to top](#top)
 
 <h3 id="project-struture">2. project struture the Angular CLI setup</h3>
@@ -324,6 +334,11 @@ import 'hammerjs';
 |- tslint.json
 |- typings.json
 ```
+
+[back to top](#top)
+
+<h3 id="add-express">3. Adding an Express server to an Angular CLI project</h3>
+
 
 
 - https://github.com/angular/angular-cli
