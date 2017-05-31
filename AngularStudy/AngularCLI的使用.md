@@ -5,10 +5,11 @@
   - [1.2 Proxy To Backend](#Proxy-To-Backend)
   - [1.3 Deploying the app via GitHub Pages](#Deploying-the-app-via-GitHub-Pages)
   - [1.4 Third Library Installation](#Library-Installation)
-    - bootstrap 4
-    - awesome font
-    - underscore
-    - d3
+    - 1.1 bootstrap 4
+    - 1.1 awesome font
+    - 1.1 underscore
+    - 1.1 d3
+    - [1.2 angular material](#angular-material)
 - [2. project struture the Angular CLI setup](#project-struture)
 
 <h3 id="setup-by-using-angular-cli">1. setup by using [angular-cli](https://cli.angular.io/)</h3>
@@ -222,6 +223,49 @@ import * as d3 from 'd3';
 ```
 
 -- [how-to-add-bootstrap-to-an-angular-cli-project](http://stackoverflow.com/questions/37649164/how-to-add-bootstrap-to-an-angular-cli-project)
+
+[back to top](#top)
+
+<h4 id="angular-material">1.4 [using Angular Material](https://material.angular.io/)</h4>
+
+```
+1) install(https://material.angular.io/guide/getting-started)
+npm install --save @angular/material
+2) Import the component modules
+import {MdListModule} from '@angular/material';
+@NgModule({
+  ...
+  imports: [MdListModule],
+  ...
+})
+//alternatively, can create a separate NgModule
+import {MdButtonModule, MdCheckboxModule} from '@angular/material';
+@NgModule({
+  imports: [MdButtonModule, MdCheckboxModule],
+  exports: [MdButtonModule, MdCheckboxModule],
+})
+export class MyOwnCustomMaterialModule { }
+3) using themes, include the following in your app's index.html:
+<link href="../node_modules/@angular/material/prebuilt-themes/indigo-pink.css" rel="stylesheet">
+4) using material icon, include the following in your app's index.html:
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+using md-icon in component html
+<md-icon md-list-icon class="material-icons">folder</md-icon>
+5) using material Animations: some Material components depend on the Angular animations module in order to be able to do more advanced transitions
+npm install --save @angular/animations
+in components
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+@NgModule({
+  ...
+  imports: [BrowserAnimationsModule],
+  ...
+})
+export class PizzaPartyAppModule { }
+6) Gesture Support: Some components (md-slide-toggle, md-slider, mdTooltip) rely on HammerJS for gestures
+npm install --save hammerjs
+import it on your app's root module.
+import 'hammerjs';
+```
 
 [back to top](#top)
 
