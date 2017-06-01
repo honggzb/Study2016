@@ -435,12 +435,16 @@ app.get('/mapData', (req, res) => {
 
 <h3 id="add-java">4. Adding an Angular CLI project to JAVA Web Project</h3>
 
-modify angular-cli.json in root directory, change outDir to Java Web project directory, such as java springboot
+1. create new angular project in frontend directory
+
+![](http://i.imgur.com/wacWLf3.png)
+
+2. modify angular-cli.json in root directory, change outDir to Java Web project directory, such as java springboot
 
 ```
 "outDir": "../src/main/webapp",
 ```
 
-![](http://i.imgur.com/wacWLf3.png)
+3. using Http Service in Angular project to call backend api
 
 - https://github.com/angular/angular-cli
