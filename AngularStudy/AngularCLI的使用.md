@@ -16,7 +16,9 @@
 <h3 id="setup-by-using-angular-cli">1. setup by using [angular-cli](https://cli.angular.io/)</h3>
 
 ```shell
-npm install -g angular-cli
+npm install -g typescript@2.2.0
+npm install -g @angular/cli
+ng -version
 ng new PROJECT_NAME
 cd PROJECT_NAME
 ng serve    #lite-server
@@ -54,6 +56,26 @@ ng format
 ng doc
 ng version    #Get the version of the CLI
 ```
+
+`ng new`命令选项
+
+选项|默认值|类型|说明
+---|---|---|---
+--dry-run|boolean|default false|perform dry-run so no changes are written to filesystem
+--verbose| boolean|default false|
+--link-cli|boolean|default false|automatically link the @angular/cli package (more info)
+--skip-install|boolean|default false|skip npm install
+--skip-git|boolean|default false|don’t initialize git repository
+--skip-tests|boolean|default false|skip creating tests
+--skip-commit|boolean|default false|skip committing the first git commit
+--directory|string, name of directory to create|by default this is the same as the application name
+--source-dir|string, default 'src'|name of source directory
+--style|string|default 'css'|the style language to use ('css', 'less' or 'scss')
+--prefix|string|default 'app'| the prefix to use when generating new components
+--mobile|boolean|default false|generate a Progressive Web App application (see section on upcoming features)
+--routing|boolean|default false|add module with routing information and import it in main app module
+--inline-style, --is|boolean|default false|use inline styles when generating the new application
+--inline-template, --it|boolean|default false| use inline templates when generating the new application
 
 **Generate Parts of Your Application**
 
