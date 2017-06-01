@@ -268,14 +268,13 @@ import it on your app's root module.
 import 'hammerjs';
 ```
 
-> Note: update angular 2 to 4
+> Note: update angular 2 to 4 if failed
 
 ```shell
 npm cache clean
 npm install @angular/common@latest @angular/compiler@latest @angular/compiler-cli@latest @angular/core@latest @angular/forms@latest @angular/http@latest @angular/platform-browser@latest @angular/platform-browser-dynamic@latest @angular/platform-server@latest @angular/router@latest @angular/animations@latest typescript@latest --save
 npm i @angular/compiler-cli@next --D -E
 ```
-
 
 [back to top](#top)
 
@@ -341,7 +340,7 @@ npm i @angular/compiler-cli@next --D -E
 
 https://github.com/Matt-Dionis/tweet-dashboard
 
-1) build a new folder and new js file - /node_server/server.js
+3.1  build a new folder and new js file - /node_server/server.js
 
 ```javascript
 var express = require('express');
@@ -396,12 +395,12 @@ app.get('/mapData', (req, res) => {
 });
 ```
 
-2) modifing package.json and adding
+3.2 modifing package.json and adding code
 
 ```json
 "scripts": {
     "ng": "ng",
-    #...
+    ...
     "build:nodeserver": "ng build && cp node_server/* dist",
     "build:nodeserver-prod": "ng build -prod && cp node_server/* dist",
     "serve-build": "npm run build:nodeserver && cd dist && node server.js",
