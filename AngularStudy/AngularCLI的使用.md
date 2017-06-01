@@ -12,6 +12,7 @@
     - [1.2 angular material](#angular-material)
 - [2. project struture the Angular CLI setup](#project-struture)
 - [3. Adding an Express server to an Angular CLI project](#add-express)
+- [4. Adding an Angular CLI project to JAVA Project](#add-java)
 
 <h3 id="setup-by-using-angular-cli">1. setup by using [angular-cli](https://cli.angular.io/)</h3>
 
@@ -304,6 +305,8 @@ npm i @angular/compiler-cli@next --D -E
 
 <h3 id="project-struture">2. project struture the Angular CLI setup</h3>
 
+![](http://i.imgur.com/0TEd7d8.png)
+
 ```
 // configuration files
 |- config/
@@ -313,17 +316,14 @@ npm i @angular/compiler-cli@next --D -E
 |----- karma-test-shim.js
 |----- karma.conf.js
 |----- protractor.conf.js
-
 // end-to-end-tests
 |- e2e/
 |----- app.e2e.ts
 |----- app.po.ts
 |----- tsconfig.json
 |----- typings.d.ts
-
 // npm dependencies
 |- node_modules/
-
 // public facing app. built things go here
 |- public/
 
@@ -345,7 +345,6 @@ npm i @angular/compiler-cli@next --D -E
 |----- system-config.ts
 |----- tsconfig.json
 |----- typings.d.ts
-
 // overall configuration
 |- typings/
 |- .clang-format
@@ -431,5 +430,17 @@ app.get('/mapData', (req, res) => {
     "serve-build-prod": "npm run build:nodeserver-prod && cd dist && node server.js"
   },
 ```
+
+[back to top](#top)
+
+<h3 id="add-java">4. Adding an Angular CLI project to JAVA Web Project</h3>
+
+modify angular-cli.json in root directory, change outDir to Java Web project directory, such as java springboot
+
+```
+"outDir": "../src/main/webapp",
+```
+
+![](http://i.imgur.com/wacWLf3.png)
 
 - https://github.com/angular/angular-cli
