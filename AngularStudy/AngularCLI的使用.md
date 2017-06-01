@@ -447,6 +447,37 @@ app.get('/mapData', (req, res) => {
 
 3. using Http Service in Angular project to call backend api
 
+4. If using proxy
+
+ modify package.json in root directory
+ 
+ ```json
+ "scripts": {
+    "ng": "ng",
+    "start": "ng serve --proxy-config proxy-conf.json",
+    "build": "ng build -prod",
+	  "postbuild": "npm run deploy",
+	  "predeploy": "rimraf ../resources/static/ && mkdirp ../resources/static",
+	  "deploy": "copyfiles -f dist/** ../resources/static",
+    "test": "ng test",
+	  "pree2e": "webdriver-manager update --standalone false --gecko false",
+    "lint": "ng lint",
+    "e2e": "ng e2e"
+  },
+ ```
+ 
+ create proxy-conf.json in root directory
+ 
+ ```json
+ {
+  "/api": {
+    "target": "http://127.0.0.1:8080",
+    "secure": false
+  }
+}
+ ```
+
+[back to top](#top)
 
 > Reference
 
