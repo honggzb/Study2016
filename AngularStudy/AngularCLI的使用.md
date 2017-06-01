@@ -15,6 +15,8 @@
 
 <h3 id="setup-by-using-angular-cli">1. setup by using [angular-cli](https://cli.angular.io/)</h3>
 
+[The Ultimate Angular CLI Reference Guide](https://www.sitepoint.com/ultimate-angular-cli-reference/)
+
 ```shell
 npm install -g typescript@2.2.0
 npm install -g @angular/cli
