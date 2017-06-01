@@ -339,6 +339,74 @@ npm i @angular/compiler-cli@next --D -E
 
 <h3 id="add-express">3. Adding an Express server to an Angular CLI project</h3>
 
+https://github.com/Matt-Dionis/tweet-dashboard
 
+1) build a new folder and new js file - /node_server/server.js
+
+```javascript
+var express = require('express');
+var http = require('http');
+var path = require('path');
+const twit = require('twitter');
+var app = express();
+const mapData = require('./us-states.json');
+var port = process.env.PORT || 3000;
+var router = express.Router();
+var staticRoot = __dirname;
+const twitter = new twit({
+  consumer_key: "IiexMcElOxcLYtnySucToE6MY",
+  consumer_secret: "U7UgS1roZMcV7j8SQuUAx8jvKzFZAyxVbpZizwkluUqtDzg87Q",
+  access_token: "2364992047-cOFtCwYx7AItAY2OoB07DcA9XINFJZ4rU4hsXWZ",
+  access_token_secret: "lPGnTFfNTuhJ3lYtiiau3DwEkVw2CjZLTG9dwV4k3ignH"
+});
+app.set('port', (port));
+app.use(express.static(staticRoot));
+app.get('/', function(req, res) {
+  res.sendFile('index.html');
+});
+var server = http.createServer(app).listen(port, function() {
+  console.log('Server listening on port ' + port);
+});
+var io = require('socket.io').listen(server);
+app.get('/stream/:searchTerm', function(req, res, next) {
+  const searchTerm = req.params.searchTerm;
+  twitter.stream('statuses/filter', {track: searchTerm}, (stream) => {
+    stream.on('data', (data) => {
+      data.location = data.geo ? data.geo.coordinates : [];
+      //console.log(data);
+      const tweet = {
+        created_at: data.created_at,
+        text: data.text,
+        username: data.user ? data.user.screen_name : '',
+        followers_count: data.user ? data.user.followers_count : '',
+        following_count: data.user ? data.user.friends_count : '',
+        statuses_count: data.user ? data.user.statuses_count : '',
+        profile_image_url: data.user ? data.user.profile_image_url : '',
+        coordinates: data.location
+      };
+    });
+  
+    stream.on('error', (error) => {
+      throw error;
+    });
+  });  
+});  
+app.get('/mapData', (req, res) => {
+  res.status(200).json({data: mapData});
+});
+```
+
+2) modifing package.json and adding
+
+```json
+"scripts": {
+    "ng": "ng",
+    #...
+    "build:nodeserver": "ng build && cp node_server/* dist",
+    "build:nodeserver-prod": "ng build -prod && cp node_server/* dist",
+    "serve-build": "npm run build:nodeserver && cd dist && node server.js",
+    "serve-build-prod": "npm run build:nodeserver-prod && cd dist && node server.js"
+  },
+```
 
 - https://github.com/angular/angular-cli
