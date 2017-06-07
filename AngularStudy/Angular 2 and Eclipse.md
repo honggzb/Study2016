@@ -1,7 +1,9 @@
 ## [Angular 2 and Eclipse](#top)
 
+- [1. Tools and Prerequisites](#Tool-and-Prerequisites)
+- [2. AngularJS Eclipse plug-in based on tern.java](#AngularJS-Eclipse)
 
-<h3 id="Tools and Prerequisites">1. Tools and Prerequisites</h3>
+<h3 id="Tool-and-Prerequisites">1. Tools and Prerequisites</h3>
 
 - Angular IDE—Optionally install this IDE to automate setup of the development environment including Node, NPM, Angular CLI and TypeScript + Angular 2 intelligence.
 (https://www.genuitec.com/products/angular-ide/)
@@ -18,6 +20,12 @@
 (https://marketplace.eclipse.org/content/tm-terminal)
 
 ![](http://i.imgur.com/3DP0wSt.png)
+
+<h3 id="AngularJS-Eclipse">2. AngularJS Eclipse plug-in based on tern.java</h3>
+
+- https://jaxenter.com/angular-2-intellij-netbeans-eclipse-128461.html
+- https://github.com/angelozerr/angular2-eclipse/wiki/Installation-Update-Site
+
 
 > Reference
 
