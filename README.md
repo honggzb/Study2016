@@ -61,6 +61,7 @@ Study notes in 2016
 │   ├── angular-2-from-theory-to-practice-v1.0.1.pdf
 │   ├── Angular 2 basic.md
 │   ├── Angular 2 errors.md
+│   ├── Angular 2-继承机制Inheritance.md
 │   ├── Reactive Programming- RxJs 核心概念之Observable.md
 │   ├── Reactive Extensions for JavaScript (RxJS).md
 │   ├── observable.PNG
