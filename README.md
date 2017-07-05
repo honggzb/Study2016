@@ -47,6 +47,7 @@ Study notes in 2016
 │   ├── angular2的一些资料.md
 │   ├── Angular2语法清单.md
 │   ├── AngularCLI的使用.md
+│   ├── Angular 2- 原生国际化支持i18n.md
 │   ├── Angular 2的经典面试问题汇总.md
 │   ├── Angular 2 and Eclipse.md
 │   ├── Angular 2 Custom Project && Workflow.md
