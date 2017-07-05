@@ -1,4 +1,4 @@
-[angular- mobile-toolkit](#top)  -- out of date
+[angular- mobile-toolkit](#top)  -- out of date, just for reference
 
 - [1. Create a Progressive Web App with Angular CLI](#create)
 - [2. Make the App Installable with Web App Manifest](#make)
