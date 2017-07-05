@@ -165,7 +165,7 @@ npm install
 
 <h4 id="eject">1.12 eject and undo eject</h4>
 
-1.  `ng eject'  - will generate `webpack.config.js` file
+1.  `ng eject'  - will generate `webpack.config.js` file, can not use ng command
 2. undo eject - modify angular-cli.json file in root directory, delete `"ejected": true`, also `webpack.config.js` file can be deleted
 
 [back to top](#top)
