@@ -9,10 +9,18 @@
     - 1.1 awesome font
     - 1.1 underscore
     - 1.1 d3
-    - [1.2 angular material](#angular-material)
+    - [1.4 angular material](#angular-material)
+    - [1.5 less(ng new project_name --style less when create new project)](#less)
 - [2. project struture the Angular CLI setup](#project-struture)
 - [3. Adding an Express server to an Angular CLI project](#add-express)
 - [4. Adding an Angular CLI project to JAVA Project](#add-java)
+- [5.Create a Progressive Web App with Angular CLI](#Progressive-Web-App)
+
+**Before starts**
+
+- Angular CLI loads its configuration from `angular-cli.json`
+- Angular CLI runs Webpack to build and bundle all JavaScript and CSS code
+- Angular CLI starts ##webpack dev server## to preview the result on `localhost:4200`
 
 <h3 id="setup-by-using-angular-cli">1. setup by using [angular-cli](https://cli.angular.io/)</h3>
 
@@ -32,7 +40,7 @@ ng generate component my-new-component
 ng g component my-new-component # using the alias
 ng destroy my-new-component    #delete component, class ...
 #2. creating a build - angular-cli.json
-ng build   #generate build artifacts will be stored in the dist/ directory.
+ng build   #generate build artifacts will be stored in the dist/ directory, building Your Application for Production
 "environments": {
   "source": "environments/environment.ts",
   "dev": "environments/environment.ts",
@@ -108,6 +116,11 @@ options|function
 ng g c componentName --flat --inline-template --inline-styles
 ng g c componentName --flat -it -is   #简写
 ``` 
+
+```shell
+$ ng generate class user-profile       # Generate class 'UserProfile'
+$ ng generate class user-profile --spec   # Generate class 'UserProfile' with unit test
+```
 
 **Initialize a New Application** - already have a folder that you've started working in
 
@@ -189,6 +202,8 @@ typelessPackage.method();
 
 - Global Library Installation
 
+##Paths in angular-cli.json are relative to the src directory##
+
 ```shell
 #1) install bootstrap 4
 npm install bootstrap@next
@@ -252,7 +267,13 @@ import * as d3 from 'd3';
 
 [back to top](#top)
 
-<h4 id="angular-material">1.4 [using Angular Material](https://material.angular.io/)</h4>
+<h4 id="less">1.5 less</h4>
+
+1) `ng new project_name --style less`   when create a new project
+
+2) 'npm install less --save`
+
+[back to top](#top)
 
 ```
 1) install(https://material.angular.io/guide/getting-started)
@@ -300,6 +321,8 @@ npm cache clean
 npm install @angular/common@latest @angular/compiler@latest @angular/compiler-cli@latest @angular/core@latest @angular/forms@latest @angular/http@latest @angular/platform-browser@latest @angular/platform-browser-dynamic@latest @angular/platform-server@latest @angular/router@latest @angular/animations@latest typescript@latest --save
 npm i @angular/compiler-cli@next --D -E
 ```
+
+<h4 id="angular-material">1.5 [using Angular Material](https://material.angular.io/)</h4>
 
 [back to top](#top)
 
@@ -479,6 +502,23 @@ app.get('/mapData', (req, res) => {
 
 [back to top](#top)
 
+<h3 id="Progressive-Web-App">5.Create a Progressive Web App with Angular CLI</h3>
+
+https://github.com/angular/mobile-toolkit/blob/master/guides/cli-setup.md
+
+```shell
+ng new hello-mobile --mobile
+cd hello-mobile
+```
+
+- A Web Application Manifest to give browsers information to properly install your app to the home screen
+- A build step to generate an App Shell from your app's root component
+- A Service Worker script to automatically cache your app for fast loading, with or without an internet connection
+  - Note: the Service Worker is only installed in production mode, i.e. via `ng serve --prod` or `ng build --prod`
+
+[back to top](#top)
+
 > Reference
 
 - https://github.com/angular/angular-cli
+- https://www.sitepoint.com/ultimate-angular-cli-reference/
