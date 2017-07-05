@@ -66,6 +66,7 @@ Study notes in 2016
 │   ├── Reactive Extensions for JavaScript (RxJS).md
 │   ├── observable.PNG
 │   ├── angularJS启动多个ng-app.md
+│   ├── angular-mobile-toolkit.md  - 已不兼容于angular 2，仅作参考
 │   ├── typescript-study.md
 │   ├── use-Firebase-in-angular2.md
 │   └── angularResource.md
