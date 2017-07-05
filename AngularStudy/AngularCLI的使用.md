@@ -515,6 +515,13 @@ cd hello-mobile
 - A build step to generate an App Shell from your app's root component
 - A Service Worker script to automatically cache your app for fast loading, with or without an internet connection
   - Note: the Service Worker is only installed in production mode, i.e. via `ng serve --prod` or `ng build --prod`
+- Deploying a manifest:  `<link rel="manifest" href="/manifest.json">`
+
+**Manifest Further Reading**
+
+- [Web App Manifest](https://developer.mozilla.org/en-US/docs/Web/Manifest) (Mozilla Developer Network)
+- [Installable Web Apps with the Web App Manifest in Chrome for Android](https://developers.google.com/web/updates/2014/11/Support-for-installable-web-apps-with-webapp-manifest-in-chrome-38-for-Android?hl=en) (Google Developers)
+- [Installable Web Apps and Add to Home screen](https://dev.opera.com/articles/installable-web-apps/) (Dev.Opera)
 
 [back to top](#top)
 
