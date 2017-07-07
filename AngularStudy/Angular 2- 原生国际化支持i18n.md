@@ -4,8 +4,7 @@
 - [2. 创建translation模板messages.xlf](#从模板抽取文本)
 - [3. 准备部署Product](#添加语言支持)
 - [4. 添加link转入不同语言](#加link转入不同语言)
-- [5. i18n after ejection](#i18n after ejection)
-- 
+- [5. i18n after ejection](#i18n-after-ejection)
 
 在Angular 1.x 的版本里面，没有原生的国际化支持，可利用第三方库或者利用过滤器和指令实现国际化。而在Angular 2里面已经提供了原生的国际化支持
 
@@ -197,3 +196,4 @@ export class AppComponent {
 - http://angular-translator.elol.fr/
 - [Angular 2 原生国际化支持](http://blog.csdn.net/spring1208/article/details/57182543)
 - https://github.com/feloy/angular-cli-i18n-sample
+- Angular 1的i18n[How to add I18N for an angularJS app - Step by step - Hands-on](http://uidudes.blogspot.ca/2015/10/how-to-add-i18n-for-angularjs-app-step.html)
