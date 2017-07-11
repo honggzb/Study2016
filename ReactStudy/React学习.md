@@ -6,7 +6,7 @@
   - [1.3 Using a CDN](#Using-a-CDN)
 - [2. JSX 用法](#JSX用法)
   - [2.1 属性 in JSX](#Embedding-Expressions)
-  - [2.11 属性扩散 in JSX - 设置多属性](#多属性)
+    - [2.11 属性扩散 in JSX - 设置多属性](#多属性)
   - [2.2 属性Attributes与行内样式 with JSX](#属性Attributes与行内样式)
   - [2.3 Objects in JSX](#Objects-in-JSX)
 - [3. Rendering Elements](#Rendering-Elements)
