@@ -112,6 +112,7 @@ Study notes in 2016
 │   ├──  React学习.md
 │   ├──  reactRoute学习.md
 │   ├──  reactFlux学习.md
+│   ├──  React常见问题讨论.md
 │   ├──  reactFlux.rar- simple sample for react Flux
 │   └──  reactSimpleSample.rar
 │
