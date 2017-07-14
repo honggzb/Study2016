@@ -296,6 +296,25 @@ this.setState((prevState, props) => ({
 }));
 ```
 
+- State Updates May Be Asynchronous, better to use arrow function or return
+
+```javascript
+// Wrong
+this.setState({
+  counter: this.state.counter + this.props.increment,
+});
+// Correct
+this.setState((prevState, props) => ({
+  counter: prevState.counter + props.increment
+}));
+//or
+this.setState(function(prevState, props) {
+  return {
+    counter: prevState.counter + props.increment
+  };
+});
+```
+
 [back to top](#top)
 
 <h4 id="组件生命周期">4.3. 组件的生命周期</h4>
@@ -789,7 +808,6 @@ export default class Index extends React.components {
 5. dispatcher是单例的
 
 [back to top](#top)
-
 
 
 
