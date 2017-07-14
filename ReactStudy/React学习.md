@@ -201,7 +201,29 @@ setInterval(tick, 1000);    //
 
 <h3 id="Components-Props">4. React Components</h3>
 
-组件有两个核心概念： props, state
+- components are like JavaScript functions. They accept arbitrary inputs (called "props") and return React elements describing what should appear on the screen.
+- 主程序组件总入口定义： `ReactDOM.render(<App />, document.getElementById('root'));`
+- 外部组件代码格式: 
+
+```javascript
+function Welcome(props) {
+  return <h1>Hello, {props.name}</h1>;
+}
+// or
+import React, { Component } from 'react';
+class ComponentName extends Component {
+  render() {
+    return (
+      <h1>Hello, {this.props.name}</h1>;
+    );
+  }
+}
+export default ComponentName;
+```
+
+![](http://i.imgur.com/cGZFosd.png)
+
+### 组件有两个核心概念： props, state
 
 <h4 id="Props">4.1 Props(静态的、只读的、无状态的)</h4>
 
