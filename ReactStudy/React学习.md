@@ -201,13 +201,18 @@ setInterval(tick, 1000);    //
 
 <h3 id="Components-Props">4. React Components</h3>
 
-- components are like JavaScript functions. They accept arbitrary inputs (called "props") and return React elements describing what should appear on the screen.
+- components are like JavaScript functions. They accept arbitrary inputs (called "props") and return React elements describing what should appear on the screen
+
+components输入|components输出
+---|---
+props|React Element
+
 - 主程序组件总入口定义： `ReactDOM.render(<App />, document.getElementById('root'));`
 - 外部组件代码格式: 
 
 ```javascript
 function Welcome(props) {
-  return <h1>Hello, {props.name}</h1>;
+  return <h1>Hello, {props.name}</h1>;   //React Element:  <h1>Hello, {props.name}</h1>
 }
 // or
 import React, { Component } from 'react';
@@ -230,11 +235,6 @@ export default ComponentName;
 - components accept arbitrary inputs (called `props`) and return React elements describing what should appear on the screen
 - Props are Read-Only
 - props 就是组件的属性，由外部通过 JSX 属性传入设置，一旦初始设置完成，就可以认为 this.props 是不可更改的
-
-components输入|components输出
----|---
-props|React Element
-
 - `this.props.children`, `this.props`对象的属性与组件的属性一一对应，但是有一个例外，就是 `this.props.children`属性。它表示组件的所有子节点, this.props.children 的值有三种可能：
   - 如果当前组件没有子节点，它就是 undefined ;
   - 如果有一个子节点，数据类型是 object ；
