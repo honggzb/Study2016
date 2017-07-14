@@ -589,6 +589,7 @@ ReactDOM.render(
 - 参数传递:  给事件处理函数传递额外参数的方式：`bind(this, arg1, arg2, ...)`
 
 ```javascript
+// The common pattern when define a component using an ES6 class
 class Toggle extends React.Component {
   constructor(props) {
     super(props);
