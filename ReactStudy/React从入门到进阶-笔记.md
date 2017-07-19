@@ -11,7 +11,7 @@
     - 多页面快递传递参数技巧 - {...props}
   - [3.3 DOM操作和Refs](#可复用组件)
 - [4. React的样式](#React的样式)
-  - [4.1 内联样式](#4.1 内联样式)
+  - [4.1 内联样式](#内联样式)
   - [4.2 样式模块化](#样式模块化)
 - [5. React UI library](#React-UI-library)
   - material UI(google)
