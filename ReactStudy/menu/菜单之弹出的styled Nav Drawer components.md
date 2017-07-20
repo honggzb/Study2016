@@ -136,9 +136,9 @@ const StayVisible = styled.div`
   margin-left: ${(props)=>(props.open)?`${props.width}px`:'none'};
   transition: margin .2s;
 `
-const NavToggleButton = (props) =>{
+const NavToggleButton = (props) => {  // note: need props
   return (
-    <StayVisible {...props}>
+    <StayVisible {...props}>    //pass all parent component props to child component
       <FloatingActionButton onTouchTap={props.toggle}>
         <Menu />
       </FloatingActionButton>
