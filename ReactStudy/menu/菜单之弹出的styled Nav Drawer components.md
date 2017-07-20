@@ -1,0 +1,79 @@
+### styled Nav Drawer components
+
+#### library and plugin
+
+```shell
+yarn add material-ui
+yarn add react-tap-event-plugin
+yarn add styled-components
+```
+
+#### codes
+
+```javascript
+//components\NavDrawer.js
+import React,{Component} from 'react';
+import { Link } from 'react-router-dom';
+
+import Divider from 'material-ui/Divider';
+import Drawer from 'material-ui/Drawer';
+import MenuItem from 'material-ui/MenuItem';
+import NavToggleButton from '../styled/NavDrawer'
+
+class NavDrawer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {   // two parameters pass to styled\NavDrawer.js
+      open: false,
+      width: 200
+    };
+  }
+  toggle = () => {  // one method pass to styled\NavDrawer.js
+    this.setState((prevState, props) => {
+      return { open: !prevState.open }  
+    });
+  }
+  render(){
+    return (
+      <div>
+        <NavToggleButton 
+          toggle={this.toggle}
+          open={this.state.open}
+          width={this.state.width}
+        />
+        <Drawer 
+          open={this.state.open}
+          width={this.state.width}>
+          <div style={{height: '200px',width: '100%',backgroundColor: 'salmon'}}>LoginContainer</div>
+          <Link to='/'><MenuItem primaryText="Play" onTouchTap={this.toggle}></MenuItem></Link>
+          <Link to='/profile'><MenuItem primaryText="Profile" onTouchTap={this.toggle}></MenuItem></Link>
+          <Divider />
+          <MenuItem primaryText="TicTacToe" />
+        </Drawer>
+      </div>
+    )
+  }
+}
+export default NavDrawer;
+//styled\NavDrawer.js
+import React from 'react';
+import styled from 'styled-components';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import Menu from 'material-ui/svg-icons/navigation/menu'
+
+const StayVisible = styled.div`
+  position: aboslute;
+  margin-left: ${(props)=>(props.open)?`${props.width}px`:'none'};
+  transition: margin .2s;
+`
+const NavToggleButton = (props) =>{
+  return (
+    <StayVisible {...props}>
+      <FloatingActionButton onTouchTap={props.toggle}>
+        <Menu />
+      </FloatingActionButton>
+    </StayVisible>
+  )
+};
+export default NavToggleButton;
+```
