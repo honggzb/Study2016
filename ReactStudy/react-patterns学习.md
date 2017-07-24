@@ -2,14 +2,14 @@
 
 ### React一个标准组件的组织结构
 
-1. class definition
-    1. constructor
-        1. event handlers
-    1. 'component' lifecycle events
-    1. getters
-    1. render
-2. defaultProps
-3. proptypes
+* class definition
+    * constructor
+        * 1. event handlers
+    * 'component' lifecycle events
+    * getters
+    * render
+* defaultProps
+* proptypes
 
 ```javascript
 class MyComponent extends Component {
