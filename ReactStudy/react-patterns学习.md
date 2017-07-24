@@ -1,15 +1,15 @@
-1 React一个标准组件的组织结构
+1 [React一个标准组件的组织结构](#React一个标准组件的组织结构)
 
 ### React一个标准组件的组织结构
 
-1 class definition
-    1.1 constructor
-        1.1.1 event handlers
-    1.2 'component' lifecycle events
-    1.3 getters
-    1.4 render
-2 defaultProps
-3 proptypes
+1. class definition
+    1. constructor
+        1. event handlers
+    1. 'component' lifecycle events
+    1. getters
+    1. render
+2. defaultProps
+3. proptypes
 
 ```javascript
 class MyComponent extends Component {
