@@ -202,11 +202,8 @@ setInterval(tick, 1000);    //
 <h3 id="Components-Props">4. React Components</h3>
 
 - components are like JavaScript functions. They accept arbitrary inputs (called "props") and return React elements describing what should appear on the screen
-
-components输入|components输出
----|---
-props|React Element
-
+  - components输入:  **props**
+  - components输出:  **React Element**
 - 主程序组件总入口定义： `ReactDOM.render(<App />, document.getElementById('root'));`
 - 外部组件代码格式: 
 
@@ -317,11 +314,24 @@ this.setState(function(prevState, props) {
 
 [back to top](#top)
 
-<h4 id="组件生命周期">4.3. 组件的生命周期</h4>
+<h4 id="组件生命周期">4.3. [组件的生命周期](https://facebook.github.io/react/docs/react-component.html)</h4>
 
-- Mounting：已插入真实DOM
-- Updating：正在被重新渲染
-- Unmounting：已移出真实DOM
+**The Component Lifecycle**
+
+- Mounting：已插入真实DOM(These methods are called when an instance of a component is being created and inserted into the DOM)
+  - constructor()
+  - componentWillMount()
+  - render()
+  - componentDidMount()
+- Updating：正在被重新渲染(An update can be caused by changes to props or state. These methods are called when a component is being re-rendered)
+  - componentWillReceiveProps()
+  - shouldComponentUpdate()
+  - componentWillUpdate()
+  - render()
+  - componentDidUpdate()
+- Unmounting：已移出真实DOM(This method is called when a component is being removed from the DOM)
+  - Unmounting
+  - componentWillUnmount()
 
 React 为每个状态都提供了两种处理函数，will 函数在进入状态之前调用，did 函数在进入状态之后调用，三种状态共计五种处理函数
 
@@ -335,6 +345,12 @@ React 为每个状态都提供了两种处理函数，will 函数在进入状态
 
 - componentWillReceiveProps(object nextProps)：已加载组件收到新的参数时调用
 - shouldComponentUpdate(object nextProps, object nextState)：组件判断是否重新渲染时调用
+
+其他|说明
+---|---
+Other APIs|Each component also provides some other APIs: `setState()`, `forceUpdate()`
+Class Properties|`defaultProps`, `displayName`
+Instance Properties| `props`, `state`
 
 **可以使用`componentDidMount`方法设置Ajax请求，等到请求成功，再用`this.setState`方法重新渲染 UI（查看 demo11)**
 
