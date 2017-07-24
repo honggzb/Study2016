@@ -4,7 +4,7 @@
 
 * class definition
     * constructor
-        * 1. event handlers
+        * event handlers
     * 'component' lifecycle events
     * getters
     * render
