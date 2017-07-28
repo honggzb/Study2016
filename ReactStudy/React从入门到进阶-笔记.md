@@ -16,9 +16,15 @@
 - [5. React UI library](#React-UI-library)
   - material UI(google)
   - Ant Design(阿里)
+  - React Bootstrap
+  - Elemental UI
+  - Grommet
+  - Semantic UI
 - [6. React Router v4](#React-Router-v4)
   - [6.1 基本用法](#基本用法)
   - [6.2 router参数传递](#router参数传递)
+- [7. 移动端开发](#移动端开发)
+- [8. 注册模块](#注册模块)
 - [Appendix](#Appendix)
   - [Appendix 1 - 插件babel-plugin-react-html-attrs](#插件babel)
 
@@ -66,7 +72,7 @@ export default ComponentName;
 
 - `{jsx内置表达式}`
 - `{/注释/}`
-- JSX内置表达式是html的情况
+- **JSX内置表达式是html的情况**- dangerouslySetInnerHTML
 
 ```javascript
 //空格等特殊字符的注意事项
@@ -245,7 +251,7 @@ var footerCss = require("./footer.css");
 
 <h4 id="React-UI-library">5. React UI library</h4>
 
-- [material UI(google)](www.material-ui.com)
+- [material UI(google)](www.material-ui.com):  `yarn add material-ui`, `yarn add react-tap-event-plugin`
 - [Ant Design(阿里)](https://ant.design/docs/react/introduce-cn)
 
 [How to Customize Ant Design with React & Webpack… the Missing Guide](https://medium.com/@GeoffMiller/how-to-customize-ant-design-with-react-webpack-the-missing-guide-c6430f2db10f)
@@ -286,6 +292,43 @@ npm install less less-loader css-loader style-loader --save-dev
 
 [back to top](#top)
 
+<h3 id="移动端开发">7. 移动端开发</h3>
+
+```
+yarn add react-responsive
+import MediaQuery from 'react-responsive';
+<div>
+  <MediaQuery query='(min-device-width:1224px)'>
+    <PCIndex/>
+  </MediaQuery>
+  <MediaQuery query='(max-device-width:1224px)'>
+    <MobileIndex/>
+  </MediaQuery>
+</div>
+```
+
+[back to top](#top)
+
+<h3 id="注册模块">8. 注册模块</h3>
+
+```
+yarn add fetch
+import MediaQuery from 'react-responsive';
+<div>
+  <MediaQuery query='(min-device-width:1224px)'>
+    <PCIndex/>
+  </MediaQuery>
+  <MediaQuery query='(max-device-width:1224px)'>
+    <MobileIndex/>
+  </MediaQuery>
+</div>
+```
+
+[back to top](#top)
+
+
+
+
 <h3 id="Appendix">Appendix</h3>
 
 <h4 id="插件babel">Appendix 1 - 插件babel-plugin-react-html-attrs(直接引入和使用css样式)</h4>
@@ -293,6 +336,8 @@ npm install less less-loader css-loader style-loader --save-dev
 Transforms JSX class attributes into className and for attributes into htmlFor, allowing you to copy and paste HTML into your React components without having to manually edit these particular attributes each time.
 
 https://github.com/insin/babel-plugin-react-html-attrs
+
+
 
 
 
