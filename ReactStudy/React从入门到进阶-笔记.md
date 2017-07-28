@@ -22,7 +22,7 @@
   - Semantic UI
 - [6. React Router v4](#React-Router-v4)
   - [6.1 基本用法](#基本用法)
-  - [6.2 router参数传递](#router参数传递)
+  - [6.2 router参数传递 - path params](#router参数传递)
 - [7. 移动端开发](#移动端开发)
 - [8. 注册模块](#注册模块)
 - [Appendix](#Appendix)
@@ -289,6 +289,16 @@ npm install less less-loader css-loader style-loader --save-dev
 -  A React Router component that does not have a router as one of its ancestors will fail to work
 
 <h4 id="router参数传递">6.2 router参数传递</h4>
+
+**props.match.params object**
+
+```html
+<!-- -->
+<Route path="/details/:uniquekey" component={PCNewsDetails}/>
+<Link to={`/details/${newsItem.uniquekey}`}>{newsItem.title}</Link>
+<!-- component can use the props.match.params object to determine which news data should be rendered -->
+fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=getnewsitem&uniquekey=" + this.props.match.params.uniquekey, myFetchOptions)
+```
 
 [back to top](#top)
 
