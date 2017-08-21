@@ -1,3 +1,5 @@
+[目录](#top)
+
 - [常用设置](#常用设置)
 - [快捷键](#快捷键)
     - [编辑和删除文本](#编辑和删除文本)
@@ -5,6 +7,16 @@
     - [折叠](#折叠)
 - [主题](#主题)
 - [插件推荐](#插件推荐)
+    - [自动补全](#自动补全)
+    - [美化](#美化)
+    - [代码提示](#代码提示)
+    - [文件语法高亮+预览](#文件语法高亮+预览)
+- [其他](#其他)
+- [React](#React)
+- [Git](#Git)
+- [按键绑定keymap](#按键绑定keymap)
+- [Gulp插件](#Gulp插件)
+- [同步Atom - sync-settings](#同步Atom - sync-settings)
 
 ### 常用设置
 
@@ -21,6 +33,8 @@ whitespace:会向你的终端中安装一个新的名为 atom 的命令，你可
 如果使用Mac，Atom的菜单栏有个命令叫做“Install Shell Commands”，它会安装atom和apm命令，如果Atom自己不能安装它们的话。在Windows或者Linux上面，这两个命令作为Atom安装进程的一部分自动安装。
 
 `atom filename`
+
+[bakc to top](#top)
 
 ### 快捷键
 
@@ -82,11 +96,15 @@ alt-cmd-shift-{ |折叠全部
 alt-cmd-shift-} |展开全部
 cmd-k cmd-N |指定折叠层级 N为层级数
 
+[back to top](#top)
+
 ### 主题
 
 - atom-material-ui 好看到爆。
 - atom-material-syntax
 - seti-icons -The awesome icons provided by Seti UI theme
+
+[back to top](#top)
 
 ### 插件推荐
 
@@ -159,6 +177,8 @@ cmd-k cmd-N |指定折叠层级 N为层级数
 - markdown-writer
 - markdown-preview-plus
 
+[back to top](#top)
+
 ### React
 
 - atom-react-autocomplete
@@ -171,6 +191,8 @@ cmd-k cmd-N |指定折叠层级 N为层级数
 - js-func-viewer– 新插件，但是很实用，可以查看函数的结构~~~~ 
 - atom-react-native-autocomplete – RN的智能补全，react开发也能受用一部分，相当实用！智能提示非autocomplete那种【类似静态语法分析器】
 - autocomplete-modules – 模块智能提示【node_modules】
+
+[back to top](#top)
 
 ### Git
 
@@ -199,6 +221,8 @@ Alt+G C |将当前文件在GitHub上的URL复制到剪切板
 Alt+G R |在GitHub上比较分支 
 Alt+G ↑和Alt+G ↓|来将光标从当前文件的一块更改移到另一块更改
 
+[back to top](#top)
+
 ### 按键绑定keymap
 
 Atom编辑器支持自定义按键绑定,文件格式是CSON
@@ -215,6 +239,8 @@ Atom编辑器支持自定义按键绑定,文件格式是CSON
    'ctrl-shift-p': 'core:move-up'
    'ctrl-p': 'core:move-down'
 ```
+
+[back to top](#top)
 
 ### Gulp插件
  
@@ -241,6 +267,8 @@ ctrl-k ctrl-r|刷新窗口
 ctrl-k ctrl-c|关闭窗口
 ctrl-k ctrl-m|添加面板
 
+[back to top](#top)
+
 ### 同步Atom - sync-settings
 
 - 进入Atom设置中心找到该插件sync-settings，进去setting；
@@ -251,6 +279,8 @@ ctrl-k ctrl-m|添加面板
     - sync-settings:restore – 这条命令是回复配置,是直接覆盖的;
     - sync-settings:view-backup – 这条是当你执行备份后到线上查询你的备份的,也就是到你的gist code里面
     - sync-settings:check-backup – 这条是查询最后一次是否正常
+
+[back to top](#top)
 
 > references
 
