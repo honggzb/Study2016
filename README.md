@@ -83,6 +83,9 @@ Study notes in 2016
 │   └──  js之map+reduce+filter+sort.md
 │
 ├── ES6Study
+│   ├──  MYES6/       #ES6零基础教学 解析彩票项目（代码+doc）
+│   │     ├──  
+│   │     └──
 │   ├──  01 Let
 │   ├──  02-Destructuring解构赋值.md
 │   ├──  03-extended各个对象的扩展.md
@@ -93,7 +96,7 @@ Study notes in 2016
 │   ├──  generator.md
 │   ├──  ES6尾调用优化.md
 │   ├──  References
-│   └──  Sample1 -- ES6使用的小例子(gulp构建)
+│   └──  Sample1/ -- ES6使用的小例子(gulp构建)
 │
 ├──  **basic--JS**
 │   ├──  ant.md
