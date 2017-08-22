@@ -9,13 +9,25 @@
 │   ├── 
 │   └── 
 ├── app\    #前端
-│   ├──  js\           #js
-│   │    ├── class\
-│   │    └── index.js      
+│   ├──  js\
+│   │    ├── class\       #ES6基础学习
+│   │    │      ├── lesson1.js
+│   │    │      ├── lesson2.js
+│   │    │      ├── ...
+│   │    │      └── lesson17.js
+│   │    ├── lottery\     #彩票项目
+│   │    │      ├── base.js       #彩票模块
+│   │    │      ├── caculate.js   #
+│   │    │      ├── interface.js  #
+│   │    │      └── timer.js      #计时器
+│   │    ├── index.js             #彩票项目-入口js
+│   │    ├── index-basicStudy.js  #ES6基础学习-入口js
+│   │    └── lottery.js           #彩票项目
 │   ├──  css\          #css
 │   └──  views\        #模板
 │        ├── error.ejs     #错误模板
-│        └── index.ejs     #入口模板
+│        ├── index.ejs     #入口模板
+│        └── index-basicStudy.ejs     #ES6基础学习-入口模板
 ├── tasks\    #构建
 │   ├──  util\        #构建工具集合
 │   │    └── args.js      #yargs模块来开发自己的命令行工具集合-程序实现交互
