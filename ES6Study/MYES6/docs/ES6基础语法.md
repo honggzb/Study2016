@@ -18,7 +18,7 @@
 - [修饰器Decorator - lesson16](#lesson16)
 - [ES6模块化 - lesson17](#ES6模块化)
 
-<h2 id="#lesson1">const - lesson1</h2>
+<h2 id="lesson1">const - lesson1</h2>
 
 - const第一次定义的时候必须赋值
 - const定义后不能改变
@@ -38,7 +38,7 @@ function last(){
 
 [back to top](#top)
 
-<h2 id="#lesson2">解构赋值 - lesson2</h2>
+<h2 id="lesson2">解构赋值 - lesson2</h2>
 
 - 数组解构赋值
 - 对象解构赋值
@@ -49,7 +49,7 @@ function last(){
 
 [back to top](#top)
 
-<h2 id="#lesson3">正则扩展 - lesson3</h2>
+<h2 id="lesson3">正则扩展 - lesson3</h2>
 
 - 构造函数的变化
 - 正则方法的扩展
@@ -57,7 +57,7 @@ function last(){
 
 [back to top](#top)
 
-<h2 id="#lesson4">字符串扩展 - lesson4</h2>
+<h2 id="lesson4">字符串扩展 - lesson4</h2>
 
 - Unicode表示法
 - 遍历接口
@@ -71,19 +71,19 @@ function last(){
 
 [back to top](#top)
 
-<h2 id="#lesson5">数值扩展 - lesson5</h2>
+<h2 id="lesson5">数值扩展 - lesson5</h2>
 
 - 新增方法
 - 方法调整
 
-<h2 id="#lesson6">数组扩展 - lesson6</h2>
+<h2 id="lesson6">数组扩展 - lesson6</h2>
 
 - 新增特性- Array.from, Array.of, copyWithin, find\findNext, fill, entries\keys\values, includes
 - 方法调整
 
 [back to top](#top)
 
-<h2 id="#lesson7">函数新增特征 - lesson7</h2>
+<h2 id="lesson7">函数新增特征 - lesson7</h2>
 
 - 参数默认值
 - rest参数
@@ -94,7 +94,7 @@ function last(){
 
 [back to top](#top)
 
-<h2 id="#lesson8">对象扩展 - lesson8</h2>
+<h2 id="lesson8">对象扩展 - lesson8</h2>
 
 - 简介表示法
 - 属性表达式
@@ -103,7 +103,7 @@ function last(){
 
 [back to top](#top)
 
-<h2 id="#lesson9">Symbol数据类型-ES6新增类型 - lesson9</h2>
+<h2 id="lesson9">Symbol数据类型-ES6新增类型 - lesson9</h2>
 
 ES5（javascript）基本数据类型有6种：Undefined、Null、布尔值（Boolean）、字符串（String）、数值（Number）、对象（Object）。ES6引入了一种新的原始数据类型Symbol，表示独一无二的值。
 
@@ -114,7 +114,7 @@ ES5（javascript）基本数据类型有6种：Undefined、Null、布尔值（Bo
 
 [back to top](#top)
 
-<h2 id="#lesson10">Set和Map - lesson10</h2>
+<h2 id="lesson10">Set和Map - lesson10</h2>
 
 |说明| Set | Map|
 | :-------------| :------------- | :------------- |
@@ -157,7 +157,7 @@ ES5（javascript）基本数据类型有6种：Undefined、Null、布尔值（Bo
 
 [back to top](#top)
 
-<h2 id="#lesson11">Proxy和Reflect - lesson11</h2>
+<h2 id="lesson11">Proxy和Reflect - lesson11</h2>
 
 ES6代理的目的是要做一种类似的模拟，它包含一个包装类（A）和一个其他类（B）去拦截/控制访问它（A）。
 
@@ -206,7 +206,7 @@ construct|Calling a function with new-拦截new命令<br>construct方法可以�
 
 [back to top](#top)
 
-<h2 id="#lesson12">Class类 - lesson12</h2>
+<h2 id="lesson12">Class类 - lesson12</h2>
 
 - Class的定义和构造函数
 - Class的继承
@@ -215,14 +215,14 @@ construct|Calling a function with new-拦截new命令<br>construct方法可以�
 
 [back to top](#top)
 
-<h2 id="#lesson13">Promise异步操作 - lesson13</h2>
+<h2 id="lesson13">Promise异步操作 - lesson13</h2>
 
 - Promise的作用
 - Promise的基本用法
 
 [back to top](#top)
 
-<h2 id="#lesson14">Iterator和for..of循环 - lesson14</h2>
+<h2 id="lesson14">Iterator和for..of循环 - lesson14</h2>
 
 - 不同的“集合”的数据结构的统一的读取接口
   - 原生具备Iterator接口的数据结构： Array,Object, Map, Set, String, TypedArray, 函数的arguments对象，NodeList对象
@@ -238,7 +238,7 @@ construct|Calling a function with new-拦截new命令<br>construct方法可以�
 
 [back to top](#top)
 
-<h2 id="#lesson15">Generator函数 - lesson15</h2>
+<h2 id="lesson15">Generator函数 - lesson15</h2>
 
 - Generator函数是ES6提供的一种异步编程解决方案
 - 从语法上，首先可以把它理解成，Generator函数是一个状态机，封装了多个内部状态
