@@ -144,9 +144,10 @@ React从入门到进阶-笔记.md
 ├── interview
 │   ├──  htmlCSS
 │   │    └── BAT及各大互联网公司2014前端笔试面试题-HTML-CSS篇
-│   └──  javascript
-│        ├── javascriptInterview1
-│        └── jsInterviewAlgorithm
+│   ├──  javascript
+│   │    ├── javascriptInterview1
+│   │    └── jsInterviewAlgorithm
+│   └──  前端面试.md
 │
 ├── linux-command详解
 │   ├──  linux grep命令详解
