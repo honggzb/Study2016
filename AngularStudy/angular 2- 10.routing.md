@@ -1,7 +1,7 @@
 <h2 id="top">10 Routing</h2>
 
-- [10.1 Local web server configuration](#Local-web-server-configuration)
-- [10.2 Route Configuration](#Route-Configuration)
+- [10.1 Local web server configuration服务器端](#Local-web-server-configuration)
+- [10.2 Route Configuration -Angular 2/4](#Route-Configuration)
 - [10.3 Navigating](#Navigating)
 	- [10.3.1 hardcoded URLS](#hardcoded-URLS)
 	- [10.3.2 program by the router - navigate between component](#program-by-the-router)
@@ -15,7 +15,7 @@
 - [10.9 Querying parameters/extracting query parameters](#Querying-parameters)
 - [10.10 Styling Active Route Links](#Styling-Active-Route-Links)
 
-<h3 id="Local-web-server-configuration">10.1 Local web server configuration</h3>
+<h3 id="Local-web-server-configuration">10.1 Local web server configuration服务器端</h3>
 
 - **nodejs http-server**
 
@@ -29,10 +29,19 @@ http-server
 
 <span style="">[back](#top)</span>
 
-<h3 id="Route-Configuration">10.2 Route Configuration</h3>
+<h3 id="Route-Configuration">10.2 Route Configuration -Angular 2/4</h3>
+
+- routes is navigation between views
+- routes are triggered by UI interaction or browser address bar changes
+- securites can be implemented via routes
+- the router is an optional Service, is not part of @angular/core
+- router consist of 
+  - Services:  RouterModule are in @angular/router
+  - Directive: RouterOutlet, RouterLink, RouterLinkActive
+  - Configuration: Routes
 
 ```javascript
-//1) inport
+//1) import
 import {Routes, RouterModule} from "@angular/router";
 // 2)define routes
 const routes: Routes = [
@@ -49,6 +58,8 @@ const routes: Routes = [
     RouterModule.forRoot(routes, {useHash: true})
   ],
 //4) in template use router-outlet directive to tell angular where component should be inserted
+<a routerLink = "/movies">Movies</a>
+<a routerLink = "/characters">Characters</a>
 <router-outlet></router-outlet>
 ```
 
@@ -63,7 +74,7 @@ const routes: Routes = [
 <a class="nav-link" href="/#/search">Search</a>
 ```
 
-<span style="">[back](#top)</span>
+[back to top](#top)
 
 <h4 id="program-by-the-router">10.3.2 program by the router - navigate between component</h4>
 
@@ -81,7 +92,7 @@ class HeaderComponent {
 }
 ```
 
-<span style="">[back](#top)</span>
+[back to top](#top)
 
 <h4 id="program-by-a-routerLink-directive">10.3.3 program by a routerLink directive<h4>
 
@@ -96,7 +107,7 @@ class HeaderComponent {
 
 `[routerLinkActive]="['active']"` is like `class="active"`
 
-<span style="">[back](#top)</span>
+[back to top](#top)
 
 <h3 id="Parameterised-Routes">10.4 Parameterised Routes(by ID)</h3>
 
@@ -112,7 +123,7 @@ let blogId = this.route.snapshot.params['id'];     //get current Route Params
 
 - Non-parameterised routes always take priority over parameterised routes, `blog/moo` will precede over `blog/:id`
 
-<span style="">[back](#top)</span>
+[back to top](#top)
 
 <h3 id="Nested-Routes">10.5 Nested Routes(multiple routers)</h3>
 
@@ -149,7 +160,7 @@ or
 <a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['./tracks']">Tracks</a>
 ```
 
-<span style="">[back](#top)</span>
+[back to top](#top)
 
 <h3 id="Multiple-module">10.55 Multiple module and multiple router</h3>
 
@@ -254,7 +265,7 @@ this.router.routeState.parent(this.activatedRoute).params.subscribe(params => {
 })
 ```
 
-<span style="">[back](#top)</span>
+[back to top](#top)
 
 <h3 id="Lazy-loading">10.6 Lazy-loading</h3>
 
@@ -295,7 +306,7 @@ const aboutRoutes: Routes = [
 export const aboutRouting: ModuleWithProviders = RouterModule.forChild(aboutRoutes);  //use forChild
 ```
 
-<span style="">[back](#top)</span>
+[back to top](#top)
 
 <h3 id="Router-Guards">10.7 Router Guards</h3>
 
@@ -389,7 +400,7 @@ export class UserEditComponent implements ComponentCanDeactivate{
 {  path:'edit', component: UserEditComponent, canDeactivate: [UserEditGuard]  }    //custom guard services
 ```
 
-<span style="">[back](#top)</span>
+[back to top](#top)
 
 <h3 id="Routing-Strategies">10.8 Routing Strategies</h3>
 
@@ -400,7 +411,7 @@ PathLocationStrategy| default strategy,no need to enable it| `/search`| use HTML
 
 **[Angular Universal](https://universal.angular.io/)** - PathLocationStrategy enables Angular Universal, it can be cached on the server side(Server-side Rendering for Angular 2 apps)
 
-<span style="">[back](#top)</span>
+[back to top](#top)
 
 <h3 id="Querying-parameters">10.9 Querying parameters/extracting query parameters</h3>
 
@@ -441,7 +452,7 @@ constructor(private router: Router){
 }
 ```
 
-<span style="">[back](#top)</span>
+[back to top](#top)
 
 <h3 id="Styling-Active-Route-Links">10.10 Styling Active Route Links</h3>
 
@@ -455,4 +466,4 @@ constructor(private router: Router){
 		    [routerLink]="['/tracks']">Tracks</a>
 ```
 
-<span style="">[back](#top)</span>
+[back to top](#top)
