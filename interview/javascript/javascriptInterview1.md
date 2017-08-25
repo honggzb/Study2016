@@ -1,4 +1,4 @@
-###问题1: 作用域
+### 问题1: 作用域
 	 (function(){
 	    var a = b =5;
 	  })();
@@ -16,7 +16,7 @@
     })();
     console.log(b);
 
-###问题2: 创建“native”方法
+### 问题2: 创建“native”方法
 
 写一个重复打印字符串对象的方法，输入一个整数，这个整数代表重复打印的字数，比如：
 
@@ -35,7 +35,7 @@
 
 这个问题考查的是开发者对JavaScript继承和prototype属性的了解程度。
 
-###问题 3: Hoisting
+### 问题 3: Hoisting
 
 下面这段代码的输出结果是什么？
 
@@ -53,7 +53,7 @@
 
 The reason is that both variables and functions are `hoisted` (moved at the top of the function) but variables don’t retain any assigned value. So, at the time the variable a is printed, it exists in the function (it’s declared) but it’s still undefined. Stated in other words, the code above is equivalent to the following:
 
-###问题4: JavaScript中的this
+### 问题4: JavaScript中的this
 
 ```javascript
 var fullname ='John Doe';
@@ -83,7 +83,7 @@ Javascript中关键字**this**所指代的函数上下文，取决于**函数是
 
 在第一个console.log()，getFullname()被作为obj.prop对象被调用。因此，当前的上下文指代后者，函数返回这个对象的fullname属性。相反，当getFullname()被赋予test变量，当前的上下文指代全局对象window，这是因为test被隐式地作为全局对象的属性。基于这一点，函数返回window的fullname，在本例中即为代码的第一行。
 
-###问题5: call() 和 apply()
+### 问题5: call() 和 apply()
 解决前面的问题之后让最后一个console.log()输出Aurelio De Rosa.
 
 **答案：**
@@ -96,7 +96,7 @@ Javascript中关键字**this**所指代的函数上下文，取决于**函数是
 
     console.log(test.call(obj.prop));
 
-###问题6: setTimeout
+### 问题6: setTimeout
 
 看下面代码，给出输出结果
 
@@ -118,7 +118,7 @@ Javascript中关键字**this**所指代的函数上下文，取决于**函数是
 	   })(i),0);  
 	};
  
-###问题7: Class and Inheritance
+### 问题7: Class and Inheritance
 
 小贤是一条可爱的小狗(Dog)，它的叫声很好听(wow)，每次看到主人的时候就会乖乖叫一声(yelp)。对象：
 
