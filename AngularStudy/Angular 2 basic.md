@@ -3,6 +3,7 @@
 
 - [1. Architecture of Angular](#Architecture)
 - [2. 组件开发](#组件开发)
+	- [2.0 数据绑定](#数据绑定)
 	- [2.1 模板语法](#模板语法)
 	- [2.2 模板的逻辑控制](#模板的逻辑控制)
 	- [2.3 Component Content Projection - ng-content](#ng-content)
@@ -157,11 +158,13 @@ export class AppModule {   //root module, just one
 platformBrowserDynamic().bootstrapModule(AppModule);
 ```
 
-- Small components glued together through inputs and outputs
-  - **One way data-binding**
-    - with [property] bind to the input of a component  - 属性绑定Property binding
-    - with (event) bind to the output event of a component - 监听事件绑定event binding
-  - **Two way data-binding**
+<h4 id="数据绑定">2.0 数据绑定</h4>
+
+- Small components glued together through @inputs and @outputs： `<talk-cmp [talk]="someExp" (rate)="eventHandler($event.rating)">`
+  - **单向数据绑定： One way data-binding**
+    - with [property] bind to the input of a component     - 属性绑定Property binding， 监听父组件传递过来的someExp参数，并存入自身组件的talk变, 如在父组件中：`@Input() talk: string;`
+     - with (event) bind to the output event of a component - 监听事件绑定event binding， 当子组件的click事件被触发，就执行父组件的eventHandler函数，并把子组件的参数$event.rating传递给父组件的eventHandler函数, 如在父组件中： `@Output() provinceOut = new EventEmitter(); `，在子组件中： `provinceChange() { this.provinceOut.emit(this.province); }`
+  - **双向数据绑定： Two way data-binding**
     - with `<input [(ngModel)]="firstName">`和`<p>Hello {{ firstName }}</p>` and both input property binding as well as output event binding
 - Use # to create template **local variable**(link a DOM element to a local template variable)
  
