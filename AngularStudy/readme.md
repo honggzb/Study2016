@@ -19,6 +19,8 @@
 │   ├── angular-2-from-theory-to-practice-v1.0.1.pdf
 │   ├── Angular 2 basic.md
 │   ├── Angular 2 errors.md
+│   ├── First-Angular 4-Project.md      -directive/pipe/module refractor
+│   ├── Lazy-initialization.md
 │   ├── Reactive Programming- RxJs 核心概念之Observable.md
 │   ├── Reactive Extensions for JavaScript (RxJS).md
 │   ├── observable.PNG
