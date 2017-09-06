@@ -2,6 +2,11 @@
 ├── Angular Study
 │   ├──  angular-official-tourOfHeroes/     - angular 2官方案例
 │   ├──  plunk/                             - Angular 2 From Theory to Practice案例
+│   │     ├──  
+│   │     └──  
+│   ├── Project-Study/                     - Angular 项目学习
+│   │     ├──  First-Angular 4-Project.md      -directive/pipe/module refractor 
+│   │     └──  
 │   ├── angular2的一些资料.md
 │   ├── Angular2语法清单.md
 │   ├── AngularCLI的使用.md
@@ -19,7 +24,7 @@
 │   ├── angular-2-from-theory-to-practice-v1.0.1.pdf
 │   ├── Angular 2 basic.md
 │   ├── Angular 2 errors.md
-│   ├── First-Angular 4-Project.md      -directive/pipe/module refractor
+│   ├── 
 │   ├── Lazy-initialization.md
 │   ├── Reactive Programming- RxJs 核心概念之Observable.md
 │   ├── Reactive Extensions for JavaScript (RxJS).md
