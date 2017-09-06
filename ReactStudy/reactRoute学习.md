@@ -1,6 +1,49 @@
-### 1. Render as route
+- 1. Render as route- 配置 router
+- 2. navigating with link(页面跳转)
+- 3. Redirect 组件和IndexRedirect 组件
+- 4. 表单处理
+
+### 1. Render as route- 配置 router
 
 ```javascript
+/*方法1*/
+//routeMap.jsx 
+import React from 'react'
+import { Router, Route, IndexRoute } from 'react-router'
+import App from '../containers/App'
+import Home from '../containers/Home'
+import List from '../containers/List'
+import Detail from '../containers/Detail'
+import NotFound from '../containers/NotFound'
+class RouteMap extends React.Component {
+    updateHandle() {
+        console.log('每次router变化之后都会触发')
+    }
+    render() {
+        return (
+             <Router history={this.props.history} onUpdate={this.updateHandle.bind(this)}>
+                <Route path='/' component={App}>
+                    <IndexRoute component={Home}/>
+                    <Route path='list' component={List}/>
+                    <Route path='detail/:id' component={Detail}/>
+                    <Route path="*" component={NotFound}/>
+                </Route>
+            </Router>
+        )
+    }
+}
+export default RouteMap
+//index.jsx
+import React from 'react'
+import { render } from 'react-dom'
+import { hashHistory } from 'react-router'
+import RouteMap from './router/routeMap'
+import './static/css/common.less'
+render(
+    <RouteMap history={hashHistory}/>,
+    document.getElementById('root')
+)
+/*方法2*/
 //index.js
 import React from 'react';
 import { render } from 'react-dom';
@@ -40,8 +83,9 @@ module.exports =(
   - `createMemoryHistory`: 主要用于服务器渲染。它创建一个内存中的history对象，不与浏览器URL互动, 
 `const history = createMemoryHistory(location)`
 - `IndexRoute`显式指定Home是根路由的子组件，即指定默认情况下加载的子组件。可把`IndexRoute`想象成某个路径的index.html, 注意，`IndexRoute`组件没有路径参数`path`
+- url的参数获取： `this.props.params.id`
 
-### 2. navigating with link
+### 2. navigating with link(页面跳转)
 
 - Link组件用于取代<a>元素，生成一个链接，允许用户点击后跳转到另一个路由。它基本上就是<a>元素的React 版本，可以接收Router的状态
 
@@ -53,10 +97,33 @@ module.exports =(
 
 ```javascript
 import { browserHistory } from 'react-router';
-browserHistory.push('/some/path');
+browserHistory.push('/some/path');     //使用browserHistory
 ```
 
--IndexLink组件: 如果链接到根路由/，不要使用Link组件，而要使用IndexLink组件, `<IndexLink to="/" activeClassName="active">Home</IndexLink>`, 等同于`<Link to="/" activeClassName="active" onlyActiveOnIndex={true}>Home</Link>`, 实际上，IndexLink就是对Link组件的onlyActiveOnIndex属性的包装。
+-IndexLink组件: 如果链接到根路由/，不要使用Link组件，而要使用IndexLink组件, `<IndexLink to="/" activeClassName="active">Home</IndexLink>`, 等同于`<Link to="/" activeClassName="active" onlyActiveOnIndex={true}>Home</Link>`, 实际上，IndexLink就是对Link组件的onlyActiveOnIndex属性的包装
+- 使用javascript
+
+```javascript
+//list.jsx
+import React from 'react'
+import { hashHistory } from 'react-router'
+class List extends React.Component {
+    render() {
+        const arr = [1, 2, 3]
+        return (
+            <ul>
+                {arr.map((item, index) => {
+                    return <li key={index} onClick={this.clickHandler.bind(this, item)}>js jump to {item}</li>
+                })}
+            </ul>
+        )
+    }
+    clickHandler(value) {
+        hashHistory.push('/detail/' + value)    //使用hashHistory
+    }
+}
+export default List
+```
 
 ### 3 Redirect 组件和IndexRedirect 组件
 
