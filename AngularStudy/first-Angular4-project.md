@@ -7,13 +7,6 @@
 - [5. Directive && Pipe](#Directive)
 - [6. Refactoring](#Refactoring)
 
-- Components
-- Routing
-- Service
-- Modules
-- Styles  - Angular Material2
-- Directive & Pipes
-
 <h2 id="setup-environment">1. setup environment</h2>
 
 my cloud9: [your development environment in the cloud](https://c9.io/)
