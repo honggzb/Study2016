@@ -1,44 +1,21 @@
 ```
-├── root
-│   ├──  app
-│   │    ├──  actions/
-│   │    │      ├──  
-│   │    │      └──  
-│   │    ├──  components/   #木偶组件
-│   │    │      ├──  
-│   │    │      └──  
-│   │    ├──  constants/
-│   │    │      ├──  
-│   │    │      └──  
-│   │    ├──  containers/    #智能组件
-│   │    │      ├──  
-│   │    │      └── 
-│   │    ├──  fetch/    
-│   │    │      ├──  
-│   │    │      └── 
-│   │    ├──  reduces/    
-│   │    │      ├──  
-│   │    │      └── 
-│   │    ├──  router/   
-│   │    │      ├──  
-│   │    │      └── 
-│   │    ├──  static/   
-│   │    │      ├──  
-│   │    │      └── 
-│   │    ├──  store/   
-│   │    │      ├──  
-│   │    │      └── 
-│   │    ├──  util/   
-│   │    │      ├──  
-│   │    │      └── 
-│   │    ├──  index.jsx
-│   │    └──  index.tmpl.html
-│   ├──  docs/      #说明文档
-│   ├──  mock/
-│   │    └──  server.js
-│   └── test/
-├── .babelrc
-├── package.json
-├── webpack.config.js
-└── webpack.production.config.js
+```
+├──  menu/
+│    └──  server.js
+├──  mu-ke-wang-news/
+│    └──  server.js
+├── CreatClassVScomponent.md
+├── ReactFluxStudy.md
+├── React从入门到进阶-笔记.md      #route 4
+├── React学习.md
+├── React常见问题讨论.md
+├── a-simple-react-router-v4-tutorial.zip
+├── fluxStudy.rar
+├── react-patterns原文.md
+├── react-patterns学习.md
+├── reactRoute学习.md
+├── reactSimpleSample.rar
+├── 
+├── 
+└── 
 ```
