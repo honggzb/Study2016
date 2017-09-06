@@ -8,8 +8,6 @@
 |`providers: [MyService, { provide: ... }]`|数组，包括在对前模块及导入当前模块的模块中的内容物（组件、指令、管道、提供商等）可见的依赖注入提供商|
 |`bootstrap: [MyAppComponent]`|数组，包括由当前模块引导时应该引导的组件|
 
----
-
 | 模板语法| 说明 |
 | :------------- | :------------- |
 |`<input [value]="firstName">`|把属性value绑定到表达式firstName|
@@ -25,20 +23,16 @@
 |`<svg:rect x="0" y="0" width="100" height="100"/>`|SVG模板需要在它们的根节点上带一个svg:前缀，以消除模板中HTML元素和SVG元素的歧义|
 |`<svg><rect x="0" y="0" width="100" height="100"/></svg>`|`<svg>`元素在无需前缀的情况下，也能被自动检测为SVG|
 
----
-
 |表单| 说明 |
 | :------------- | :------------- |
 | `<input [(ngModel)]="userName">` | 提供双向绑定，为表单控件提供解析和验证|
 
----
 
 |指令配置| `@Directive({ property1: value1, ... })` |
 | :------------- | :------------- |
 | `selector: '.cool-button:not(a)'` | 指定一个CSS选择器，以便在模板中找出该指令。支持的选择器包括`element`, `[attribute]`, `.class`, 和 `:not()`。不支持父子关系选择器|
 |`providers: [MyService, { provide: ... }]`|为当前指令及其子指令提供依赖注入的providers数组|
 
----
 
 |供指令类或组件类用的字段装饰器 |`@Component`扩展了`@Directive`, 以便`@Directive`中的配置项也能用在组件上`|
 | :------------- | :------------- |
@@ -51,8 +45,6 @@
 |`@ViewChild(myPredicate) myChildComponent;`|把组件视图查询(myPredicate)的第一个结果绑定到类的myChildComponent属性。对指令无效|
 |`@ViewChildren(myPredicate) myChildComponents;`|把组件视图查询(myPredicate)的全部结果绑定到类的myChildComponents属性。对指令无效|
 
----
-
 |指令和组件的变更检测与生命周期钩子| 作为类方法实现|
 | :------------- | :------------- |
 |`constructor(myService: MyService, ...) { ... }`|类的构造函数会在所有其它生命周期钩子之前调用。使用它来注入依赖，但是要避免用它做较重的工作|
@@ -64,8 +56,6 @@
 |`ngAfterViewInit() { ... }`|当组件的视图已经初始化完毕，每次ngAfterContentInit之后被调用。只适用于组件|
 |`ngAfterViewChecked() { ... }`|每次检查完组件的视图之后调用。只适用于组件|
 |`ngOnDestroy() { ... }`|在所属实例被销毁前，只调用一次|
-
----
 
 |依赖注入配置| |
 | :------------- | :------------- |
