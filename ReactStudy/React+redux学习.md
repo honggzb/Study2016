@@ -51,7 +51,7 @@ export default function () {
 
 [back to top](#top)
 
-<h5 id="Store">6. React + Redux详细分析</h5>
+<h3 id="Store">6. React + Redux详细分析</h3>
 
 | 只使用redux流程 | 用了react-redux之后流程|
 | :------------- | :------------- |
@@ -129,9 +129,6 @@ export default connect(    //绑定组件
 
 > References
 
-- [【React 模仿大众点评 webapp】实战教程 - 文档目录总结](http://www.imooc.com/article/16082)
-- [React 最佳实践——那些 React 没告诉你但很重要的事](https://segmentfault.com/a/1190000005013207)
-- [React.js学习](http://blog.csdn.net/sinat_17775997/article/details/70144239)
 - [实例讲解基于 React+Redux 的前端开发流程](https://segmentfault.com/a/1190000005356568)
 - https://github.com/reactjs/redux
 - [React + Redux技术详解](https://github.com/bailicangdu/react-pxq)
