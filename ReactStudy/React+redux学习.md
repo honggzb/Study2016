@@ -1,7 +1,7 @@
 [React+redux学习](#top)
 
 - [5. Redux](#Redux)
-- [6. React + Redux详细分析](#store)
+- [6. React + Redux详细分析](#Store)
 
 <h3 id="Redux">5. Redux</h3>
 
