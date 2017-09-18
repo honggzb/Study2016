@@ -18,6 +18,7 @@
 ├── react-patterns原文.md
 ├── react-patterns学习.md
 ├── reactRoute学习.md           #route 2
+├── React-常见issue.md
 ├── reactSimpleSample.rar
 ├── 
 ├── 
