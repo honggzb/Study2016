@@ -8,7 +8,7 @@
 │    ├── ...
 │    ├── 慕课网新闻客户端mu-ke-wang.rar
 │    └── 慕课网新闻客户端sourcecode.rar
-├──  react-dazhong-dianping/
+├──  react-dazhong-dianping/    #react15 + redux4.x + webpack1.x + koa1.x + koa-router5.x
 │    ├── docs/
 │    ├── mock/
 │    ├── app/
