@@ -1,7 +1,7 @@
 [React+redux学习](#top)
 
 - [5. Redux](#Redux)
-- [6. React + Redux详细分析](#Store)
+- [6. React + Redux详细分析](#store)
 
 <h3 id="Redux">5. Redux</h3>
 
@@ -21,6 +21,8 @@
 - View层不能直接对state进行操作，而需要依赖Actions派发指令来告知Store修改状态，Store接收Actions指令后发生相应的改变，View层同时跟着Store的变化而变化
 
 ![](https://i.imgur.com/TI6RU26.png)
+
+![](https://i.imgur.com/mTXxoPu.png)
 
 ```javascript
 import { createStore } from 'redux';
@@ -132,3 +134,4 @@ export default connect(    //绑定组件
 - [实例讲解基于 React+Redux 的前端开发流程](https://segmentfault.com/a/1190000005356568)
 - https://github.com/reactjs/redux
 - [React + Redux技术详解](https://github.com/bailicangdu/react-pxq)
+- [使用Redux管理你的React应用](http://react-china.org/t/redux-react/2749)
