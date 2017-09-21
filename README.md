@@ -97,20 +97,7 @@ Study notes in 2016
 │   ├──  ES6尾调用优化.md
 │   ├──  References
 │   └──  Sample1/ -- ES6使用的小例子(gulp构建)
-│
-├──  **basic--JS**
-│   ├──  ant.md
-│   ├──  深入理解javascript原型和闭包 
-│   ├──  javascript知识点积累.md
-│   ├──  JS中复制数组.md
-│   ├──  js字符串操作.md
-│   ├──  js标准对象之Date
-│   └──  JS数据类型判断和数组判断.md 
-│
-├──  **JavascriptDesignPattern Javascript设计模式**
-│   ├──  jsDesignPattern1.md
-│   └──  
-│
+│ 
 ├── ReactStudy
 │   ├──  mu-ke-wang-News/   :案例之慕课网新闻客户端(pc和mobile，antd)
 │   │    ├── docs/
