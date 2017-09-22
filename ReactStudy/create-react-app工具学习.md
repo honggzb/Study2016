@@ -99,7 +99,7 @@ import('./moduleA').then(({moduleA}) => {
  
 [back to top](#top)
 
-<h3 id="public目录">
+<h3 id="public目录">7. public目录</h3>
 
 1. 添加其他的静态资源
 
