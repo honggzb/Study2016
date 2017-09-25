@@ -17,14 +17,14 @@
 │    └── project.rar            #源项目分解源代码
 ├── CreatClassVScomponent.md
 ├── ReactFluxStudy.md
-├── React从入门到进阶-笔记.md      #route 4
+├── React从入门到进阶-笔记.md      # route 4+移动端
 ├── React学习.md
 ├── React常见问题讨论.md
 ├── a-simple-react-router-v4-tutorial.zip
 ├── fluxStudy.rar
 ├── react-patterns原文.md
 ├── react-patterns学习.md
-├── reactRoute学习.md           #route 2
+├── reactRoute学习.md           # route 2, 3
 ├── React-常见issue.md
 ├── reactSimpleSample.rar
 ├── 
