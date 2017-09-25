@@ -2,7 +2,7 @@
 
 - [1. setup by using angular-cli](#setup-by-using-angular-cli)
   - [1.1 Updating Angular CLI](#Updating-Angular-CLI)
-  - [1.12 eject and undo eject](#eject)
+ 	 - [1.12 eject and undo eject](#eject)
   - [1.2 Proxy To Backend](#Proxy-To-Backend)
   - [1.3 Deploying the app via GitHub Pages](#Deploying-the-app-via-GitHub-Pages)
   - [1.4 Third Library Installation](#Library-Installation)
@@ -165,8 +165,15 @@ npm install
 
 <h4 id="eject">1.12 eject and undo eject</h4>
 
-1.  `ng eject'  - will generate `webpack.config.js` file, can not use ng command
-2. undo eject - modify angular-cli.json file in root directory, delete `"ejected": true`, also `webpack.config.js` file can be deleted
+1.  执行 `ng eject' : will generate `webpack.config.js` file, can not use ng command
+2. undo eject :  modify angular-cli.json file in root directory, delete `"ejected": true`, also `webpack.config.js` file can be deleted
+
+```javascript
+"project": {
+  "name": "YOUR PROJECT NAME",
+  "ejected": true
+},
+```
 
 [back to top](#top)
 
