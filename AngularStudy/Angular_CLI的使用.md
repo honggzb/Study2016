@@ -31,7 +31,7 @@
 npm install -g typescript@2.2.0
 npm install -g @angular/cli
 ng -version
-ng new PROJECT_NAME
+ng new PROJECT_NAME   #ng new PROJECT_NAME
 cd PROJECT_NAME
 ng serve    #lite-server
 # configure the default HTTP port and the one used by the LiveReload server
