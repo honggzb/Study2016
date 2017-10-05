@@ -536,13 +536,13 @@ class EzCard{
 
 ### Angular CLI
 
-###3 Built-In Directives
+### 3 Built-In Directives
 
-###4 Custom Directives
+### 4 Custom Directives
 
-###5 **Reactive Programming = Streams + Operations**
+### 5 **Reactive Programming = Streams + Operations**
 
-####5.1 Observable --> Streams & Operations
+#### 5.1 Observable --> Streams & Operations
 
 - create streams
 - subscribe to them
@@ -553,15 +553,15 @@ class EzCard{
 
 [A Decision Tree of Observable Operators - Interval, Take, Map](http://reactivex.io/documentation/operators.html#filtering)
 
-####5.2 Angular observables(Reactive Programming in Angular)
+#### 5.2 Angular observables(Reactive Programming in Angular)
 
 - EventEmitter: under the hood this works via Observables
 - HTTP: HTTP requests in Angular are all handled via Observables
 - Forms: Reactive forms in Angular expose an observable, a stream of all the input fields in the form combined 
 
-###6 **Pipes** - filters in Angular 1
+### 6 **Pipes** - filters in Angular 1
 
-###7 Form
+### 7 Form
 
 - 7.1 Model driven Form
 - 7.2 Reactive Model Form
@@ -576,7 +576,7 @@ easy to setup and use, saving develpment time | harder to setup, scalability
 use ngModel directive(two way data binding)|
 low logic, hard for end to end testing| strong logic on component
 
-###8 Dependency Injection(DI) & Providers
+### 8 Dependency Injection(DI) & Providers
 
 ![](http://i.imgur.com/XUfLhao.png)
 
@@ -597,16 +597,16 @@ providers on NgModel | providers on Components and Directives | viewProviders on
 
 refer to [plunk-providers.zip](https://github.com/honggzb/Study2016/blob/master/AngularStudy/plunk-providers.zip)
 
-###9 HTTP
+### 9 HTTP
 
 Two ways to handle HTTP in Angular2
 
 - Promise
 - Observable
 
-###10 Routing
+### 10 Routing
 
-###11 Unit Testing
+### 11 Unit Testing
 
 **[Built-in matchers](http://jasmine.github.io/edge/introduction.html#section-Included_Matchers)**
 
@@ -644,4 +644,3 @@ afterEach|This function is called after each test specification has been run
 - [angular.io](https://angular.io/docs/ts/latest/quickstart.html#!#create-and-configure)
 - [angularjs 2.0官方新手入门教程](http://alvinwei.blog.163.com/blog/static/214666110201682843045254/)
 - [Dependence Injection(依赖注入)](https://segmentfault.com/a/1190000003781566)
-- f
