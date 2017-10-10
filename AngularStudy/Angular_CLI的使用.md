@@ -2,7 +2,11 @@
 
 - [1. setup by using angular-cli](#setup-by-using-angular-cli)
   - [1.1 Updating Angular CLI](#Updating-Angular-CLI)
- 	 - [1.12 eject and undo eject](#eject)
+    - [1.1.1 创建新的Angular应用程序](#创建新的Angular应用程序)
+    - [1.1.2 添加功能到现有的 Angular 应用程序](#添加功能到现有的Angular应用程序)
+    - [1.1.3 运行应用程序&构建应用程序](#运行应用程序)
+    - [1.1.4 eject and undo eject- 自定义构建流程](#eject)
+    - [1.1.5 Updating Angular CLI](#Updating-Angular-CLI)
   - [1.2 Proxy To Backend](#Proxy-To-Backend)
   - [1.3 Deploying the app via GitHub Pages](#Deploying-the-app-via-GitHub-Pages)
   - [1.4 Third Library Installation](#Library-Installation)
@@ -21,27 +25,91 @@
 
 - Angular CLI loads its configuration from `angular-cli.json`
 - Angular CLI runs Webpack to build and bundle all JavaScript and CSS code
-- Angular CLI starts ##webpack dev server## to preview the result on `localhost:4200`
+- Angular CLI starts **webpack dev server** to preview the result on `localhost:4200`
 
-<h3 id="setup-by-using-angular-cli">1. setup by using [angular-cli](https://cli.angular.io/)</h3>
+<h2 id="setup-by-using-angular-cli">1. setup by using [angular-cli](https://cli.angular.io/)</h2>
 
 [The Ultimate Angular CLI Reference Guide](https://www.sitepoint.com/ultimate-angular-cli-reference/)
 
+<h3 id="创建新的Angular应用程序">1.1.1 创建新的 Angular 应用程序</h3>
+
 ```shell
-npm install -g typescript@2.2.0
+npm install -g typescript@2.2.0   #npm install -g typescript
 npm install -g @angular/cli
 ng -version
+#创建新的Angular应用程序
 ng new PROJECT_NAME   #ng new PROJECT_NAME
+ng init PROJECT_NAME  #ng new 与ng init的功能是相似的，只是ng new会创建新的目录
+```
+
+`ng new`命令选项
+
+选项|默认值|类型|说明
+---|---|---|---
+--dry-run|boolean|default false|perform dry-run so no changes are written to filesystem,不会创建任何文件
+--verbose| boolean|default false|
+--link-cli|boolean|default false|automatically link the @angular/cli package
+--skip-install|boolean|default false|skip npm install
+--skip-git|boolean|default false|don’t initialize git repository,表示该目录不初始化为 git仓库
+--skip-tests|boolean|default false|skip creating tests
+--skip-commit|boolean|default false|skip committing the first git commit
+--directory|string, name of directory to create|by default this is the same as the application name
+--source-dir|string, default 'src'|name of source directory
+--style|string|default 'css'|the style language to use ('css', 'less' or 'scss')
+--prefix|string|default 'app'| the prefix to use when generating new components
+--mobile|boolean|default false|generate a Progressive Web App application (see section on upcoming features)
+--routing|boolean|default false|add module with routing information and import it in main app module
+--inline-style, --is|boolean|default false|use inline styles when generating the new application
+--inline-template, --it|boolean|default false| use inline templates when generating the new application
+
+[back to top](#top)
+
+<h3 id="添加功能到现有的Angular应用程序">1.1.2 添加功能到现有的 Angular 应用程序</h3>
+
+Scaffold|Usage|short usage
+---|---|---
+Component|ng g component my-new-component|ng g c my-new-component
+Directive|ng g directive my-new-directive|ng g d my-new-directive
+Pipe|ng g pipe my-new-pipe|ng g p my-new-pipe
+Service|ng g service my-new-service|ng g s my-new-service
+Class|ng g class my-new-class|ng g cl my-new-class
+Guard|ng g guard my-new-guard|
+Interface|ng g interface my-new-interface|ng g i my-new-interface
+Enum|ng g enum my-new-enum|ng g e my-new-enum
+Module|ng g module my-module|ng g m my-module
+destroy|`ng destroy my-new-component`|delete component, class...
+
+options|function
+---|---
+--flat|Don't create the code in it's own directory. Just add all files to the current directory.
+--route=<route>|Specify the parent route. Only used for generating components and routes.
+--skip-router-generation|Don't create the route config. Only used for generating routes.
+--default|The generated route should be a default route.
+--lazy|Specify if route is lazy. default true
+
+**create an component that has no own directory, no seperate html file and style file**
+
+```shell
+ng g c componentName --flat --inline-template --inline-styles
+ng g c componentName --flat -it -is   #简写
+``` 
+
+```shell
+$ ng generate class user-profile       # Generate class 'UserProfile'
+$ ng generate class user-profile --spec   # Generate class 'UserProfile' with unit test
+```
+
+[back to top](#top)
+
+<h3 id="运行应用程序*">1.1.3 运行应用程序&构建应用程序</h3>
+
+**运行应用程序**
+
+```shell
 cd PROJECT_NAME
 ng serve    #lite-server
 # configure the default HTTP port and the one used by the LiveReload server
-ng serve --host 0.0.0.0 --port 4201 --live-reload-port 49153
-#1. Generating Components, Directives, Pipes and Services
-ng generate component my-new-component
-ng g component my-new-component # using the alias
-ng destroy my-new-component    #delete component, class ...
-#2. creating a build - angular-cli.json
-ng build   #generate build artifacts will be stored in the dist/ directory, building Your Application for Production
+ng serve --host 0.0.0.0 --port 4201 --live-reload-port 49153ng build   #generate build artifacts will be stored in the dist/ directory, building Your Application for Production
 "environments": {
   "source": "environments/environment.ts",
   "dev": "environments/environment.ts",
@@ -69,110 +137,127 @@ ng doc
 ng version    #Get the version of the CLI
 ```
 
-`ng new`命令选项
+当运行`ng serve`后，将发生以下事情
 
-选项|默认值|类型|说明
----|---|---|---
---dry-run|boolean|default false|perform dry-run so no changes are written to filesystem
---verbose| boolean|default false|
---link-cli|boolean|default false|automatically link the @angular/cli package (more info)
---skip-install|boolean|default false|skip npm install
---skip-git|boolean|default false|don’t initialize git repository
---skip-tests|boolean|default false|skip creating tests
---skip-commit|boolean|default false|skip committing the first git commit
---directory|string, name of directory to create|by default this is the same as the application name
---source-dir|string, default 'src'|name of source directory
---style|string|default 'css'|the style language to use ('css', 'less' or 'scss')
---prefix|string|default 'app'| the prefix to use when generating new components
---mobile|boolean|default false|generate a Progressive Web App application (see section on upcoming features)
---routing|boolean|default false|add module with routing information and import it in main app module
---inline-style, --is|boolean|default false|use inline styles when generating the new application
---inline-template, --it|boolean|default false| use inline templates when generating the new application
+- Angular CLI 从 .angular-cli.json 文件中加载配置信息
+- Angular CLI 运行 Webpack 打包相关 JavaScript 和 CSS 文件
+- Angular CLI 启动 webpack dev server 本地开发服务器，默认的地址是 localhost:4200
 
-**Generate Parts of Your Application**
-
-Scaffold|Usage|short usage
----|---|---
-Component|	ng g component my-new-component|ng g c my-new-component
-Directive|	ng g directive my-new-directive|ng g d my-new-directive
-Pipe|	ng g pipe my-new-pipe|ng g p my-new-pipe
-Service|	ng g service my-new-service|ng g s my-new-service
-Class|	ng g class my-new-class|ng g cl my-new-class
-Guard|	ng g guard my-new-guard|
-Interface|	ng g interface my-new-interface|ng g i my-new-interface
-Enum|	ng g enum my-new-enum|ng g e my-new-enum
-Module|	ng g module my-module|ng g m my-module
-
-options|function
----|---
---flat|Don't create the code in it's own directory. Just add all files to the current directory.
---route=<route>|Specify the parent route. Only used for generating components and routes.
---skip-router-generation|Don't create the route config. Only used for generating routes.
---default|The generated route should be a default route.
---lazy|Specify if route is lazy. default true
-
-**create an component that has no own directory, no seperate html file and style file**
+**构建应用程序**
 
 ```shell
-ng g c componentName --flat --inline-template --inline-styles
-ng g c componentName --flat -it -is   #简写
-``` 
-
-```shell
-$ ng generate class user-profile       # Generate class 'UserProfile'
-$ ng generate class user-profile --spec   # Generate class 'UserProfile' with unit test
+ng build   #generate build artifacts will be stored in the dist/ directory, building Your Application for Production
+ng build --target=production --environment=prod
+ng build --prod --env=prod
+ng build --prod
+# and so are these
+ng build --target=development --environment=dev
+ng build --dev --e=dev
+ng build --dev
+ng build    #default to dev
+#3 running unit tests
+ng test    #executed via Karma, and it will automatically watch your files for changes.
+ng test --watch=false  #tests a single time
+ng test --single-run   #tests a single time, 同上
+ng e2e  #Running end-to-end tests, run via Protractor.
+#more commands
+ng get   #Gets values for project
+ng set   #Sets values for project
+ng lint     #Run codelyzer to analyze code
+ng format 
+ng doc
+ng version    #Get the version of the CLI
 ```
 
-**Initialize a New Application** - already have a folder that you've started working in
+当运行`ng build`后，将发生以下事情
 
-`ng init scotchy-scotch`
+- Angular CLI 从 .angular-cli.json 文件中加载配置信息
+- Angular CLI 运行 Webpack 打包项目相关的 JavaScript 与 CSS 文件
+- 打包后的资源，将被输出到配置文件中 outDir 所指定的目录，默认是输出到 dist 目录
 
-options|alias|function
----|---|---
---dry-run|d|Only output the files created and operations performed. It doesn't actually create the project.
---verbose|v|Show more information
---skip-npm|none |Don't run any npm commands like installing dependencies
---name|none |Name the new project you are creating
+`ng build`可用选项
 
-**`NG NEW`** OPTIONS
+- `--aot`: 开启 ahead-of-time 编译
+- `--base-href`: string, 设置 index.html 文件中 <base> 元素的链接地址
+- `--environment`: string, 设置所使用的环境，默认为 dev
+- `--output-path`: string, 设置输出的路径
+- `--target: string`, 设置所使用的环境，默认为development, 它的可选值
+  - development: 默认的模式，意味着不进行代码压缩或混淆
+  - production: 压缩和混淆代码
+- `--watch: boolean`, 默认为 false, 开启 watch 模式，监听文件异动并自动重新构建
 
-options|alias|function
----|---|---
---dry-run|d|Only output the files created and operations performed. It doesn't actually create the project.
---verbose| v|Show more information
---skip-npm|none |Don't run any npm commands like installing dependencies
---skip-git|none |Don't create a new git repo for this project
---directory|none |Specify the directory you want to create this project in
+**Environments**
 
-[back to top](#top)
+可以在angular-cli.json 文件中定义自己的environments文件
 
-<h4 id="Updating-Angular-CLI">1.1 Updating Angular CLI</h4>
-
+```javascript
+//angular-cli.json
+"environments": {
+  "source": "environments/environment.ts",
+  "dev": "environments/environment.ts",
+  "prod": "environments/environment.prod.ts"
+}
+//dev: environments/environment.ts
+export const environment = {
+  production: false
+};
+//prod: environments/environment.prod.ts
+export const environment = {
+  production: true
+};
 ```
-npm uninstall -g angular-cli
-npm uninstall --save-dev angular-cli
-//global package:
-npm uninstall -g @angular/cli
-npm cache clean
-npm install -g @angular/cli@latest
-//Local project package:
-rm -rf node_modules dist # use rmdir /S/Q node_modules dist in Windows Command Prompt; use rm -r -fo node_modules,dist in Windows PowerShell
-npm install --save-dev @angular/cli@latest
-npm install
+
+在 src/main.ts文件中通过导入 ./environments/environment 文件，就可访问到 environment 相关的配置信息
+
+```javascript
+import { enableProdMode } from '@angular/core';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { AppModule } from './app/app.module';
+import { environment } from './environments/environment';
+if (environment.production) {
+  enableProdMode();
+}
+platformBrowserDynamic().bootstrapModule(AppModule);
 ```
 
 [back to top](#top)
 
-<h4 id="eject">1.12 eject and undo eject</h4>
+<h4 id="eject">1.1.4 eject and undo eject- 自定义构建流程</h4>
 
-1.  执行 `ng eject' : will generate `webpack.config.js` file, can not use ng command
-2. undo eject :  modify angular-cli.json file in root directory, delete `"ejected": true`, also `webpack.config.js` file can be deleted
+1. 执行 `ng eject` : will generate `webpack.config.js` file, can not use ng command
+2. `undo eject` :  modify angular-cli.json file in root directory, delete `"ejected": true`, also `webpack.config.js` file can be deleted
 
 ```javascript
 "project": {
   "name": "YOUR PROJECT NAME",
   "ejected": true
 },
+```
+
+运行`ng eject`命令后，在幕后将发生以下事情：
+
+- ejected: true 的属性被添加到 .angular-cli.json 文件中
+- 在应用程序的根目录下将生成独立的 webpack.config.js 文件，因此你可以在没有使用 Angular CLI 的环境下构建项目
+- package.json 中的构建脚本会被更新，因此你可以运行 npm run build 来构建项目
+- package.json 中的测试脚本会被更新，因此你可以运行 npm run test 来运行单元测试
+- package.json 中的启动脚本会被更新，因此你可以运行 npm run start或npm start来启动开发服务器
+- package.json 中的 e2e 脚本会被更新，因此你可以运行 npm run e2e 来运行End-to-End 测试
+
+[back to top](#top)
+
+<h4 id="Updating-Angular-CLI">1.1.5 Updating Angular CLI</h4>
+
+```shell
+npm uninstall -g angular-cli
+npm uninstall --save-dev angular-cli
+#global package:
+npm uninstall -g @angular/cli
+npm cache clean
+npm install -g @angular/cli@latest
+#Local project package:
+rm -rf node_modules dist # use rmdir /S/Q node_modules dist in Windows Command Prompt; use rm -r -fo node_modules,dist in Windows PowerShell
+npm install --save-dev @angular/cli@latest
+npm install
 ```
 
 [back to top](#top)
@@ -192,7 +277,6 @@ npm install
 
 - edit the `package.json` file:  `"start": "ng serve --proxy-config proxy.conf.json",`
 
-[back to top](#top)
 
 <h4 id="Deploying-the-app-via-GitHub-Pages">1.3 Deploying the app via GitHub Pages</h4>
 
@@ -544,3 +628,4 @@ cd hello-mobile
 
 - https://github.com/angular/angular-cli
 - https://www.sitepoint.com/ultimate-angular-cli-reference/
+- [Angular CLI 终极指南](https://segmentfault.com/a/1190000009771946)
