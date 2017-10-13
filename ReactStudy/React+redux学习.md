@@ -51,6 +51,8 @@ export default function () {
 }
 ```
 
+![](https://i.imgur.com/PkLcDgC.png)
+
 [back to top](#top)
 
 <h3 id="Store">6. React + Redux详细分析</h3>
