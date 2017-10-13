@@ -12,6 +12,7 @@
 - [10. 自定义设置proxy](#自定义设置proxy)
 - [11. 在开发环境中使用HTTPS](#在开发环境中使用HTTPS)
 - [12. 运行测试功能](#运行测试功能)
+- [13. 修改create-react-app支持多入口](#修改create-react-app支持多入口)
 
 <h3 id="快速开始">1. 快速开始</h3>
 
@@ -170,4 +171,84 @@ import('./moduleA').then(({moduleA}) => {
 
 [back to top](#top)
 
-> [react.js 教程之 create-react-app 命令行工具系统讲解](http://www.cnblogs.com/ye-hcj/p/7191153.html)
+<h3 id="修改create-react-app支持多入口">13. 修改create-react-app支持多入口</h3>
+
+[back to top](#top)
+
+`npm run eject`
+
+- package.js会被更新
+- 工程下会多出config目录，其中有webpack有两个配置文件，分别对应开发和生产环境（/config/webpack.config.dev.js和/config/webpack.config.prod.js）
+
+**1) 修改webpack配置支持多入口** - Add multiple entry to webpack.config.dev.js
+
+```javascript
+// /config/webpack.config.dev.js
+entry: {    //entry扩展为对象
+    index: [
+      require.resolve('react-dev-utils/webpackHotDevClient'),
+      require.resolve('./polyfills'),
+      require.resolve('react-error-overlay'),
+      paths.appIndexJs,
+    ],
+    admin:[
+      require.resolve('react-dev-utils/webpackHotDevClient'),
+      require.resolve('./polyfills'),
+      require.resolve('react-error-overlay'),
+      paths.appSrc + "/admin.js",              //在src文件夹下，就可以再增加一个admin.js的入口，单独写新的SPA
+      ]  
+  },
+  output: {
+    path: paths.appBuild,
+    pathinfo: true,
+    filename: 'static/js/[name].bundle.js',    //增加[name]变量，这样会根据entry分别编译出每个entry的js文件
+    chunkFilename: 'static/js/[name].chunk.js',
+    publicPath: publicPath,
+    devtoolModuleFilenameTemplate: info =>
+      path.resolve(info.absoluteResourcePath),
+  },
+```
+
+**2) 修改HtmlWebpackPlugin生成多个HTML** - Modify HtmlWebpackPlugin
+
+```javascript
+// /config/webpack.config.dev.js
+new HtmlWebpackPlugin({
+      inject: true,
+      chunks: ["index"],      
+      template: paths.appHtml,
+}),
+new HtmlWebpackPlugin({
+      inject: true,
+      chunks: ["admin"],
+      template: paths.appHtml,
+      filename: 'admin.html',
+}),
+```
+
+- chunks，指明哪些webpack入口的JS会被注入到这个HTML页面。如果不配置，则将所有entry的JS文件都注入HTML
+- filename，指明生成的HTML路径，如果不配置就是build/index.html，admin配置了新的filename，避免与第一个入口的index.html相互覆盖
+
+**3) 修改webpack Dev Server配置** - rewrite urls
+
+```javascript
+// /config/webpack.config.dev.js
+historyApiFallback: {
+      disableDotRule: true,
+      // 指明哪些路径映射到哪个html
+      // 增加的rewrites节点，特别对/admin.html这个URL重定向为/build/admin.html页面（也就是HtmlWebpackPlugin输出的HTML文件路径），这样/admin.html就可以正常访问了
+      rewrites: [
+        { from: /^\/admin.html/, to: '/build/admin.html' },
+      ]
+    }
+```
+
+**4) prod环境**
+
+对config/webpack.config.prod.js, 由于不存在webpack Dev Server，即可重复上面的1）、 2）步骤即可
+
+> Reference
+
+- [react.js 教程之 create-react-app 命令行工具系统讲解](http://www.cnblogs.com/ye-hcj/p/7191153.html)
+- [修改create-react-app支持多入口](http://imshuai.com/create-react-app-multiple-entry-points/)
+- [webpack官方文档MULTIPLE ENTRY POINTS](https://webpack.github.io/docs/multiple-entry-points.html)
