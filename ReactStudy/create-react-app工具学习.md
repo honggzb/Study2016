@@ -173,8 +173,6 @@ import('./moduleA').then(({moduleA}) => {
 
 <h3 id="修改create-react-app支持多入口">13. 修改create-react-app支持多入口</h3>
 
-[back to top](#top)
-
 `npm run eject`
 
 - package.js会被更新
@@ -246,6 +244,8 @@ historyApiFallback: {
 **4) prod环境**
 
 对config/webpack.config.prod.js, 由于不存在webpack Dev Server，即可重复上面的1）、 2）步骤即可
+
+[back to top](#top)
 
 > Reference
 
