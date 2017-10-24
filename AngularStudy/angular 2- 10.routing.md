@@ -27,9 +27,9 @@ http-server
 - **Python local web server**: `python -m SimpleHTTPServer`
 - `ng serve`   - for Angular CLI
 
-<span style="">[back](#top)</span>
+[back](#top)
 
-<h3 id="Route-Configuration">10.2 Route Configuration -Angular 2/4</h3>
+<h2 id="Route-Configuration">10.2 Route Configuration -Angular 2/4</h2>
 
 - routes is navigation between views
 - routes are triggered by UI interaction or browser address bar changes
@@ -63,11 +63,48 @@ const routes: Routes = [
 <router-outlet></router-outlet>
 ```
 
-<span style="">[back](#top)</span>
+Angular2对待一个URL的处理流程为：
 
-<h3 id="Navigating">10.3 Navigating</h3>
+1. 应用重定向
+2. 识别路由状态
+3. 应用哨兵与传递数据
+4. 激活对应组件
 
-<h4 id="hardcoded-URLS">10.3.1 hardcoded URLS</h4>
+![](https://i.imgur.com/DzWhvJz.png)
+
+```javascript
+[
+ { path: '', pathMatch: 'full', redirectTo: '/inbox' },
+ {
+  path: ':folder',
+	  children: [
+	   { path: '', component: ConversationsCmp },
+	   { path: ':id', component: ConversationCmp,
+	    children: [
+		     { path: 'messages', component: MessagesCmp },
+		     { path: 'messages/:id', component: MessageCmp }
+		    ]
+	   }
+	  ]
+ },
+ { path: 'compose', component: ComposeCmp, outlet: 'popup' },
+ { path: 'message/:id', component: PopupMessageCmp, outlet: 'popup' }
+]
+// 拿到父级参数id(33)
+ngOnInit() {
+  this.sub = this.router.routerState.parent(this.route).params.subscribe(params => {
+    this.parentRouteId = +params["id"];
+  });
+}
+```
+
+![](https://i.imgur.com/gsQIRgU.png)
+
+[back](#top)
+
+<h2 id="Navigating">10.3 Navigating</h2>
+
+<h3 id="hardcoded-URLS">10.3.1 hardcoded URLS</h3>
 
 ```html
 <a class="navbar-brand" href="/#/">iTunes Search App</a>
@@ -76,7 +113,7 @@ const routes: Routes = [
 
 [back to top](#top)
 
-<h4 id="program-by-the-router">10.3.2 program by the router - navigate between component</h4>
+<h3 id="program-by-the-router">10.3.2 program by the router - navigate between component</h3>
 
 ```javascript
 import {Router} from "@angular/router";   
@@ -94,7 +131,7 @@ class HeaderComponent {
 
 [back to top](#top)
 
-<h4 id="program-by-a-routerLink-directive">10.3.3 program by a routerLink directive<h4>
+<h3 id="program-by-a-routerLink-directive">10.3.3 program by a routerLink directive<h3>
 
 ```html
 <li class="nav-item">
@@ -164,9 +201,8 @@ or
 
 <h3 id="Multiple-module">10.55 Multiple module and multiple router</h3>
 
-main module - app.module.ts/app.routing.ts
-
 ```javascript
+//main module - app.module.ts/app.routing.ts
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -454,7 +490,7 @@ constructor(private router: Router){
 
 [back to top](#top)
 
-<h3 id="Styling-Active-Route-Links">10.10 Styling Active Route Links</h3>
+<h2 id="Styling-Active-Route-Links">10.10 Styling Active Route Links</h2>
 
 ```html
 <!-- 1） 可以自定义active的css -->
@@ -467,3 +503,5 @@ constructor(private router: Router){
 ```
 
 [back to top](#top)
+
+> [Angular2学习笔记——路由器模型（Router）](http://www.cnblogs.com/dojo-lzz/p/5907171.html)
