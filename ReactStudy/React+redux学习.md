@@ -14,10 +14,6 @@
   - **container** 是视觉组件的容器，负责把传入的状态变量渲染成视觉组件，在浏览器显示出来
   - **reducer** 是动作(action)的处理中心， 负责处理各种动作并产生新的状态（state），返回给store
   - 从对象的包含关系上讲，reducer是store的一部分，但在逻辑上把它分出来，这样会比较容易理解整个redux流程
-- 一个形象的比喻： Redux相当于一趟环路巴士
-  - js是巴士，store, container, reducer是三个车站，state和action是两种乘客
-  - Redux机制像一趟环路巴士，js巴士从store车站出发，载上state乘客 ，state乘客到达某个container车站下车并把自己展示出来 
-  - 过了一会，有一个action乘客上车了，js巴士把action乘客送到reducer车站，在这里action乘客和state乘客生了一个孩子new state，js巴士把new state送回了store车站
 - View层不能直接对state进行操作，而需要依赖Actions派发指令来告知Store修改状态，Store接收Actions指令后发生相应的改变，View层同时跟着Store的变化而变化
 
 ![](https://i.imgur.com/TI6RU26.png)
