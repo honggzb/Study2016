@@ -94,6 +94,7 @@ Study notes in 2016
 │   ├──  promise-bug+debug.md
 │   ├──  箭头函数.md
 │   ├──  generator.md
+│   ├──  rest参数和扩展运算符
 │   ├──  ES6尾调用优化.md
 │   ├──  References
 │   └──  Sample1/ -- ES6使用的小例子(gulp构建)
