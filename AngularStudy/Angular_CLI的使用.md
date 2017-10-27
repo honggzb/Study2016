@@ -352,17 +352,89 @@ import * as _ from 'underscore';
 ...
 var res = underscore.groupBy([1.3, 2.1, 2.4], function(num){ return Math.floor(num); });
 console.log(res);
-
 # 4) d3
 npm install d3 --save
 npm install @types/d3 --save-dev
 #use in components
 import * as d3 from 'd3';
-
 # Restart ng serve
 ```
 
 -- [how-to-add-bootstrap-to-an-angular-cli-project](http://stackoverflow.com/questions/37649164/how-to-add-bootstrap-to-an-angular-cli-project)
+
+> 注意： 最新的angular-cli new去除了jquery
+
+1.  `npm install bootstrap ngx-bootstrap --save`
+2. Importing the CSS
+	- configure `.angular-cli.json`
+	- import directly in src/style.css, `@import '~bootstrap/dist/css/bootstrap.min.css';`
+3. Bootstrap JavaScript Components with ngx-bootstrap
+
+`npm install ngx-bootstrap --save   #ng2-bootstrap and ngx-bootstrap are the same package`
+
+Adding the required Bootstrap modules in app.module.ts
+
+```javascript
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { ModalModule } from 'ngx-bootstrap/modal';
+@NgModule({
+  imports: [
+    BrowserModule,
+    BsDropdownModule.forRoot(),
+    TooltipModule.forRoot(),
+    ModalModule.forRoot()
+  ],
+  // ...
+})
+export class AppBootstrapModule {}
+```
+
+或
+
+```javascript
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { ModalModule } from 'ngx-bootstrap/modal';
+
+@NgModule({
+  imports: [
+    CommonModule,
+    BsDropdownModule.forRoot(),
+    TooltipModule.forRoot(),
+    ModalModule.forRoot()
+  ],
+  exports: [BsDropdownModule, TooltipModule, ModalModule]
+})
+export class AppBootstrapModule {}
+```
+
+将AppBootstrapModule引入app.module.ts
+
+```javascript
+import { AppBootstrapModule } from './app-bootstrap/app-bootstrap.module';
+
+@NgModule({
+  imports: [BrowserModule, AppBootstrapModule],
+  // ...
+})
+export class AppModule {}
+```
+
+4. Bootstrap 4 JavaScript Components with ng-bootstrap (Option 2)
+
+```
+npm install --save @ng-bootstrap/ng-bootstrap
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+@NgModule({
+  imports: [ NgbModule.forRoot(), ... ],  
+  // ...
+})
+export class AppModule {}
+```
 
 [back to top](#top)
 
