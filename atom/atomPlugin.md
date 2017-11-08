@@ -17,6 +17,7 @@
 - [按键绑定keymap](#按键绑定keymap)
 - [Gulp插件](#Gulp插件)
 - [同步Atom - sync-settings](#同步Atom - sync-settings)
+- [atom-ide-ui](https://atom.io/packages/atom-ide-ui)
 
 ### 常用设置
 
