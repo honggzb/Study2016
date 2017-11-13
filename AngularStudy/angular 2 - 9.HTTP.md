@@ -1,11 +1,11 @@
-###9 HTTP
+### 9 HTTP
 
 Two ways to handle HTTP in Angular2
 
 - Promise
 - Observable
 
-####9.1 Core HTTP
+#### 9.1 Core HTTP
 
 方法|语法|含义|数据库操作|说明
 ---|---|---|---|---
@@ -17,7 +17,6 @@ DELETE|http.delete|删，删除|delete|删除某一个资源
 > 幂等: 对同一URL的多个请求应该返回同样的结果
 
 ```javascript
-import 'rxjs/Rx';
 // 1) inject to class
 import { HttpModule, Http, Response, RequestOptions, Headers } from '@angular/http';
 class MyClass{
