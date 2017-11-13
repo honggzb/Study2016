@@ -112,9 +112,8 @@ export class AppComponent implements OnInit {
 
 
 ```javascript
-//1) 最简单的例子
-import Rx from 'rxjs';
-//最简单的例子 1
+//使用Observable后
+import Observable from 'rxjs/Observable';
 var keyups = Observable.fromEvent($("#search"),"keyup")
                        .map(e => e.target.value)
                        .filter(text => text,length>=3)
