@@ -6,6 +6,8 @@
 - [四、基本的 api](#基本的api)
 - [五、Promise Chain](#Promise-Chain)
 - [六、多个Promise 包装](#多个Promise包装)
+  - 6.1 多个Promise处理
+  - 6.2 使用Promise进行顺序（sequence）处理
 - [使用Promise封装简单Ajax方法](#使用Promise封装简单Ajax方法)
 
 **ES6 原生提供了 Promise 对象**
