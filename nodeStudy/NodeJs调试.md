@@ -1,8 +1,7 @@
 [NodeJs调试](#top)
 
 - [1. 基于Nodejs内建的调试器- debugger](#debugger)
-- [2. 基于Chrome浏览器的调试器- server side debug](#基于Chrome浏览器的调试器)
-- [3. 第三方工具- Node inspector](#第三方工具)
+- [2. 基于Chrome浏览器的调试器Node inspector- server side debug](#基于Chrome浏览器的调试器)
 
 <h2 id="debugger">1. 基于Nodejs内建的调试器- debugger</h2>
 
