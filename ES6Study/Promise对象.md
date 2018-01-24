@@ -5,7 +5,8 @@
 - [三、基本用法](#基本用法)
 - [四、基本的 api](#基本的api)
 - [五、Promise Chain](#Promise-Chain)
-- [六、多个Promise 包装](#5多个Promise包装)
+- [六、多个Promise 包装](#多个Promise包装)
+- [使用Promise封装简单Ajax方法](#使用Promise封装简单Ajax方法)
 
 **ES6 原生提供了 Promise 对象**
 
@@ -290,6 +291,8 @@ promise.then(increment)               // 2)函数increment对接收的参数进�
       });
 ```
 
+[back to top](#top)
+
 <h2 id="多个Promise包装">六、多个Promise包装</h2>
 
 <h3 id="多个Promise包装1">6.1 多个Promise处理</h2>
@@ -479,6 +482,60 @@ main().then(function (value) {
 });
 ```
 
+[back to top](#top)
+
+<h2 id="使用Promise封装简单Ajax方法">使用Promise封装简单Ajax方法</h2>
+
+```javascript
+//定义
+function getJSON (url) {
+    return new Promise( (resolve, reject) => {
+        var xhr = new XMLHttpRequest()
+        xhr.open('GET', url, true)
+
+        xhr.onreadystatechange = function () {
+            if (this.readyState === 4) {
+                if (this.status === 200) {
+                    resolve(this.responseText, this)
+                } else {
+                    var resJson = { code: this.status, response: this.response }
+                    reject(resJson, this)
+                }
+            }
+        }
+        xhr.send()
+    })
+}
+function postJSON(url, data) {
+    return new Promise( (resolve, reject) => {
+        var xhr = new XMLHttpRequest()
+        xhr.open("POST", url, true)
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+        xhr.onreadystatechange = function () {
+            if (this.readyState === 4) {
+                if (this.status === 200) {
+                    resolve(JSON.parse(this.responseText), this)
+                } else {
+                    var resJson = { code: this.status, response: this.response }
+                    reject(resJson, this)
+                }
+            }
+        }
+        xhr.send(JSON.stringify(data))
+    })
+}
+//使用
+getJSON('/api/v1/xxx')    // => 这里面是就try
+.catch( error => {
+  // dosomething          // => 这里就是catch到了error，如果处理error以及返还合适的值
+})
+.then( value => {
+  // dosomething          // 这里就是final
+})
+```
+
+[back to top](#top)
 
 > reference
 
