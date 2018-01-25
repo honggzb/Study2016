@@ -7,6 +7,7 @@
     - [1.1.3 运行应用程序&构建应用程序](#运行应用程序)
     - [1.1.4 eject and undo eject- 自定义构建流程](#eject)
     - [1.1.5 Updating Angular CLI](#Updating-Angular-CLI)
+    - [1.1.6 using LESS/SASS preprocessor](#less)
   - [1.2 Proxy To Backend](#Proxy-To-Backend)
   - [1.3 Deploying the app via GitHub Pages](#Deploying-the-app-via-GitHub-Pages)
   - [1.4 Third Library Installation](#Library-Installation)
@@ -26,6 +27,16 @@
 - Angular CLI loads its configuration from `angular-cli.json`
 - Angular CLI runs Webpack to build and bundle all JavaScript and CSS code
 - Angular CLI starts **webpack dev server** to preview the result on `localhost:4200`
+
+常用命令选项
+
+```shell
+ng new PROJECT_NAME
+ng new PROJECT_NAME --style less   # --style to choose less as preprocessor
+ng g c componentName --flat --inline-template --inline-styles
+ng g c componentName --flat -it -is   #简写
+
+``` 
 
 <h2 id="setup-by-using-angular-cli">1. setup by using [angular-cli](https://cli.angular.io/)</h2>
 
@@ -261,6 +272,16 @@ npm install
 ```
 
 [back to top](#top)
+
+<h4 id="less">1.1.6 using LESS/SASS preprocessor</h4>
+
+- New Project:  `ng new my-app --style less`
+- Existing PROJECT
+  - edit `.angular-cli.json` file and set `"defaults": { "styleExt": "less",`. Or can simply use: `ng set defaults.styleExt less`
+  - Rename all component's CSS file from xxx/xxx.component.css -> xxx/xxx.component.less
+  - Update styleUrls in xxx/xxxx.component.ts, e.g. styleUrls: ['./xxx.component.css'] -> styleUrls: ['./xxx.component.less']
+
+[back to top](#top))
 
 <h4 id="Proxy-To-Backend">1.2 Proxy To Backend</h4>
 
