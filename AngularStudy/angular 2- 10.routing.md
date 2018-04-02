@@ -517,7 +517,7 @@ constructor(private router: Router){
 
 <h2 id="understand">10.11 understand routing - 7-step routing process</h2>
 
-|  terms  | concepts|
+|terms |concepts|
 | :------------- | :------------- |
 |router service|the global Angular Router service in our application|
 |router configuration|definition of all possible router states our application can be in|
@@ -528,7 +528,7 @@ constructor(private router: Router){
 |router outlet|location in the DOM where Angular Router can place activated components|
 
 |  terms  | concepts||
-| :------------- | :------------- |
+| :------------- | :------------- |:------------- |
 |`RouterModule.forRoot(routes)`| creates a routing module that includes the router directives, the route configuration and the router service|Angular will instantiate the router service|
 |`RouterModule.forChild(routes)`|creates a routing module that includes the router directives, the route configuration but not the router service. It is needed when your application has multiple routing modules|Angular will not instantiate the router service|
 
