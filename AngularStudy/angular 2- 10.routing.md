@@ -14,8 +14,9 @@
 - [10.8 Routing Strategies](#Routing-Strategies)
 - [10.9 Querying parameters/extracting query parameters](#Querying-parameters)
 - [10.10 Styling Active Route Links](#Styling-Active-Route-Links)
+- [10.11 understand routing - 7-step routing process](#understand)
 
-<h3 id="Local-web-server-configuration">10.1 Local web server configuration服务器端</h3>
+<h2 id="Local-web-server-configuration">10.1 Local web server configuration服务器端</h2>
 
 - **nodejs http-server**
 
@@ -31,14 +32,24 @@ http-server
 
 <h2 id="Route-Configuration">10.2 Route Configuration -Angular 2/4</h2>
 
+- routing is often handled by a JavaScript router in single-page applications (SPAs), a JavaScript router does two things:
+  - update the web application state when the browser URL changes
+  - update the browser URL when the web application state changes
 - routes is navigation between views
 - routes are triggered by UI interaction or browser address bar changes
-- securites can be implemented via routes
-- the router is an optional Service, is not part of @angular/core
-- router consist of 
-  - Services:  RouterModule are in @angular/router
-  - Directive: RouterOutlet, RouterLink, RouterLinkActive
-  - Configuration: Routes
+- Angular routing packaged as `@angular/router`, Angular Router takes care of the duties of a JavaScript router:
+  - it activates all required Angular components to compose a page when a user navigates to a certain URL
+  - it lets users navigate from one page to another without page reload
+  - it updates the browser’s history so the user can use the back and forward buttons when navigating back and forth between pages.
+- In addition, Angular Router allows us to:
+  - redirect a URL to another URL
+  - resolve data before a page is displayed
+  - run scripts when a page is activated or deactivated
+  - lazy load parts of our application.
+  - securites can be implemented via routes
+  - router consist of 
+    - Services:  RouterModule are in @angular/router
+    - Directive: RouterOutlet, RouterLink, RouterLinkActive
 
 ```javascript
 //1) import
@@ -131,7 +142,7 @@ class HeaderComponent {
 
 [back to top](#top)
 
-<h3 id="program-by-a-routerLink-directive">10.3.3 program by a routerLink directive<h3>
+<h3 id="program-by-a-routerLink-directive">10.3.3 program by a routerLink directive</h3>
 
 ```html
 <li class="nav-item">
@@ -357,13 +368,13 @@ export const aboutRouting: ModuleWithProviders = RouterModule.forChild(aboutRout
 
 **guard types**
 
-guard type|description
----|---
-CanActivate|Checks to see if a user can visit a route.
-CanActivateChild|Checks to see if a user can visit a routes children
-CanDeactive|Checks to see if a user can exit a route.
-Resolve|Performs route data retrieval before route activation
-CanLoad|Checks to see if a user can route to a module that lazy loaded
+guard type|description|补充
+---|---|---
+CanActivate|Checks to see if a user can visit a route|from the top route to the deepest child route
+CanActivateChild|Checks to see if a user can visit a routes children|from the deepest child route to the top
+CanDeactive|Checks to see if a user can exit a route|from the deepest child route to the top
+CanLoad|Checks to see if a user can route to a module that lazy loaded|if the new router state requires a module to be lazy loaded
+Resolve|Performs route data retrieval before route activation|
 
 **guard function can be passed certain arguments:**
 
@@ -500,6 +511,79 @@ constructor(private router: Router){
 		    [routerLink]="['']">Home</a>
 <a class="nav-link" [routerLinkActive]="['active']" 
 		    [routerLink]="['/tracks']">Tracks</a>
+```
+
+[back to top](#top)
+
+<h2 id="understand">10.11 understand routing - 7-step routing process</h2>
+
+|  terms  | concepts|
+| :------------- | :------------- |
+|router service|the global Angular Router service in our application|
+|router configuration|definition of all possible router states our application can be in|
+|router state|the state of the router at some point in time, expressed as a tree of activated route snapshots|
+|activated route snapshot|provides access to the URL, parameters, and data for a router state node|
+|guard|script that runs when a route is loaded, activated or deactivated|
+|resolver|script that fetches data before the requested page is activated|
+|router outlet|location in the DOM where Angular Router can place activated components|
+
+|  terms  | concepts||
+| :------------- | :------------- |
+|`RouterModule.forRoot(routes)`| creates a routing module that includes the router directives, the route configuration and the router service|Angular will instantiate the router service|
+|`RouterModule.forChild(routes)`|creates a routing module that includes the router directives, the route configuration but not the router service. It is needed when your application has multiple routing modules|Angular will not instantiate the router service|
+
+- [the 7-step routing process of Angular Router navigation](https://www.jvandemo.com/the-7-step-process-of-angular-router-navigation/)
+
+| step| processing |
+| :------------- | :------------- |
+|Parse|it parses the browser URL the user wants to navigate to|
+|Redirect|it applies a URL redirect (if one is defined)|
+|Identify|it identifies which router state corresponds to the URL|
+|Guard|it runs the guards that are defined in the router state|
+|Resolve|it resolves the required data for the router state|
+|Activate|it activates the Angular components to display the page|
+|Manage| it manages navigation and repeats the process when a new URL is requested|
+
+<h3 id="Parse">10.11.1 Parse</h3>
+
+![](https://i.imgur.com/h2AUYRn.png)
+
+`/section-one;test=one/(nav:navigation;test=two//main:about;test=three)?query=four#frag`
+
+| terms  | concepts|
+| :------------- | :------------- |
+| `/`| slashes divide URL segments| 
+| `()`| parentheses specify secondary routes| 
+| `:`| a colon specifies a named router outlet| 
+| `;`| a semicolon specifies a matrix parameter| 
+| `?`| a question mark separates the query string parameters| 
+| `#`| a hashtag specifies the fragment| 
+| `//`| a double slash separates multiple secondary routes| 
+
+[back to top](#top)
+
+<h3 id="Redirect">10.11.2 Redirect</h3>
+
+|kind|||Example|
+| :------------- | :------------- |:------------- |:------------- |
+|local redirect|when redirectTo does not start with a slash|replaces a single `URL` segment|`{ path: 'one', redirectTo: 'two' }`|
+|absolute redirect|when redirectTo starts with a slash|replaces the entire `URL`|`{ path: 'one', redirectTo: '/two' }`|
+
+<h3 id="Identify">10.11.3 Identify - Identify the router state</h3>
+
+Angular router traverses the `URL` tree and matches the `URL` segments against the paths configured in the router configuration
+
+<h3 id="Guard">10.11.4 Guard - run guards</h3>
+
+<h3 id="Resolve">10.11.5 Resolve - run resolvers</h3>
+
+- during configuation, can attach static data to a route using the routes data property, in routing.module.ts
+
+```json
+  path: 'one',  
+  component: OneComponent,  
+  data: { name: 'Jazz'},
+  resolve: { address: AddressResolver }
 ```
 
 [back to top](#top)
