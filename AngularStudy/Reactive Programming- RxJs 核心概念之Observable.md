@@ -182,3 +182,4 @@ Connectable Observable Operators|Connect, Publish, RefCount, Replay
 - ["Reactive Programming是神马？"](https://segmentfault.com/a/1190000004293922)
 - [The introduction to Reactive Programming you've been missing](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754)
 - [MagicQ专栏](https://segmentfault.com/blog/caolixiang33)
+- [Observable详解](https://segmentfault.com/a/1190000008809168)
