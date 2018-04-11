@@ -15,6 +15,7 @@
 - [10.9 Querying parameters/extracting query parameters](#Querying-parameters)
 - [10.10 Styling Active Route Links](#Styling-Active-Route-Links)
 - [10.11 understand routing - 7-step routing process](#understand)
+  - [10.11.5 Resolve - run resolvers](#Resolve)
 
 <h2 id="Local-web-server-configuration">10.1 Local web server configuration服务器端</h2>
 
@@ -577,14 +578,66 @@ Angular router traverses the `URL` tree and matches the `URL` segments against t
 
 <h3 id="Resolve">10.11.5 Resolve - run resolvers</h3>
 
-- during configuation, can attach static data to a route using the routes data property, in routing.module.ts
+|Routing flow |steps|
+| :------------- | :------------- |
+| General Routing Flow| 1) clicks the link<br> 2) Angular loads the respective component|
+|Routing Flow with Resolver|1) User clicks the link<br> 2) Angular executes certain code and returns a value or observable<br> 3) You can **collect the returned value or observable** in constructor or in ngOnInit, in class of your component which is about to load<br> 4) Use the collected the data for your purpose<br>5) load your component|
+
+**Resolving Data using Angular Router** 
+
+- resolver executed when a link has been clicked and before a component is loaded, 保证数据获取后再跳转路由，这样操作避免了跳转路由后数据还没有获取完成而可能带来的页面闪烁问题。体验也更好
+
+1) configuation - in configuation, can attach static data to a route using the routes data property, in routing.module.ts
 
 ```json
-  path: 'one',  
-  component: OneComponent,  
-  data: { name: 'Jazz'},
-  resolve: { address: AddressResolver }
+{ path: 'todos', component: TodosComponent,
+  data: { title: 'Example of static route data'},  //defining data in Route
+  resolve: { todos: TodosResolver }   //Defining a Resolver in Route
+},
 ```
+
+2) defining resolver - creating a todos.resolver.ts( can not use Angular CLI to create it)
+
+```JavaScript
+import { Injectable } from '@angular/core';
+import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
+import { Todo } from './todo';
+import { TodoDataService } from './todo-data.service';
+
+@Injectable()
+export class TodosResolver implements Resolve<Observable<Todo[]>>{
+  constructor(
+    private todoDataService: TodoDataService
+  ) {}
+  public resolve(
+     route: ActivatedRouteSnapshot,
+     state: RouterStateSnapshot
+   ): Observable<Todo[]> {
+     return this.todoDataService.getAllTodos();
+   }
+}
+```
+
+3) using resolver in component
+
+```javascript
+export class TodosComponent implements OnInit {
+  //...
+  ngOnInit(){
+    //using resolver, ActivatedRoute exposes the route data as an observable, so our code barely changes
+    this.route.data
+              .map((data) => data['todos'])
+              .subscribe((todos) => { this.todos = todos; });
+  }
+  //...
+}
+```
+
+A route’s data can be accessed from: 
+
+- ActivatedRoute
+- ActivatedRouteSnapshot
 
 [back to top](#top)
 
