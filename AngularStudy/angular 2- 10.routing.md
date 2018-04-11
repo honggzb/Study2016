@@ -589,7 +589,7 @@ Angular router traverses the `URL` tree and matches the `URL` segments against t
 
 1) configuation - in configuation, can attach static data to a route using the routes data property, in routing.module.ts
 
-```json
+```
 { path: 'todos', component: TodosComponent,
   data: { title: 'Example of static route data'},  //defining data in Route
   resolve: { todos: TodosResolver }   //Defining a Resolver in Route
