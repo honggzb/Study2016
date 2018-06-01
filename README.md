@@ -83,21 +83,26 @@ Study notes in 2016
 │   └──  js之map+reduce+filter+sort.md
 │
 ├── ES6Study
-│   ├──  MYES6/       #ES6零基础教学 解析彩票项目（代码+doc）
-│   │     ├──  
-│   │     └──
-│   ├──  01 Let
-│   ├──  02-Destructuring解构赋值.md
-│   ├──  03-extended各个对象的扩展.md
-│   ├──  EnvSetup.md
-│   ├──  Promise对象.md
-│   ├──  promise-bug+debug.md
-│   ├──  箭头函数.md
-│   ├──  generator.md
-│   ├──  rest参数和扩展运算符
-│   ├──  ES6尾调用优化.md
-│   ├──  References
-│   └──  Sample1/ -- ES6使用的小例子(gulp构建)
+│   ├──  MYES6/       #ES6零基础教学 解析彩票项目（代码+doc）
+│   │     ├──  
+│   │     └──
+│   ├── Sample1/ -- ES6使用的小例子(gulp构建) 
+│   │     └──
+│   ├──  01 Let
+│   ├──  02-Destructuring解构赋值.md
+│   ├──  03-extended各个对象的扩展.md
+│   ├──  04-Promise.md
+│   ├──  class.md
+│   ├──  ES6尾调用优化.md
+│   ├──  EnvSetup.md
+│   ├──  JSinherit.png
+│   ├──  Promise对象.md
+│   ├──  generator.md
+│   ├──  promise-bug+debug.md
+│   ├──  rest参数和扩展运算符
+│   ├──  Spreadsheet - Functional programminng with ES6.md
+│   ├──  箭头函数.md
+│   ├──  References
 │ 
 ├── ReactStudy
 │   ├──  mu-ke-wang-News/   :案例之慕课网新闻客户端(pc和mobile，antd)
