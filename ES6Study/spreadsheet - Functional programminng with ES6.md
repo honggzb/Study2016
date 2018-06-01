@@ -1,12 +1,12 @@
 [Spreadsheet - Functional programminng with ES6](#top)
 
-- [Arrow Functions(Fat Arrows)](#Arrow-Function)
-- [Function Delegates](#Function-Delegates)
-- [Expressions Instead of Statements](#Expressions-Instead-of-Statements)
-- [Higher Order Functions](#Higher-Order-Functions)
+- [Arrow Functions(Fat Arrows)](#arrow-function)
+- [Function Delegates](#function-delegates)
+- [Expressions Instead of Statements](#expressions-instead-of-statements)
+- [Higher Order Functions](#higher-order-functions)
 - [Currying](#currying)
-- [Array Manipulation Functions](#Array-Manipulation-Functions)
-- [Pipelines](#Pipelines)
+- [Array Manipulation Functions](#array-manipulation-functions)
+- [Pipelines](#pipelines)
 
 ### Arrow Functions
 
