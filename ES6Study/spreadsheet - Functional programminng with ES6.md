@@ -4,7 +4,7 @@
 - [Function Delegates](#Function-Delegates)
 - [Expressions Instead of Statements](#Expressions-Instead-of-Statements)
 - [Higher Order Functions](#Higher-Order-Functions)
-- [Currying](#Currying)
+- [Currying](#currying)
 - [Array Manipulation Functions](#Array-Manipulation-Functions)
 - [Pipelines](#Pipelines)
 
