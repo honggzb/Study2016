@@ -1,4 +1,4 @@
-[spreadsheet - Functional programminng with ES6](#top)
+[Spreadsheet - Functional programminng with ES6](#top)
 
 - [Arrow Functions(Fat Arrows)](#Arrow-Function)
 - [Function Delegates](#Function-Delegates)
@@ -142,7 +142,3 @@ console.log(tally(cart));   // Order Total = 64.62
 ```
 
 [back to top](#top)
-
-> reference
-
-- [Rendering: repaint, reflow/relayout, restyle](http://www.phpied.com/rendering-repaint-reflowrelayout-restyle/)
