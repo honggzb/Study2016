@@ -15,9 +15,7 @@ render() {
                    type="text" 
                    placeholder={this.state.search} 
                    onChange={this.updateSearch.bind(this)}/>
-            &nbsp; &nbsp;&nbsp; &nbsp;
-
-            <Link className="button1" to="Form"> + </Link>
+             <Link className="button1" to="Form"> + </Link>
         </div>
        )
     }
