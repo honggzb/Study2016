@@ -9,7 +9,8 @@
   - 6.1 多个Promise处理
   - 6.2 使用Promise进行顺序（sequence）处理
 - [使用Promise封装简单Ajax方法](#使用Promise封装简单Ajax方法)
-
+- [Promise队列实现异步函数顺序执行](#Promise队列实现异步函数顺序执行)
+- 
 **ES6 原生提供了 Promise 对象**
 
 <h2 id="运行环境">一、运行环境</h2>
@@ -539,8 +540,59 @@ getJSON('/api/v1/xxx')    // => 这里面是就try
 
 [back to top](#top)
 
+<h2 id="Promise队列实现异步函数顺序执行">Promise队列实现异步函数顺序执行</h2>
+
+```javascript
+// 三个异步函数, 均返回一个Promise
+var a = function () {
+  return new Promise(function (resolve, reject) {
+    setTimeout(function () {
+      resolve('a')
+    }, 1000)
+  })
+}
+var b = function (data) {
+  return new Promise(function (resolve, reject) {
+    resolve(data + 'b')
+  })
+}
+var c = function (data) {
+  return new Promise(function (resolve, reject) {
+    setTimeout(function () {
+      resolve(data + 'c')
+    }, 500)
+  })
+}
+//解决方法一(使用then链式操作)
+a().then(function(data){
+    return b(data);
+    })
+   .then(function(data){
+        return c(data);
+    })
+   .then(function(data){
+       console.log(data);     //abc
+   })
+//方法二(构建队列), 封装方法，可移植到别处使用
+function queue(arr){
+    var sequence = Promise.resolve();
+    arr.forEach(function(item){
+        sequence = sequence.then(item);
+    });
+    return sequence;
+}
+queue([a,b,c]).then(data => {
+    console.log(data);    //abc
+})
+```
+
+> 顺便说一句，bluebird的Promise.reduce也可以用来顺序执行函数，但是可使用的场景非常有限，一般用来读取文件信息，而以上给出的方法，不管你在异步函数中做了什么，只要函数最后返回了一个Promise对象，都可以使用
+
+[back to top](#top)
+
 > reference
 
 - [ECMAScript 6 入门](http://es6.ruanyifeng.com/#docs/promise)
 - [Javascript 中的神器——Promise](http://www.jianshu.com/p/063f7e490e9a)
 - [JavaScript Promise迷你书](http://liubin.org/promises-book/#ch2-promise-resolve)
+- [构建Promise队列实现异步函数顺序执行](https://blog.csdn.net/u011500781/article/details/73883903)
