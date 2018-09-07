@@ -72,10 +72,10 @@ rxjs适用于异步场景，即前端交互中接口请求、浏览器事件以�
 
 方法|说明
 ---|---
-创建|`Rx.Observable.create`，通常还使用创建操作符, 如 `of，from， interval`, 等来创建Observable
+创建|`Rx.Observable.create`，通常还使用创建操作符, <br>如 `of，from， interval`, 等来创建Observable
 订阅|`observable.subscribe(x => console.log(x));`
-执行|只有在被订阅之后Observable才会执行，执行的逻辑在`Observable.create(function subscribe(observer) {...})`中描述，执行后将会在特定时间段内，同步或者异步地成产多个数据值
-终止|Observable的执行可能是无限的，作为观察者需要主动中断执行, `subscription.unsubscribe();`
+执行|只有在被订阅之后Observable才会执行，<br>执行的逻辑在`Observable.create(function subscribe(observer) {...})`中描述，<br>执行后将会在特定时间段内，同步或者异步地成产多个数据值
+终止|Observable的执行可能是无限的，作为观察者需要主动中断执行, <br>`subscription.unsubscribe();`
 
 - **订阅:**
   - 调用subscribe的观察者并不会共享同一个Observable。观察者调用`observable.subscribe` 时，`Observable.create(function subscribe(observer) {...})`中的subscribe会在调用它的观察者作用域中执行。每一次observable.subscribe的调用，都是彼此独立的
