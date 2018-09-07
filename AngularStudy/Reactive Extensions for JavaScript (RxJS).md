@@ -101,7 +101,7 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
   constructor() {
     //防止用户输入过快，导致发送请求过于频繁，send too many request
-    var debounced = _.debounce(function(text) {   
+    var debounced = _.debounce(function(text) {
       var url="...";
       $.getJSON(url, function(artists){ console.log(artists);})
     }, 400);
@@ -178,7 +178,7 @@ subscription.next('foo1');
 const promise = source1.forEach(value => console.log(value)); // forEach和subscribe相似，同是实现订阅效果，等到promise可以监控subscription完成和失败的异常。
 promise.then(() => console.log('complete'), (err) => console.log(err));  // 日志打印并没有comlete, 因为source并没有完成关闭，触发调用observer.complete()
 /**
-  output: 
+  output:
   hello foo
   foo1
   hello foo
@@ -196,7 +196,7 @@ promise.then(() => console.log('complete'), (err) => console.log(err));  // 日�
  subject.next('foo');
  subscription.next('bar');
  /**
-   output: 
+   output:
    hello foo
    bar
    foo1
@@ -250,6 +250,31 @@ Operators方法调用时，接收的参数是source，返回新的source, 以下
   - window vs windowCount vs windowTime vs windowWhen 同 buffer相似
 - 1:sources效果：partition
   - partition，sources = source1.partition(func), 根据func吧所有的source1发射数据分段，每段组成一个source，最终得到sources数组
+
+**switchMap, flatMap, concatMap 的区别**
+
+三个操作符都可以传入第二个selector callback 参数，flatMap还可以传第三个参数限制并行处理的数量。
+
+```javascript
+//前一个完成后，第二个才会发出，有顺序
+concatMap = .map(fn).concatAll()
+//下一个发出，则退订前一个。前一个成功也好，失败也好，不会造成任何side-effect了
+switchMap = .map(fn).switch()
+// 其实就是mergeMap, mergeAll(), 有摊平的observable的效果，并行处理多个流。可能重叠
+flatMap = .map(fn).flatAll()
+
+source : -----------c--c------------------...
+        concatMap(c => Rx.Observable.interval(100).take(3))
+example: -------------0-1-2-0-1-2---------...
+
+source : -----------c--c-----------------...
+        concatMap(c => Rx.Observable.interval(100).take(3))
+example: -------------0--0-1-2-----------...
+
+source : -----------c-c------------------...
+        concatMap(c => Rx.Observable.interval(100).take(3))
+example: -------------0-(10)-(21)-2----------...
+```
 
 [back to top](#top)
 
@@ -334,3 +359,4 @@ source的过滤不会对发射数据做任何改变，只是减少source的发�
 - [rxjs 中文翻译官方文档 比较全，翻译的一般般吧。。。](https://cn.rx.js.org/manual/usage.html)
 - [一个博客上关于rxjs的系列入门文章，英文的](https://alligator.io/rxjs)
 - [hot-cold-observables，什么是热的观察对象，什么是冷的observable，怎么warm up](https://alligator.io/rxjs/hot-cold-observables/)
+- [30 天精通 RxJS 系列](https://ithelp.ithome.com.tw/users/20103367/ironman/1199)
