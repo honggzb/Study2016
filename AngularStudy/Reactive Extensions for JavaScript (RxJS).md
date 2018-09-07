@@ -328,5 +328,9 @@ source的过滤不会对发射数据做任何改变，只是减少source的发�
 - [常用rxjs方法的交互图](http://rxmarbles.com/)
 - [rxjs官网](http://reactivex.io/rxjs/)
 - [rxhjs教程](http://xgrommx.github.io/rx-book/content/observable/observable_instance_methods/toarray.html)
-
-[back to top](#top)
+- [rxjs5的中文gitbook，略老但排版好看，适合入门](https://rxjs-cn.github.io/rxjs5-ultimate-cn)
+- [rxjs的github，在reactiveX下面，已经到6版本了 RxJS: Reactive Extensions For JavaScript](https://github.com/reactivex/rxjs)
+- [rxjs 英文官网，关于如何迁移到版本6](https://rxjs-dev.firebaseapp.com/guide/v6/migration)
+- [rxjs 中文翻译官方文档 比较全，翻译的一般般吧。。。](https://cn.rx.js.org/manual/usage.html)
+- [一个博客上关于rxjs的系列入门文章，英文的](https://alligator.io/rxjs)
+- [hot-cold-observables，什么是热的观察对象，什么是冷的observable，怎么warm up](https://alligator.io/rxjs/hot-cold-observables/)
