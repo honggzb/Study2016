@@ -14,6 +14,12 @@
 
 <h3 id="Reactive-Extensions介绍">1. Reactive Extensions介绍</h3>
 
+Promises 欠缺如下能力：
+
+- 不能生产多个值
+- 不能重试
+- 不能真正地玩转其它异步思想
+
 Reactive Extensions（Rx）是对LINQ的一种扩展，他的目标是对异步的集合进行操作，也就是说，集合中的元素是异步填充的，比如说从Web或者云端获取数据然后对集合进行填充。Rx起源于Microsoft DevLabs小组的研究，他扩展了LINQ的一些特性，目前Rx支持多种平台如JavaScript，Windows Phone，ios，Android 。随着数据处理变得复杂，LINQ使得我们的处理逻辑变得简单清晰，同样地，随着越来越多的数据通过从云端异步获取，Rx使得这种异步数据处理操作变得简单和容易维护。
 
 在处理静态集合数据方面，LINQ使用类似SQL的语法来操作和使用不同来源的数据。相反，Rx被设计出来用来处理将来才会填充好的集合，也就是说，集合类型定义好了，但是集合中的元素可能在未来的某一时刻才会被填充。
