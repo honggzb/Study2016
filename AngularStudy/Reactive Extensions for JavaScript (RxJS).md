@@ -11,8 +11,11 @@
   - [2.7 工具](#工具)
   - [2.8 计算](#计算)
   - [2.1 其他](#其他)
+- [3. 案例]
+    - [案例1：包装ajax调用](#案例1)
+    - [案例2：包装语音音频 API](#案例2)
 
-<h3 id="Reactive-Extensions介绍">1. Reactive Extensions介绍</h3>
+<h2 id="Reactive-Extensions介绍">1. Reactive Extensions介绍</h2>
 
 Promises 欠缺如下能力：
 
@@ -50,7 +53,7 @@ rxjs适用于异步场景，即前端交互中接口请求、浏览器事件以�
 
 [back to top](#top)
 
-<h3 id="实例方法Operators">2. rxjs的操作-Observable</h3>
+<h2 id="实例方法Operators">2. rxjs的操作-Observable</h2>
 
 ![](http://i.imgur.com/ZYUr0YG.png)
 
@@ -115,7 +118,6 @@ export class AppComponent implements OnInit {
 ```
 
 > 缺点： 过多的callback
-
 
 ```javascript
 //使用Observable后
@@ -205,11 +207,11 @@ promise.then(() => console.log('complete'), (err) => console.log(err));  // 日�
 
 [back to top](#top)
 
-<h3 id="实例方法Operators">2. 实例方法Operators</h3>
+<h2 id="实例方法Operators">2. 实例方法Operators</h2>
 
 Operators方法调用时，接收的参数是source，返回新的source, 以下是个人学习使用过程中，简单总结的rxjs各方法用法。
 
-<h4 id="创建">2.1 创建</h4>
+<h3 id="创建">2.1 创建</h3>
 
 - 发射完数据更新自动关闭：from, fromPromise, of, from, range
 - 不发射直接关闭：empty
@@ -218,7 +220,7 @@ Operators方法调用时，接收的参数是source，返回新的source, 以下
 - 保持发射数据且不自动关闭：timer, interval, fromEvent
 - 需要手动发射数据且不自动关闭：create, (还有Rx.Subject.create)
 
-<h4 id="转换">2.2 转换</h4>
+<h3 id="转换">2.2 转换</h3>
 
 ![](http://i.imgur.com/DNJ7xDf.png)
 
@@ -278,7 +280,7 @@ example: -------------0-(10)-(21)-2----------...
 
 [back to top](#top)
 
-<h4 id="过滤">2.3 过滤</h4>
+<h3 id="过滤">2.3 过滤</h3>
 
 source的过滤不会对发射数据做任何改变，只是减少source的发射次数，所以理解起来会简单很多，这里只做个简单分类
 
@@ -290,7 +292,7 @@ source的过滤不会对发射数据做任何改变，只是减少source的发�
 
 [back to top](#top)
 
-<h4 id="组合">2.4 组合</h4>
+<h3 id="组合">2.4 组合</h3>
 
 做个source组合成新的souce
 
@@ -305,14 +307,14 @@ source的过滤不会对发射数据做任何改变，只是减少source的发�
 
 [back to top](#top)
 
-<h4 id="判断">2.5 判断</h4>
+<h3 id="判断">2.5 判断</h3>
 
 - find和findIndex分别是指定发射数据和发射数据的下标（第几次发送的），应该放到**过滤**分类才合理
 - isEmpty, every, include等，判断是否为真，判断的结果当做是source的发射数据
 
 [back to top](#top)
 
-<h4 id="错误处理">2.6 错误处理</h4>
+<h3 id="错误处理">2.6 错误处理</h3>
 
 - catch，source在Operators调用过程中出现的异常，都可以在catch捕获到，同时可以返回新的source，因为出现异常的当前source会自动销毁掉。
 - retry，source = source.retry(times), source的所有发射，重复来几遍。
@@ -320,7 +322,7 @@ source的过滤不会对发射数据做任何改变，只是减少source的发�
 
 [back to top](#top)
 
-<h4 id="工具">2.7 工具</h4>
+<h3 id="工具">2.7 工具</h3>
 
 - do，在每次响应订阅前，可以通过source.do(func)，做一些提前处理等任何动作，比如打印一下发射的数据等。
 - delay, delayWhen，每次发送数据时，都延迟一定时间间隔后再发送。
@@ -331,13 +333,13 @@ source的过滤不会对发射数据做任何改变，只是减少source的发�
 
 [back to top](#top)
 
-<h4 id="计算">2.8 计算</h4>
+<h3 id="计算">2.8 计算</h3>
 
 把source的所有发射数据进行指定计算后，得出的数据作为新source的发射数据，计算方法分别有：max, min, count, reduce, average等
 
 [back to top](#top)
 
-<h4 id="其他">2.9 其他</h4>
+<h3 id="其他">2.9 其他</h3>
 
 - cache, source = source1.cache(1);共享source1的订阅结果，即不管source订阅几回，响应方法接收到的发射数据都是同一份。
 - 共享source订阅结果很重要，因为**组合**等方法组合多个source时，其中包含sourceA，同时sourceA还需要单独订阅其结果，在不用cache情况下，sourceA会产生2个subscription，即2个订阅实例，但是我们更希望是能达到sourceA发生变化时，都能通知到所有的组合sourceA的source。
@@ -346,15 +348,99 @@ source的过滤不会对发射数据做任何改变，只是减少source的发�
 
 [back to top](#top)
 
+<h2 id="案例">3. 案例</h2>
+
+<h3 id="案例1">案例1：包装ajax调用</h3>
+
+```javascript
+let stream = Rx.Observable.create((observer) => {
+   let request = new XMLHttpRequest();
+   request.open( ‘GET’, ‘url’ );
+   request.onload =() =>{
+      if(request.status === 200) {    //1)发出数据
+         observer.next( request.response );
+         observer.complete();          //3)关闭流
+     } else {
+          observer.error('error happened');   //2)处理潜在的错误
+     }
+   }
+   request.onerror = () => {  
+       observer.error('error happened')
+   }
+   request.send();
+})
+stream.subscribe(
+   (data) => console.log(data)
+)
+```
+
+[back to top](#top)
+
+<h3 id="案例2">案例2：包装语音音频 API</h3>
+
+- 点击按钮激活`heyClick$`
+- `speechRecognition$`监听我们说了什么并把结果发送给`heyClick$`的转换逻辑
+- 转换逻辑的结果将由`say Observable`发出声音
+
+```javascript
+console.clear();
+const { Observable } = Rx;
+const speechRecognition$ = new Observable(observer => {   //激活浏览器的麦克风并记录我们的语音
+   const speech = new webkitSpeechRecognition();
+   speech.onresult = (event) => {
+     observer.next(event);
+     observer.complete();
+   };
+   speech.start();
+   return () => {
+     speech.stop();  //清理
+   }
+});
+const say = (text) => new Observable(observer => {   //语音合成, say
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.onend = (e) => {
+    observer.next(e);
+    observer.complete();
+  };
+  speechSynthesis.speak(utterance);
+});
+const button = document.querySelector("button");
+const heyClick$ = Observable.fromEvent(button, 'click');
+heyClick$                                    //主体流 hey$
+  .switchMap(e => speechRecognition$)
+  .map(e => e.results[0][0].transcript)
+  .map(text => {
+    switch (text) {
+      case 'I want':
+        return 'candy';
+      case 'hi':
+      case 'ice ice':
+        return 'baby';
+      case 'hello':
+        return 'Is it me you are looking for';
+      case 'make me a sandwich':
+      case 'get me a sandwich':
+        return 'do it yo damn self';
+      case 'why are you being so sexist':
+        return 'you made me that way';
+      default:
+        return `I don't understand: "${text}"`;
+    }
+  })
+  .concatMap(say)
+  .subscribe(e => console.log(e));
+```
+
 > Reference
 
+- [rxjs官网]https://rxjs-dev.firebaseapp.com/)
+- [rxjs官网Sample](https://github.com/Reactive-Extensions/RxJS/tree/master/examples)
+- [rxjs官网的github，在reactiveX下面，已经到6版本了 RxJS: Reactive Extensions For JavaScript](https://github.com/reactivex/rxjs)
 - [Reactive Extensions介绍](http://www.cnblogs.com/shanyou/p/3233894.html)
 - [rxjs简单入门](https://yq.aliyun.com/articles/65027)
 - [常用rxjs方法的交互图](http://rxmarbles.com/)
-- [rxjs官网](http://reactivex.io/rxjs/)
 - [rxhjs教程](http://xgrommx.github.io/rx-book/content/observable/observable_instance_methods/toarray.html)
 - [rxjs5的中文gitbook，略老但排版好看，适合入门](https://rxjs-cn.github.io/rxjs5-ultimate-cn)
-- [rxjs的github，在reactiveX下面，已经到6版本了 RxJS: Reactive Extensions For JavaScript](https://github.com/reactivex/rxjs)
 - [rxjs 英文官网，关于如何迁移到版本6](https://rxjs-dev.firebaseapp.com/guide/v6/migration)
 - [rxjs 中文翻译官方文档 比较全，翻译的一般般吧。。。](https://cn.rx.js.org/manual/usage.html)
 - [一个博客上关于rxjs的系列入门文章，英文的](https://alligator.io/rxjs)
