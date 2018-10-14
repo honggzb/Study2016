@@ -1,1 +1,3 @@
 - [全前端资源汇集](https://segmentfault.com/a/1190000004978770)
+- [google-design](https://design.google/)
+- [google-design-medium](https://medium.com/google-design)
