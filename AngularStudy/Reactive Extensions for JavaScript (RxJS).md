@@ -11,7 +11,7 @@
   - [2.7 工具](#工具)
   - [2.8 计算](#计算)
   - [2.1 其他](#其他)
-- [3. 案例]
+- [3. 案例](#)
     - [案例1：包装ajax调用](#案例1)
     - [案例2：包装语音音频 API](#案例2)
 
@@ -433,8 +433,10 @@ heyClick$                                    //主体流 hey$
 
 > Reference
 
-- [rxjs官网]https://rxjs-dev.firebaseapp.com/)
+- [rxjs官网](https://rxjs-dev.firebaseapp.com/)
 - [rxjs官网Sample](https://github.com/Reactive-Extensions/RxJS/tree/master/examples)
+- [Animated playground for Rx Observables](https://rxviz.com/)
+- [Interactive diagrams of Rx Observables](https://rxmarbles.com/)
 - [rxjs官网的github，在reactiveX下面，已经到6版本了 RxJS: Reactive Extensions For JavaScript](https://github.com/reactivex/rxjs)
 - [Reactive Extensions介绍](http://www.cnblogs.com/shanyou/p/3233894.html)
 - [rxjs简单入门](https://yq.aliyun.com/articles/65027)
