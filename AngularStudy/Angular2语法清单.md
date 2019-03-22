@@ -1,4 +1,4 @@
-###Angular2语法清单
+### Angular2语法清单
 
 
 Template syntax |说明
